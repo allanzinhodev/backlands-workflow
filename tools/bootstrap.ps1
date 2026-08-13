@@ -59,17 +59,68 @@ foreach ($tool in 'cmake', 'node', 'npm') {
 }
 
 # ---------------------------------------------------------------- repositorios
-Write-Step "Clonando repositorios em $Root"
+Write-Step "Sincronizando repositorios em $Root"
 foreach ($repo in $Repos) {
     $target = Join-Path $Root $repo.Dir
-    if (Test-Path $target) {
-        Write-Skip "$($repo.Dir) ja existe"
+
+    # Pasta ausente: clona.
+    if (-not (Test-Path (Join-Path $target '.git'))) {
+        if (Test-Path $target) {
+            Write-Warn "$($repo.Dir) existe mas nao e repositorio git - pulando"
+            $Manual.Add("Verificar $target manualmente")
+            continue
+        }
+        Write-Host "    clonando $($repo.Dir) ..."
+        git -C $Root clone --branch $repo.Branch $repo.Url $repo.Dir
+        if ($LASTEXITCODE -ne 0) { throw "Falha ao clonar $($repo.Url)" }
+        Write-Ok "$($repo.Dir) <- $($repo.Url)"
         continue
     }
-    Write-Host "    clonando $($repo.Dir) ..."
-    git -C $Root clone --branch $repo.Branch $repo.Url $repo.Dir
-    if ($LASTEXITCODE -ne 0) { throw "Falha ao clonar $($repo.Url)" }
-    Write-Ok "$($repo.Dir) <- $($repo.Url)"
+
+    # Pasta ja existe: confere se ha commits novos no remoto e puxa.
+    git -C $target fetch --quiet 2>$null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warn "$($repo.Dir): fetch falhou (sem rede ou sem acesso)"
+        continue
+    }
+
+    $upstream = git -C $target rev-parse --abbrev-ref '@{upstream}' 2>$null
+    if ($LASTEXITCODE -ne 0 -or -not $upstream) {
+        Write-Warn "$($repo.Dir): sem upstream configurado"
+        continue
+    }
+
+    $behind = [int](git -C $target rev-list --count "HEAD..$upstream" 2>$null)
+    $ahead = [int](git -C $target rev-list --count "$upstream..HEAD" 2>$null)
+    $dirty = @(git -C $target status --porcelain 2>$null).Count
+
+    if ($behind -eq 0) {
+        if ($ahead -gt 0) { Write-Skip "$($repo.Dir) em dia com o remoto ($ahead commit(s) local(is) a enviar)" }
+        else { Write-Skip "$($repo.Dir) em dia com o remoto" }
+        continue
+    }
+
+    # Ha commits novos no remoto. So puxa se for seguro.
+    if ($dirty -gt 0) {
+        Write-Warn "$($repo.Dir): $behind commit(s) no remoto, mas ha $dirty alteracao(oes) local(is) - NAO puxei"
+        $Manual.Add("Resolver alteracoes locais em $($repo.Dir) e rodar: git -C `"$target`" pull")
+        continue
+    }
+
+    if ($ahead -gt 0) {
+        Write-Warn "$($repo.Dir): divergiu ($ahead local, $behind remoto) - NAO puxei para nao criar merge automatico"
+        $Manual.Add("Reconciliar $($repo.Dir) manualmente: git -C `"$target`" pull --rebase")
+        continue
+    }
+
+    # Fast-forward puro: seguro.
+    git -C $target merge --ff-only $upstream --quiet 2>$null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Ok "$($repo.Dir) atualizado (+$behind commit(s) do remoto)"
+    } else {
+        Write-Warn "$($repo.Dir): fast-forward falhou"
+        $Manual.Add("Atualizar $($repo.Dir) manualmente: git -C `"$target`" pull")
+    }
 }
 
 if ($ReposOnly) {

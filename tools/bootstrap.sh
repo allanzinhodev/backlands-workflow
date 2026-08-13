@@ -82,16 +82,71 @@ if [ "$WITH_APT" -eq 1 ]; then
 fi
 
 # ------------------------------------------------------------------ clones
-step "Clonando repositorios em $ROOT"
+step "Sincronizando repositorios em $ROOT"
 for entry in "${REPOS[@]}"; do
   IFS='|' read -r dir url branch <<< "$entry"
-  if [ -d "$ROOT/$dir" ]; then
-    skip "$dir ja existe"
+
+  # Pasta ausente: clona.
+  if [ ! -d "$ROOT/$dir/.git" ]; then
+    if [ -d "$ROOT/$dir" ]; then
+      warn "$dir existe mas nao e repositorio git - pulando"
+      manual "Verificar $ROOT/$dir manualmente"
+      continue
+    fi
+    echo "    clonando $dir ..."
+    git -C "$ROOT" clone --branch "$branch" "$url" "$dir" || die "falha ao clonar $url"
+    ok "$dir <- $url"
     continue
   fi
-  echo "    clonando $dir ..."
-  git -C "$ROOT" clone --branch "$branch" "$url" "$dir" || die "falha ao clonar $url"
-  ok "$dir <- $url"
+
+  # Pasta ja existe: confere se ha commits novos no remoto e puxa.
+  repo="$ROOT/$dir"
+  if ! git -C "$repo" fetch --quiet 2>/dev/null; then
+    warn "$dir: fetch falhou (sem rede ou sem acesso)"
+    continue
+  fi
+
+  local_head="$(git -C "$repo" rev-parse HEAD 2>/dev/null)"
+  upstream="$(git -C "$repo" rev-parse --abbrev-ref '@{upstream}' 2>/dev/null || echo '')"
+
+  if [ -z "$upstream" ]; then
+    warn "$dir: sem upstream configurado"
+    continue
+  fi
+
+  behind="$(git -C "$repo" rev-list --count "HEAD..$upstream" 2>/dev/null || echo 0)"
+  ahead="$(git -C "$repo" rev-list --count "$upstream..HEAD" 2>/dev/null || echo 0)"
+  dirty="$(git -C "$repo" status --porcelain 2>/dev/null | wc -l | tr -d ' ')"
+
+  if [ "$behind" -eq 0 ]; then
+    if [ "$ahead" -gt 0 ]; then
+      skip "$dir em dia com o remoto ($ahead commit(s) local(is) a enviar)"
+    else
+      skip "$dir em dia com o remoto"
+    fi
+    continue
+  fi
+
+  # Ha commits novos no remoto. So puxa se for seguro.
+  if [ "$dirty" -gt 0 ]; then
+    warn "$dir: $behind commit(s) no remoto, mas ha $dirty alteracao(oes) local(is) - NAO puxei"
+    manual "Resolver alteracoes locais em $dir e rodar: git -C \"$repo\" pull"
+    continue
+  fi
+
+  if [ "$ahead" -gt 0 ]; then
+    warn "$dir: divergiu ($ahead local, $behind remoto) - NAO puxei para nao criar merge automatico"
+    manual "Reconciliar $dir manualmente: git -C \"$repo\" pull --rebase"
+    continue
+  fi
+
+  # Fast-forward puro: seguro.
+  if git -C "$repo" merge --ff-only "$upstream" --quiet 2>/dev/null; then
+    ok "$dir atualizado (+$behind commit(s) do remoto)"
+  else
+    warn "$dir: fast-forward falhou"
+    manual "Atualizar $dir manualmente: git -C \"$repo\" pull"
+  fi
 done
 
 if [ "$REPOS_ONLY" -eq 1 ]; then
