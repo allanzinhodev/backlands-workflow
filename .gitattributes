@@ -1,0 +1,11 @@
+# Normalização de fim de linha — o workspace circula entre Windows e Linux/WSL.
+* text=auto
+
+# Scripts shell PRECISAM de LF. Com CRLF o shebang vira "#!/usr/bin/env bash\r"
+# e o Linux responde "bad interpreter: No such file or directory".
+*.sh text eol=lf
+
+# Scripts do Windows ficam com CRLF.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf

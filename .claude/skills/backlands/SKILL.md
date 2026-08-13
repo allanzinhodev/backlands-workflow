@@ -168,23 +168,35 @@ Seções do GDD: `visao-geral`, `pilares`, `escopo`, `core-loop`, `classes`, `pr
 
 ## 4. Comandos git seguros
 
-Sempre com `-C` e caminho absoluto:
+**Estado dos cinco repositórios de uma vez** — use os scripts, não improvise um loop:
 
 ```powershell
-git -C d:\backlands\server status --short         # status de um repo específico
+.\tools\status.ps1            # ou ./tools/status.sh no bash
+.\tools\status.ps1 -Fetch     # com fetch, para ahead/behind refletir o remoto
+```
+
+Para um repositório específico, sempre com `-C` e caminho absoluto:
+
+```powershell
+git -C d:\backlands\server status --short
 git -C d:\backlands status --short --ignored      # confirma que as 5 pastas estão ignoradas
 ```
 
-Verificar todos de uma vez:
-```powershell
-foreach ($d in 'client','devfolio','mapeditor','objectbuilder','server') {
-  "$d : " + (git -C "d:\backlands\$d" rev-parse --abbrev-ref HEAD) + " | " +
-  ((git -C "d:\backlands\$d" status --porcelain | Measure-Object).Count) + " alteracoes"
-}
-```
+**Máquina nova ou pasta faltando:** `.\tools\bootstrap.ps1` / `./tools/bootstrap.sh`. É idempotente
+— clona só o que falta, não sobrescreve nada.
 
 Regras: nada de commit/push sem pedido; um commit por repositório; `objectbuilder` usa `master`,
 os outros usam `main`.
+
+### `tools/` — onde ferramentas de workspace moram
+
+`tools/` é versionado no `backlands-workflow` e viaja entre computadores. Ferramenta que atravessa
+repositórios vai aqui, **nunca** dentro de `client/`, `server/` etc. — não pertenceria a nenhum
+deles e não seria versionada junto do resto do workspace.
+
+Convenções (ver `tools/README.md`): scripts `.ps1` **sem acentos** (o PowerShell 5.1 desta máquina
+lê UTF-8 sem BOM como ANSI), sem `&&`/`||`/ternário (é 5.1, não 7), e toda ferramenta que mexe em
+`.dat`/`.spr`/`.otb` trabalha em cópia.
 
 ## 5. Checklists para mudanças entre repositórios
 

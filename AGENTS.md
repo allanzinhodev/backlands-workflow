@@ -23,6 +23,14 @@ protocolo 8.60**.
 As pastas foram renomeadas removendo o prefixo `backlands-`. O repositório raiz é
 `allanzinhodev/backlands-workflow`.
 
+**O que a raiz versiona** (e portanto viaja entre computadores): `AGENTS.md`, `CLAUDE.md`,
+`.claude/skills/`, `.agents/rules/`, `.gitignore` e **`tools/`**. Ferramentas que atravessam
+repositórios moram em `tools/`, nunca dentro de um repositório de ferramenta.
+
+**Máquina nova:** `tools/bootstrap.ps1` (Windows) ou `tools/bootstrap.sh` (Linux/WSL/Git Bash)
+reconstroem o workspace inteiro. `tools/status.ps1` / `tools/status.sh` mostram o estado dos cinco
+repositórios de uma vez.
+
 ---
 
 ## Roteamento de vocabulário

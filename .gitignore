@@ -14,6 +14,9 @@
 # Dependências
 node_modules/
 
+# vcpkg, quando o bootstrap o instala dentro do workspace
+/vcpkg/
+
 # Build / saída
 dist/
 build/
