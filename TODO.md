@@ -285,6 +285,59 @@ ou módulo OTC neste repositório.
 
 ---
 
+## Feature 4 — Animações comandadas pelo servidor (via `patternZ`)
+
+**Onde:** `server/` (revscript Lua) + `client/` (C++ e módulo) · decidido em 13/08/2026.
+
+### Por que `patternZ` e não frame group novo
+
+O `.dat` do 8.60 suporta **exatamente dois** frame groups. `client/src/client/thingtype.h:47-50`
+define só `FrameGroupIdle` (0) e `FrameGroupMoving` (1), e o `switch` de
+`thingtype.cpp:337-344` trata apenas esses dois — um terceiro grupo entraria no
+`m_spritesIndex` sem animator associado.
+
+Adicionar grupos seria **mudar o formato do asset**, quebrando o Object Builder e o parser
+já validado em `tools/sprites`. `patternZ` evita isso: já é lido (`thingtype.cpp:325`), já entra
+no cálculo de índice (`thingtype.cpp:876`), e é o eixo que o formato reserva para variação de
+estado. As sprites de ataque viram um `patternZ` extra do mesmo objeto.
+
+### Servidor
+
+- [ ] **F4.1** — Revscript em `data/scripts/network/animation/`, no padrão de `proficiency` e
+      `skilltree` (`NetworkMessage` + `PacketHandler`), para não exigir recompilar.
+- [ ] **F4.2** — Pacote de saída: `<creatureId:u32><patternZ:u8><durationMs:u16><canWalk:u8>`.
+      Escolher opcode livre — **`0x54`** é candidato (verificado livre no enum nativo do cliente e
+      em todos os módulos Lua; ver a varredura que achou a colisão do `0xC1`). Registrar em
+      `isOtcOnlyLuaOpcode`, como foi feito para `0x5E`.
+- [ ] **F4.3** — Binding Lua: `creature:playAnimation(patternZ, durationMs, canWalk)`.
+      `canWalk = false` bloqueia o andar durante `durationMs`; `true` deixa andar normalmente.
+- [ ] **F4.4** — Bloqueio de movimento. **Ainda não resolvido**: não achei hook de `onMoveCreature`
+      exposto ao Lua neste engine (`events.h` não tem, e os `onWalk` ficam em `player.cpp`/
+      `monster.cpp`). Investigar antes de escolher entre condição temporária, `setSpeed(0)` com
+      restauração, ou um gate novo em C++.
+- [ ] **F4.5** — Flag `attackAnimation` no monstro. Quando presente, o ataque dispara a animação
+      **com `canWalk = true`** — anima sem pausar a caminhada, que é o comportamento pedido.
+
+### Client
+
+- [ ] **F4.6** — Handler do pacote: override temporário de `patternZ` na `Creature`, com timer que
+      volta ao normal ao expirar.
+- [ ] **F4.7** — Garantir que o override não conflita com o `patternZ` já usado por montaria/addon
+      em outfits, se for o caso.
+
+### Testes
+
+- [ ] **F4.T1** — `creature:playAnimation(1, 1000, false)` → animação toca, criatura não anda por 1 s,
+      volta ao normal depois.
+- [ ] **F4.T2** — Mesmo com `canWalk = true` → anima e continua andando.
+- [ ] **F4.T3** — Monstro com `attackAnimation` ataca sem travar a caminhada.
+- [ ] **F4.T4** — Duração expirada com o cliente desconectado no meio não deixa a criatura travada.
+- [ ] **F4.T5** — Cliente vanilla não quebra: o pacote é descartado pelo gate, sem desconectar.
+- [ ] **F4.T6** — Objeto sem `patternZ` extra (o caso da maioria) ignora o comando em vez de
+      renderizar sprite errada.
+
+---
+
 ## Convenções
 
 - Ferramenta que atravessa repositórios vai em `tools/`, nunca dentro de um repositório de
