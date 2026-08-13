@@ -1,10 +1,12 @@
 # Repositórios das ferramentas (clonados separadamente, cada um tem seu próprio git)
 # Origem:
 #   client        -> https://github.com/allanzinhodev/backlands-client
+#   devfolio      -> https://github.com/allanzinhodev/devfolio
 #   mapeditor     -> https://github.com/allanzinhodev/backlands-mapeditor
 #   objectbuilder -> https://github.com/allanzinhodev/backlands-objectbuilder
 #   server        -> https://github.com/allanzinhodev/backlands-server
 /client/
+/devfolio/
 /mapeditor/
 /objectbuilder/
 /server/
