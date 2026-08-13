@@ -189,13 +189,39 @@ usada". Portar, não reinventar.
 - [ ] **F2.10 — Escrita** dos dois formatos.
 - [ ] **F2.11 — Comando "sprites órfãs"** — recebe a lista de itens removidos, reporta as sprites que
       ficariam sem referência. **Só relatório na primeira versão**, sem escrita.
-- [ ] **F2.12 — Comando de remoção**, com reindexação (o passo 4 do `SpritesOptimizer`).
+- [ ] **F2.12 — Comando "esvaziar"** — aponta as sprites dos itens removidos para a sprite vazia
+      (ver decisão abaixo). Preserva o slot do ThingType.
+- [ ] **F2.13 — Comando de limpeza** — remove as sprites que ficaram sem referência e reindexa
+      (passos 3-4 do `SpritesOptimizer`).
 
-> ⚠️ **O risco central desta feature.** Remover um ClientID do `.dat` **desloca todos os ClientIDs
-> seguintes**, e isso invalida o mapeamento de `items.otb` — em `server/data/items/` **e** em
-> `mapeditor/data/860/`. Um mapa salvo com o `.otb` antigo passa a apontar para outro item.
-> Decidir explicitamente entre: (a) só remover sprite mantendo o slot do ThingType, (b) reindexar e
-> regravar os dois `.otb` no mesmo passo. Ver `otlib/items/OtbSync.as`.
+### Decisão de abordagem — preservar ClientID, esvaziar a sprite
+
+O risco era: **remover um ThingType do `.dat` desloca todos os ClientIDs seguintes**, invalidando o
+mapeamento de `items.otb` no `server/data/items/` **e** no `mapeditor/data/860/` — um mapa salvo com
+o `.otb` antigo passaria a apontar para outro item.
+
+**Abordagem escolhida:** não remover ThingType nenhum. Em vez disso, apontar o `spriteIndex` dos
+itens aposentados para a **sprite vazia**, deixando as sprites antigas sem referência, e só então
+limpar o que ficou órfão.
+
+Por que funciona:
+
+- **Sprite id ≠ ClientID.** São dois espaços de numeração independentes. O ClientID é o índice do
+  `ThingType` no `.dat`; o sprite id só existe na relação `.dat` → `.spr`. Manter todos os
+  `ThingType` no lugar mantém os ClientIDs estáveis, e o `items.otb` **continua válido** — nada a
+  ressincronizar entre servidor e editor.
+- **O id 0 é a sprite vazia por definição do formato**, não uma convenção nossa:
+  `SpriteStorage.as:184-187` reserva `_sprites[0] = _blankSprite`, e os getters guardam `if (id == 0)`
+  (linhas 231, 275, 391, 819). Existe até `isEmptySprite(id)` (linha 705) para detecção.
+- **Reindexar sprites é seguro** justamente por isso: o `SpritesOptimizer` reescreve os
+  `frameGroup.spriteIndex` de todos os objetos junto com a compactação. Como o `.dat` é regravado no
+  mesmo passo, a renumeração fica contida — nada fora do par `.dat`/`.spr` enxerga sprite id.
+
+Consequência prática: o item aposentado continua existindo como ClientID, mas invisível. O `.spr`
+encolhe. `items.otb` e `world.otbm` ficam intocados.
+
+> ⚠️ Ainda assim, **F2.T8 e F2.T9 continuam obrigatórios** — são a prova de que o `.otb` e o mapa
+> realmente não foram afetados. A decisão reduz o risco, não dispensa a verificação.
 
 ### Testes
 
@@ -213,6 +239,12 @@ usada". Portar, não reinventar.
       conferir mtime e hash dos arquivos depois de rodar.
 - [ ] **F2.T7 — Após remoção:** cliente sobe, e os itens que **permaneceram** renderizam com a sprite
       certa (o teste que pega erro de reindexação).
+- [ ] **F2.T10 — ClientIDs estáveis:** contar os `ThingType` antes e depois — total **idêntico**, e o
+      ClientID de uma amostra de itens não mudou. É o teste que valida a decisão de abordagem.
+- [ ] **F2.T11 — Item esvaziado:** o item aposentado ainda existe como ClientID e renderiza vazio,
+      sem erro no cliente e sem sprite quebrada.
+- [ ] **F2.T12 — Encolhimento real:** o `.spr` novo é menor e o número de sprites removidas bate com
+      o relatório de F2.11. Se nada encolheu, o esvaziamento não surtiu efeito.
 - [ ] **F2.T8 — Consistência cruzada:** `items.otb` do servidor e o de `mapeditor/data/860/` continuam
       idênticos entre si e coerentes com o `.dat` novo.
 - [ ] **F2.T9 — Mapa:** abrir `server/data/world/world.otbm` no editor depois da mudança → nenhum item
