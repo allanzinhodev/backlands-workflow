@@ -252,6 +252,39 @@ encolhe. `items.otb` e `world.otbm` ficam intocados.
 
 ---
 
+---
+
+## Feature 3 — Adaptar o client aos sistemas novos
+
+**Onde:** `client/` · consome o que entrou em `server/` no commit `59779b37`.
+
+Os sistemas de **proficiência de equipamentos** e **árvore de habilidades** estão no servidor mas
+não têm interface. O handoff registra (risco 5) que nem a wheel nem a proficiência trazem `.otui`
+ou módulo OTC neste repositório.
+
+- [ ] **F3.1** — Resolver os bloqueadores F1.1–F1.3 antes: sem eles não há o que exibir.
+- [ ] **F3.2** — Confirmar o gate de cliente. `sendBasicData` só roda para `isAstraClient`
+      (`protocolgame.cpp:3102`); fora disso a lista de spells (`0x9F`) não atualiza na UI.
+- [ ] **F3.3** — Módulo OTC da proficiência: XP e nível por peça equipada, spells emprestadas ×
+      masterizadas. O protocolo mudou (payload agora carrega nível + lista de spells em vez de
+      perks), então qualquer UI antiga não serve.
+- [ ] **F3.4** — Módulo OTC da árvore: nós, pré-requisitos, custo dobrando, orçamento derivado do
+      maior level. Entrada `0xBC`, saída `0xC1` — e `0xC1` precisa estar em `isOtcOnlyLuaOpcode`.
+- [ ] **F3.5** — Respec pela UI usando a semântica de **reescrita total do vetor** que o servidor já
+      implementa (cliente manda tudo, servidor valida em isolamento e sobrescreve).
+
+### Testes
+
+- [ ] **F3.T1** — A lista de spells da UI e o portão do servidor concordam (não pode oferecer spell
+      que não casta) — é o mesmo invariante de F1.T17, agora pelo lado do cliente.
+- [ ] **F3.T2** — Equipar/desequipar reflete na UI sem relogar (`reloadData` reenvia o `0x9F`).
+- [ ] **F3.T3** — Cliente vanilla (sem OTC) não quebra: os pacotes novos são descartados em silêncio
+      pelo gate, sem desconectar.
+- [ ] **F3.T4** — Alocação recusada pelo servidor (sem pontos / sem pré-requisito) mostra a mensagem
+      certa em vez de travar a janela.
+
+---
+
 ## Convenções
 
 - Ferramenta que atravessa repositórios vai em `tools/`, nunca dentro de um repositório de

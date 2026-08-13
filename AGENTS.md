@@ -92,9 +92,16 @@ Essas são as fontes reais de bug quando uma alteração atravessa repositórios
 
 - **ServerID ≠ ClientID.** `server/data/items/items.xml` fala em ServerID; sprites em
   `objectbuilder` e `.dat` falam em ClientID. `items.otb` é a tabela que faz a ponte entre os dois.
-- **`items.otb` existe em dois lugares** e precisa bater: `server/data/items/items.otb` e
-  `mapeditor/data/860/items.otb`. Editor e servidor com `.otb` diferentes = mapa corrompido ou
-  itens errados.
+- **`mapeditor/data/860/` é espelho de `server/data/items/`.** `items.otb` **e** `items.xml` do
+  editor são cópia exata dos do servidor — o servidor é a fonte única. Editor e servidor com
+  arquivos diferentes = mapa corrompido ou itens errados.
+  **O espelhamento é sempre o último passo**, depois de toda alteração no servidor:
+  ```powershell
+  copy d:\backlands\server\data\items\items.otb d:\backlands\mapeditor\data\860\items.otb
+  copy d:\backlands\server\data\items\items.xml d:\backlands\mapeditor\data\860\items.xml
+  ```
+- **Ordem de remoção de item:** mapa (`world.otbm`) → definições (`items.xml` + `items.otb`) →
+  espelho no editor. Inverter deixa o mapa com ids sem definição.
 - **Protocolo 8.60** é fixo em todo o stack. Cliente, servidor e os dados `860` do editor precisam
   concordar.
 - **Assets do cliente:** `client/data/things/860.rar` precisa ser extraído para
