@@ -1,6 +1,6 @@
 ---
 name: backlands
-description: Procedimentos do workspace Backlands MMO (d:\backlands) — roteamento entre os repositórios client/AstraClient, server/TFS, mapeditor/NexaMap, objectbuilder e devfolio/GDD. Use sempre que a tarefa citar cliente, servidor, TFS, OTClient, editor de mapa, OTBM, Object Builder, sprite, .dat/.spr, item, ServerID/ClientID, GDD, ou envolver mais de um desses repositórios ao mesmo tempo. Traz comandos de build, layout interno de cada repo e checklists para mudanças que atravessam repositórios.
+description: Procedimentos do workspace Backlands MMO (d:\backlands) — roteamento entre os repositórios client/AstraClient, server/TFS, mapeditor/NexaMap, objectbuilder e devfolio/GDD. Use sempre que a tarefa citar cliente, servidor, TFS, OTClient, editor de mapa, OTBM, Object Builder, sprite, .dat/.spr/.otb/.otfi/.obd, item, ServerID/ClientID, GDD, ou envolver mais de um desses repositórios. Use também para escrever parsers e ferramentas próprias de manipulação de .spr/.dat/.otb por script — a skill mapeia objectbuilder/src/otlib como implementação de referência dos formatos. Traz builds, layout interno de cada repo e checklists entre repositórios.
 ---
 
 # Workspace Backlands
@@ -83,16 +83,57 @@ cmake --build out/build/release
 ```
 Ou abrir `vcproj/Editor.sln` (`x64`, `Release`).
 
-### `objectbuilder/` — Object Builder
+### `objectbuilder/` — Object Builder (**objeto de estudo**, não alvo de features)
+
+> **Papel neste workspace.** O Object Builder é usado como **ferramenta pronta** para editar
+> `.dat`/`.spr`, mas o valor principal dele aqui é a **source como referência de formato**. O plano
+> é escrever ferramentas próprias — parsers e scripts que alterem `.spr`/`.dat` sem abrir a GUI — e
+> `src/otlib/` é a implementação de referência a estudar e portar. Trate pedidos sobre este repo
+> como **leitura e engenharia reversa de formato** por padrão, não como implementação de features
+> no editor. Só edite o código do Object Builder se o usuário pedir isso explicitamente.
 
 ```
-src/     ActionScript
+src/otlib/     ← a biblioteca de formatos OT (o que interessa)
+src/ob/        UI e comandos do editor (Flex/MXML) — pouco relevante para portar
+src/nail/      framework interno de UI
 assets/  libs/  locale/
-asconfig.json
+src/config/versions.xml   assinaturas dat/spr e versão do otb por versão de cliente
+asconfig.json             build via Adobe AIR SDK
 ```
 
-Editor de `.dat`/`.spr` (Adobe AIR). Compila com o AIR SDK via `asconfig.json`. É a ferramenta que
-cria/edita **ClientIDs** — sprites, outfits, effects, missiles.
+#### Mapa do `src/otlib/` — o que ler para escrever um parser
+
+| Formato | Onde estudar | Notas |
+|---|---|---|
+| **`.dat`** (metadata) | `things/MetadataReader1..6.as`, `MetadataWriter1..6.as` | O formato **muda por versão de cliente**. Um reader por faixa. |
+| Seleção de reader/writer | `core/MetadataControllerStorage.as` | Mapeia versão → reader. `<=730` R1, `<=750` R2, `<=772` R3, `<=854` R4, `<=986` R5, senão R6. |
+| Flags do `.dat` | `things/MetadataFlags1..6.as` | Enum de flags por faixa de versão. |
+| Modelo de objeto | `things/ThingType.as`, `ThingData.as`, `ThingTypeStorage.as` | `ThingTypeStorage` (1013 linhas) é o coração: carrega, indexa e salva o `.dat` inteiro. |
+| Serialização | `things/ThingSerializer.as` (1593 linhas) | Arquivo mais denso do repo — a lógica real de ler/escrever objeto. |
+| **`.spr`** (sprites) | `sprites/SpriteStorage.as` (815), `SpriteReader.as`, `Sprite.as` | Inclui a compressão RLE de transparência do `.spr`. |
+| **`.otb`** | `items/OtbReader.as`, `OtbWriter.as` | Leitura/escrita do binário `items.otb`. |
+| **`items.xml`** | `items/ItemsXmlReader.as`, `ItemsXmlWriter.as` | Lado texto do par. |
+| **Sync otb ↔ xml** | `items/OtbSync.as` | Já resolve o invariante ServerID↔ClientID. Leitura obrigatória. |
+| **`.otfi`** | `utils/OTFI.as` | Metadados de extensão (transparência, dimensões). |
+| **`.obd`** | `obd/OBDEncoder.as` (887) | Formato próprio do OB para exportar objetos isolados. |
+| Versões / assinaturas | `core/Version.as`, `VersionStorage.as`, `config/versions.xml` | Assinatura `dat`/`spr` + `otbVersion` por versão. |
+| Features por versão | `core/ClientFeatures.as` | Quais recursos o formato suporta em cada faixa. |
+| Utilitários | `utils/SpritesOptimizer.as`, `FrameGroupsConverter.as`, `ClientMerger.as`, `SpriteUtils.as` | Algoritmos prontos (dedupe de sprite, conversão de frame group, merge de clientes). |
+
+#### Para o protocolo 8.60 (o caso do Backlands)
+
+- `860` cai na faixa `<= 986` → **`MetadataReader5` / `MetadataWriter5`**. Comece por esses dois.
+- `config/versions.xml` tem **duas variantes de 8.60**:
+  ```xml
+  <version value="860" string="8.60 v1" dat="4C28B721" spr="4C220594" otb="19" />
+  <version value="860" string="8.60 v2" dat="4C2C7993" spr="4C220594" otb="20" />
+  ```
+  Mesma assinatura de `.spr`, **assinaturas de `.dat` e versões de `.otb` diferentes**. Um parser
+  novo precisa ler a assinatura do arquivo e decidir — assumir uma das duas gera corrupção
+  silenciosa. Confirme qual variante o `client/data/things/860/` usa antes de escrever qualquer
+  coisa.
+
+Build do editor (só se realmente precisar rodá-lo): Adobe AIR SDK via `asconfig.json`.
 
 ### `devfolio/` — portfólio + GDD
 
@@ -158,6 +199,9 @@ os outros usam `main`.
 **Falha clássica:** atualizar o `.otb` do servidor e esquecer o do editor. O mapa passa a salvar
 IDs que o servidor lê como outro item.
 
+**Automatizável:** os passos 2–4 são exatamente o que `objectbuilder/src/otlib/items/OtbSync.as`
+faz. É o primeiro candidato a virar ferramenta própria (ver seção 6).
+
 ### Nova spell / habilidade
 1. Confira o GDD (`devfolio/src/content/backlandsGdd.js`, seções `classes`, `progressao`, `spells`)
    — a spell precisa caber nas três camadas de progressão.
@@ -176,7 +220,32 @@ IDs que o servidor lê como outro item.
 Cliente e servidor precisam mudar **juntos**. Leia `client/docs/protocol-features-8.60.md` antes.
 Nunca mexa só de um lado.
 
-## 6. Armadilhas conhecidas
+## 6. Ferramentas próprias a partir do `otlib` (trabalho em andamento)
+
+Objetivo declarado: **alterar `.spr`/`.dat` por script**, sem abrir a GUI do Object Builder —
+parsers próprios, pipeline automatizado, integração com o resto do stack.
+
+Como conduzir esse trabalho:
+
+1. **Leia antes de escrever.** Para qualquer formato, abra o arquivo correspondente na tabela da
+   seção 2 e siga o layout binário de lá. Não deduza o formato de memória nem de fontes externas —
+   `otlib` é a referência canônica deste workspace e já lida com os casos de borda por versão.
+2. **Porte, não reinvente.** `ThingSerializer`, `SpriteStorage` e `OtbReader/OtbWriter` codificam
+   anos de correções. Ao traduzir para outra linguagem, mantenha a mesma ordem de leitura e o mesmo
+   tratamento de flags.
+3. **Restrinja o escopo ao 8.60.** Um parser só para `MetadataReader5`/`Writer5` é uma fração do
+   trabalho de suportar 7.10–13.10. Generalize depois, se precisar.
+4. **Valide por round-trip.** O teste que importa: ler `.dat`/`.spr` e reescrever sem alterações
+   deve produzir bytes idênticos ao original. Sem isso, qualquer edição é aposta.
+5. **Nunca escreva por cima dos assets de produção.** Trabalhe em cópia e compare com o original.
+   Os arquivos reais vivem em `client/data/things/860/`.
+6. **Cheque a assinatura primeiro.** Todo `.dat`/`.spr` começa com a assinatura — use-a para
+   confirmar a variante (ver 8.60 v1 × v2 acima) antes de interpretar o resto.
+
+Sobre escolha de linguagem/stack para as ferramentas novas: **não há decisão registrada**. Se a
+tarefa exigir, pergunte ao usuário em vez de assumir.
+
+## 7. Armadilhas conhecidas
 
 - **Busca a partir da raiz varre ~1,4 GB.** Sempre aponte `path` para o repositório certo em
   Glob/Grep. `client/` (716 MB) e `server/` (483 MB) são os pesados.
@@ -186,5 +255,9 @@ Nunca mexa só de um lado.
 - **`860.rar` não vem extraído.** O cliente não sobe sem `data/things/860/`.
 - **`items.otb` duplicado** entre `server/` e `mapeditor/data/860/` — ver seção 5.
 - **README do cliente aponta `vc17`**, a pasta real é `vc23`.
+- **8.60 tem duas variantes** (`v1`/`v2`) com assinaturas de `.dat` e versões de `.otb` diferentes —
+  ver seção 2. Assumir uma delas corrompe arquivo em silêncio.
+- **`objectbuilder` é objeto de estudo por padrão.** Pedido sobre ele = ler/portar formato, não
+  implementar feature na GUI, salvo pedido explícito.
 - **Sem identidade git configurada** na máquina; commits usam a identidade derivada do Windows por
   decisão do usuário.

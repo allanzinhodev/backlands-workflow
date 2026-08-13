@@ -17,7 +17,7 @@ protocolo 8.60**.
 | `client/` | `allanzinhodev/backlands-client` | **AstraClient** — cliente OTClient | C++ + Lua, CMake/vcpkg | `main` |
 | `server/` | `allanzinhodev/backlands-server` | **TFS 1.8 Downgrade** — servidor | C++23 + Lua 5.5, MariaDB, CMake/vcpkg | `main` |
 | `mapeditor/` | `allanzinhodev/backlands-mapeditor` | **NexaMap Editor** — editor de mapas OTBM | C++20 + wxWidgets, CMake/vcpkg | `main` |
-| `objectbuilder/` | `allanzinhodev/backlands-objectbuilder` | **Object Builder** — editor de `.dat`/`.spr` | ActionScript / Adobe AIR | `master` |
+| `objectbuilder/` | `allanzinhodev/backlands-objectbuilder` | **Object Builder** — editor de `.dat`/`.spr`; **objeto de estudo** dos formatos (ver abaixo) | ActionScript / Adobe AIR | `master` |
 | `devfolio/` | `allanzinhodev/devfolio` | Portfólio + **GDD do Backlands** | React + Vite + Tailwind | `main` |
 
 As pastas foram renomeadas removendo o prefixo `backlands-`. O repositório raiz é
@@ -35,13 +35,30 @@ pergunte qual repositório é — resolva por esta tabela e diga em qual você e
 | cliente, client, AstraClient, OTClient, módulo, `modules/`, interface do jogo, OTUI, protocolo | `client/` |
 | servidor, server, TFS, Forgotten Server, script, spell, monstro, NPC, action, talkaction, creaturescript, `data/`, banco, MariaDB | `server/` |
 | editor, editor de mapa, mapeditor, RME, NexaMap, OTBM, brush, tileset, spawn, zona | `mapeditor/` |
-| Object Builder, OB, `.dat`, `.spr`, `.otfi`, sprite, outfit, effect, missile, ClientID | `objectbuilder/` |
+| Object Builder, OB, `.dat`, `.spr`, `.otfi`, `.obd`, `.otb`, sprite, outfit, effect, missile, ClientID, **parser**, formato binário, ferramenta de asset | `objectbuilder/` |
 | portfólio, devfolio, site, GDD, design doc, documento de design, roadmap, classes, lore, progressão | `devfolio/` |
 | workspace, essa pasta, organização, gitignore, skill, regras de agente | raiz (`d:\backlands`) |
 
 **Ambíguo?** "item", "arma", "outfit" e "criatura" existem em mais de um repositório. Nesses casos
 diga explicitamente qual camada você entendeu (definição de servidor / sprite / brush do editor) e
 siga — não trave pedindo confirmação, mas deixe a suposição visível.
+
+---
+
+## `objectbuilder/` é objeto de estudo
+
+Os outros quatro repositórios são alvos de desenvolvimento. O `objectbuilder/` tem um papel
+diferente e isso muda o comportamento padrão:
+
+- Ele é usado como **ferramenta pronta** para editar `.dat`/`.spr`, mas o que importa aqui é a
+  **source como referência de formato**. `src/otlib/` é uma implementação completa e testada de
+  `.dat`, `.spr`, `.otb`, `items.xml`, `.otfi` e `.obd`.
+- O objetivo é **escrever ferramentas próprias** a partir dela — parsers e scripts que alterem
+  `.spr`/`.dat` sem abrir a GUI, e que automatizem a sincronização entre servidor, editor e cliente.
+- **Padrão:** um pedido sobre este repositório é **ler e portar formato**, não implementar feature
+  no editor. Só edite o código do Object Builder se o usuário pedir isso de forma explícita.
+- Ao escrever qualquer parser, **estude o arquivo de referência em `otlib` antes** — não deduza
+  layout binário de memória. O mapa dos arquivos está na skill `backlands`, seções 2 e 6.
 
 ---
 
