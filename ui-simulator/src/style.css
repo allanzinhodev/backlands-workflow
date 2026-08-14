@@ -1,0 +1,186 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  background-image: url('@images/ui/background-dark.png'); /* Common OTClient background */
+  background-size: cover;
+  color: #dfdfdf;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  overflow: hidden;
+  user-select: none;
+}
+
+#ui-root {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Base Widget Style */
+.UIWidget {
+  position: absolute;
+}
+
+/* Main Layout Areas */
+.UITopMenu {
+  height: 38px;
+  background-image: url('@images/ui/horizontal-line-dark.png');
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-color: #2b2b2b;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.UIGameArea {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: calc(100vh - 38px);
+}
+
+.UIMapContainer {
+  flex-grow: 1;
+  background-color: #111;
+  background-image: url('@images/game/combat_bg.png'); /* Placeholder for map */
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.UIRightPanel {
+  width: 176px;
+  min-width: 176px;
+  background-color: #2b2b2b;
+  background-image: url('@images/ui/minipanel.png'); /* Generic panel bg */
+  background-repeat: repeat;
+  border-left: 2px solid #111;
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+/* Window Style (In-game Mini Windows) */
+.UIWindow {
+  display: flex;
+  flex-direction: column;
+  background-color: #383838; /* Fallback */
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.UIWindow-title {
+  text-align: left;
+  font-weight: bold;
+  padding: 2px 4px;
+  color: #c0c0c0;
+  text-shadow: 1px 1px 0 #000;
+  cursor: grab;
+  background-image: url('@images/ui/horizontal_line_dark.png');
+  background-repeat: repeat-x;
+  background-position: bottom;
+  font-size: 10px;
+}
+
+.UIWindow-content {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Top Buttons */
+.UITopButton {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-size: center;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.UITopButton:hover {
+  filter: brightness(1.2);
+}
+
+.UITopButton:active {
+  transform: translateY(1px);
+}
+
+/* Button Style */
+.UIButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #dfdfdf;
+  padding: 2px 8px;
+  text-align: center;
+  font-size: 10px;
+  min-height: 18px;
+}
+
+.UIButton:hover {
+  filter: brightness(1.2);
+}
+
+/* Item Slot */
+.UIItemSlot {
+  width: 34px;
+  height: 34px;
+  border-image-source: url('@images/ui/item-slot.png');
+  border-image-slice: 2 fill;
+  border-image-width: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222;
+  position: relative;
+}
+
+.UIItemSlot img {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.UIItemSlot.head { background-image: url('@images/ui/helmet.png'); background-position: center; background-repeat: no-repeat; }
+.UIItemSlot.body { background-image: url('@images/ui/armor.png'); background-position: center; background-repeat: no-repeat; }
+.UIItemSlot.legs { background-image: url('@images/ui/legs.png'); background-position: center; background-repeat: no-repeat; }
+.UIItemSlot.feet { background-image: url('@images/ui/boots.png'); background-position: center; background-repeat: no-repeat; }
+.UIItemSlot.lefthand { background-image: url('@images/ui/mainhand.png'); background-position: center; background-repeat: no-repeat; }
+.UIItemSlot.righthand { background-image: url('@images/ui/offhand.png'); background-position: center; background-repeat: no-repeat; }
+.UIItemSlot.ammo { background-image: url('@images/ui/ammo.png'); background-position: center; background-repeat: no-repeat; }
+
+/* Equipment layout (classic tibia style) */
+.UIEquipment {
+  display: grid;
+  grid-template-columns: 34px 34px 34px;
+  grid-template-rows: 34px 34px 34px 34px;
+  gap: 4px;
+  justify-content: center;
+}
+.eq-amulet { grid-column: 1; grid-row: 1; background-image: url('@images/ui/amulet.png'); background-position: center; background-repeat: no-repeat;}
+.eq-head { grid-column: 2; grid-row: 1; }
+.eq-backpack { grid-column: 3; grid-row: 1; background-image: url('@images/ui/backpack.png'); background-position: center; background-repeat: no-repeat;}
+.eq-lefthand { grid-column: 1; grid-row: 2; }
+.eq-body { grid-column: 2; grid-row: 2; }
+.eq-righthand { grid-column: 3; grid-row: 2; }
+.eq-ring { grid-column: 1; grid-row: 3; background-image: url('@images/ui/ring.png'); background-position: center; background-repeat: no-repeat;}
+.eq-legs { grid-column: 2; grid-row: 3; }
+.eq-ammo { grid-column: 3; grid-row: 3; }
+.eq-feet { grid-column: 2; grid-row: 4; }
+
