@@ -9,9 +9,37 @@ Ferramentas do workspace Backlands. Ao contrário das cinco pastas de repositór
 |---|---|
 | `bootstrap.ps1` / `bootstrap.sh` | Reconstrói o workspace do zero: clona os cinco repositórios com os nomes curtos e baixa as dependências. |
 | `status.ps1` / `status.sh` | Estado consolidado dos repositórios (branch, alterações, ahead/behind). |
+| `build.ps1` | Compila servidor (CMake+Ninja+vcpkg) e cliente (MSBuild `vc23`) com o ambiente do MSVC já montado. Só Windows. |
+| `run-local.ps1` | Sobe o stack local: MariaDB → servidor → cliente, com preflight de assets, mapa, `items.otb` e binários. Só Windows (usa o MariaDB portátil em `%USERPROFILE%\mariadb`). |
 
-Cada ferramenta tem as duas versões — `.ps1` para Windows/PowerShell, `.sh` para Linux, WSL e Git
-Bash. Comportamento equivalente.
+### `build.ps1`
+
+```powershell
+.\tools\build.ps1 -Target server   # so o TFS
+.\tools\build.ps1 -Target client   # so o AstraClient
+.\tools\build.ps1                  # os dois
+```
+
+Detecta o Visual Studio pelo `vswhere`, entra no `vcvars64`, fixa `VCPKG_ROOT` no ambiente do
+usuário e chama o gerador de cada repo. O vcpkg tem um lock global — os dois builds se serializam
+sozinhos, então não adianta abrir duas janelas.
+
+### `run-local.ps1`
+
+```powershell
+.\tools\run-local.ps1 -CheckOnly   # so o relatorio de preflight
+.\tools\run-local.ps1 -NoClient    # banco + servidor
+.\tools\run-local.ps1              # tudo
+```
+
+Cada etapa é idempotente: se o banco já responde na 3306 ou o servidor já escuta na 7171, ele não
+sobe uma segunda instância. O preflight confere o que costuma faltar — `data/things/860/` extraído,
+`data/world/<mapName>.otbm` presente, `items.otb` do editor igual ao do servidor e os dois binários
+compilados.
+
+`bootstrap` e `status` têm as duas versões — `.ps1` para Windows/PowerShell, `.sh` para Linux, WSL e
+Git Bash, com comportamento equivalente. `build` e `run-local` são só `.ps1`: dependem do MSVC e do
+MariaDB portátil do Windows, e o equivalente em Linux seria outro script, não uma tradução.
 
 ## Máquina nova — do zero ao workspace pronto
 
