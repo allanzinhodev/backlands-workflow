@@ -11,6 +11,24 @@ Ferramentas do workspace Backlands. Ao contrário das cinco pastas de repositór
 | `status.ps1` / `status.sh` | Estado consolidado dos repositórios (branch, alterações, ahead/behind). |
 | `build.ps1` | Compila servidor (CMake+Ninja+vcpkg) e cliente (MSBuild `vc23`) com o ambiente do MSVC já montado. Só Windows. |
 | `run-local.ps1` | Sobe o stack local: MariaDB → servidor → cliente, com preflight de assets, mapa, `items.otb` e binários. Só Windows (usa o MariaDB portátil em `%USERPROFILE%\mariadb`). |
+| `mapeditor-assets.ps1` | Aponta o NexaMap Editor para os assets 8.60 do cliente e valida assinaturas e flags do `.otfi`. Só Windows. |
+
+### `mapeditor-assets.ps1`
+
+```powershell
+.\tools\mapeditor-assets.ps1 -VerifyOnly   # so as verificacoes
+.\tools\mapeditor-assets.ps1               # aponta o editor para o cliente
+.\tools\mapeditor-assets.ps1 -Copy         # copia os assets para mapeditor/data/860 (432 MB)
+```
+
+O editor **não** procura `Tibia.dat`/`Tibia.spr` em `mapeditor/data/860/` — esse diretório só tem
+`items.otb`, `items.xml` e os XML de brushes. Os assets vêm de um caminho por versão guardado na
+chave `ASSETS_DATA_DIRS`, que o `Preferences > Client Version` grava. Como essa chave nunca foi
+salva, o editor abre um diálogo modal pedindo a pasta — o script grava a configuração direto.
+
+Aponta em vez de copiar por padrão: o `Tibia.spr` tem 432 MB, e uma segunda cópia sai de sincronia
+com a do cliente. Se copiar, o `Tibia.otfi` **tem** que ir junto — sem ele o editor deriva
+`extended=0` para 8.6 e o parser quebra neste `.dat`.
 
 ### `build.ps1`
 

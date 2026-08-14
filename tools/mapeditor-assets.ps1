@@ -108,7 +108,7 @@ Write-Info "sem .otfi o editor assume extended=0 / durations=0 / groups=0 para 8
 
 $otfiText = Get-Content $otfi -Raw
 foreach ($flag in @('extended', 'frame-durations', 'frame-groups')) {
-    if ($otfiText -match "$flag\s*:\s*true") { Write-Ok "$flag: true" }
+    if ($otfiText -match "$flag\s*:\s*true") { Write-Ok "${flag}: true" }
     else { Write-Bad "$flag nao esta true no .otfi"; $problems += $flag }
 }
 if ($otfiText -match 'transparency\s*:\s*false') { Write-Ok "transparency: false (pixel RGB de 3 bytes)" }
