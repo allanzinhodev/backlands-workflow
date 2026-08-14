@@ -1,186 +1,153 @@
+/*
+ * Base do simulador.
+ *
+ * Duas regras globais aqui nao sao estetica, sao fidelidade:
+ *   - image-rendering: pixelated  -> o client desenha textura em nearest (image-smooth default e
+ *     false). Sem isso TODO sprite 8.60 sai borrado.
+ *   - box-sizing: border-box      -> no client o rect e o retangulo externo e o padding e por
+ *     dentro; e o mesmo modelo do border-box.
+ */
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
+html,
 body {
-  background-color: #000;
-  background-image: url('@images/ui/background-dark.png'); /* Common OTClient background */
-  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #0f0f10;
   color: #dfdfdf;
-  font-family: Tahoma, Verdana, Arial, sans-serif;
-  font-size: 11px;
+  font: 11px Verdana, Geneva, sans-serif;
   overflow: hidden;
+}
+
+/* /images/title e o mesmo fundo que o client_background do AstraClient usa atras do login. */
+#ui-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #181818 url('/client-images/title.png') center / cover no-repeat;
+}
+
+.otui {
+  position: absolute;
+  image-rendering: pixelated;
+}
+
+.otui-text {
+  pointer-events: none;
+}
+
+.otui-input {
+  font: inherit;
+  color: inherit;
+}
+
+.otui-input::placeholder {
+  color: #707070;
+}
+
+/* ---------------------------------------------------------------- itens */
+
+.otui-item-sprite {
+  image-rendering: pixelated;
+}
+
+.inventory-slot,
+.container-slot {
+  width: 34px;
+  height: 34px;
+}
+
+.container-slot {
+  background: #00000044;
+  box-shadow: inset 0 0 0 1px #00000077;
+}
+
+.otui-item-count {
   user-select: none;
 }
 
-#ui-root {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-}
+/* ---------------------------------------------------------------- modal */
 
-/* Base Widget Style */
-.UIWidget {
+.otui-modal-overlay {
   position: absolute;
+  inset: 0;
+  background: #00000088;
+  z-index: 90;
 }
 
-/* Main Layout Areas */
-.UITopMenu {
-  height: 38px;
-  background-image: url('@images/ui/horizontal-line-dark.png');
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-color: #2b2b2b;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  justify-content: flex-end;
-  gap: 4px;
+.otui-modal {
+  z-index: 100;
 }
 
-.UIGameArea {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  height: calc(100vh - 38px);
-}
+/* ---------------------------------------------------------------- combobox */
 
-.UIMapContainer {
-  flex-grow: 1;
-  background-color: #111;
-  background-image: url('@images/game/combat_bg.png'); /* Placeholder for map */
-  background-size: cover;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.UIRightPanel {
-  width: 176px;
-  min-width: 176px;
-  background-color: #2b2b2b;
-  background-image: url('@images/ui/minipanel.png'); /* Generic panel bg */
-  background-repeat: repeat;
-  border-left: 2px solid #111;
-  display: flex;
-  flex-direction: column;
-  padding: 2px;
-  gap: 2px;
-  overflow-y: auto;
-}
-
-/* Window Style (In-game Mini Windows) */
-.UIWindow {
-  display: flex;
-  flex-direction: column;
-  background-color: #383838; /* Fallback */
-  position: relative;
-  margin-bottom: 2px;
-}
-
-.UIWindow-title {
-  text-align: left;
-  font-weight: bold;
-  padding: 2px 4px;
-  color: #c0c0c0;
-  text-shadow: 1px 1px 0 #000;
-  cursor: grab;
-  background-image: url('@images/ui/horizontal_line_dark.png');
-  background-repeat: repeat-x;
-  background-position: bottom;
-  font-size: 10px;
-}
-
-.UIWindow-content {
-  flex-grow: 1;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-/* Top Buttons */
-.UITopButton {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background-size: center;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.UITopButton:hover {
-  filter: brightness(1.2);
-}
-
-.UITopButton:active {
-  transform: translateY(1px);
-}
-
-/* Button Style */
-.UIButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.otui-combo-menu {
+  z-index: 200;
+  background: #2a2a2a;
+  border: 1px solid #111;
   color: #dfdfdf;
-  padding: 2px 8px;
-  text-align: center;
-  font-size: 10px;
-  min-height: 18px;
+  font: 11px Verdana, sans-serif;
 }
 
-.UIButton:hover {
-  filter: brightness(1.2);
+.otui-combo-item {
+  padding: 3px 8px;
+  cursor: pointer;
 }
 
-/* Item Slot */
-.UIItemSlot {
-  width: 34px;
-  height: 34px;
-  border-image-source: url('@images/ui/item-slot.png');
-  border-image-slice: 2 fill;
-  border-image-width: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #222;
-  position: relative;
+.otui-combo-item:hover {
+  background: #585858;
 }
 
-.UIItemSlot img {
-  max-width: 32px;
-  max-height: 32px;
+/* ---------------------------------------------------------------- HUD */
+
+.right-panel {
+  pointer-events: auto;
 }
 
-.UIItemSlot.head { background-image: url('@images/ui/helmet.png'); background-position: center; background-repeat: no-repeat; }
-.UIItemSlot.body { background-image: url('@images/ui/armor.png'); background-position: center; background-repeat: no-repeat; }
-.UIItemSlot.legs { background-image: url('@images/ui/legs.png'); background-position: center; background-repeat: no-repeat; }
-.UIItemSlot.feet { background-image: url('@images/ui/boots.png'); background-position: center; background-repeat: no-repeat; }
-.UIItemSlot.lefthand { background-image: url('@images/ui/mainhand.png'); background-position: center; background-repeat: no-repeat; }
-.UIItemSlot.righthand { background-image: url('@images/ui/offhand.png'); background-position: center; background-repeat: no-repeat; }
-.UIItemSlot.ammo { background-image: url('@images/ui/ammo.png'); background-position: center; background-repeat: no-repeat; }
-
-/* Equipment layout (classic tibia style) */
-.UIEquipment {
-  display: grid;
-  grid-template-columns: 34px 34px 34px;
-  grid-template-rows: 34px 34px 34px 34px;
-  gap: 4px;
-  justify-content: center;
+.hud-bar {
+  box-shadow: inset 0 0 0 1px #00000099;
 }
-.eq-amulet { grid-column: 1; grid-row: 1; background-image: url('@images/ui/amulet.png'); background-position: center; background-repeat: no-repeat;}
-.eq-head { grid-column: 2; grid-row: 1; }
-.eq-backpack { grid-column: 3; grid-row: 1; background-image: url('@images/ui/backpack.png'); background-position: center; background-repeat: no-repeat;}
-.eq-lefthand { grid-column: 1; grid-row: 2; }
-.eq-body { grid-column: 2; grid-row: 2; }
-.eq-righthand { grid-column: 3; grid-row: 2; }
-.eq-ring { grid-column: 1; grid-row: 3; background-image: url('@images/ui/ring.png'); background-position: center; background-repeat: no-repeat;}
-.eq-legs { grid-column: 2; grid-row: 3; }
-.eq-ammo { grid-column: 3; grid-row: 3; }
-.eq-feet { grid-column: 2; grid-row: 4; }
 
+.skill-row {
+  color: #afafaf;
+}
+
+.skill-value {
+  color: #ffffff;
+}
+
+/* ---------------------------------------------------------------- chrome do simulador */
+
+.sim-status {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px 10px;
+  background: #101014ee;
+  border-top: 1px solid #2a2a2a;
+  color: #c0c0c0;
+  font: 11px Verdana, sans-serif;
+  z-index: 300;
+}
+
+.sim-status strong {
+  color: #f7f7f7;
+}
+
+.sim-message {
+  position: fixed;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  background: #101014dd;
+  border: 1px solid #2a2a2a;
+  color: #44ad25;
+  font: 11px Verdana, sans-serif;
+  z-index: 300;
+}

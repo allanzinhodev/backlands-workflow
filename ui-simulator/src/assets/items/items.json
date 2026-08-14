@@ -1,0 +1,661 @@
+{
+  "generatedFrom": {
+    "dat": "client/data/things/860/Tibia.dat",
+    "spr": "client/data/things/860/Tibia.spr",
+    "datSignature": "0x4C2C7993",
+    "variant": "8.60 v2"
+  },
+  "spriteSize": 32,
+  "items": [
+    {
+      "clientId": 2854,
+      "name": "backpack",
+      "slot": "back",
+      "stackable": false,
+      "container": true,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 352278,
+          "file": "2854.png"
+        }
+      ]
+    },
+    {
+      "clientId": 2853,
+      "name": "bag",
+      "slot": "back",
+      "stackable": false,
+      "container": true,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 224365,
+          "file": "2853.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3031,
+      "name": "gold coin",
+      "slot": null,
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 4,
+      "patternY": 2,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 352021,
+          "file": "3031-0.png"
+        },
+        {
+          "index": 1,
+          "spriteId": 352022,
+          "file": "3031-1.png"
+        },
+        {
+          "index": 2,
+          "spriteId": 352023,
+          "file": "3031-2.png"
+        },
+        {
+          "index": 3,
+          "spriteId": 352024,
+          "file": "3031-3.png"
+        },
+        {
+          "index": 4,
+          "spriteId": 352025,
+          "file": "3031-4.png"
+        },
+        {
+          "index": 5,
+          "spriteId": 352026,
+          "file": "3031-5.png"
+        },
+        {
+          "index": 6,
+          "spriteId": 352027,
+          "file": "3031-6.png"
+        },
+        {
+          "index": 7,
+          "spriteId": 352028,
+          "file": "3031-7.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3035,
+      "name": "platinum coin",
+      "slot": null,
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 4,
+      "patternY": 2,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 224411,
+          "file": "3035-0.png"
+        },
+        {
+          "index": 1,
+          "spriteId": 351993,
+          "file": "3035-1.png"
+        },
+        {
+          "index": 2,
+          "spriteId": 351994,
+          "file": "3035-2.png"
+        },
+        {
+          "index": 3,
+          "spriteId": 351995,
+          "file": "3035-3.png"
+        },
+        {
+          "index": 4,
+          "spriteId": 351996,
+          "file": "3035-4.png"
+        },
+        {
+          "index": 5,
+          "spriteId": 351997,
+          "file": "3035-5.png"
+        },
+        {
+          "index": 6,
+          "spriteId": 351998,
+          "file": "3035-6.png"
+        },
+        {
+          "index": 7,
+          "spriteId": 351999,
+          "file": "3035-7.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3043,
+      "name": "crystal coin",
+      "slot": null,
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 4,
+      "patternY": 2,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351967,
+          "file": "3043-0.png"
+        },
+        {
+          "index": 1,
+          "spriteId": 351968,
+          "file": "3043-1.png"
+        },
+        {
+          "index": 2,
+          "spriteId": 351969,
+          "file": "3043-2.png"
+        },
+        {
+          "index": 3,
+          "spriteId": 351970,
+          "file": "3043-3.png"
+        },
+        {
+          "index": 4,
+          "spriteId": 351971,
+          "file": "3043-4.png"
+        },
+        {
+          "index": 5,
+          "spriteId": 351972,
+          "file": "3043-5.png"
+        },
+        {
+          "index": 6,
+          "spriteId": 351973,
+          "file": "3043-6.png"
+        },
+        {
+          "index": 7,
+          "spriteId": 351974,
+          "file": "3043-7.png"
+        }
+      ]
+    },
+    {
+      "clientId": 266,
+      "name": "health potion",
+      "slot": null,
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": true,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 356831,
+          "file": "266.png"
+        }
+      ]
+    },
+    {
+      "clientId": 268,
+      "name": "mana potion",
+      "slot": null,
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": true,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 356826,
+          "file": "268.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3577,
+      "name": "meat",
+      "slot": null,
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 4,
+      "patternY": 2,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 224508,
+          "file": "3577-0.png"
+        },
+        {
+          "index": 1,
+          "spriteId": 224509,
+          "file": "3577-1.png"
+        },
+        {
+          "index": 2,
+          "spriteId": 224510,
+          "file": "3577-2.png"
+        },
+        {
+          "index": 3,
+          "spriteId": 224511,
+          "file": "3577-3.png"
+        },
+        {
+          "index": 4,
+          "spriteId": 224512,
+          "file": "3577-4.png"
+        },
+        {
+          "index": 5,
+          "spriteId": 224513,
+          "file": "3577-5.png"
+        },
+        {
+          "index": 6,
+          "spriteId": 224513,
+          "file": "3577-6.png"
+        },
+        {
+          "index": 7,
+          "spriteId": 224513,
+          "file": "3577-7.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3582,
+      "name": "ham",
+      "slot": null,
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 4,
+      "patternY": 2,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 224515,
+          "file": "3582-0.png"
+        },
+        {
+          "index": 1,
+          "spriteId": 351314,
+          "file": "3582-1.png"
+        },
+        {
+          "index": 2,
+          "spriteId": 351315,
+          "file": "3582-2.png"
+        },
+        {
+          "index": 3,
+          "spriteId": 351316,
+          "file": "3582-3.png"
+        },
+        {
+          "index": 4,
+          "spriteId": 351317,
+          "file": "3582-4.png"
+        },
+        {
+          "index": 5,
+          "spriteId": 351317,
+          "file": "3582-5.png"
+        },
+        {
+          "index": 6,
+          "spriteId": 351317,
+          "file": "3582-6.png"
+        },
+        {
+          "index": 7,
+          "spriteId": 351317,
+          "file": "3582-7.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3351,
+      "name": "steel helmet",
+      "slot": "head",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351636,
+          "file": "3351.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3355,
+      "name": "leather helmet",
+      "slot": "head",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351632,
+          "file": "3355.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3357,
+      "name": "plate armor",
+      "slot": "body",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351630,
+          "file": "3357.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3361,
+      "name": "leather armor",
+      "slot": "body",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351626,
+          "file": "3361.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3559,
+      "name": "leather legs",
+      "slot": "legs",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 224506,
+          "file": "3559.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3552,
+      "name": "leather boots",
+      "slot": "feet",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351362,
+          "file": "3552.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3412,
+      "name": "wooden shield",
+      "slot": "left-hand",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 224452,
+          "file": "3412.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3264,
+      "name": "sword",
+      "slot": "right-hand",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": true,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351724,
+          "file": "3264.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3277,
+      "name": "spear",
+      "slot": "right-hand",
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 223295,
+          "file": "3277.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3447,
+      "name": "arrow",
+      "slot": "ammo",
+      "stackable": true,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 4,
+      "patternY": 2,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 222972,
+          "file": "3447-0.png"
+        },
+        {
+          "index": 1,
+          "spriteId": 224460,
+          "file": "3447-1.png"
+        },
+        {
+          "index": 2,
+          "spriteId": 224461,
+          "file": "3447-2.png"
+        },
+        {
+          "index": 3,
+          "spriteId": 224462,
+          "file": "3447-3.png"
+        },
+        {
+          "index": 4,
+          "spriteId": 224463,
+          "file": "3447-4.png"
+        },
+        {
+          "index": 5,
+          "spriteId": 224464,
+          "file": "3447-5.png"
+        },
+        {
+          "index": 6,
+          "spriteId": 224464,
+          "file": "3447-6.png"
+        },
+        {
+          "index": 7,
+          "spriteId": 224464,
+          "file": "3447-7.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3056,
+      "name": "bronze amulet",
+      "slot": "neck",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 351956,
+          "file": "3056.png"
+        }
+      ]
+    },
+    {
+      "clientId": 3004,
+      "name": "wedding ring",
+      "slot": "finger",
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 352073,
+          "file": "3004.png"
+        }
+      ]
+    },
+    {
+      "clientId": 2920,
+      "name": "torch",
+      "slot": null,
+      "stackable": false,
+      "container": false,
+      "pickupable": true,
+      "multiUse": false,
+      "fluidContainer": false,
+      "patternX": 1,
+      "patternY": 1,
+      "frames": 1,
+      "sprites": [
+        {
+          "index": 0,
+          "spriteId": 352174,
+          "file": "2920.png"
+        }
+      ]
+    }
+  ]
+}
