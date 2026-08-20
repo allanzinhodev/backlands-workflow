@@ -1,0 +1,16 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "Ferramentas do workspace Backlands. Ao contrário das cinco pastas de repositório, **este diretório\r é versionado** no `backlands-workflow` — é o que viaja junto ao trocar de computador.",
+  "main": "add_asset.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  }
+}
