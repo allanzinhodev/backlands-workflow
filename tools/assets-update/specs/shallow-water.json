@@ -1,0 +1,97 @@
+{
+  "name": "shallow-water",
+  "title": "shallow water",
+  "brush": "shallow water",
+  "source": "mapeditor/data/860/grounds.xml",
+  "brushType": "ground",
+  "lookid": 13988,
+  "assetDir": "client/data/things/860",
+  "layout": "island5x5",
+  "frameLayout": "horizontal",
+  "generatedAt": "2026-08-20T20:16:12.080Z",
+  "tiles": [
+    {
+      "slot": "ground",
+      "serverId": 13988,
+      "label": "ground",
+      "chance": 2500
+    },
+    {
+      "serverId": 13989,
+      "label": "ground-alt1",
+      "chance": 2500
+    },
+    {
+      "slot": "n",
+      "serverId": 10114,
+      "label": "n",
+      "border": 174
+    },
+    {
+      "slot": "e",
+      "serverId": 10117,
+      "label": "e",
+      "border": 174
+    },
+    {
+      "slot": "s",
+      "serverId": 10115,
+      "label": "s",
+      "border": 174
+    },
+    {
+      "slot": "w",
+      "serverId": 10116,
+      "label": "w",
+      "border": 174
+    },
+    {
+      "slot": "cnw",
+      "serverId": 10121,
+      "label": "cnw",
+      "border": 174
+    },
+    {
+      "slot": "cne",
+      "serverId": 10120,
+      "label": "cne",
+      "border": 174
+    },
+    {
+      "slot": "csw",
+      "serverId": 10119,
+      "label": "csw",
+      "border": 174
+    },
+    {
+      "slot": "cse",
+      "serverId": 10118,
+      "label": "cse",
+      "border": 174
+    },
+    {
+      "slot": "dnw",
+      "serverId": 10124,
+      "label": "dnw",
+      "border": 174
+    },
+    {
+      "slot": "dne",
+      "serverId": 10125,
+      "label": "dne",
+      "border": 174
+    },
+    {
+      "slot": "dsw",
+      "serverId": 10122,
+      "label": "dsw",
+      "border": 174
+    },
+    {
+      "slot": "dse",
+      "serverId": 10123,
+      "label": "dse",
+      "border": 174
+    }
+  ]
+}

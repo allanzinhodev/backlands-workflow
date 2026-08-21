@@ -88,6 +88,7 @@ function parse(buf, features) {
 
       // ---- padroes de textura
       const spriteOffsets = [];
+      const groups = [];
       let groupCount = 1;
       if (frameGroups && category === CATEGORY.OUTFIT) { groupCount = buf[p]; p += 1; }
 
@@ -103,21 +104,38 @@ function parse(buf, features) {
         const patternZ = buf[p]; p += 1;
         const frames = buf[p]; p += 1;
 
+        let animation = null;
         if (frames > 1 && improvedAnimations) {
-          p += 1;                 // animationMode
-          p += 4;                 // loopCount (int)
-          p += 1;                 // startFrame
-          p += frames * 8;        // min/max por frame (uint32 cada)
+          animation = {
+            mode: buf[p],
+            loopCount: buf.readInt32LE(p + 1),
+            startFrame: buf.readInt8(p + 5),
+            durations: [],
+          };
+          p += 6;                 // animationMode + loopCount + startFrame
+          for (let i = 0; i < frames; i++) {
+            animation.durations.push({ min: buf.readUInt32LE(p), max: buf.readUInt32LE(p + 4) });
+            p += 8;               // min/max por frame (uint32 cada)
+          }
         }
 
         const total = width * height * layers * patternX * patternY * patternZ * frames;
+        const first = spriteOffsets.length;
         for (let i = 0; i < total; i++) {
           spriteOffsets.push(p);
           p += extended ? 4 : 2;
         }
+
+        // Geometria do frame group. O indice em spriteOffsets de uma posicao e
+        // first + spriteIndex(...), com a mesma ordem de leitura do formato
+        // (ver MetadataReader.as::readTexturePatterns).
+        groups.push({
+          width, height, layers, patternX, patternY, patternZ, frames,
+          animation, first, count: total,
+        });
       }
 
-      const thing = { id, category, start, end: p, spriteOffsets };
+      const thing = { id, category, start, end: p, spriteOffsets, groups };
       things.push(thing);
       byId[category].set(id, thing);
     }

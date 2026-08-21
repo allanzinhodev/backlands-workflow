@@ -12,6 +12,21 @@ Ferramentas do workspace Backlands. Ao contrário das cinco pastas de repositór
 | `build.ps1` | Compila servidor (CMake+Ninja+vcpkg) e cliente (MSBuild `vc23`) com o ambiente do MSVC já montado. Só Windows. |
 | `run-local.ps1` | Sobe o stack local: MariaDB → servidor → cliente, com preflight de assets, mapa, `items.otb` e binários. Só Windows (usa o MariaDB portátil em `%USERPROFILE%\mariadb`). |
 | `mapeditor-assets.ps1` | Aponta o NexaMap Editor para os assets 8.60 do cliente e valida assinaturas e flags do `.otfi`. Só Windows. |
+| `sprites/` | Parser `.dat`/`.spr`/`.otb`/`.otfi` do 8.60, portado do `objectbuilder/src/otlib`. É a base dos scripts que mexem em asset — ver [`sprites/README.md`](sprites/README.md). |
+| `assets-update/` | Exporta a palheta de um brush do NexaMap como uma PNG só (bordas + animação), e regrava no `Tibia.spr` o que você editar no Aseprite — ver [`assets-update/README.md`](assets-update/README.md). |
+
+### `assets-update/`
+
+```powershell
+node tools\assets-update\assets-update.js init "shallow water"   # cria o spec do brush
+node tools\assets-update\assets-update.js export shallow-water   # gera a folha PNG
+node tools\assets-update\assets-update.js shallow-water          # grava o que mudou na PNG
+```
+
+O spec em `assets-update/specs/<nome>.json` é o que declara **quais tiles serão alterados**; a folha
+sai em `assets-update/work/<nome>/` (não versionada). A gravação é por acréscimo — só os 4 bytes do
+endereço na tabela do `.spr` mudam por sprite — e tem `revert`. Feche o editor e o cliente antes de
+gravar: os dois seguram o `.spr` aberto.
 
 ### `mapeditor-assets.ps1`
 
@@ -110,8 +125,9 @@ Credenciais e o banco não dá para versionar:
 - **Sem acentos nos `.ps1`.** O Windows PowerShell 5.1 desta máquina lê UTF-8 sem BOM como ANSI e
   quebra os caracteres. Comentários e mensagens em ASCII.
 - **Windows PowerShell 5.1**, não PowerShell 7: nada de `&&`, `||`, ternário `?:` ou `??`.
-- **Nunca escreva sobre assets de produção.** Ferramentas que mexem em `.dat`/`.spr`/`.otb`
-  trabalham em cópia e comparam com o original.
+- **Nunca escreva sobre assets de produção sem rede de segurança.** Ferramentas que mexem em
+  `.dat`/`.spr`/`.otb` validam em cópia antes (o `assets-update/` tem `--assets=<dir>` para isso) e,
+  quando gravam no arquivo real, deixam backup e caminho de volta.
 
 ## Ferramentas planejadas
 
@@ -120,10 +136,15 @@ o valor aparece:
 
 1. **Sync `items.otb` ↔ `items.xml`** entre `server/` e `mapeditor/data/860/` — hoje é o invariante
    mais frágil do stack. Referência: `objectbuilder/src/otlib/items/OtbSync.as`.
-2. **Parser `.dat`/`.spr` para 8.60** — edição de sprites e metadata por script, sem GUI.
-   Referência: `objectbuilder/src/otlib/things/MetadataReader5.as` e `sprites/SpriteStorage.as`.
+2. **Criar sprite nova por script** — hoje `assets-update/` só troca pixels de sprites existentes.
+   Desenhar onde não havia nada (sprite id 0) ou mudar quantidade de frames exige acrescentar
+   sprites ao `.spr` e reescrever o índice no `.dat`. Referência:
+   `objectbuilder/src/otlib/sprites/SpriteStorage.as` e `things/MetadataWriter5.as`.
 3. **Verificador de consistência** — confere que `.otb`, `.dat` e `items.xml` concordam antes de
    subir uma mudança.
+
+Já entregues: o parser `.dat`/`.spr`/`.otb` do 8.60 (`sprites/`) e a edição de sprites por PNG
+(`assets-update/`).
 
 O mapa completo dos formatos e dos arquivos de referência está na skill `backlands`
 (`.claude/skills/backlands/SKILL.md`, seções 2 e 6). **Leia a referência antes de escrever
