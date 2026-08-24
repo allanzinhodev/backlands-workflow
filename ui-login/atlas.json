@@ -1,0 +1,184 @@
+{
+  "unit": 4,
+  "note": "All art is authored on a 4px pixel grid. Scale by integer factors with nearest-neighbour only.",
+  "panel": {
+    "panel/panel-frame.png": {
+      "size": [
+        160,
+        160
+      ],
+      "type": "9-slice",
+      "border": 40,
+      "fill": "#231815",
+      "detail": "rings from outside in: 4px #000, 4px #4e2f24, 4px #9a6651, 4px #000; then the panel fill with a 4px #33231d top highlight and 4px #150e0c bottom shadow; 32x32 gold corner brackets, 6px thick, inset 8px"
+    },
+    "panel/ornament-crest.png": {
+      "size": [
+        48,
+        20
+      ],
+      "type": "sprite",
+      "anchor": "top-center of the panel frame, bottom edge overlapping the frame by 4px",
+      "display_scale": 2.5
+    },
+    "panel/ornament-crest-2_5x.png": {
+      "size": [
+        120,
+        50
+      ],
+      "type": "sprite",
+      "note": "pre-scaled 2.5x version used in the mock"
+    }
+  },
+  "widgets": {
+    "widgets/input-field.png": {
+      "size": [
+        120,
+        60
+      ],
+      "type": "9-slice",
+      "border": 12,
+      "text_inset": [
+        16,
+        0
+      ],
+      "height": 52
+    },
+    "widgets/checkbox-off.png": {
+      "size": [
+        36,
+        36
+      ],
+      "type": "sprite"
+    },
+    "widgets/checkbox-on.png": {
+      "size": [
+        36,
+        36
+      ],
+      "type": "sprite"
+    },
+    "widgets/eye-open.png": {
+      "size": [
+        28,
+        20
+      ],
+      "type": "sprite",
+      "display_scale": 1.5,
+      "note": "reveal state"
+    },
+    "widgets/eye-closed.png": {
+      "size": [
+        28,
+        20
+      ],
+      "type": "sprite",
+      "display_scale": 1.5,
+      "note": "masked state (default)"
+    }
+  },
+  "buttons": {
+    "buttons/btn-login.png": {
+      "size": [
+        316,
+        84
+      ],
+      "states": "normal"
+    },
+    "buttons/btn-login-hover.png": {
+      "size": [
+        316,
+        84
+      ],
+      "states": "hover"
+    },
+    "buttons/btn-login-pressed.png": {
+      "size": [
+        316,
+        80
+      ],
+      "states": "pressed",
+      "note": "drop shadow removed; draw 6px lower than normal"
+    },
+    "buttons/btn-create-account.png": {
+      "size": [
+        316,
+        68
+      ],
+      "states": "normal"
+    },
+    "buttons/btn-create-account-hover.png": {
+      "size": [
+        316,
+        68
+      ],
+      "states": "hover"
+    }
+  },
+  "text": {
+    "text/label-login.png": [
+      57,
+      14
+    ],
+    "text/label-password.png": [
+      94,
+      14
+    ],
+    "text/remember-email.png": [
+      161,
+      11
+    ],
+    "text/remember-password.png": [
+      210,
+      11
+    ],
+    "text/auto-login.png": [
+      113,
+      11
+    ],
+    "text/link-forgot-password.png": [
+      186,
+      19
+    ],
+    "text/link-forgot-password-hover.png": [
+      186,
+      19
+    ],
+    "text/link-forgot-email.png": [
+      140,
+      19
+    ],
+    "text/link-forgot-email-hover.png": [
+      140,
+      19
+    ]
+  },
+  "fonts": {
+    "fonts/press-start-2p-16.png": {
+      "grid": [
+        16,
+        16
+      ],
+      "columns": 16,
+      "rows": 6,
+      "range": [
+        32,
+        126
+      ],
+      "meta": "press-start-2p-16.json"
+    },
+    "fonts/silkscreen-16.png": {
+      "grid": [
+        16,
+        16
+      ],
+      "columns": 16,
+      "rows": 6,
+      "range": [
+        32,
+        126
+      ],
+      "meta": "silkscreen-16.json"
+    }
+  }
+}

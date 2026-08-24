@@ -1,0 +1,16 @@
+{
+  "bg": "#080504",
+  "panel": "#231815",
+  "panel_highlight": "#33231d",
+  "panel_shadow": "#150e0c",
+  "field": "#0f0a09",
+  "ink": "#000000",
+  "gold_hi": "#ebbf90",
+  "gold": "#c68f66",
+  "gold_mid": "#9a6651",
+  "gold_dark": "#4e2f24",
+  "text": "#ebbf90",
+  "text_dim": "#a87f68",
+  "placeholder": "#6b4d40",
+  "source": "sampled from the Classic RPG UI reference"
+}

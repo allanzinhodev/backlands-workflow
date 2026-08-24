@@ -1,0 +1,67 @@
+{
+  "panel": {
+    "width": 520,
+    "padding": [
+      44,
+      44,
+      40,
+      44
+    ],
+    "gap": 26,
+    "frame_outset": 16
+  },
+  "order": [
+    "label LOGIN",
+    "login field + eye toggle",
+    "label PASSWORD",
+    "password field + eye toggle",
+    "checkbox Remember email",
+    "checkbox Remember password",
+    "checkbox Auto login",
+    "link Forgot password?",
+    "link Forgot email?",
+    "button CREATE NEW ACCOUNT",
+    "button LOGIN"
+  ],
+  "metrics": {
+    "label_to_field": 10,
+    "field": {
+      "height": 52,
+      "text_inset_left": 16,
+      "eye_button": [
+        52,
+        36
+      ],
+      "eye_button_offset": [
+        8,
+        8
+      ]
+    },
+    "checkbox": {
+      "box": 36,
+      "gap": 14,
+      "row_gap": 14
+    },
+    "links": {
+      "gap": 10,
+      "underline": 3
+    },
+    "create_button": [
+      300,
+      52
+    ],
+    "login_button": [
+      300,
+      64
+    ],
+    "group_gap": 26
+  },
+  "defaults": {
+    "remember_email": true,
+    "remember_password": false,
+    "auto_login": false,
+    "mask_login": true,
+    "mask_password": true
+  },
+  "scanlines": "1px-per-4px horizontal darkening: repeating 4px transparent / 4px rgba(0,0,0,0.14) over the whole panel"
+}
