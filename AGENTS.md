@@ -117,3 +117,8 @@ Essas são as fontes reais de bug quando uma alteração atravessa repositórios
 Para builds, layout interno de cada repositório e checklists de mudança entre repositórios,
 consulte a skill **`backlands`** em [`.claude/skills/backlands/SKILL.md`](.claude/skills/backlands/SKILL.md).
 Ela é o documento longo; este arquivo é o resumo sempre carregado.
+
+Para **qualquer tela do cliente** (OTUI, estilos, sprites de UI, HUD, diálogos) use a skill
+**`backlands-client-ui`** em [`.claude/skills/backlands-client-ui/SKILL.md`](.claude/skills/backlands-client-ui/SKILL.md):
+paleta, grid de blocos, catálogo de widgets, pipeline de sprites, armadilhas do engine e o
+loop obrigatório de verificação (build → screenshot → medição por pixel).

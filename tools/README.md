@@ -14,6 +14,10 @@ Ferramentas do workspace Backlands. Ao contrário das cinco pastas de repositór
 | `mapeditor-assets.ps1` | Aponta o NexaMap Editor para os assets 8.60 do cliente e valida assinaturas e flags do `.otfi`. Só Windows. |
 | `sprites/` | Parser `.dat`/`.spr`/`.otb`/`.otfi` do 8.60, portado do `objectbuilder/src/otlib`. É a base dos scripts que mexem em asset — ver [`sprites/README.md`](sprites/README.md). |
 | `assets-update/` | Exporta a palheta de um brush do NexaMap como uma PNG só (bordas + animação), e regrava no `Tibia.spr` o que você editar no Aseprite — ver [`assets-update/README.md`](assets-update/README.md). |
+| `pixelui/` | Sprites da UI pixel-art do cliente: `blockscale.js` reemite arte de grid de blocos em outro tamanho de bloco (redesenho, não resample), `probe.js` mede pixels de sprite ou screenshot, `pngcodec.js` é o PNG sem dependências que os dois usam. |
+| `ui-shot.ps1` | Sobe o cliente, espera a tela de login, fotografa a janela, encerra e imprime os erros de UI do log. É como se verifica mudança de UI. Só Windows. |
+| `otui-lint.js` | Lint estrutural de `.otui`/`.otfont`/`.otmod` com as regras que o `OTMLParser` exige (indentação de 2, sem tabs, sem salto de profundidade). |
+| `lua-syntax.lua` | Compila arquivos Lua sem executá-los. Rodar com o `luajit` do vcpkg. |
 
 ### `assets-update/`
 
@@ -73,6 +77,34 @@ compilados.
 `bootstrap` e `status` têm as duas versões — `.ps1` para Windows/PowerShell, `.sh` para Linux, WSL e
 Git Bash, com comportamento equivalente. `build` e `run-local` são só `.ps1`: dependem do MSVC e do
 MariaDB portátil do Windows, e o equivalente em Linux seria outro script, não uma tradução.
+
+### UI do cliente — `pixelui/`, `ui-shot.ps1`, `otui-lint.js`, `lua-syntax.lua`
+
+O ciclo de uma mudança de UI no cliente. O detalhamento do design system está na skill
+`backlands-client-ui`; aqui ficam só os comandos.
+
+```bash
+# 1. lint (o que derruba o cliente na carga)
+node tools/otui-lint.js client/data/styles/40-entergame.otui
+vcpkg/packages/luajit_x64-windows-static/tools/luajit/luajit.exe \
+  tools/lua-syntax.lua client/modules/client_entergame/entergame.lua
+
+# 2. sprite: descubra o grid antes de rescalar; texto rasterizado nao rescala
+node tools/pixelui/blockscale.js detect ui-login/widgets/input-field.png
+node tools/pixelui/blockscale.js scale  ui-login/widgets/input-field.png out.png 4 2
+
+# 3. rodar e fotografar
+powershell -File tools/ui-shot.ps1 -Out shot.png
+
+# 4. medir, nao olhar
+node tools/pixelui/probe.js find shot.png "#4e2f24" 6
+node tools/pixelui/probe.js crop shot.png zoom.png 560 120 400 520 2
+node tools/pixelui/probe.js at   shot.png 900 369
+```
+
+`blockscale` recusa rescalar arte que não seja uniforme no grid informado — é a proteção contra
+transformar tipografia assada em mingau. `ui-shot` mata instância anterior antes de subir, porque um
+cliente aberto trava o `.exe` contra o relink e ainda rouba o screenshot.
 
 ## Máquina nova — do zero ao workspace pronto
 
