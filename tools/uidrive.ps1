@@ -91,6 +91,15 @@ switch ($Action) {
 
     'start' {
         Stop-Client
+        # O mod e ferramenta de workspace (AGENTS.md: tools/ nunca dentro de um repo
+        # de ferramenta), entao a fonte fica em tools/uidriver e e injetada aqui.
+        # client/mods/zz_uidriver/ nao entra no git do cliente.
+        $modSrc = Join-Path $PSScriptRoot 'uidriver'
+        $modDst = Join-Path $ClientDir 'mods\zz_uidriver'
+        if (Test-Path $modSrc) {
+            New-Item -ItemType Directory -Force -Path $modDst | Out-Null
+            Copy-Item (Join-Path $modSrc '*') $modDst -Force
+        }
         New-Item -ItemType Directory -Force -Path $DriveDir | Out-Null
         Remove-Item $OutFile, $CmdFile -Force -ErrorAction SilentlyContinue
         $log = Join-Path $DriveDir 'client.log'
