@@ -286,7 +286,10 @@ function UID.audit(win, limit)
   -- checks miss this: a button or a panel can hang out the bottom while every
   -- label inside it still measures fine.
   for _, c in ipairs(win:getChildren()) do
-    if c:isVisible() then
+    -- A phantom decoration hanging over the frame is an idiom of this skin, not a
+    -- defect: the crest sits above the title bar on the login panel and on every
+    -- window that uses backdrop_crestr, anchored with a negative margin on purpose.
+    if c:isVisible() and not c:isPhantom() then
       local r = c:getRect()
       local dx = (r.x + r.width) - (pad.x + pad.width)
       local dy = (r.y + r.height) - (pad.y + pad.height)

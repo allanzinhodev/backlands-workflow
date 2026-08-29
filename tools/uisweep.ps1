@@ -49,7 +49,9 @@ $targets = [ordered]@{
     podium         = 'modules.game_player_podium.show()'
     playerdeath    = 'modules.game_playerdeath.openWindow()'
     options        = 'modules.client_settings.toggle()'
-    terminal       = 'modules.client_terminal.show()'
+    # client_terminal fica de fora: o buffer de log e o overlay de selecao ocupam
+    # o mesmo retangulo por construcao, entao cada linha visivel vira uma colisao
+    # e afoga o resto do relatorio. E console de debug, nao faz parte da skin.
     feedback       = 'modules.client_feedback.show()'
     camviewer      = 'modules.client_camviewer.show()'
     viplist        = 'modules.game_viplist.toggle()'
