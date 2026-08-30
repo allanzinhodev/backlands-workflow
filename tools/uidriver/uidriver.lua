@@ -407,7 +407,9 @@ function UID.fontaudit(win, limit)
   local function walk(w, d)
     if d > 12 or not w:isVisible() or #out >= limit then return end
     local t = w:getText()
-    if t and #t > 0 and not t:find('\n') then
+    -- text-wrap muda o que getTextSize devolve (a caixa JA quebrada), entao a
+    -- comparacao com a sonda, que nao quebra, nao diz nada sobre a fonte
+    if t and #t > 0 and not t:find('\n') and not w:getTextWrap() then
       probe:setText(t)
       local mine, silk = w:getTextSize().width, probe:getTextSize().width
       if mine ~= silk then
