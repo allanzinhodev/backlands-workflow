@@ -65,8 +65,14 @@ const refs = fs.readFileSync(listaPath, 'utf8').split('\n')
 
 let feitos = 0, pulados = 0, semantico = 0, jaOk = 0;
 for (const ref of refs) {
-  const rel = ref.replace(/^\/data\//, '').replace(/^\//, '');
-  const file = path.join(root, 'data', rel + '.png');
+  // O cliente devolve o caminho de resource, que tem tres formas. `/images/x` e
+  // `/data/images/x` sao a mesma coisa e vivem em data/. Mas alguns mods trazem a
+  // propria arvore e o resource sai como `/mods/game_cyclopedia/images/...`, que
+  // NAO esta em data/ - tratar tudo igual mandava 70 sprites para "sem arquivo",
+  // entre eles a faixa de abas e os rotulos assados do Cyclopedia.
+  const file = ref.startsWith('/mods/')
+    ? path.join(root, ref.slice(1) + '.png')
+    : path.join(root, 'data', ref.replace(/^\/data\//, '').replace(/^\//, '') + '.png');
   if (!fs.existsSync(file)) { pulados++; continue; }
 
   const nome = path.basename(file, '.png');

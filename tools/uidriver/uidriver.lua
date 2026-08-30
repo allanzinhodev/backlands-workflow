@@ -193,7 +193,7 @@ local function clipRect(w)
 end
 
 local function collect(w, acc, depth)
-  if depth > 12 or not w:isVisible() then return acc end
+  if depth > 24 or not w:isVisible() then return acc end
   table.insert(acc, w)
   for _, c in ipairs(w:getChildren()) do collect(c, acc, depth + 1) end
   return acc
@@ -421,7 +421,7 @@ function UID.fontaudit(win, limit)
 
   local out, seen = {}, {}
   local function walk(w, d)
-    if d > 12 or not w:isVisible() or #out >= limit then return end
+    if d > 24 or not w:isVisible() or #out >= limit then return end
     local t = w:getText()
     -- text-wrap muda o que getTextSize devolve (a caixa JA quebrada), entao a
     -- comparacao com a sonda, que nao quebra, nao diz nada sobre a fonte
