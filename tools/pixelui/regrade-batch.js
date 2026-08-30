@@ -18,7 +18,7 @@ const apply = process.argv.includes('--apply');
 
 // Botao, seta, checkbox e slider sao chrome tanto quanto moldura e painel. Icone
 // de jogo fica de fora: la o cinza pode ser a cor certa.
-const CHROME = /(frame|panel|background|window|scroll|separator|textedit|combobox|progress|percent|infopanel|console|boxc|dither|header|tab|border|backdrop|button|arrow|checkbox|slider|rotate|erase|void|topbar|bg|health|mana|cond)/i;
+const CHROME = /(frame|panel|background|window|scroll|separator|textedit|combobox|progress|percent|infopanel|console|boxc|dither|header|tab|border|backdrop|button|arrow|checkbox|slider|rotate|erase|void|topbar|bg|health|mana|cond|chat|channel|menubox|spinbox|slot|hidden-menu|notification|poll)/i;
 
 const RAMP = [
   [0, 0x00, 0x00, 0x00], [26, 0x15, 0x0e, 0x0c], [56, 0x23, 0x18, 0x15],

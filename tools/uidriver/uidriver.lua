@@ -386,3 +386,44 @@ function UIDriver_terminate()
   if UIDriverEvent then UIDriverEvent:cancel() end
   UIDriverEvent = nil
 end
+
+-- Quais widgets com texto ainda NAO estao na silkscreen.
+--
+-- O Lua deste fork nao expoe nome de fonte (getFont() devolve algo sem getName),
+-- entao a fonte se descobre medindo: joga o mesmo texto num widget que
+-- comprovadamente usa $var-cip-font e compara a largura. Fonte diferente, largura
+-- diferente - e nao ha falso positivo possivel, porque e a metrica real do atlas.
+function UID.fontaudit(win, limit)
+  if type(win) == 'string' then win = UID.find(win) end
+  if not win then return 'not found' end
+  limit = limit or 30
+
+  -- sonda: um widget silkscreen que nao esta na tela
+  local probe = g_ui.createWidget('UIWidget', UID.root())
+  probe:setFont('silkscreen-16')
+  probe:setVisible(false)
+
+  local out, seen = {}, {}
+  local function walk(w, d)
+    if d > 12 or not w:isVisible() or #out >= limit then return end
+    local t = w:getText()
+    if t and #t > 0 and not t:find('\n') then
+      probe:setText(t)
+      local mine, silk = w:getTextSize().width, probe:getTextSize().width
+      if mine ~= silk then
+        local key = tostring(w:getId()) .. '|' .. t
+        if not seen[key] then
+          seen[key] = true
+          table.insert(out, string.format('%-28s %4dpx (silkscreen daria %4d)  [%s]',
+            tostring(w:getId()), mine, silk, t))
+        end
+      end
+    end
+    for _, c in ipairs(w:getChildren()) do walk(c, d + 1) end
+  end
+  walk(win, 0)
+  probe:destroy()
+
+  if #out == 0 then return 'tudo em silkscreen' end
+  return string.format('%d widgets fora da silkscreen:\n', #out) .. table.concat(out, '\n')
+end
