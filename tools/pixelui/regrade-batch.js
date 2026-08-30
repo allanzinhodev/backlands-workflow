@@ -97,6 +97,14 @@ const IMAGE_ROOTS = [
   { dir: 'data/images/game/eventschedule', all: true },
   { dir: 'data/images/game/prey', all: true },
   'data/images/game/proficiency',
+  // pastas que so tem chrome: a placa do botao vem assada junto do glifo
+  { dir: 'data/images/topbuttons', all: true },
+  { dir: 'data/images/common_buttons', all: true },
+  { dir: 'data/images/arrows', all: true },
+  { dir: 'data/images/skin', all: true },
+  { dir: 'data/images/options', all: true },
+  { dir: 'data/images/optionstab', all: true },
+  { dir: 'data/images/inventory', all: true },
 ];
 // Uma raiz pode ser declarada TODA chrome: pastas como game/prey e
 // game/eventschedule nao guardam nenhuma arte de conteudo - retrato de criatura
@@ -135,8 +143,13 @@ for (const file of allImages) {
   let rel = path.relative(root, file).replace(/\\/g, '/').replace(/\.png$/, '');
   rel = rel.startsWith('data/') ? rel.slice(5) : rel.replace(/^mods\//, '');
   const ref = '/' + rel;
+  // Numa raiz marcada toda-chrome a exigencia de referencia nao ajuda: metade dos
+  // icones da sidebar e carregada por caminho montado em runtime
+  // (setImageSource("/images/topbuttons/%s.png", v)), entao o literal nunca aparece
+  // no fonte. Recolorizar um sprite que ninguem usa nao custa nada; deixar 49
+  // icones cinzas na barra que o jogador olha o tempo todo custa.
   const refs = refCount(ref);
-  if (refs === 0) { skipped++; continue; }
+  if (refs === 0 && !chromeTodo.has(file)) { skipped++; continue; }
 
   if (apply) {
     for (let y = 0; y < img.h; y++) {

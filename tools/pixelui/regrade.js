@@ -62,10 +62,17 @@ if (args[0] === '--check') {
   process.exit(0);
 }
 
-const [inFile, outFile] = args;
+// O guarda de acento colorido existe para nao apagar informacao: o verde do
+// aceitar, o vermelho do recusar, a cor que o jogador le. Mas alguns sprites nao
+// tem acento nenhum - sao inteiros de outra paleta, como o botao azul da Store no
+// meio de uma sidebar marrom. Ali preservar a cor e preservar a inconsistencia, e
+// a rampa tem que valer para todo pixel.
+const force = args.includes('--force');
+const [inFile, outFile] = args.filter(a => a !== '--force');
 if (!inFile || !outFile) {
-  console.log('usage: node tools/pixelui/regrade.js <in.png> <out.png>');
+  console.log('usage: node tools/pixelui/regrade.js <in.png> <out.png> [--force]');
   console.log('       node tools/pixelui/regrade.js --check <in.png>');
+  console.log('  --force: passa a rampa em todo pixel, nao so no cinza neutro');
   process.exit(1);
 }
 
@@ -75,7 +82,7 @@ for (let y = 0; y < img.h; y++) {
   for (let x = 0; x < img.w; x++) {
     const p = px(img, x, y);
     if (p[3] === 0) continue;
-    if (!isNeutralGrey(p[0], p[1], p[2])) continue;   // acento colorido: nao e cinza, nao e nosso
+    if (!force && !isNeutralGrey(p[0], p[1], p[2])) continue;   // acento colorido: nao e cinza, nao e nosso
     const [r, g, b] = grade(p[0], p[1], p[2]);
     if (r !== p[0] || g !== p[1] || b !== p[2]) changed++;
     setPx(img, x, y, Buffer.from([r, g, b, p[3]]));
