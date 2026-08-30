@@ -282,7 +282,23 @@ function UID.audit(win, limit)
     if #out >= limit then break end
   end
 
-  -- 3. a direct child whose rect leaves the window's content area. Text-only
+  -- 3. wrapped text taller than the box holding it. text-wrap trades width for
+  -- height, so the overflow moves to an axis nothing else here looks at: the
+  -- widget measures fine horizontally and still loses its last line.
+  for _, e in ipairs(inked) do
+    local w = e.w
+    if w ~= win and w:getTextWrap() then
+      local r = w:getRect()
+      local ts = w:getTextSize()
+      if ts.height > r.height + 1 then
+        table.insert(out, string.format('ALTURA %s "%s" texto quebrado ocupa %dpx em %dpx',
+          path(w, win), (w:getText()):gsub('\n', ' / '), ts.height, r.height))
+      end
+    end
+    if #out >= limit then break end
+  end
+
+  -- 4. a direct child whose rect leaves the window's content area. Text-only
   -- checks miss this: a button or a panel can hang out the bottom while every
   -- label inside it still measures fine.
   for _, c in ipairs(win:getChildren()) do
