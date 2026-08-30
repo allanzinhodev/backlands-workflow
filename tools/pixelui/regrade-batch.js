@@ -94,13 +94,28 @@ const IMAGE_ROOTS = [
   'data/images/game/combatmodes',
   'data/images/game/actionbar',
   'data/images/game/minimap',
+  { dir: 'data/images/game/eventschedule', all: true },
+  { dir: 'data/images/game/prey', all: true },
+  'data/images/game/proficiency',
 ];
+// Uma raiz pode ser declarada TODA chrome: pastas como game/prey e
+// game/eventschedule nao guardam nenhuma arte de conteudo - retrato de criatura
+// vem da sheet de sprites, nao daqui - e os nomes ali (claim_task_up, noBonus,
+// prey_biginactive) nao passam pelo filtro CHROME mesmo sendo moldura e botao.
+// Marcar a pasta e mais honesto que inchar a regex, que vale para o cliente todo.
+const chromeTodo = new Set();
 const allImages = [];
-for (const d of IMAGE_ROOTS) walk(path.join(root, d), allImages, n => n.toLowerCase().endsWith('.png'));
+for (const entrada of IMAGE_ROOTS) {
+  const d = typeof entrada === 'string' ? entrada : entrada.dir;
+  const todos = typeof entrada === 'string' ? false : !!entrada.all;
+  const antes = allImages.length;
+  walk(path.join(root, d), allImages, n => n.toLowerCase().endsWith('.png'));
+  for (let i = antes; i < allImages.length; i++) if (todos) chromeTodo.add(allImages[i]);
+}
 
 for (const file of allImages) {
   const base = path.basename(file, '.png');
-  if (!CHROME.test(base)) continue;
+  if (!chromeTodo.has(file) && !CHROME.test(base)) continue;
 
   let img;
   try { img = readPNG(file); } catch (e) { continue; }
