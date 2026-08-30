@@ -36,9 +36,8 @@ function chromeGrade(l) {
 
 // Texto nao interpola: a paleta tem tres papeis e so tres.
 function textGrade(l) {
-  if (l >= 176) return [0xeb, 0xbf, 0x90];   // texto
-  if (l >= 128) return [0xd0, 0xa8, 0x80];   // texto secundario
-  if (l >= 96)  return [0xa8, 0x7f, 0x68];   // dim
+  if (l >= 176) return [0xeb, 0xbf, 0x90];   // text
+  if (l >= 112) return [0xa8, 0x7f, 0x68];   // dim
   return [0x6b, 0x4d, 0x40];                 // placeholder / desabilitado
 }
 
