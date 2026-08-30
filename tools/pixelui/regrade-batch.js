@@ -16,7 +16,9 @@ const { readPNG, writePNG, px, setPx } = require('./pngcodec');
 const root = process.argv[2] || 'client';
 const apply = process.argv.includes('--apply');
 
-const CHROME = /(frame|panel|background|window|scroll|separator|textedit|combobox|progress|percentbg|infopanel|console|boxc|dither|header|tab|border|backdrop)/i;
+// Botao, seta, checkbox e slider sao chrome tanto quanto moldura e painel. Icone
+// de jogo fica de fora: la o cinza pode ser a cor certa.
+const CHROME = /(frame|panel|background|window|scroll|separator|textedit|combobox|progress|percent|infopanel|console|boxc|dither|header|tab|border|backdrop|button|arrow|checkbox|slider|rotate|erase|void)/i;
 
 const RAMP = [
   [0, 0x00, 0x00, 0x00], [26, 0x15, 0x0e, 0x0c], [56, 0x23, 0x18, 0x15],
@@ -71,7 +73,21 @@ function refCount(ref) {
 }
 
 let done = 0, skipped = 0;
-for (const file of walk(path.join(root, 'data/images/ui'), [], n => n.toLowerCase().endsWith('.png'))) {
+// Alguns mods trazem a propria arvore de imagens em vez de usar data/images/ui -
+// game_cyclopedia sozinho tem 204 PNGs. Sem elas a janela fica com moldura nova
+// e miolo cinza.
+const IMAGE_ROOTS = [
+  'data/images/ui',
+  'mods/game_cyclopedia/images',
+  'mods/game_proficiency/images',
+  'mods/game_forge/images',
+  'mods/game_podium_monster/images',
+  'mods/game_highscores/images',
+];
+const allImages = [];
+for (const d of IMAGE_ROOTS) walk(path.join(root, d), allImages, n => n.toLowerCase().endsWith('.png'));
+
+for (const file of allImages) {
   const base = path.basename(file, '.png');
   if (!CHROME.test(base)) continue;
 
@@ -88,7 +104,11 @@ for (const file of walk(path.join(root, 'data/images/ui'), [], n => n.toLowerCas
   }
   if (opaque < 64 || g / opaque < 0.75) { skipped++; continue; }
 
-  const ref = '/' + path.relative(path.join(root, 'data'), file).replace(/\\/g, '/').replace(/\.png$/, '');
+  // A .otui referencia por caminho de resource: o que esta em data/ perde o
+  // 'data/', o que esta em mods/<x>/images/ perde o 'mods/'.
+  let rel = path.relative(root, file).replace(/\\/g, '/').replace(/\.png$/, '');
+  rel = rel.startsWith('data/') ? rel.slice(5) : rel.replace(/^mods\//, '');
+  const ref = '/' + rel;
   const refs = refCount(ref);
   if (refs === 0) { skipped++; continue; }
 
