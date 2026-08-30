@@ -117,6 +117,7 @@ for (const file of allImages) {
       for (let x = 0; x < img.w; x++) {
         const p = px(img, x, y);
         if (p[3] === 0) continue;
+        if (!isNeutralGrey(p[0], p[1], p[2])) continue;   // acento colorido fica
         const [r, gg, b] = grade(p[0], p[1], p[2]);
         setPx(img, x, y, Buffer.from([r, gg, b, p[3]]));
       }

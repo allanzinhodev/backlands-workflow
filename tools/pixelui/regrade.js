@@ -44,6 +44,13 @@ function grade(r, g, b) {
   return [last[1], last[2], last[3]];
 }
 
+// Mesmo criterio do palettecheck: canais dentro de 12 um do outro, nem quase-preto
+// nem quase-branco.
+function isNeutralGrey(r, g, b) {
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+  return mx - mn <= 12 && mx > 24 && mx < 232;
+}
+
 const args = process.argv.slice(2);
 if (args[0] === '--check') {
   console.log(' L   ->  cor');
@@ -68,6 +75,7 @@ for (let y = 0; y < img.h; y++) {
   for (let x = 0; x < img.w; x++) {
     const p = px(img, x, y);
     if (p[3] === 0) continue;
+    if (!isNeutralGrey(p[0], p[1], p[2])) continue;   // acento colorido: nao e cinza, nao e nosso
     const [r, g, b] = grade(p[0], p[1], p[2]);
     if (r !== p[0] || g !== p[1] || b !== p[2]) changed++;
     setPx(img, x, y, Buffer.from([r, g, b, p[3]]));
