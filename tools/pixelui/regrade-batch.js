@@ -18,7 +18,7 @@ const apply = process.argv.includes('--apply');
 
 // Botao, seta, checkbox e slider sao chrome tanto quanto moldura e painel. Icone
 // de jogo fica de fora: la o cinza pode ser a cor certa.
-const CHROME = /(frame|panel|background|window|scroll|separator|textedit|combobox|progress|percent|infopanel|console|boxc|dither|header|tab|border|backdrop|button|arrow|checkbox|slider|rotate|erase|void)/i;
+const CHROME = /(frame|panel|background|window|scroll|separator|textedit|combobox|progress|percent|infopanel|console|boxc|dither|header|tab|border|backdrop|button|arrow|checkbox|slider|rotate|erase|void|topbar|bg|health|mana|cond)/i;
 
 const RAMP = [
   [0, 0x00, 0x00, 0x00], [26, 0x15, 0x0e, 0x0c], [56, 0x23, 0x18, 0x15],
@@ -83,6 +83,17 @@ const IMAGE_ROOTS = [
   'mods/game_forge/images',
   'mods/game_podium_monster/images',
   'mods/game_highscores/images',
+  // data/images/game guarda arte de jogo E chrome. So as subpastas que sao chrome
+  // entram; o filtro de nome (CHROME) ainda decide dentro delas.
+  'data/images/game/topbar',
+  'data/images/game/console',
+  'data/images/game/entergame',
+  'data/images/game/slots',
+  'data/images/game/container',
+  'data/images/game/containers',
+  'data/images/game/combatmodes',
+  'data/images/game/actionbar',
+  'data/images/game/minimap',
 ];
 const allImages = [];
 for (const d of IMAGE_ROOTS) walk(path.join(root, d), allImages, n => n.toLowerCase().endsWith('.png'));
