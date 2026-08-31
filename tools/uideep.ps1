@@ -75,6 +75,14 @@ $alvos = [ordered]@{
     exiva       = @('modules.game_exiva_options.show()',     'exivaOptionsWindow')
     schedule    = @('modules.game_schedule.toggle()',        'eventSchedule')
     bazaar      = @('modules.game_character_bazaar.show()',  'characterBazaarWindow')
+    transfer    = @('modules.game_transfer.show()',          'transferWindow')
+    report      = @('modules.game_report.show()',            'reportWindow')
+    bugreport   = @('modules.game_bugreport.show()',         'bugReportWindow')
+    playerdeath = @('modules.game_playerdeath.openWindow()', 'deathWindow')
+    inspect     = @('modules.game_inspect.show()',           'inspectItem')
+    lootsplitter = @('modules.game_lootsplitter.show()',     'lootSplitter')
+    searchlocker = @('modules.game_search_locker.show()',    'lockerSearchWindow')
+    camviewer   = @('modules.client_camviewer.show()',       'camViewerWindow')
 }
 
 if ($Only) { $nomes = $alvos.Keys | Where-Object { $n = $_; $Only | Where-Object { $n -like "*$_*" } } }
