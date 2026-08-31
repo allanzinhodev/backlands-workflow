@@ -333,6 +333,44 @@ function UID.audit(win, limit)
     if #out >= limit then break end
   end
 
+  -- 5. text buried under a panel drawn later.
+  --
+  -- COLIDE so compara texto com texto, e por isso nao viu o painel de ofertas do
+  -- Market cobrir o botao "2H" e metade de "Show Locker only". Nao e caso raro: a
+  -- fonte nova alarga o widget de texto, ele avanca sobre a coluna vizinha, e a
+  -- coluna vizinha e um painel opaco desenhado depois - some sem deixar rastro em
+  -- nenhuma das outras quatro checagens.
+  --
+  -- `all` esta em ordem de desenho (pre-ordem da arvore), entao "desenhado depois"
+  -- e so indice maior. So conta painel opaco, nao-phantom e com imagem propria:
+  -- overlay de scanline, realce e moldura sao idioma desta skin.
+  local ordem = {}
+  for i, w in ipairs(all) do ordem[w] = i end
+  for _, e in ipairs(inked) do
+    local iTexto = ordem[e.w]
+    for _, c in ipairs(all) do
+      local j = ordem[c]
+      if j > iTexto and not isRelated(e.w, c) and not c:isPhantom() and c:getOpacity() > 0.9 then
+        local okSrc, src = pcall(function() return c:getImageSource() end)
+        if okSrc and src and #src > 0 then
+          local r = c:getRect()
+          local x1 = math.max(e.box.x, r.x)
+          local x2 = math.min(e.box.x + e.box.width, r.x + r.width)
+          local y1 = math.max(e.box.y, r.y)
+          local y2 = math.min(e.box.y + e.box.height, r.y + r.height)
+          local coberto = math.max(0, x2 - x1) * math.max(0, y2 - y1)
+          if coberto > e.box.width * e.box.height * 0.25 then
+            table.insert(out, string.format('TAPADO  %s "%s" coberto por %s (%d%% do texto)',
+              path(e.w, win), e.w:getText(), path(c, win),
+              math.floor(coberto / (e.box.width * e.box.height) * 100)))
+            break
+          end
+        end
+      end
+    end
+    if #out >= limit then break end
+  end
+
   if #out == 0 then return 'limpo (' .. #all .. ' widgets, ' .. #inked .. ' com texto)' end
   return string.format('%d achados em %d widgets:\n', #out, #all) .. table.concat(out, '\n')
 end
