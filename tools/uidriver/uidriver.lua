@@ -230,7 +230,9 @@ function UID.audit(win, limit)
       if clip then
         b = intersectBox(b, clip.x, clip.y, clip.x + clip.width, clip.y + clip.height)
       end
-      if b.width > 0 and b.height > 0 then
+      -- Widget de 1 ou 2 pixels nao mostra texto a ninguem: e guardador de valor
+      -- invisivel, como o spinBox de 1x1 do CountWindow. Reclamar dele e ruido.
+      if b.width > 3 and b.height > 3 then
         table.insert(inked, { w = w, box = b, raw = raw, clip = clip })
       end
     end
