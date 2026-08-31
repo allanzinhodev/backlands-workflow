@@ -31,6 +31,9 @@ param(
 
     [string]$Script,
     [string]$File,
+    # Vai como local UIDARG no topo do chunk: o driver executa o arquivo inteiro,
+    # entao nao ha como passar vararg. Script que precisa de argumento le UIDARG.
+    [string]$LuaArg,
     [string]$Out,
     [int]$TimeoutSec = 20,
     [int]$BootWait = 16,
@@ -118,6 +121,7 @@ switch ($Action) {
     'lua' {
         if ($File) { $Script = [System.IO.File]::ReadAllText((Resolve-Path $File)) }
         if (-not $Script) { throw "-Script ou -File e obrigatorio" }
+        if ($LuaArg) { $Script = "local UIDARG = [==[$LuaArg]==]`n" + $Script }
         Write-Output (Invoke-Lua $Script $TimeoutSec)
         break
     }
