@@ -78,11 +78,12 @@ foreach ($nome in $nomes) {
     # Esconde toda janela que nao seja o alvo: medir cor de pixel exige que o que
     # esta na tela seja o que se quer medir, e as janelas abertas antes ficam por
     # cima. Sem isso o podium foi medido com o Exiva Options em cima dele.
-    if ($id) {
-        $limpar = "for _, c in ipairs(UID.root():getChildren()) do if c:getId() ~= '$id' and c:getId() ~= 'gameRootPanel' and c:isVisible() then c:hide() end end return 'ok'"
-        & $drive -Action lua -Script $limpar | Out-Null
-        Start-Sleep -Milliseconds 500
-    }
+    # Vale tambem para o alvo HUD, que nao tem id: ali o que atrapalha e justamente
+    # a janela que uma passagem anterior deixou aberta - foi o Soulseals cobrindo o
+    # F12 da barra de acao.
+    $limpar = "for _, c in ipairs(UID.root():getChildren()) do if c:getId() ~= '$id' and c:getId() ~= 'gameRootPanel' and c:isVisible() then c:hide() end end return 'ok'"
+    & $drive -Action lua -Script $limpar | Out-Null
+    Start-Sleep -Milliseconds 500
 
     $r = & $drive -Action lua -File $boxes -LuaArg $id -TimeoutSec 60
     ($r -replace '^OK\s?', '') | Set-Content -Encoding utf8 (Join-Path $tmp 'caixas.txt')
