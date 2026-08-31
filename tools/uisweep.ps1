@@ -63,6 +63,18 @@ $targets = [ordered]@{
     helper         = 'modules.game_helper.show()'
     bot            = 'modules.game_bot.toggle()'
     stats          = 'modules.game_stats.show()'
+    wheel          = 'modules.game_wheel.show()'
+    store          = 'modules.game_store.showStoreWindow()'
+    stash          = 'modules.game_stash.showStash()'
+    quickloot      = 'modules.game_quickloot.showQuickLoot()'
+    dailyreward    = 'modules.game_dailyreward.show()'
+    realminimap    = 'modules.game_realminimap.toggle()'
+    offsets        = 'modules.game_offsets.showOffset()'
+    healthcircle   = 'modules.game_healthcircle.toggleOptionsPanel()'
+    clientstats    = 'modules.client_stats.toggle()'
+    channels       = 'modules.game_console.doCreateChannelWindow()'
+    communication  = 'modules.game_console.doCreateCommunicationWindow()'
+    hotkeysmanager = 'modules.game_hotkeys.toggle()'
 }
 
 if (-not $NoRestart) { & (Join-Path $here 'uiplay.ps1') | Write-Output }
