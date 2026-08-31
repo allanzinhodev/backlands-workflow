@@ -27,3 +27,8 @@ local lista = {}
 for src in pairs(vistos) do lista[#lista+1] = src end
 table.sort(lista)
 return string.format('%d widgets, %d sprites\n%s', n, #lista, table.concat(lista, '\n'))
+
+-- NOTA: isto ve os widgets VIVOS agora. Janela com abas destroi e recria o painel
+-- ao trocar de aba, entao uma unica captura pega so a aba ativa - o `charm-options`
+-- do Cyclopedia escapou assim. Para cobrir tudo, rode uma vez por aba e una as
+-- listas antes de passar ao regrade-live.
