@@ -53,3 +53,7 @@ $RECYCLE.BIN/
 # Temporários
 *.tmp
 *.bak
+
+# Saida das varreduras de UI (uisweep/uideep). Sao capturas de trabalho: mudam a
+# cada rodada e o que importa delas ja esta no commit que a rodada gerou.
+/shots/
