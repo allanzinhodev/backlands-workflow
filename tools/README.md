@@ -14,7 +14,7 @@ Ferramentas do workspace Backlands. Ao contrário das cinco pastas de repositór
 | `mapeditor-assets.ps1` | Aponta o NexaMap Editor para os assets 8.60 do cliente e valida assinaturas e flags do `.otfi`. Só Windows. |
 | `sprites/` | Parser `.dat`/`.spr`/`.otb`/`.otfi` do 8.60, portado do `objectbuilder/src/otlib`. É a base dos scripts que mexem em asset — ver [`sprites/README.md`](sprites/README.md). |
 | `assets-update/` | Exporta a palheta de um brush do NexaMap como uma PNG só (bordas + animação), e regrava no `Tibia.spr` o que você editar no Aseprite — ver [`assets-update/README.md`](assets-update/README.md). |
-| `pixelui/` | Sprites da UI pixel-art do cliente: `blockscale.js` reemite arte de grid de blocos em outro tamanho de bloco (redesenho, não resample), `probe.js` mede pixels de sprite ou screenshot, `pngcodec.js` é o PNG sem dependências que os dois usam. |
+| `pixelui/` | Sprites da UI pixel-art do cliente: `blockscale.js` reemite arte de grid de blocos em outro tamanho de bloco (redesenho, não resample), `probe.js` mede pixels de sprite ou screenshot, `bgcontrast.js` acha dois fundos que o olho lê como um só, `pngcodec.js` é o PNG sem dependências que os três usam. |
 | `ui-shot.ps1` | Sobe o cliente, espera a tela de login, fotografa a janela, encerra e imprime os erros de UI do log. É como se verifica mudança de UI. Só Windows. |
 | `otui-lint.js` | Lint estrutural de `.otui`/`.otfont`/`.otmod` com as regras que o `OTMLParser` exige (indentação de 2, sem tabs, sem salto de profundidade). |
 | `lua-syntax.lua` | Compila arquivos Lua sem executá-los. Rodar com o `luajit` do vcpkg. |
@@ -100,11 +100,22 @@ powershell -File tools/ui-shot.ps1 -Out shot.png
 node tools/pixelui/probe.js find shot.png "#4e2f24" 6
 node tools/pixelui/probe.js crop shot.png zoom.png 560 120 400 520 2
 node tools/pixelui/probe.js at   shot.png 900 369
+
+# 5. dois fundos que o olho lê como um só (zebra sumida, linha selecionada sem realce)
+node tools/pixelui/bgcontrast.js shot.png
+node tools/pixelui/bgcontrast.js shots/ --min-area 1.5 --delta 10
 ```
 
 `blockscale` recusa rescalar arte que não seja uniforme no grid informado — é a proteção contra
 transformar tipografia assada em mingau. `ui-shot` mata instância anterior antes de subir, porque um
 cliente aberto trava o `.exe` contra o relink e ainda rouba o screenshot.
+
+`bgcontrast` cobre um eixo que as varreduras de texto não veem. `uicontrast.ps1` pergunta se o
+**glifo** aparece contra o fundo dele; nenhuma ferramenta compara duas faixas de **fundo** entre si.
+Foi por essa fresta que passaram, limpas nas cinco varreduras, a lista zebrada em `#281b17`/`#2c1e19`
+(3,1 de luminância entre as duas — a alternância não existia na tela) e a linha selecionada em
+`#35241d` contra linhas `#2c1e19`. O script pega só os pares que de fato se tocam e têm área de
+fundo, então detalhe pequeno encostando não vira ruído.
 
 ## Máquina nova — do zero ao workspace pronto
 
