@@ -65,9 +65,15 @@ function analisa(file, minArea, delta) {
   for (const [k, n] of Object.entries(toca)) {
     const [a, b] = k.split('|');
     const d = Math.abs(luma(a) - luma(b));
+    if (d >= delta) continue;
     // fronteira curta e so um detalhe encostando; nao e duas faixas de fundo
-    if (d < delta && n >= 24)
-      achados.push({ a, b, d, n, aPct: 100 * area[a] / total, bPct: 100 * area[b] / total });
+    if (n < 24) continue;
+    // Halo de antialias nao e fundo: ele abraca cada glifo, entao a fronteira e
+    // enorme para a area que ocupa. Faixa de fundo e o contrario - muita area,
+    // pouca borda. Sem este corte a ferramenta reclama de todo texto da tela.
+    const menor = Math.min(area[a], area[b]);
+    if (n / menor > 0.15) continue;
+    achados.push({ a, b, d, n, aPct: 100 * area[a] / total, bPct: 100 * area[b] / total });
   }
   achados.sort((x, y) => x.d - y.d);
   return { img, total, achados };
