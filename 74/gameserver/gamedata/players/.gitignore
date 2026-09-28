@@ -1,4 +1,0 @@
-# Ignore every player file in this directory and subfolders
-*.tvpp
-# Except this file
-!.gitignore
