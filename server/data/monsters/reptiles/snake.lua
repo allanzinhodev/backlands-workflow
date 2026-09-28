@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 15
 monster.maxHealth = 15
 monster.race = "blood"
-monster.corpse = 3998
-monster.speed = 60
+monster.corpse = 2817
+monster.speed = 20
 monster.manaCost = 205
 
 monster.changeTarget = {
@@ -47,7 +47,7 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
@@ -71,7 +71,10 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Zzzzzzt", yell = false },
+	{
+		text = "Zzzzzzt",
+		yell = false,
+	},
 }
 
 monster.loot = {}

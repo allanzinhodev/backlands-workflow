@@ -33,8 +33,8 @@ monster.Bestiary = {
 monster.health = 105
 monster.maxHealth = 105
 monster.race = "blood"
-monster.corpse = 5996
-monster.speed = 88
+monster.corpse = 2920
+monster.speed = 48
 monster.manaCost = 310
 
 monster.changeTarget = {
@@ -74,19 +74,42 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Ugaar!", yell = false },
+	{
+		text = "Ugaar!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 25050, maxCount = 11 },
-	{ name = "spear", chance = 17440 },
-	{ name = "machete", chance = 3000 },
-	{ name = "studded legs", chance = 10000 },
-	{ name = "studded helmet", chance = 9000 },
-	{ name = "meat", chance = 30200 },
-	{ name = "orc tooth", chance = 150 },
-	{ name = "orc leather", chance = 2300 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2468,
+		chance = 10000,
+	},
+	{
+		id = 2482,
+		chance = 9000,
+	},
+	{
+		id = 2389,
+		chance = 23000,
+	},
+	{
+		id = 2666,
+		chance = 30000,
+	},
+	{
+		id = 2420,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 22000,
+		maxCount = 7,
+	},
+	{
+		id = 2220,
+		chance = 7700,
+	},
 }
 
 monster.attacks = {

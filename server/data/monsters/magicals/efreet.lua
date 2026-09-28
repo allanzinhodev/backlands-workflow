@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Efreet"
 monster.description = "an efreet"
-monster.experience = 410
+monster.experience = 300
 monster.outfit = {
 	lookType = 103,
 	lookHead = 0,
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 550
 monster.maxHealth = 550
 monster.race = "blood"
-monster.corpse = 6032
-monster.speed = 117
+monster.corpse = 3037
+monster.speed = 77
 monster.manaCost = 0
 
 monster.faction = FACTION_EFREET
@@ -74,37 +74,81 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "green djinn", chance = 10, interval = 2000, count = 2 },
+		{
+			name = "Green Djinn",
+			interval = 7000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "I grant you a deathwish!", yell = false },
-	{ text = "I wish you a merry trip to hell!", yell = false },
-	{ text = "Good wishes are for fairytales", yell = false },
-	{ text = "Muhahahaha!", yell = false },
-	{ text = "Tell me your last wish!", yell = false },
+	{
+		text = "I grant you a deathwish!",
+		yell = false,
+	},
+	{
+		text = "Muhahahaha!",
+		yell = false,
+	},
+	{
+		text = "I wish you a merry trip to hell!",
+		yell = false,
+	},
+	{
+		text = "Tell me your last wish!",
+		yell = false,
+	},
+	{
+		text = "Good wishes are for fairytales",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2647, chance = 2200 }, -- green tapestry
-	{ name = "small oil lamp", chance = 160 },
-	{ name = "gold coin", chance = 50000, maxCount = 75 },
-	{ name = "gold coin", chance = 60000, maxCount = 50 },
-	{ name = "small emerald", chance = 7000 },
-	{ name = "green gem", chance = 200 },
-	{ name = "wand of inferno", chance = 390 },
-	{ name = "heavy machete", chance = 5000 },
-	{ name = "mystic turban", chance = 160 },
-	{ name = "pear", chance = 9390, maxCount = 5 },
-	{ name = "green piece of cloth", chance = 3000 },
-	{ name = "royal spear", chance = 15570, maxCount = 3 },
-	{ name = "strong mana potion", chance = 3500 },
-	{ name = "magma monocle", chance = 360 },
-	{ name = "jewelled belt", chance = 8540 },
-	{ name = "noble turban", chance = 1130 },
+	{
+		id = 2063,
+		chance = 20000,
+	},
+	{
+		id = 2149,
+		chance = 7000,
+		maxCount = 2,
+	},
+	{
+		id = 2673,
+		chance = 25000,
+		maxCount = 12,
+	},
+	{
+		id = 2663,
+		chance = 200,
+	},
+	{
+		id = 2442,
+		chance = 20000,
+	},
+	{
+		id = 1860,
+		chance = 2500,
+	},
+	{
+		id = 2155,
+		chance = 100,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 80,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 50,
+	},
 }
 
 monster.attacks = {

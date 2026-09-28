@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 50
 monster.maxHealth = 50
 monster.race = "blood"
-monster.corpse = 5960
-monster.speed = 63
+monster.corpse = 2806
+monster.speed = 23
 monster.manaCost = 290
 
 monster.changeTarget = {
@@ -72,26 +72,70 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Hmmm, bugs", yell = false },
-	{ text = "Hmmm, dogs", yell = false },
-	{ text = "Grrr", yell = false },
-	{ text = "Groar", yell = false },
-	{ text = "Gruntz!", yell = false },
+	{
+		text = "Grrrr",
+		yell = false,
+	},
+	{
+		text = "Groar",
+		yell = false,
+	},
+	{
+		text = "Gruntz!",
+		yell = false,
+	},
+	{
+		text = "Hmmm, bugs.",
+		yell = false,
+	},
+	{
+		text = "Hmmm, dogs.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 3003, chance = 7950 }, -- rope
-	{ name = "gold coin", chance = 65300, maxCount = 12 },
-	{ name = "silver amulet", chance = 80 },
-	{ name = "hand axe", chance = 18000 },
-	{ name = "spear", chance = 13000 },
-	{ name = "studded club", chance = 5000 },
-	{ name = "leather helmet", chance = 12000 },
-	{ id = 3412, chance = 4730 }, -- wooden shield
-	{ name = "leather boots", chance = 10000 },
-	{ name = "meat", chance = 15000 },
-	{ name = "bunch of troll hair", chance = 1000 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2512,
+		chance = 15000,
+	},
+	{
+		id = 2448,
+		chance = 5000,
+	},
+	{
+		id = 2389,
+		chance = 20000,
+	},
+	{
+		id = 2170,
+		chance = 100,
+	},
+	{
+		id = 2120,
+		chance = 8000,
+	},
+	{
+		id = 2666,
+		chance = 15000,
+	},
+	{
+		id = 2461,
+		chance = 10000,
+	},
+	{
+		id = 2643,
+		chance = 10000,
+	},
+	{
+		id = 2380,
+		chance = 18000,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 10,
+	},
 }
 
 monster.attacks = {

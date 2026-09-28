@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 125
 monster.maxHealth = 125
 monster.race = "blood"
-monster.corpse = 5979
-monster.speed = 95
+monster.corpse = 2862
+monster.speed = 55
 monster.manaCost = 360
 
 monster.changeTarget = {
@@ -57,7 +57,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 11,
+	runHealth = 10,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,
@@ -73,23 +73,54 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Alk!", yell = false },
-	{ text = "Trak grrrr brik.", yell = false },
-	{ text = "Grow truk grrrr.", yell = false },
+	{
+		text = "Grow truk grrrr.",
+		yell = false,
+	},
+	{
+		text = "Trak grrrr brik.",
+		yell = false,
+	},
+	{
+		text = "Alk!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 65000, maxCount = 15 },
-	{ name = "poison dagger", chance = 120 },
-	{ name = "chain armor", chance = 7360 },
-	{ name = "copper shield", chance = 560 },
-	{ name = "meat", chance = 15000 },
-	{ name = "orc tooth", chance = 700 },
-	{ name = "broken helmet", chance = 10800 },
-	{ name = "orc leather", chance = 4000 },
-	{ name = "skull belt", chance = 980 },
-	{ name = "light bandana", chance = 560 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2512,
+		chance = 18000,
+	},
+	{
+		id = 2385,
+		chance = 50000,
+	},
+	{
+		id = 2411,
+		chance = 100,
+	},
+	{
+		id = 2666,
+		chance = 15000,
+	},
+	{
+		id = 2148,
+		chance = 65000,
+		maxCount = 15,
+	},
+	{
+		id = 2530,
+		chance = 500,
+	},
+	{
+		id = 2464,
+		chance = 7500,
+	},
+	{
+		id = 2007,
+		chance = 7000,
+	},
 }
 
 monster.attacks = {

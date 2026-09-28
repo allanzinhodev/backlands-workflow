@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 15
 monster.maxHealth = 15
 monster.race = "blood"
-monster.corpse = 6017
-monster.speed = 90
+monster.corpse = 2992
+monster.speed = 50
 monster.manaCost = 220
 
 monster.changeTarget = {
@@ -74,8 +74,15 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "meat", chance = 85620, maxCount = 2 },
-	{ id = 3595, chance = 10000, maxCount = 2 }, -- carrot
+	{
+		id = 2666,
+		chance = 85000,
+		maxCount = 2,
+	},
+	{
+		id = 2684,
+		chance = 10000,
+	},
 }
 
 monster.defenses = {

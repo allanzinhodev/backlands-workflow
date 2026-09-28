@@ -30,9 +30,9 @@ monster.Bestiary = {
 
 monster.health = 55
 monster.maxHealth = 55
-monster.race = "venom"
-monster.corpse = 6018
-monster.speed = 64
+monster.race = "blood"
+monster.corpse = 2995
+monster.speed = 24
 monster.manaCost = 320
 
 monster.changeTarget = {
@@ -48,7 +48,7 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
@@ -72,23 +72,46 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Me strong! Me ate spinach!", yell = false },
-	{ text = "Groar!", yell = false },
-	{ text = "Grrrr", yell = false },
+	{
+		text = "Grrrr",
+		yell = false,
+	},
+	{
+		text = "Groar!",
+		yell = false,
+	},
+	{
+		text = "Me strong! Me ate spinach!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 15000 }, -- torch
-	{ name = "gold coin", chance = 50300, maxCount = 5 },
-	{ name = "mouldy cheese", chance = 10000 },
-	{ name = "spear", chance = 13000 },
-	{ name = "fishing rod", chance = 60 },
-	{ name = "leather boots", chance = 9500 },
-	{ id = 3578, chance = 60000 }, -- fish
-	{ name = "troll green", chance = 1200 },
-	{ id = 5901, chance = 2140 }, -- wood
-	{ name = "swamp grass", chance = 3100 },
-	{ name = "medicine pouch", chance = 2160 },
+	{
+		id = 2050,
+		chance = 15000,
+	},
+	{
+		id = 2643,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 5,
+	},
+	{
+		id = 2580,
+		chance = 100,
+	},
+	{
+		id = 2667,
+		chance = 60000,
+	},
+	{
+		id = 2379,
+		chance = 30000,
+	},
 }
 
 monster.attacks = {

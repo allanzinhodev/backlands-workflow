@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Dharalion")
 local monster = {}
 
 monster.description = "Dharalion"
-monster.experience = 570
+monster.experience = 380
 monster.outfit = {
 	lookType = 203,
 	lookHead = 0,
@@ -18,11 +18,11 @@ monster.bosstiary = {
 	bossRace = RARITY_NEMESIS,
 }
 
-monster.health = 380
-monster.maxHealth = 380
+monster.health = 390
+monster.maxHealth = 390
 monster.race = "blood"
-monster.corpse = 6011
-monster.speed = 120
+monster.corpse = 2979
+monster.speed = 72
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -65,39 +65,97 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "demon skeleton", chance = 6, interval = 1000, count = 2 },
+		{
+			name = "Demon Skeleton",
+			interval = 18000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Feel my wrath!", yell = false },
-	{ text = "No one will stop my ascension!", yell = false },
-	{ text = "My powers are divine!", yell = false },
-	{ text = "You desecrated this temple!", yell = false },
-	{ text = "Muahahaha!", yell = false },
+	{
+		text = "You desecrated this temple!",
+		yell = false,
+	},
+	{
+		text = "Noone will stop my ascension!",
+		yell = false,
+	},
+	{
+		text = "My powers are divine!",
+		yell = false,
+	},
+	{
+		text = "Muahahaha!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 100000, maxCount = 100 },
-	{ name = "holy orchid", chance = 100000 },
-	{ name = "elvish talisman", chance = 90100 },
-	{ name = "elven astral observer", chance = 86140 },
-	{ name = "yellow gem", chance = 36630 },
-	{ name = "blank rune", chance = 19800 },
-	{ name = "melon", chance = 24750 },
-	{ name = "bread", chance = 13860 },
-	{ name = "elven amulet", chance = 16830 },
-	{ id = 238, chance = 15840 }, -- great mana potion
-	{ name = "life crystal", chance = 12870 },
-	{ name = "sling herb", chance = 10890 },
-	{ id = 3257, chance = 7920 }, -- cornucopia
-	{ name = "green tunic", chance = 5940 },
-	{ name = "royal spear", chance = 990 },
-	{ id = 2902, chance = 1000 }, -- bowl
-	{ name = "candlestick", chance = 1000 },
-	{ id = 5805, chance = 1000 }, -- golden goblet
+	{
+		id = 2154,
+		chance = 400,
+	},
+	{
+		id = 2401,
+		chance = 11000,
+	},
+	{
+		id = 2802,
+		chance = 7000,
+	},
+	{
+		id = 1949,
+		chance = 30000,
+	},
+	{
+		id = 2642,
+		chance = 9000,
+	},
+	{
+		id = 2682,
+		chance = 20000,
+	},
+	{
+		id = 2177,
+		chance = 1500,
+	},
+	{
+		id = 2600,
+		chance = 9000,
+	},
+	{
+		id = 2652,
+		chance = 9000,
+	},
+	{
+		id = 2747,
+		chance = 9000,
+	},
+	{
+		id = 2198,
+		chance = 2000,
+	},
+	{
+		id = 2047,
+		chance = 9000,
+	},
+	{
+		id = 2689,
+		chance = 14000,
+	},
+	{
+		id = 2032,
+		chance = 6500,
+	},
+	{
+		id = 2260,
+		chance = 18000,
+	},
 }
 
 monster.attacks = {

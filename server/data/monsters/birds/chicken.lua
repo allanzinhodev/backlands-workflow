@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 15
 monster.maxHealth = 15
 monster.race = "blood"
-monster.corpse = 6042
-monster.speed = 64
+monster.corpse = 4265
+monster.speed = 24
 monster.manaCost = 220
 
 monster.changeTarget = {
@@ -73,15 +73,26 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Cluck Cluck", yell = false },
-	{ text = "Gokgoooook", yell = false },
+	{
+		text = "Gokgoooook",
+		yell = false,
+	},
+	{
+		text = "Cluck Cluck",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "meat", chance = 1760, maxCount = 2 },
-	{ id = 3606, chance = 860 }, -- egg
-	{ name = "worm", chance = 8790 },
-	{ name = "chicken feather", chance = 17950 },
+	{
+		id = 2666,
+		chance = 2000,
+		maxCount = 2,
+	},
+	{
+		id = 2695,
+		chance = 1000,
+	},
 }
 
 monster.defenses = {

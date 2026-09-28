@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Lizard Sentinel"
 monster.description = "a lizard sentinel"
-monster.experience = 110
+monster.experience = 105
 monster.outfit = {
 	lookType = 114,
 	lookHead = 0,
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 265
 monster.maxHealth = 265
 monster.race = "blood"
-monster.corpse = 6040
-monster.speed = 90
+monster.corpse = 4259
+monster.speed = 50
 monster.manaCost = 560
 
 monster.changeTarget = {
@@ -48,7 +48,7 @@ monster.flags = {
 	attackable = true,
 	hostile = true,
 	convinceable = true,
-	pushable = false,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
 	canPushItems = true,
@@ -71,22 +71,47 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Tssss!", yell = false },
+	{
+		text = "Tssss!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "small diamond", chance = 190 },
-	{ name = "gold coin", chance = 89000, maxCount = 80 },
-	{ name = "halberd", chance = 510 },
-	{ name = "spear", chance = 8750, maxCount = 3 },
-	{ name = "obsidian lance", chance = 1120 },
-	{ name = "chain armor", chance = 8560 },
-	{ name = "scale armor", chance = 7730 },
-	{ name = "hunting spear", chance = 4700 },
-	{ name = "sentinel shield", chance = 320 },
-	{ name = "lizard leather", chance = 990 },
-	{ name = "lizard scale", chance = 960 },
-	{ name = "health potion", chance = 590 },
+	{
+		id = 2389,
+		chance = 10000,
+		maxCount = 3,
+	},
+	{
+		id = 2145,
+		chance = 100,
+	},
+	{
+		id = 3974,
+		chance = 300,
+	},
+	{
+		id = 2483,
+		chance = 8000,
+	},
+	{
+		id = 2425,
+		chance = 1200,
+	},
+	{
+		id = 2381,
+		chance = 500,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 15,
+	},
+	{
+		id = 2464,
+		chance = 9000,
+	},
 }
 
 monster.attacks = {

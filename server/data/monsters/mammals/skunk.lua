@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 20
 monster.maxHealth = 20
 monster.race = "blood"
-monster.corpse = 6035
-monster.speed = 68
+monster.corpse = 3046
+monster.speed = 28
 monster.manaCost = 200
 
 monster.changeTarget = {
@@ -49,10 +49,10 @@ monster.flags = {
 	attackable = true,
 	hostile = true,
 	convinceable = true,
-	pushable = false,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -75,8 +75,11 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "bulb of garlic", chance = 4910 },
-	{ name = "skunk tail", chance = 920 },
+	{
+		id = 2666,
+		chance = 1000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

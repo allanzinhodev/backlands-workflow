@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 880
 monster.maxHealth = 880
 monster.race = "undead"
-monster.corpse = 6028
-monster.speed = 105
+monster.corpse = 3025
+monster.speed = 65
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -75,42 +75,103 @@ monster.light = {
 monster.summon = {
 	maxSummons = 4,
 	summons = {
-		{ name = "Bonebeast", chance = 10, interval = 2000, count = 4 },
+		{
+			name = "Bonebeast",
+			interval = 6000,
+			chance = 100,
+			count = 4,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Doomed be the living!", yell = false },
-	{ text = "Death awaits all!", yell = false },
-	{ text = "Thy living flesh offends me!", yell = false },
-	{ text = "Death and Decay!", yell = false },
-	{ text = "You will endure agony beyond thy death!", yell = false },
-	{ text = "Pain sweet pain!", yell = false },
-	{ text = "Come to me my children!", yell = false },
+	{
+		text = "Death awaits all!",
+		yell = false,
+	},
+	{
+		text = "Doomed be the living!",
+		yell = false,
+	},
+	{
+		text = "Death and Decay!",
+		yell = false,
+	},
+	{
+		text = "You will endure agony beyond thy death!",
+		yell = false,
+	},
+	{
+		text = "Come to me my children!",
+		yell = false,
+	},
+	{
+		text = "Pain sweet pain!",
+		yell = false,
+	},
+	{
+		text = "Thy living flesh offends me!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "white pearl", chance = 5000 },
-	{ name = "black pearl", chance = 5960, maxCount = 3 },
-	{ name = "gold coin", chance = 100000, maxCount = 139 },
-	{ name = "small emerald", chance = 2230, maxCount = 3 },
-	{ name = "platinum coin", chance = 19720 },
-	{ name = "yellow gem", chance = 690 },
-	{ name = "platinum amulet", chance = 450 },
-	{ id = 3059, chance = 10000 }, -- spellbook
-	{ name = "mind stone", chance = 350 },
-	{ id = 3098, chance = 1540 }, -- ring of healing
-	{ name = "skull staff", chance = 550 },
-	{ name = "strange helmet", chance = 740 },
-	{ name = "ancient shield", chance = 2422 },
-	{ name = "castle shield", chance = 350 },
-	{ name = "blue robe", chance = 150 },
-	{ name = "strong mana potion", chance = 7500 },
-	{ name = "lightning boots", chance = 200 },
-	{ name = "small topaz", chance = 2430, maxCount = 3 },
-	{ name = "maxilla maximus", chance = 100 },
+	{
+		id = 2143,
+		chance = 2500,
+	},
+	{
+		id = 2479,
+		chance = 500,
+	},
+	{
+		id = 2401,
+		chance = 60000,
+	},
+	{
+		id = 2175,
+		chance = 10000,
+	},
+	{
+		id = 2214,
+		chance = 1000,
+	},
+	{
+		id = 2171,
+		chance = 100,
+	},
+	{
+		id = 2178,
+		chance = 500,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 40,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 80,
+	},
+	{
+		id = 2237,
+		chance = 20000,
+	},
+	{
+		id = 2535,
+		chance = 200,
+	},
+	{
+		id = 2656,
+		chance = 100,
+	},
+	{
+		id = 2144,
+		chance = 5000,
+	},
 }
 
 monster.attacks = {

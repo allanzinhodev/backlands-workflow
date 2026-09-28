@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 100
 monster.maxHealth = 100
 monster.race = "blood"
-monster.corpse = 5982
-monster.speed = 80
+monster.corpse = 2871
+monster.speed = 40
 monster.manaCost = 390
 
 monster.changeTarget = {
@@ -50,7 +50,7 @@ monster.flags = {
 	attackable = true,
 	hostile = true,
 	convinceable = true,
-	pushable = true,
+	pushable = false,
 	rewardBoss = false,
 	illusionable = true,
 	canPushItems = false,
@@ -73,22 +73,65 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Ruan Wihmpy!", yell = false },
-	{ text = "Kaplar!", yell = false },
+	{
+		text = "Ruan Wihmpy!",
+		yell = false,
+	},
+	{
+		text = "Kaplar!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 75410, maxCount = 30 },
-	{ name = "crossbow", chance = 830 },
-	{ name = "brass armor", chance = 530 },
-	{ name = "scale armor", chance = 530 },
-	{ name = "bolt", chance = 90450, maxCount = 20 },
-	{ name = "meat", chance = 5000 },
-	{ name = "minotaur leather", chance = 1900 },
-	{ name = "piercing bolt", chance = 12340, maxCount = 4 },
-	{ name = "broken crossbow", chance = 15400 },
-	{ name = "minotaur horn", chance = 1990, maxCount = 2 },
-	{ name = "piece of archer armor", chance = 8260 },
+	{
+		id = 2481,
+		chance = 2000,
+	},
+	{
+		id = 2483,
+		chance = 1000,
+	},
+	{
+		id = 2666,
+		chance = 10000,
+	},
+	{
+		id = 2649,
+		chance = 5000,
+	},
+	{
+		id = 2461,
+		chance = 5000,
+	},
+	{
+		id = 2148,
+		chance = 15000,
+		maxCount = 20,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 10,
+	},
+	{
+		id = 2455,
+		chance = 10000,
+	},
+	{
+		id = 2465,
+		chance = 2000,
+	},
+	{
+		id = 2543,
+		chance = 80000,
+		maxCount = 5,
+	},
+	{
+		id = 2543,
+		chance = 50000,
+		maxCount = 15,
+	},
 }
 
 monster.attacks = {

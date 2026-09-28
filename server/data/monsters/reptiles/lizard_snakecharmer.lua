@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Lizard Snakecharmer"
 monster.description = "a lizard snakecharmer"
-monster.experience = 210
+monster.experience = 200
 monster.outfit = {
 	lookType = 115,
 	lookHead = 0,
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 325
 monster.maxHealth = 325
 monster.race = "blood"
-monster.corpse = 6041
-monster.speed = 172
+monster.corpse = 4262
+monster.speed = 52
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -71,30 +71,66 @@ monster.light = {
 monster.summon = {
 	maxSummons = 6,
 	summons = {
-		{ name = "cobra", chance = 20, interval = 2000, count = 6 },
+		{
+			name = "Cobra",
+			interval = 4000,
+			chance = 100,
+			count = 6,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "I smeeeel warm blood!", yell = false },
-	{ text = "Shhhhhhh", yell = false },
+	{
+		text = "Shhhhhhhh.",
+		yell = false,
+	},
+	{
+		text = "I ssssmell warm blood!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 83740, maxCount = 55 },
-	{ name = "small amethyst", chance = 520 },
-	{ name = "yellow gem", chance = 150 },
-	{ id = 3052, chance = 340 }, -- life ring
-	{ name = "life crystal", chance = 1430 },
-	{ name = "terra rod", chance = 920 },
-	{ name = "snakebite rod", chance = 230 },
-	{ name = "cape", chance = 8640 },
-	{ name = "charmer's tiara", chance = 230 },
-	{ name = "lizard leather", chance = 1320 },
-	{ name = "lizard scale", chance = 860 },
-	{ name = "mana potion", chance = 860 },
+	{
+		id = 2154,
+		chance = 200,
+	},
+	{
+		id = 2150,
+		chance = 500,
+	},
+	{
+		id = 2168,
+		chance = 200,
+	},
+	{
+		id = 2177,
+		chance = 1000,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 25,
+	},
+	{
+		id = 2237,
+		chance = 19900,
+	},
+	{
+		id = 2817,
+		chance = 70000,
+	},
+	{
+		id = 3971,
+		chance = 100,
+	},
+	{
+		id = 2654,
+		chance = 9000,
+	},
 }
 
 monster.attacks = {

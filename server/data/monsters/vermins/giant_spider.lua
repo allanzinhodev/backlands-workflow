@@ -36,8 +36,8 @@ monster.Bestiary = {
 monster.health = 1300
 monster.maxHealth = 1300
 monster.race = "venom"
-monster.corpse = 5977
-monster.speed = 120
+monster.corpse = 2857
+monster.speed = 80
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -79,7 +79,12 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "Poison Spider", chance = 10, interval = 2000, count = 2 },
+		{
+			name = "Poison Spider",
+			interval = 10000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
@@ -89,19 +94,49 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 99990, maxCount = 195 },
-	{ id = 3053, chance = 710 }, -- time ring
-	{ name = "platinum amulet", chance = 280 },
-	{ name = "two handed sword", chance = 5100 },
-	{ name = "steel helmet", chance = 4980 },
-	{ name = "plate armor", chance = 9980 },
-	{ name = "knight armor", chance = 500 },
-	{ name = "knight legs", chance = 840 },
-	{ name = "poison arrow", chance = 11950, maxCount = 12 },
-	{ name = "plate legs", chance = 8333 },
-	{ name = "spider silk", chance = 1990 },
-	{ name = "strong health potion", chance = 3550 },
-	{ name = "lightning headband", chance = 270 },
+	{
+		id = 2169,
+		chance = 700,
+	},
+	{
+		id = 2457,
+		chance = 5000,
+	},
+	{
+		id = 2171,
+		chance = 100,
+	},
+	{
+		id = 2463,
+		chance = 10000,
+	},
+	{
+		id = 2477,
+		chance = 300,
+	},
+	{
+		id = 2476,
+		chance = 300,
+	},
+	{
+		id = 2148,
+		chance = 99900,
+		maxCount = 11,
+	},
+	{
+		id = 2148,
+		chance = 66600,
+		maxCount = 33,
+	},
+	{
+		id = 2148,
+		chance = 33300,
+		maxCount = 55,
+	},
+	{
+		id = 2478,
+		chance = 8000,
+	},
 }
 
 monster.attacks = {

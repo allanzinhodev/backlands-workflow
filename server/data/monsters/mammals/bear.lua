@@ -33,8 +33,8 @@ monster.Bestiary = {
 monster.health = 80
 monster.maxHealth = 80
 monster.race = "blood"
-monster.corpse = 5975
-monster.speed = 78
+monster.corpse = 2849
+monster.speed = 38
 monster.manaCost = 300
 
 monster.changeTarget = {
@@ -74,15 +74,27 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Grrrr", yell = false },
-	{ text = "Groar", yell = false },
+	{
+		text = "Grrrr",
+		yell = false,
+	},
+	{
+		text = "Groar",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "meat", chance = 39750, maxCount = 4 },
-	{ name = "ham", chance = 20000, maxCount = 3 },
-	{ name = "bear paw", chance = 2000 },
-	{ name = "honeycomb", chance = 460 },
+	{
+		id = 2666,
+		chance = 70000,
+		maxCount = 4,
+	},
+	{
+		id = 2671,
+		chance = 40000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

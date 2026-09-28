@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 105
 monster.maxHealth = 105
 monster.race = "blood"
-monster.corpse = 6046
-monster.speed = 78
+monster.corpse = 4277
+monster.speed = 38
 monster.manaCost = 350
 
 monster.changeTarget = {
@@ -76,10 +76,33 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 50000, maxCount = 10 },
-	{ name = "ham", chance = 40000 },
-	{ name = "crocodile boots", chance = 100 },
-	{ name = "piece of crocodile leather", chance = 20180 },
+	{
+		id = 2666,
+		chance = 70000,
+		maxCount = 4,
+	},
+	{
+		id = 2649,
+		chance = 8000,
+	},
+	{
+		id = 2461,
+		chance = 8000,
+	},
+	{
+		id = 2671,
+		chance = 40000,
+		maxCount = 2,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 10,
+	},
+	{
+		id = 3982,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

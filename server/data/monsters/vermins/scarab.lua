@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 320
 monster.maxHealth = 320
 monster.race = "venom"
-monster.corpse = 6024
-monster.speed = 80
+monster.corpse = 3013
+monster.speed = 40
 monster.manaCost = 395
 
 monster.changeTarget = {
@@ -48,8 +48,8 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
-	pushable = true,
+	convinceable = true,
+	pushable = false,
 	rewardBoss = false,
 	illusionable = true,
 	canPushItems = true,
@@ -75,13 +75,50 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 86800, maxCount = 52 },
-	{ name = "small emerald", chance = 413 },
-	{ name = "small amethyst", chance = 540 },
-	{ name = "scarab coin", chance = 1098 },
-	{ name = "daramian mace", chance = 245 },
-	{ name = "meat", chance = 40000, maxCount = 2 },
-	{ name = "piece of scarab shell", chance = 4950 },
+	{
+		id = 2149,
+		chance = 300,
+	},
+	{
+		id = 2150,
+		chance = 500,
+	},
+	{
+		id = 2159,
+		chance = 100,
+	},
+	{
+		id = 2159,
+		chance = 1000,
+	},
+	{
+		id = 2666,
+		chance = 54000,
+		maxCount = 2,
+	},
+	{
+		id = 2442,
+		chance = 500,
+	},
+	{
+		id = 2148,
+		chance = 44500,
+		maxCount = 40,
+	},
+	{
+		id = 2148,
+		chance = 70500,
+		maxCount = 12,
+	},
+	{
+		id = 2439,
+		chance = 300,
+	},
+	{
+		id = 2544,
+		chance = 5000,
+		maxCount = 3,
+	},
 }
 
 monster.attacks = {

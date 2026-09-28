@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 65
 monster.maxHealth = 65
 monster.race = "blood"
-monster.corpse = 4188
-monster.speed = 60
+monster.corpse = 3007
+monster.speed = 20
 monster.manaCost = 275
 
 monster.changeTarget = {
@@ -48,11 +48,11 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
-	pushable = false,
+	convinceable = true,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -72,13 +72,13 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Fsssss", yell = false },
-	{ text = "Zzzzzz", yell = false },
+	{
+		text = "Zzzzzz",
+		yell = false,
+	},
 }
 
-monster.loot = {
-	{ name = "cobra tongue", chance = 5000 },
-}
+monster.loot = {}
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = 0, condition = { type = CONDITION_POISON, totalDamage = 100, interval = 4000 } }, -- poison

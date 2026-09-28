@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 130
 monster.maxHealth = 130
 monster.race = "blood"
-monster.corpse = 18226
-monster.speed = 88
+monster.corpse = 3058
+monster.speed = 48
 monster.manaCost = 390
 
 monster.changeTarget = {
@@ -55,7 +55,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 15,
+	runHealth = 18,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,
@@ -71,22 +71,59 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You saw something you shouldn't!", yell = false },
-	{ text = "I will silence you forever!", yell = false },
+	{
+		text = "I will silence you forever!",
+		yell = false,
+	},
+	{
+		text = "You saw something you shouldn't!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 30200, maxCount = 2 }, -- torch
-	{ name = "gold coin", chance = 80000, maxCount = 10 },
-	{ id = 3264, chance = 5000 }, -- sword
-	{ name = "knife", chance = 9920 },
-	{ name = "combat knife", chance = 4400 },
-	{ name = "short sword", chance = 10000 },
-	{ name = "leather helmet", chance = 10050 },
-	{ name = "leather legs", chance = 14840 },
-	{ name = "ham", chance = 10200 },
-	{ id = 7397, chance = 110 }, -- deer trophy
-	{ name = "raspberry", chance = 5000, maxCount = 5 },
+	{
+		id = 2050,
+		chance = 30000,
+		maxCount = 2,
+	},
+	{
+		id = 2376,
+		chance = 5000,
+	},
+	{
+		id = 2406,
+		chance = 10000,
+	},
+	{
+		id = 2666,
+		chance = 50000,
+	},
+	{
+		id = 2649,
+		chance = 15000,
+	},
+	{
+		id = 2461,
+		chance = 10000,
+	},
+	{
+		id = 2403,
+		chance = 10000,
+	},
+	{
+		id = 2671,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 10,
+	},
+	{
+		id = 2404,
+		chance = 4000,
+	},
 }
 
 monster.attacks = {

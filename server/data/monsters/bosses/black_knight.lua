@@ -10,7 +10,7 @@ monster.outfit = {
 	lookBody = 95,
 	lookLegs = 95,
 	lookFeet = 95,
-	lookAddons = 3,
+	lookAddons = 0,
 	lookMount = 0,
 }
 
@@ -22,8 +22,8 @@ monster.bosstiary = {
 monster.health = 1800
 monster.maxHealth = 1800
 monster.race = "blood"
-monster.corpse = 18074
-monster.speed = 125
+monster.corpse = 3058
+monster.speed = 155
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -65,35 +65,113 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "NO PRISONERS!", yell = true },
-	{ text = "By Bolg's blood!", yell = false },
-	{ text = "You're no match for me!", yell = false },
-	{ text = "NO MERCY!", yell = true },
-	{ text = "MINE!", yell = true },
+	{
+		text = "MINE!",
+		yell = true,
+	},
+	{
+		text = "NO PRISONERS!",
+		yell = true,
+	},
+	{
+		text = "NO MERCY!",
+		yell = true,
+	},
+	{
+		text = "By Bolg's Blood!",
+		yell = false,
+	},
+	{
+		text = "You're no match for me!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 48680, maxCount = 136 },
-	{ name = "spear", chance = 29510, maxCount = 3 },
-	{ name = "brown bread", chance = 20330, maxCount = 2 },
-	{ id = 3003, chance = 14370 }, -- rope
-	{ name = "brass legs", chance = 13050 },
-	{ name = "halberd", chance = 12580 },
-	{ name = "plate armor", chance = 10930 },
-	{ name = "steel helmet", chance = 10400 },
-	{ name = "two handed sword", chance = 9570 },
-	{ name = "battle hammer", chance = 6950 },
-	{ name = "warrior helmet", chance = 4710 },
-	{ name = "knight axe", chance = 2650 },
-	{ name = "dark helmet", chance = 2400 },
-	{ name = "dark armor", chance = 2010 },
-	{ name = "knight legs", chance = 1030 },
-	{ name = "knight armor", chance = 750 },
-	{ name = "ruby necklace", chance = 730 },
-	{ name = "lightning legs", chance = 590 },
-	{ name = "boots of haste", chance = 390 },
-	{ name = "dragon lance", chance = 310 },
-	{ name = "piggy bank", chance = 110 },
+	{
+		id = 2475,
+		chance = 5000,
+	},
+	{
+		id = 2377,
+		chance = 10000,
+	},
+	{
+		id = 2457,
+		chance = 10000,
+	},
+	{
+		id = 2389,
+		chance = 30000,
+		maxCount = 3,
+	},
+	{
+		id = 2133,
+		chance = 800,
+	},
+	{
+		id = 2120,
+		chance = 15000,
+	},
+	{
+		id = 2463,
+		chance = 10000,
+	},
+	{
+		id = 2477,
+		chance = 1000,
+	},
+	{
+		id = 2430,
+		chance = 2500,
+	},
+	{
+		id = 2476,
+		chance = 1000,
+	},
+	{
+		id = 2381,
+		chance = 13000,
+	},
+	{
+		id = 2148,
+		chance = 22200,
+		maxCount = 90,
+	},
+	{
+		id = 2148,
+		chance = 33300,
+		maxCount = 60,
+	},
+	{
+		id = 2414,
+		chance = 300,
+	},
+	{
+		id = 2490,
+		chance = 2000,
+	},
+	{
+		id = 2489,
+		chance = 2000,
+	},
+	{
+		id = 2691,
+		chance = 20000,
+		maxCount = 2,
+	},
+	{
+		id = 2478,
+		chance = 13000,
+	},
+	{
+		id = 2195,
+		chance = 500,
+	},
+	{
+		id = 2417,
+		chance = 7000,
+	},
 }
 
 monster.attacks = {

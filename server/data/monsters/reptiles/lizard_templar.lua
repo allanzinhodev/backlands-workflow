@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Lizard Templar"
 monster.description = "a lizard templar"
-monster.experience = 155
+monster.experience = 145
 monster.outfit = {
 	lookType = 113,
 	lookHead = 0,
@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 410
 monster.maxHealth = 410
 monster.race = "blood"
-monster.corpse = 4239
-monster.speed = 87
+monster.corpse = 4256
+monster.speed = 47
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -72,23 +72,50 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Hissss!", yell = false },
+	{
+		text = "Hissss!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 84000, maxCount = 60 },
-	{ name = "small emerald", chance = 250 },
-	{ id = 3264, chance = 4000 }, -- sword
-	{ name = "morning star", chance = 1990 },
-	{ name = "short sword", chance = 9500 },
-	{ name = "steel helmet", chance = 2000 },
-	{ name = "plate armor", chance = 1000 },
-	{ name = "templar scytheblade", chance = 500 },
-	{ name = "salamander shield", chance = 110 },
-	{ name = "lizard leather", chance = 880 },
-	{ name = "lizard scale", chance = 990 },
-	{ name = "health potion", chance = 890 },
-	{ name = "zaoan monk robe", chance = 5 },
+	{
+		id = 3963,
+		chance = 500,
+	},
+	{
+		id = 2376,
+		chance = 5000,
+	},
+	{
+		id = 2457,
+		chance = 2000,
+	},
+	{
+		id = 2149,
+		chance = 300,
+	},
+	{
+		id = 2406,
+		chance = 10000,
+	},
+	{
+		id = 3975,
+		chance = 100,
+	},
+	{
+		id = 2463,
+		chance = 1000,
+	},
+	{
+		id = 2394,
+		chance = 700,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 20,
+	},
 }
 
 monster.attacks = {

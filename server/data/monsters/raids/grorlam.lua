@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Grorlam"
 monster.description = "Grorlam"
-monster.experience = 2400
+monster.experience = 1600
 monster.outfit = {
 	lookType = 205,
 	lookHead = 0,
@@ -19,12 +19,12 @@ monster.bosstiary = {
 	bossRace = RARITY_NEMESIS,
 }
 
-monster.health = 3000
-monster.maxHealth = 3000
-monster.race = "blood"
-monster.corpse = 6005
-monster.speed = 120
-monster.manaCost = 0
+monster.health = 2700
+monster.maxHealth = 2700
+monster.race = "undead"
+monster.corpse = 2952
+monster.speed = 100
+monster.manaCost = 590
 
 monster.changeTarget = {
 	interval = 5000,
@@ -66,10 +66,49 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 3031, chance = 100000, maxCount = 20 }, -- gold coin
-	{ id = 3377, chance = 10000 }, -- scale armor
-	{ id = 1781, chance = 20000, maxCount = 5 }, -- small stone
-	{ id = 3283, chance = 2500 }, -- carlin sword
+	{
+		id = 2509,
+		chance = 7000,
+	},
+	{
+		id = 2645,
+		chance = 500,
+	},
+	{
+		id = 1294,
+		chance = 13000,
+		maxCount = 4,
+	},
+	{
+		id = 2150,
+		chance = 6500,
+		maxCount = 2,
+	},
+	{
+		id = 2483,
+		chance = 5000,
+	},
+	{
+		id = 2156,
+		chance = 500,
+	},
+	{
+		id = 2166,
+		chance = 5500,
+	},
+	{
+		id = 2553,
+		chance = 6000,
+	},
+	{
+		id = 2148,
+		chance = 16000,
+		maxCount = 15,
+	},
+	{
+		id = 2124,
+		chance = 200,
+	},
 }
 
 monster.attacks = {

@@ -34,8 +34,8 @@ monster.Bestiary = {
 monster.health = 45
 monster.maxHealth = 45
 monster.race = "venom"
-monster.corpse = 5988
-monster.speed = 75
+monster.corpse = 2897
+monster.speed = 35
 monster.manaCost = 310
 
 monster.changeTarget = {
@@ -52,7 +52,7 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
@@ -78,9 +78,7 @@ monster.voices = {
 	chance = 10,
 }
 
-monster.loot = {
-	{ name = "scorpion tail", chance = 4930 },
-}
+monster.loot = {}
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -50, condition = { type = CONDITION_POISON, totalDamage = 340, interval = 4000 } },

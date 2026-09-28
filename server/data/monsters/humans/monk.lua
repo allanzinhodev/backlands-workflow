@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 240
 monster.maxHealth = 240
 monster.race = "blood"
-monster.corpse = 18090
-monster.speed = 120
+monster.corpse = 3058
+monster.speed = 80
 monster.manaCost = 600
 
 monster.changeTarget = {
@@ -74,25 +74,70 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Repent Heretic!", yell = false },
-	{ text = "A prayer to the almighty one!", yell = false },
-	{ text = "I will punish the sinners!", yell = false },
+	{
+		text = "I will punish the sinners!",
+		yell = false,
+	},
+	{
+		text = "A prayer to the almighty one.",
+		yell = false,
+	},
+	{
+		text = "Repent Heretic!",
+		yell = true,
+	},
 }
 
 monster.loot = {
-	{ id = 2815, chance = 2000 }, -- scroll
-	{ name = "brown flask", chance = 820 },
-	{ id = 2914, chance = 880 }, -- lamp
-	{ name = "gold coin", chance = 15000, maxCount = 18 },
-	{ id = 3050, chance = 100 }, -- power ring
-	{ name = "life crystal", chance = 1002 },
-	{ name = "ankh", chance = 2240 },
-	{ id = 3289, chance = 440 }, -- staff
-	{ name = "sandals", chance = 710 },
-	{ name = "bread", chance = 20000 },
-	{ name = "book of prayers", chance = 4930 },
-	{ name = "rope belt", chance = 2950 },
-	{ name = "safety pin", chance = 1001 },
+	{
+		id = 2401,
+		chance = 11000,
+	},
+	{
+		id = 1949,
+		chance = 20000,
+	},
+	{
+		id = 2642,
+		chance = 8000,
+	},
+	{
+		id = 2166,
+		chance = 100,
+	},
+	{
+		id = 2044,
+		chance = 10000,
+	},
+	{
+		id = 2177,
+		chance = 1000,
+	},
+	{
+		id = 2467,
+		chance = 5500,
+	},
+	{
+		id = 2148,
+		chance = 15000,
+		maxCount = 18,
+	},
+	{
+		id = 2015,
+		chance = 9000,
+	},
+	{
+		id = 2689,
+		chance = 20000,
+	},
+	{
+		id = 1987,
+		chance = 13000,
+	},
+	{
+		id = 2193,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

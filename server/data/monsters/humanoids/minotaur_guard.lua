@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 185
 monster.maxHealth = 185
 monster.race = "blood"
-monster.corpse = 5983
-monster.speed = 95
+monster.corpse = 2876
+monster.speed = 55
 monster.manaCost = 550
 
 monster.changeTarget = {
@@ -75,22 +75,58 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Kirrl Karrrl!", yell = false },
-	{ text = "Kaplar", yell = false },
+	{
+		text = "Kirll Karrrl!",
+		yell = false,
+	},
+	{
+		text = "Kaplar!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 59640, maxCount = 20 },
-	{ name = "double axe", chance = 400 },
-	{ name = "chain armor", chance = 2980 },
-	{ name = "brass armor", chance = 4390 },
-	{ name = "battle shield", chance = 2150 },
-	{ name = "fishing rod", chance = 480 },
-	{ name = "minotaur leather", chance = 1000 },
-	{ id = 7401, chance = 80 }, -- minotaur trophy
-	{ name = "health potion", chance = 400 },
-	{ name = "minotaur horn", chance = 8330, maxCount = 2 },
-	{ name = "piece of warrior armor", chance = 5040 },
+	{
+		id = 2666,
+		chance = 10000,
+	},
+	{
+		id = 2649,
+		chance = 15000,
+	},
+	{
+		id = 2388,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 20,
+	},
+	{
+		id = 2580,
+		chance = 5000,
+	},
+	{
+		id = 2387,
+		chance = 400,
+	},
+	{
+		id = 2648,
+		chance = 1000,
+	},
+	{
+		id = 2464,
+		chance = 3000,
+	},
+	{
+		id = 2465,
+		chance = 4000,
+	},
+	{
+		id = 2513,
+		chance = 2000,
+	},
 }
 
 monster.attacks = {

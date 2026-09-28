@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 115
 monster.maxHealth = 115
 monster.race = "blood"
-monster.corpse = 5978
-monster.speed = 70
+monster.corpse = 2860
+monster.speed = 30
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -72,29 +72,67 @@ monster.light = {
 monster.summon = {
 	maxSummons = 4,
 	summons = {
-		{ name = "Snake", chance = 20, interval = 2000, count = 3 },
+		{
+			name = "Snake",
+			interval = 4000,
+			chance = 100,
+			count = 4,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Huumans stinkk!", yell = false },
-	{ text = "Grak brrretz gulu.", yell = false },
+	{
+		text = "Grak brrretz gulu.",
+		yell = false,
+	},
+	{
+		text = "Huumans stinkk!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2824, chance = 520 }, -- book
-	{ name = "gold coin", chance = 90000, maxCount = 5 },
-	{ name = "wand of decay", chance = 1000 },
-	{ name = "spear", chance = 4850 },
-	{ name = "chain armor", chance = 8750 },
-	{ name = "corncob", chance = 10600, maxCount = 2 },
-	{ name = "orc tooth", chance = 2100 },
-	{ name = "broken shamanic staff", chance = 10300 },
-	{ name = "shamanic hood", chance = 6860 },
-	{ name = "orc leather", chance = 4300 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2190,
+		chance = 1,
+	},
+	{
+		id = 2401,
+		chance = 7000,
+	},
+	{
+		id = 2389,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 90000,
+		maxCount = 5,
+	},
+	{
+		id = 2686,
+		chance = 11000,
+		maxCount = 2,
+	},
+	{
+		id = 1987,
+		chance = 11000,
+	},
+	{
+		id = 2458,
+		chance = 9000,
+	},
+	{
+		id = 2464,
+		chance = 9000,
+	},
+	{
+		id = 1973,
+		chance = 4500,
+	},
 }
 
 monster.attacks = {

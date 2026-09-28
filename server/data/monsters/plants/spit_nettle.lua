@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 150
 monster.maxHealth = 150
 monster.race = "venom"
-monster.corpse = 6062
-monster.speed = 0
+monster.corpse = 4326
+monster.speed = -40
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -56,7 +56,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 150,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,
@@ -75,11 +75,27 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 10750, maxCount = 5 },
-	{ name = "shadow herb", chance = 11080 },
-	{ name = "nettle spit", chance = 9620 },
-	{ name = "sling herb", chance = 5680, maxCount = 2 },
-	{ name = "nettle blossom", chance = 970 },
+	{
+		id = 2802,
+		chance = 5000,
+	},
+	{
+		id = 2802,
+		chance = 1000,
+	},
+	{
+		id = 2804,
+		chance = 10000,
+	},
+	{
+		id = 2747,
+		chance = 1000,
+	},
+	{
+		id = 2148,
+		chance = 10000,
+		maxCount = 5,
+	},
 }
 
 monster.attacks = {

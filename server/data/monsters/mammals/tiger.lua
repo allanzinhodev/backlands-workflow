@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 75
 monster.maxHealth = 75
 monster.race = "blood"
-monster.corpse = 6051
-monster.speed = 100
+monster.corpse = 4292
+monster.speed = 60
 monster.manaCost = 420
 
 monster.changeTarget = {
@@ -76,8 +76,16 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "meat", chance = 35190, maxCount = 4 },
-	{ name = "striped fur", chance = 10830 },
+	{
+		id = 2666,
+		chance = 55000,
+		maxCount = 3,
+	},
+	{
+		id = 2671,
+		chance = 22000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

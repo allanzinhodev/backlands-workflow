@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 300
 monster.maxHealth = 300
 monster.race = "blood"
-monster.corpse = 6057
-monster.speed = 106
+monster.corpse = 4317
+monster.speed = 66
 monster.manaCost = 490
 
 monster.changeTarget = {
@@ -72,20 +72,40 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Carrah! Carrah!", yell = false },
-	{ text = "Gruuuh Gruuuh.", yell = false },
-	{ text = "CRAAAHHH!", yell = true },
+	{
+		text = "CRAAAHHH!",
+		yell = false,
+	},
+	{
+		text = "Gruuuh Gruuuh.",
+		yell = false,
+	},
+	{
+		text = "Carrah Carrah!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 82500, maxCount = 30 },
-	{ name = "meat", chance = 48930, maxCount = 3 },
-	{ name = "terrorbird beak", chance = 10160 },
-	{ name = "worm", chance = 9680 },
-	{ name = "colourful feather", chance = 2940 },
-	{ name = "health potion", chance = 800 },
-	{ name = "seeds", chance = 290 },
-	{ name = "feather headdress", chance = 110 },
+	{
+		id = 2666,
+		chance = 50000,
+		maxCount = 2,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 20,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 10,
+	},
+	{
+		id = 3970,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

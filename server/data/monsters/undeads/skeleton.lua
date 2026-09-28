@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 50
 monster.maxHealth = 50
 monster.race = "undead"
-monster.corpse = 5972
-monster.speed = 77
+monster.corpse = 2843
+monster.speed = 37
 monster.manaCost = 300
 
 monster.changeTarget = {
@@ -76,17 +76,39 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 2920, chance = 10000 }, -- torch
-	{ id = 2920, chance = 9880 }, -- torch
-	{ name = "gold coin", chance = 43900, maxCount = 10 },
-	{ id = 3115, chance = 49100 }, -- bone
-	{ id = 3264, chance = 1940 }, -- sword
-	{ name = "hatchet", chance = 4850 },
-	{ name = "mace", chance = 4850 },
-	{ name = "viking helmet", chance = 7520 },
-	{ name = "brass shield", chance = 2090 },
-	{ name = "pelvis bone", chance = 9940 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2473,
+		chance = 8000,
+	},
+	{
+		id = 2050,
+		chance = 50000,
+	},
+	{
+		id = 2376,
+		chance = 2000,
+	},
+	{
+		id = 2398,
+		chance = 20000,
+	},
+	{
+		id = 2388,
+		chance = 25000,
+	},
+	{
+		id = 2148,
+		chance = 45000,
+		maxCount = 10,
+	},
+	{
+		id = 2511,
+		chance = 12000,
+	},
+	{
+		id = 2230,
+		chance = 50000,
+	},
 }
 
 monster.attacks = {

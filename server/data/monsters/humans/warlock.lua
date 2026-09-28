@@ -9,7 +9,7 @@ monster.outfit = {
 	lookBody = 52,
 	lookLegs = 128,
 	lookFeet = 95,
-	lookAddons = 1,
+	lookAddons = 0,
 	lookMount = 0,
 }
 
@@ -27,11 +27,11 @@ monster.Bestiary = {
 		beneath Fenrock, The Arcanum.",
 }
 
-monster.health = 3500
-monster.maxHealth = 3500
+monster.health = 3200
+monster.maxHealth = 3200
 monster.race = "blood"
-monster.corpse = 18246
-monster.speed = 115
+monster.corpse = 3058
+monster.speed = 75
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -55,7 +55,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 4,
-	runHealth = 900,
+	runHealth = 1000,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -71,44 +71,111 @@ monster.light = {
 monster.summon = {
 	maxSummons = 1,
 	summons = {
-		{ name = "stone golem", chance = 10, interval = 2000, count = 1 },
+		{
+			name = "Stone Golem",
+			interval = 10000,
+			chance = 100,
+			count = 1,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Even a rat is a better mage than you!", yell = false },
-	{ text = "Learn the secret of our magic! YOUR death!", yell = false },
-	{ text = "We don't like intruders!", yell = false },
+	{
+		text = "Learn the secret of our magic! YOUR death!",
+		yell = false,
+	},
+	{
+		text = "Even a rat is a better mage than you.",
+		yell = false,
+	},
+	{
+		text = "We don't like intruders!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "red tome", chance = 300 },
-	{ name = "candlestick", chance = 1500 },
-	{ name = "piggy bank", chance = 60 },
-	{ name = "ring of the sky", chance = 430 },
-	{ id = 3007, chance = 700 }, -- crystal ring
-	{ name = "small sapphire", chance = 1190 },
-	{ name = "gold coin", chance = 29340, maxCount = 80 },
-	{ name = "talon", chance = 1150 },
-	{ id = 3051, chance = 2200 }, -- energy ring
-	{ name = "mind stone", chance = 2000 },
-	{ name = "stone skin amulet", chance = 330 },
-	{ name = "poison dagger", chance = 7600 },
-	{ name = "skull staff", chance = 6370 },
-	{ name = "golden armor", chance = 240 },
-	{ id = 3509, chance = 1000 }, -- inkwell
-	{ name = "blue robe", chance = 1410 },
-	{ name = "cherry", chance = 19000, maxCount = 4 },
-	{ name = "bread", chance = 9000 },
-	{ name = "dark mushroom", chance = 3000 },
-	{ name = "assassin star", chance = 3500, maxCount = 4 },
-	{ name = "assassin star", chance = 3470, maxCount = 4 },
-	{ id = 238, chance = 4760 }, -- great mana potion
-	{ name = "great health potion", chance = 5190 },
-	{ name = "lightning robe", chance = 1000 },
-	{ name = "luminous orb", chance = 510 },
+	{
+		id = 2185,
+		chance = 1,
+	},
+	{
+		id = 2151,
+		chance = 1100,
+	},
+	{
+		id = 2197,
+		chance = 500,
+	},
+	{
+		id = 2146,
+		chance = 1400,
+	},
+	{
+		id = 2436,
+		chance = 7000,
+	},
+	{
+		id = 2123,
+		chance = 200,
+	},
+	{
+		id = 1986,
+		chance = 400,
+	},
+	{
+		id = 2411,
+		chance = 10000,
+	},
+	{
+		id = 2178,
+		chance = 2500,
+	},
+	{
+		id = 2600,
+		chance = 13000,
+	},
+	{
+		id = 2466,
+		chance = 300,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 80,
+	},
+	{
+		id = 2167,
+		chance = 3000,
+	},
+	{
+		id = 2792,
+		chance = 3000,
+	},
+	{
+		id = 2124,
+		chance = 1000,
+	},
+	{
+		id = 2679,
+		chance = 20000,
+		maxCount = 4,
+	},
+	{
+		id = 2047,
+		chance = 15000,
+	},
+	{
+		id = 2689,
+		chance = 11000,
+	},
+	{
+		id = 2656,
+		chance = 2000,
+	},
 }
 
 monster.attacks = {

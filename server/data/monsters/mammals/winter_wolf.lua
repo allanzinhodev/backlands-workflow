@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 30
 monster.maxHealth = 30
 monster.race = "blood"
-monster.corpse = 5997
-monster.speed = 85
+monster.corpse = 2924
+monster.speed = 45
 monster.manaCost = 260
 
 monster.changeTarget = {
@@ -48,10 +48,10 @@ monster.flags = {
 	attackable = true,
 	hostile = true,
 	convinceable = true,
-	pushable = false,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -75,8 +75,11 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "meat", chance = 30000, maxCount = 2 },
-	{ name = "winter wolf fur", chance = 10000 },
+	{
+		id = 2666,
+		chance = 30000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

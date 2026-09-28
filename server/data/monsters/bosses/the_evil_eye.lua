@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "The Evil Eye"
 monster.description = "The Evil Eye"
-monster.experience = 750
+monster.experience = 500
 monster.outfit = {
 	lookType = 210,
 	lookHead = 0,
@@ -19,11 +19,11 @@ monster.bosstiary = {
 	bossRace = RARITY_NEMESIS,
 }
 
-monster.health = 1200
-monster.maxHealth = 1200
+monster.health = 1100
+monster.maxHealth = 1100
 monster.race = "blood"
-monster.corpse = 6037
-monster.speed = 175
+monster.corpse = 3052
+monster.speed = 55
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -46,7 +46,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = false,
 	staticAttackChance = 90,
-	targetDistance = 3,
+	targetDistance = 4,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -61,27 +61,88 @@ monster.light = {
 }
 
 monster.summon = {
-	maxSummons = 5,
+	maxSummons = 6,
 	summons = {
-		{ name = "demon skeleton", chance = 13, interval = 1000, count = 5 },
-		{ name = "ghost", chance = 12, interval = 1000, count = 3 },
+		{
+			name = "Ghost",
+			interval = 9000,
+			chance = 100,
+			count = 6,
+		},
+		{
+			name = "Demon Skeleton",
+			interval = 8000,
+			chance = 100,
+			count = 6,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Inferior creatures, bow before my power!", yell = false },
-	{ text = "653768764!", yell = false },
+	{
+		text = "653768764!",
+		yell = false,
+	},
+	{
+		text = "Let me take a look at you!",
+		yell = false,
+	},
+	{
+		text = "Inferior creatures, bow before my power!",
+		yell = false,
+	},
+	{
+		text = "659978 54764!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 5898, chance = 100000 }, -- bonelord eye
-	{ name = "gold coin", chance = 100000, maxCount = 100 },
-	{ name = "gold coin", chance = 100000, maxCount = 100 },
-	{ name = "gold coin", chance = 100000, maxCount = 29 },
-	{ name = "bonelord shield", chance = 13640 },
-	{ name = "bonelord helmet", chance = 500 },
+	{
+		id = 2512,
+		chance = 1500,
+	},
+	{
+		id = 2377,
+		chance = 4000,
+	},
+	{
+		id = 2509,
+		chance = 4000,
+	},
+	{
+		id = 2175,
+		chance = 5000,
+	},
+	{
+		id = 2394,
+		chance = 7000,
+	},
+	{
+		id = 2397,
+		chance = 9000,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 40,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 32,
+	},
+	{
+		id = 2148,
+		chance = 90000,
+		maxCount = 24,
+	},
+	{
+		id = 2518,
+		chance = 200,
+	},
 }
 
 monster.attacks = {

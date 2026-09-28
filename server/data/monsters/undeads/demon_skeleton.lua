@@ -34,8 +34,8 @@ monster.Bestiary = {
 monster.health = 400
 monster.maxHealth = 400
 monster.race = "undead"
-monster.corpse = 5963
-monster.speed = 90
+monster.corpse = 2809
+monster.speed = 50
 monster.manaCost = 620
 
 monster.changeTarget = {
@@ -79,21 +79,49 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 2920, chance = 5270 }, -- torch
-	{ name = "black pearl", chance = 2900 },
-	{ name = "small ruby", chance = 1400 },
-	{ name = "gold coin", chance = 97000, maxCount = 75 },
-	{ name = "mind stone", chance = 520 },
-	{ name = "mysterious fetish", chance = 690 },
-	{ name = "throwing star", chance = 10000, maxCount = 3 },
-	{ name = "battle hammer", chance = 4000 },
-	{ name = "iron helmet", chance = 3450 },
-	{ name = "battle shield", chance = 5000 },
-	{ name = "guardian shield", chance = 100 },
-	{ name = "health potion", chance = 10120, maxCount = 2 },
-	{ name = "health potion", chance = 10000, maxCount = 2 },
-	{ name = "mana potion", chance = 5300 },
-	{ name = "demonic skeletal hand", chance = 12600 },
+	{
+		id = 2050,
+		chance = 50000,
+	},
+	{
+		id = 2399,
+		chance = 10000,
+		maxCount = 3,
+	},
+	{
+		id = 2194,
+		chance = 300,
+	},
+	{
+		id = 2178,
+		chance = 200,
+	},
+	{
+		id = 2459,
+		chance = 2000,
+	},
+	{
+		id = 2515,
+		chance = 100,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 25,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 20,
+	},
+	{
+		id = 2513,
+		chance = 1000,
+	},
+	{
+		id = 2417,
+		chance = 3000,
+	},
 }
 
 monster.attacks = {

@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 135
 monster.maxHealth = 135
 monster.race = "blood"
-monster.corpse = 18250
-monster.speed = 95
+monster.corpse = 3058
+monster.speed = 55
 monster.manaCost = 420
 
 monster.changeTarget = {
@@ -72,21 +72,71 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Gimme your money!", yell = false },
-	{ text = "An enemy!", yell = false },
+	{
+		text = "An enemy!",
+		yell = false,
+	},
+	{
+		text = "Gimme your money!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2991, chance = 520 }, -- doll
-	{ name = "gold coin", chance = 49070, maxCount = 30 },
-	{ name = "axe", chance = 30710 },
-	{ name = "mace", chance = 9800 },
-	{ name = "chain helmet", chance = 5250 },
-	{ name = "iron helmet", chance = 580 },
-	{ name = "brass armor", chance = 2540 },
-	{ name = "steel shield", chance = 910 },
-	{ name = "brass shield", chance = 17000 },
-	{ id = 3606, chance = 9730, maxCount = 2 }, -- egg
+	{
+		id = 2391,
+		chance = 100,
+	},
+	{
+		id = 2509,
+		chance = 1000,
+	},
+	{
+		id = 2666,
+		chance = 40000,
+	},
+	{
+		id = 2398,
+		chance = 10000,
+	},
+	{
+		id = 2649,
+		chance = 15000,
+	},
+	{
+		id = 2459,
+		chance = 500,
+	},
+	{
+		id = 2148,
+		chance = 15000,
+		maxCount = 10,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 20,
+	},
+	{
+		id = 2110,
+		chance = 500,
+	},
+	{
+		id = 2458,
+		chance = 5000,
+	},
+	{
+		id = 2511,
+		chance = 17000,
+	},
+	{
+		id = 2465,
+		chance = 2500,
+	},
+	{
+		id = 2386,
+		chance = 30000,
+	},
 }
 
 monster.attacks = {

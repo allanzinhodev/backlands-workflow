@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 110
 monster.maxHealth = 110
 monster.race = "blood"
-monster.corpse = 18042
-monster.speed = 86
+monster.corpse = 3065
+monster.speed = 46
 monster.manaCost = 390
 
 monster.changeTarget = {
@@ -48,14 +48,14 @@ monster.flags = {
 	attackable = true,
 	hostile = true,
 	convinceable = true,
-	pushable = true,
+	pushable = false,
 	rewardBoss = false,
 	illusionable = true,
 	canPushItems = true,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 4,
-	runHealth = 0,
+	runHealth = 10,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,
@@ -71,22 +71,59 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Your head shall be mine!", yell = false },
-	{ text = "Your head will be mine!", yell = false },
-	{ text = "Yeeee ha!", yell = false },
+	{
+		text = "Yeeee ha!",
+		yell = false,
+	},
+	{
+		text = "Your head will be mine!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "dagger", chance = 80000 },
-	{ id = 3114, chance = 80000, maxCount = 2 }, -- skull
-	{ name = "gold coin", chance = 40000, maxCount = 20 },
-	{ name = "brown bread", chance = 30000 },
-	{ name = "sabre", chance = 23000 },
-	{ name = "girlish hair decoration", chance = 10000 },
-	{ name = "protective charm", chance = 5200 },
-	{ id = 2920, chance = 1000 }, -- torch
-	{ name = "crystal necklace", chance = 260 },
-	{ name = "small ruby", chance = 130 },
+	{
+		id = 2050,
+		chance = 5000,
+	},
+	{
+		id = 2526,
+		chance = 5000,
+	},
+	{
+		id = 2147,
+		chance = 100,
+	},
+	{
+		id = 2229,
+		chance = 80000,
+		maxCount = 2,
+	},
+	{
+		id = 2385,
+		chance = 23000,
+	},
+	{
+		id = 2467,
+		chance = 50000,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 10,
+	},
+	{
+		id = 2379,
+		chance = 80000,
+	},
+	{
+		id = 2125,
+		chance = 200,
+	},
+	{
+		id = 2691,
+		chance = 30000,
+	},
 }
 
 monster.attacks = {

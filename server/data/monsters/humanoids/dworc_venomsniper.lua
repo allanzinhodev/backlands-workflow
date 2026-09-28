@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Dworc Venomsniper"
 monster.description = "a dworc venomsniper"
-monster.experience = 35
+monster.experience = 30
 monster.outfit = {
 	lookType = 216,
 	lookHead = 0,
@@ -30,9 +30,9 @@ monster.Bestiary = {
 monster.health = 80
 monster.maxHealth = 80
 monster.race = "blood"
-monster.corpse = 6059
-monster.speed = 76
-monster.manaCost = 0
+monster.corpse = 4310
+monster.speed = 36
+monster.manaCost = 300
 
 monster.changeTarget = {
 	interval = 4000,
@@ -47,11 +47,11 @@ monster.flags = {
 	summonable = false,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 4,
@@ -71,22 +71,65 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Grow truk grrrrr.", yell = false },
-	{ text = "Brak brrretz!", yell = false },
-	{ text = "Prek tars, dekklep zurk.", yell = false },
+	{
+		text = "Grak brrretz!",
+		yell = false,
+	},
+	{
+		text = "Grow truk grrrrr.",
+		yell = false,
+	},
+	{
+		text = "Prek tars, dekklep zurk.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 6000 }, -- torch
-	{ name = "gold coin", chance = 75000, maxCount = 13 },
-	{ name = "bronze amulet", chance = 110 },
-	{ id = 3114, chance = 1000, maxCount = 2 }, -- skull
-	{ name = "poison dagger", chance = 1500 },
-	{ name = "leather armor", chance = 10000 },
-	{ name = "poison arrow", chance = 5000, maxCount = 3 },
-	{ name = "tribal mask", chance = 510 },
-	{ name = "bast skirt", chance = 100 },
-	{ name = "seeds", chance = 200 },
+	{
+		id = 3967,
+		chance = 500,
+	},
+	{
+		id = 2050,
+		chance = 5500,
+	},
+	{
+		id = 2410,
+		chance = 8000,
+		maxCount = 2,
+	},
+	{
+		id = 2229,
+		chance = 1000,
+		maxCount = 2,
+	},
+	{
+		id = 2411,
+		chance = 1500,
+	},
+	{
+		id = 2545,
+		chance = 5000,
+		maxCount = 3,
+	},
+	{
+		id = 2467,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 10,
+	},
+	{
+		id = 2172,
+		chance = 100,
+	},
+	{
+		id = 3983,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

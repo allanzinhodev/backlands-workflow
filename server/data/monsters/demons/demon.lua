@@ -29,8 +29,8 @@ monster.Bestiary = {
 monster.health = 8200
 monster.maxHealth = 8200
 monster.race = "fire"
-monster.corpse = 5995
-monster.speed = 128
+monster.corpse = 2916
+monster.speed = 80
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -73,55 +73,147 @@ monster.light = {
 monster.summon = {
 	maxSummons = 1,
 	summons = {
-		{ name = "fire elemental", chance = 10, interval = 2000, count = 1 },
+		{
+			name = "Fire Elemental",
+			interval = 12000,
+			chance = 100,
+			count = 1,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Your soul will be mine!", yell = false },
-	{ text = "CHAMEK ATH UTHUL ARAK!", yell = true },
-	{ text = "I SMELL FEEEEAAAAAR!", yell = true },
-	{ text = "Your resistance is futile!", yell = false },
-	{ text = "MUHAHAHAHA!", yell = true },
+	{
+		text = "MUHAHAHAHA!",
+		yell = true,
+	},
+	{
+		text = "I SMELL FEEEEEAAAR!",
+		yell = true,
+	},
+	{
+		text = "CHAMEK ATH UTHUL ARAK!",
+		yell = true,
+	},
+	{
+		text = "Your resistance is futile!",
+		yell = false,
+	},
+	{
+		text = "Your soul will be mine!",
+		yell = true,
+	},
 }
 
 monster.loot = {
-	{ name = "purple tome", chance = 1180 },
-	{ name = "gold coin", chance = 60000, maxCount = 100 },
-	{ name = "gold coin", chance = 60000, maxCount = 100 },
-	{ name = "small emerald", chance = 9690, maxCount = 5 },
-	{ name = "small amethyst", chance = 7250, maxCount = 5 },
-	{ name = "small ruby", chance = 7430, maxCount = 5 },
-	{ name = "small topaz", chance = 7470, maxCount = 5 },
-	{ id = 3039, chance = 2220 }, -- red gem
-	{ name = "demonic essence", chance = 14630 },
-	{ name = "talon", chance = 3430 },
-	{ name = "platinum coin", chance = 90540, maxCount = 8 },
-	{ name = "might ring", chance = 1890 },
-	{ id = 3049, chance = 2170 }, -- stealth ring
-	{ name = "platinum amulet", chance = 680 },
-	{ name = "orb", chance = 2854 },
-	{ name = "gold ring", chance = 1050 },
-	{ id = 3098, chance = 1990 }, -- ring of healing
-	{ name = "giant sword", chance = 1980 },
-	{ name = "ice rapier", chance = 1550 },
-	{ name = "golden sickle", chance = 1440 },
-	{ name = "fire axe", chance = 4030 },
-	{ name = "devil helmet", chance = 1180 },
-	{ name = "golden legs", chance = 440 },
-	{ name = "magic plate armor", chance = 130 },
-	{ name = "mastermind shield", chance = 480 },
-	{ name = "demon shield", chance = 740 },
-	{ name = "fire mushroom", chance = 19660, maxCount = 6 },
-	{ name = "demon horn", chance = 14920 },
-	{ name = "assassin star", chance = 12550, maxCount = 10 },
-	{ name = "demonrage sword", chance = 70 },
-	{ id = 7393, chance = 90 }, -- demon trophy
-	{ id = 238, chance = 22220, maxCount = 3 }, -- great mana potion
-	{ name = "ultimate health potion", chance = 19540, maxCount = 3 },
-	{ name = "great spirit potion", chance = 18510, maxCount = 3 },
+	{
+		id = 2151,
+		chance = 3500,
+	},
+	{
+		id = 2165,
+		chance = 1400,
+	},
+	{
+		id = 2149,
+		chance = 11000,
+	},
+	{
+		id = 2214,
+		chance = 500,
+	},
+	{
+		id = 1982,
+		chance = 1300,
+	},
+	{
+		id = 2171,
+		chance = 700,
+	},
+	{
+		id = 2176,
+		chance = 3000,
+	},
+	{
+		id = 2164,
+		chance = 200,
+	},
+	{
+		id = 2514,
+		chance = 500,
+	},
+	{
+		id = 2472,
+		chance = 100,
+	},
+	{
+		id = 2396,
+		chance = 600,
+	},
+	{
+		id = 2418,
+		chance = 1500,
+	},
+	{
+		id = 2470,
+		chance = 400,
+	},
+	{
+		id = 2179,
+		chance = 1100,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 100,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 100,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 100,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 100,
+	},
+	{
+		id = 2393,
+		chance = 2000,
+	},
+	{
+		id = 2795,
+		chance = 20000,
+		maxCount = 6,
+	},
+	{
+		id = 2432,
+		chance = 4000,
+	},
+	{
+		id = 2387,
+		chance = 20000,
+	},
+	{
+		id = 2462,
+		chance = 1200,
+	},
+	{
+		id = 2520,
+		chance = 700,
+	},
+	{
+		id = 2678,
+		chance = 45000,
+		maxCount = 6,
+	},
 }
 
 monster.attacks = {

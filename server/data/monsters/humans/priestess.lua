@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 390
 monster.maxHealth = 390
 monster.race = "blood"
-monster.corpse = 18210
-monster.speed = 85
+monster.corpse = 3065
+monster.speed = 45
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -71,38 +71,90 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "ghoul", chance = 10, interval = 2000, count = 2 },
+		{
+			name = "Ghoul",
+			interval = 13000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Your energy is mine.", yell = false },
-	{ text = "Now your life is come to the end, hahahaha!", yell = false },
-	{ text = "Throw the soul on the altar!", yell = false },
+	{
+		text = "Your energy is mine.",
+		yell = false,
+	},
+	{
+		text = "Now, your life has come to an end, hahahha!",
+		yell = false,
+	},
+	{
+		text = "Throw the soul on the altar!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2828, chance = 890 }, -- book
-	{ id = 2948, chance = 1410 }, -- wooden flute
-	{ name = "piggy bank", chance = 90 },
-	{ name = "crystal necklace", chance = 640 },
-	{ name = "talon", chance = 750 },
-	{ name = "hailstorm rod", chance = 1100 },
-	{ id = 3076, chance = 1250 }, -- crystal ball
-	{ id = 2948, chance = 1400 }, -- wooden flute
-	{ name = "clerical mace", chance = 1500 },
-	{ name = "black shield", chance = 210 },
-	{ name = "red apple", chance = 7500, maxCount = 2 },
-	{ name = "goat grass", chance = 11720 },
-	{ name = "wood mushroom", chance = 3240 },
-	{ name = "sling herb", chance = 13200 },
-	{ name = "powder herb", chance = 5900 },
-	{ name = "mana potion", chance = 850 },
-	{ name = "cultish robe", chance = 1800 },
-	{ name = "black hood", chance = 5230 },
-	{ name = "dark rosary", chance = 9840 },
+	{
+		id = 2070,
+		chance = 1400,
+	},
+	{
+		id = 2791,
+		chance = 3500,
+	},
+	{
+		id = 2151,
+		chance = 700,
+	},
+	{
+		id = 2802,
+		chance = 14000,
+	},
+	{
+		id = 2674,
+		chance = 7500,
+		maxCount = 2,
+	},
+	{
+		id = 2803,
+		chance = 6000,
+	},
+	{
+		id = 2760,
+		chance = 12000,
+	},
+	{
+		id = 2379,
+		chance = 23000,
+	},
+	{
+		id = 2125,
+		chance = 600,
+	},
+	{
+		id = 2192,
+		chance = 1200,
+	},
+	{
+		id = 2423,
+		chance = 1500,
+	},
+	{
+		id = 2032,
+		chance = 20000,
+	},
+	{
+		id = 1977,
+		chance = 7000,
+	},
+	{
+		id = 2529,
+		chance = 200,
+	},
 }
 
 monster.attacks = {

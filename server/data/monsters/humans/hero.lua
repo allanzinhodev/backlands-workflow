@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 1400
 monster.maxHealth = 1400
 monster.race = "blood"
-monster.corpse = 18134
-monster.speed = 140
+monster.corpse = 3058
+monster.speed = 100
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -74,39 +74,108 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Let's have a fight!", yell = false },
-	{ text = "I will sing a tune at your grave.", yell = false },
-	{ text = "Have you seen princess Lumelia?", yell = false },
-	{ text = "Welcome to my battleground!", yell = false },
+	{
+		text = "Let's have a fight!",
+		yell = false,
+	},
+	{
+		text = "Welcome to my battleground.",
+		yell = false,
+	},
+	{
+		text = "Have you seen princess Lumelia?",
+		yell = false,
+	},
+	{
+		text = "I will sing a tune at your grave.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2815, chance = 45000 }, -- scroll
-	{ id = 2949, chance = 1640 }, -- lyre
-	{ name = "piggy bank", chance = 80 },
-	{ id = 3003, chance = 2190 }, -- rope
-	{ name = "wedding ring", chance = 4910 },
-	{ name = "gold coin", chance = 59500, maxCount = 100 },
-	{ name = "might ring", chance = 470 },
-	{ name = "two handed sword", chance = 1500 },
-	{ name = "war hammer", chance = 870 },
-	{ name = "fire sword", chance = 550 },
-	{ name = "bow", chance = 13300 },
-	{ name = "crown armor", chance = 490 },
-	{ name = "crown legs", chance = 660 },
-	{ name = "crown helmet", chance = 450 },
-	{ name = "crown shield", chance = 280 },
-	{ name = "arrow", chance = 26000, maxCount = 13 },
-	{ name = "green tunic", chance = 8000 },
-	{ name = "scarf", chance = 1110 },
-	{ name = "meat", chance = 8200, maxCount = 3 },
-	{ name = "grapes", chance = 19850 },
-	{ name = "red rose", chance = 20450 },
-	{ name = "red piece of cloth", chance = 2006 },
-	{ name = "sniper arrow", chance = 11400, maxCount = 4 },
-	{ name = "great health potion", chance = 720 },
-	{ name = "small notebook", chance = 930 },
-	{ name = "scroll of heroic deeds", chance = 5000 },
+	{
+		id = 2121,
+		chance = 5000,
+	},
+	{
+		id = 2391,
+		chance = 1000,
+	},
+	{
+		id = 2377,
+		chance = 1500,
+	},
+	{
+		id = 1949,
+		chance = 45000,
+	},
+	{
+		id = 2661,
+		chance = 12000,
+	},
+	{
+		id = 2120,
+		chance = 20000,
+	},
+	{
+		id = 2744,
+		chance = 20000,
+	},
+	{
+		id = 2164,
+		chance = 500,
+	},
+	{
+		id = 2666,
+		chance = 18000,
+		maxCount = 2,
+	},
+	{
+		id = 2071,
+		chance = 15000,
+	},
+	{
+		id = 2652,
+		chance = 8000,
+	},
+	{
+		id = 2681,
+		chance = 20000,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 100,
+	},
+	{
+		id = 2392,
+		chance = 500,
+	},
+	{
+		id = 2519,
+		chance = 400,
+	},
+	{
+		id = 2488,
+		chance = 500,
+	},
+	{
+		id = 2491,
+		chance = 500,
+	},
+	{
+		id = 2487,
+		chance = 600,
+	},
+	{
+		id = 2456,
+		chance = 13000,
+	},
+	{
+		id = 2544,
+		chance = 27000,
+		maxCount = 13,
+	},
 }
 
 monster.attacks = {

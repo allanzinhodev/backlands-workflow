@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 50
 monster.maxHealth = 50
 monster.race = "blood"
-monster.corpse = 6002
-monster.speed = 60
+monster.corpse = 2940
+monster.speed = 20
 monster.manaCost = 290
 
 monster.changeTarget = {
@@ -72,26 +72,75 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Zig Zag! Gobo attack!", yell = false },
-	{ text = "Me green, me mean!", yell = false },
-	{ text = "Bugga! Bugga!", yell = false },
-	{ text = "Help! Goblinkiller!", yell = false },
-	{ text = "Me have him!", yell = false },
+	{
+		text = "Me have him!",
+		yell = false,
+	},
+	{
+		text = "Zig Zag! Gobo attack!",
+		yell = false,
+	},
+	{
+		text = "Help! Goblinkiller!",
+		yell = false,
+	},
+	{
+		text = "Bugga! Bugga!",
+		yell = false,
+	},
+	{
+		text = "Me green, me mean!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "small stone", chance = 15290, maxCount = 3 },
-	{ name = "gold coin", chance = 50320, maxCount = 9 },
-	{ id = 3115, chance = 1130 }, -- bone
-	{ name = "mouldy cheese", chance = 1000 },
-	{ name = "dagger", chance = 1800 },
-	{ name = "short sword", chance = 8870 },
-	{ name = "bone club", chance = 4900 },
-	{ name = "leather helmet", chance = 1940 },
-	{ name = "leather armor", chance = 2510 },
-	{ name = "small axe", chance = 9700 },
-	{ id = 3578, chance = 12750 }, -- fish
-	{ name = "goblin ear", chance = 910 },
+	{
+		id = 1294,
+		chance = 30000,
+		maxCount = 3,
+	},
+	{
+		id = 2559,
+		chance = 10000,
+	},
+	{
+		id = 2406,
+		chance = 9000,
+	},
+	{
+		id = 2235,
+		chance = 7000,
+	},
+	{
+		id = 2461,
+		chance = 10000,
+	},
+	{
+		id = 2467,
+		chance = 7500,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 9,
+	},
+	{
+		id = 2667,
+		chance = 13000,
+	},
+	{
+		id = 2379,
+		chance = 18000,
+	},
+	{
+		id = 2449,
+		chance = 5000,
+	},
+	{
+		id = 2230,
+		chance = 12000,
+	},
 }
 
 monster.attacks = {

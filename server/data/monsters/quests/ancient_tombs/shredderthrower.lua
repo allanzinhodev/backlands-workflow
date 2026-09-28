@@ -5,14 +5,20 @@ monster.name = "Shredderthrower"
 monster.description = "a shredderthrower"
 monster.experience = 18
 monster.outfit = {
-	lookTypeEx = 2190,
+	lookType = 0,
+	lookHead = 0,
+	lookBody = 0,
+	lookLegs = 0,
+	lookFeet = 0,
+	lookAddons = 0,
+	lookMount = 0,
 }
 
 monster.health = 100
 monster.maxHealth = 100
 monster.race = "undead"
-monster.corpse = 0
-monster.speed = 0
+monster.corpse = 1740
+monster.speed = -40
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -36,7 +42,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 95,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 100,
 	healthHidden = true,
 	isBlockable = false,
 	canWalkOnEnergy = false,

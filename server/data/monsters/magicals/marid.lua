@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Marid"
 monster.description = "a marid"
-monster.experience = 410
+monster.experience = 300
 monster.outfit = {
 	lookType = 104,
 	lookHead = 0,
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 550
 monster.maxHealth = 550
 monster.race = "blood"
-monster.corpse = 6033
-monster.speed = 117
+monster.corpse = 3040
+monster.speed = 77
 monster.manaCost = 0
 
 monster.faction = FACTION_MARID
@@ -74,38 +74,81 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "blue djinn", chance = 10, interval = 2000, count = 2 },
+		{
+			name = "Blue Djinn",
+			interval = 7000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Wishes can come true.", yell = false },
-	{ text = "Feel the power of my magic, tiny mortal!", yell = false },
-	{ text = "Simsalabim", yell = false },
-	{ text = "Be careful what you wish for.", yell = false },
+	{
+		text = "Simsalabim",
+		yell = false,
+	},
+	{
+		text = "Feel the power of my magic, tiny mortal!",
+		yell = false,
+	},
+	{
+		text = "Be careful what you wish for.",
+		yell = false,
+	},
+	{
+		text = "Wishes can come true.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2659, chance = 2560 }, -- blue tapestry
-	{ name = "small oil lamp", chance = 110 },
-	{ name = "small sapphire", chance = 6200 },
-	{ name = "gold coin", chance = 60000, maxCount = 70 },
-	{ name = "gold coin", chance = 60000, maxCount = 30 },
-	{ name = "blue gem", chance = 110 },
-	{ name = "hailstorm rod", chance = 770 },
-	{ id = 2948, chance = 5000 }, -- wooden flute
-	{ name = "heavy machete", chance = 4530 },
-	{ name = "mystic turban", chance = 290 },
-	{ name = "blueberry", chance = 65000, maxCount = 29 },
-	{ name = "blue piece of cloth", chance = 3750 },
-	{ name = "royal spear", chance = 15500, maxCount = 3 },
-	{ name = "strong mana potion", chance = 9800 },
-	{ name = "seeds", chance = 2400 },
-	{ name = "magma monocle", chance = 320 },
-	{ name = "jewelled belt", chance = 7880 },
-	{ name = "noble turban", chance = 530 },
+	{
+		id = 2070,
+		chance = 300,
+	},
+	{
+		id = 2146,
+		chance = 7000,
+		maxCount = 2,
+	},
+	{
+		id = 2063,
+		chance = 20000,
+	},
+	{
+		id = 2663,
+		chance = 200,
+	},
+	{
+		id = 2442,
+		chance = 20000,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 80,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 50,
+	},
+	{
+		id = 2677,
+		chance = 25000,
+		maxCount = 25,
+	},
+	{
+		id = 1872,
+		chance = 2500,
+	},
+	{
+		id = 2158,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

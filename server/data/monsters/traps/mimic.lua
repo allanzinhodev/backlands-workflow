@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Mimic"
 monster.description = "a mimic"
-monster.experience = 0
+monster.experience = 18
 monster.outfit = {
 	lookType = 92,
 	lookHead = 0,
@@ -14,12 +14,12 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.health = 1200
-monster.maxHealth = 1200
-monster.race = "blood"
-monster.corpse = 2472
-monster.speed = 85
-monster.manaCost = 0
+monster.health = 29
+monster.maxHealth = 29
+monster.race = "undead"
+monster.corpse = 1740
+monster.speed = 40
+monster.manaCost = 250
 
 monster.changeTarget = {
 	interval = 5000,
@@ -35,13 +35,13 @@ monster.flags = {
 	attackable = true,
 	hostile = true,
 	convinceable = false,
-	pushable = false,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = false,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 0,
-	targetDistance = 5,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -60,7 +60,18 @@ monster.voices = {
 	chance = 10,
 }
 
-monster.loot = {}
+monster.loot = {
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 6,
+	},
+	{
+		id = 2679,
+		chance = 3000,
+		maxCount = 3,
+	},
+}
 monster.defenses = {
 	defense = 3,
 	armor = 2,

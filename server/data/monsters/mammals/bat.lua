@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 30
 monster.maxHealth = 30
 monster.race = "blood"
-monster.corpse = 6053
-monster.speed = 100
+monster.corpse = 4298
+monster.speed = 60
 monster.manaCost = 250
 
 monster.changeTarget = {
@@ -72,12 +72,13 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Flap! Flap!", yell = false },
+	{
+		text = "Flap! Flap!",
+		yell = false,
+	},
 }
 
-monster.loot = {
-	{ name = "bat wing", chance = 1220 },
-}
+monster.loot = {}
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -8 },

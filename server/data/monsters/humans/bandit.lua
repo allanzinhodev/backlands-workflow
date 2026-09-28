@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 245
 monster.maxHealth = 245
 monster.race = "blood"
-monster.corpse = 18050
-monster.speed = 90
+monster.corpse = 3058
+monster.speed = 50
 monster.manaCost = 450
 
 monster.changeTarget = {
@@ -72,20 +72,63 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Hand me your purse!", yell = false },
-	{ text = "Your money or your life!", yell = false },
+	{
+		text = "Your money or your life!",
+		yell = false,
+	},
+	{
+		text = "Hand me your purse!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 49000, maxCount = 30 },
-	{ name = "axe", chance = 29900 },
-	{ name = "mace", chance = 10100 },
-	{ name = "chain helmet", chance = 5000 },
-	{ name = "iron helmet", chance = 520 },
-	{ name = "brass armor", chance = 2500 },
-	{ name = "brass shield", chance = 16800 },
-	{ name = "leather legs", chance = 15500 },
-	{ name = "tomato", chance = 7630, maxCount = 2 },
+	{
+		id = 2391,
+		chance = 100,
+	},
+	{
+		id = 2666,
+		chance = 10000,
+	},
+	{
+		id = 2398,
+		chance = 10000,
+	},
+	{
+		id = 2649,
+		chance = 15000,
+	},
+	{
+		id = 2459,
+		chance = 500,
+	},
+	{
+		id = 2148,
+		chance = 15000,
+		maxCount = 10,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 20,
+	},
+	{
+		id = 2458,
+		chance = 5000,
+	},
+	{
+		id = 2511,
+		chance = 17000,
+	},
+	{
+		id = 2465,
+		chance = 2500,
+	},
+	{
+		id = 2386,
+		chance = 30000,
+	},
 }
 
 monster.attacks = {

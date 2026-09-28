@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Necropharus"
 monster.description = "Necropharus"
-monster.experience = 1050
+monster.experience = 700
 monster.outfit = {
 	lookType = 209,
 	lookHead = 0,
@@ -17,8 +17,8 @@ monster.outfit = {
 monster.health = 750
 monster.maxHealth = 750
 monster.race = "blood"
-monster.corpse = 18293
-monster.speed = 180
+monster.corpse = 3058
+monster.speed = 60
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -56,37 +56,96 @@ monster.light = {
 }
 
 monster.summon = {
-	maxSummons = 6,
+	maxSummons = 2,
 	summons = {
-		{ name = "Ghoul", chance = 20, interval = 1000, count = 2 },
-		{ name = "Ghost", chance = 17, interval = 1000, count = 2 },
-		{ name = "Mummy", chance = 15, interval = 1000, count = 2 },
+		{
+			name = "Mummy",
+			interval = 7000,
+			chance = 100,
+			count = 1,
+		},
+		{
+			name = "Ghost",
+			interval = 6000,
+			chance = 100,
+			count = 1,
+		},
+		{
+			name = "Ghoul",
+			interval = 5000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You will rise as my servant!", yell = false },
-	{ text = "Praise to my master Urgith!", yell = false },
+	{
+		text = "You will rise as my servant!",
+		yell = false,
+	},
+	{
+		text = "Praise to my master Urgith!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 10320, chance = 100000 }, -- book of necromantic rituals
-	{ id = 3031, chance = 100000, maxCount = 99 }, -- gold coin
-	{ id = 11475, chance = 100000 }, -- necromantic robe
-	{ id = 5809, chance = 100000 }, -- soul stone
-	{ id = 3311, chance = 52000 }, -- clerical mace
-	{ id = 3324, chance = 47000 }, -- skull staff
-	{ id = 3337, chance = 38000 }, -- bone club
-	{ id = 3114, chance = 19000 }, -- skull
-	{ id = 3732, chance = 14000 }, -- green mushroom
-	{ id = 3070, chance = 14000 }, -- moonlight rod
-	{ id = 3116, chance = 9500 }, -- big bone
-	{ id = 3441, chance = 9500 }, -- bone shield
-	{ id = 3079, chance = 4700 }, -- boots of haste
-	{ id = 3574, chance = 4700 }, -- mystic turban
-	{ id = 237, chance = 4700 }, -- strong mana potion
+	{
+		id = 2436,
+		chance = 400,
+	},
+	{
+		id = 2229,
+		chance = 16000,
+	},
+	{
+		id = 2406,
+		chance = 8600,
+	},
+	{
+		id = 2483,
+		chance = 8500,
+	},
+	{
+		id = 2663,
+		chance = 1800,
+	},
+	{
+		id = 2796,
+		chance = 22500,
+	},
+	{
+		id = 2148,
+		chance = 67300,
+		maxCount = 99,
+	},
+	{
+		id = 2423,
+		chance = 5700,
+	},
+	{
+		id = 2195,
+		chance = 200,
+	},
+	{
+		id = 2541,
+		chance = 7500,
+	},
+	{
+		id = 2449,
+		chance = 19900,
+	},
+	{
+		id = 2230,
+		chance = 30000,
+	},
+	{
+		id = 2231,
+		chance = 6000,
+	},
 }
 
 monster.attacks = {

@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Vampire"
 monster.description = "a vampire"
-monster.experience = 305
+monster.experience = 290
 monster.outfit = {
 	lookType = 68,
 	lookHead = 0,
@@ -30,11 +30,11 @@ monster.Bestiary = {
 		Edron Vampire Crypt.",
 }
 
-monster.health = 475
-monster.maxHealth = 475
-monster.race = "blood"
-monster.corpse = 6006
-monster.speed = 119
+monster.health = 450
+monster.maxHealth = 450
+monster.race = "undead"
+monster.corpse = 2956
+monster.speed = 70
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -59,7 +59,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 30,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,
@@ -75,27 +75,78 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "BLOOD!", yell = true },
-	{ text = "Let me kiss your neck", yell = false },
-	{ text = "I smell warm blood!", yell = false },
-	{ text = "I call you, my bats! Come!", yell = false },
+	{
+		text = "BLOOD!",
+		yell = true,
+	},
+	{
+		text = "Let me kiss your neck.",
+		yell = false,
+	},
+	{
+		text = "I smell warm blood.",
+		yell = false,
+	},
+	{
+		text = "I call you, my bats! Come!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "emerald bangle", chance = 230 },
-	{ name = "black pearl", chance = 1800 },
-	{ name = "gold coin", chance = 90230, maxCount = 60 },
-	{ name = "bronze amulet", chance = 220 },
-	{ id = 3114, chance = 1000 }, -- skull
-	{ name = "spike sword", chance = 1000 },
-	{ name = "ice rapier", chance = 420 },
-	{ name = "katana", chance = 1560 },
-	{ name = "strange helmet", chance = 420 },
-	{ name = "vampire shield", chance = 230 },
-	{ name = "grave flower", chance = 1910 },
-	{ name = "strong health potion", chance = 1500 },
-	{ name = "vampire teeth", chance = 7600 },
-	{ name = "blood preservation", chance = 5100 },
+	{
+		id = 2534,
+		chance = 100,
+	},
+	{
+		id = 2479,
+		chance = 400,
+	},
+	{
+		id = 2383,
+		chance = 1000,
+	},
+	{
+		id = 2229,
+		chance = 10000,
+	},
+	{
+		id = 2649,
+		chance = 8000,
+	},
+	{
+		id = 2412,
+		chance = 15000,
+	},
+	{
+		id = 2396,
+		chance = 300,
+	},
+	{
+		id = 2747,
+		chance = 18000,
+	},
+	{
+		id = 2148,
+		chance = 15000,
+		maxCount = 20,
+	},
+	{
+		id = 2127,
+		chance = 200,
+	},
+	{
+		id = 2172,
+		chance = 200,
+	},
+	{
+		id = 2032,
+		chance = 11000,
+	},
+	{
+		id = 2144,
+		chance = 1500,
+	},
 }
 
 monster.attacks = {

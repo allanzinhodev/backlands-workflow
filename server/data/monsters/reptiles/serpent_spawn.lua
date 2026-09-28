@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Serpent Spawn")
 local monster = {}
 
 monster.description = "a serpent spawn"
-monster.experience = 3050
+monster.experience = 2000
 monster.outfit = {
 	lookType = 220,
 	lookHead = 0,
@@ -29,9 +29,9 @@ monster.Bestiary = {
 
 monster.health = 3000
 monster.maxHealth = 3000
-monster.race = "venom"
-monster.corpse = 6061
-monster.speed = 117
+monster.race = "blood"
+monster.corpse = 4323
+monster.speed = 77
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -72,36 +72,100 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "HISSSS", yell = true },
-	{ text = "I bring you deathhhh, mortalssss", yell = false },
-	{ text = "Sssssouls for the one", yell = false },
-	{ text = "Tsssse one will risssse again", yell = false },
+	{
+		text = "Ssssolus for the one",
+		yell = false,
+	},
+	{
+		text = "HISSSS",
+		yell = true,
+	},
+	{
+		text = "Tsssse one will risssse again",
+		yell = false,
+	},
+	{
+		text = "I bring you deathhhh, mortalssss",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "golden mug", chance = 2870 },
-	{ name = "small sapphire", chance = 12000 },
-	{ name = "gold coin", chance = 97250, maxCount = 239 },
-	{ id = 3051, chance = 590 }, -- energy ring
-	{ id = 3052, chance = 6250 }, -- life ring
-	{ name = "life crystal", chance = 800 },
-	{ name = "snakebite rod", chance = 930 },
-	{ name = "warrior helmet", chance = 560 },
-	{ name = "strange helmet", chance = 670 },
-	{ name = "crown armor", chance = 510 },
-	{ id = 4831, chance = 550 }, -- old parchment
-	{ name = "royal helmet", chance = 140 },
-	{ name = "tower shield", chance = 920 },
-	{ name = "power bolt", chance = 6200 },
-	{ name = "green mushroom", chance = 18200 },
-	{ name = "charmer's tiara", chance = 180 },
-	{ name = "mercenary sword", chance = 2070 },
-	{ name = "noble axe", chance = 750 },
-	{ id = 238, chance = 2000 }, -- great mana potion
-	{ name = "swamplair armor", chance = 90 },
-	{ name = "spellbook of mind control", chance = 90 },
-	{ name = "snake skin", chance = 14800 },
-	{ name = "winged tail", chance = 960 },
+	{
+		id = 2528,
+		chance = 400,
+	},
+	{
+		id = 2479,
+		chance = 600,
+	},
+	{
+		id = 2146,
+		chance = 6000,
+	},
+	{
+		id = 2498,
+		chance = 100,
+	},
+	{
+		id = 2547,
+		chance = 6000,
+	},
+	{
+		id = 4842,
+		chance = 500,
+	},
+	{
+		id = 2168,
+		chance = 3000,
+	},
+	{
+		id = 2177,
+		chance = 800,
+	},
+	{
+		id = 2796,
+		chance = 18000,
+	},
+	{
+		id = 2033,
+		chance = 3000,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 50,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 100,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 100,
+	},
+	{
+		id = 2392,
+		chance = 300,
+	},
+	{
+		id = 2167,
+		chance = 3000,
+	},
+	{
+		id = 2492,
+		chance = 200,
+	},
+	{
+		id = 3971,
+		chance = 2000,
+	},
+	{
+		id = 1976,
+		chance = 9000,
+	},
 }
 
 monster.attacks = {

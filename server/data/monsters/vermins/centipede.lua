@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Centipede"
 monster.description = "a centipede"
-monster.experience = 34
+monster.experience = 30
 monster.outfit = {
 	lookType = 124,
 	lookHead = 0,
@@ -30,9 +30,9 @@ monster.Bestiary = {
 
 monster.health = 70
 monster.maxHealth = 70
-monster.race = "venom"
-monster.corpse = 6050
-monster.speed = 83
+monster.race = "blood"
+monster.corpse = 4289
+monster.speed = 43
 monster.manaCost = 335
 
 monster.changeTarget = {
@@ -49,7 +49,7 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
@@ -76,8 +76,19 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 80000, maxCount = 15 },
-	{ name = "centipede leg", chance = 10300 },
+	{
+		id = 2376,
+		chance = 3000,
+	},
+	{
+		id = 2398,
+		chance = 4500,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 15,
+	},
 }
 
 monster.attacks = {

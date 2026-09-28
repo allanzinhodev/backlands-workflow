@@ -30,9 +30,9 @@ monster.Bestiary = {
 
 monster.health = 55
 monster.maxHealth = 55
-monster.race = "undead"
-monster.corpse = 6039
-monster.speed = 100
+monster.race = "blood"
+monster.corpse = 4253
+monster.speed = 60
 monster.manaCost = 305
 
 monster.changeTarget = {
@@ -75,9 +75,15 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 80410, maxCount = 10 },
-	{ name = "crab pincers", chance = 19850 },
-	{ id = 3578, chance = 19810 }, -- fish
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 10,
+	},
+	{
+		id = 2667,
+		chance = 20000,
+	},
 }
 
 monster.attacks = {

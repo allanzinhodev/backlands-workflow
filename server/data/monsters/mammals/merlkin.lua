@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Merlkin"
 monster.description = "a merlkin"
-monster.experience = 145
+monster.experience = 135
 monster.outfit = {
 	lookType = 117,
 	lookHead = 0,
@@ -27,11 +27,11 @@ monster.Bestiary = {
 	Locations = "Banuta, north-east of Port Hope.",
 }
 
-monster.health = 235
-monster.maxHealth = 235
+monster.health = 230
+monster.maxHealth = 230
 monster.race = "blood"
-monster.corpse = 6044
-monster.speed = 97
+monster.corpse = 4271
+monster.speed = 57
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -71,22 +71,53 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Ugh! Ugh! Ugh!", yell = false },
-	{ text = "Holy banana!", yell = false },
-	{ text = "Chakka! Chakka!", yell = false },
+	{
+		text = "Ugh! Ugh! Ugh!",
+		yell = false,
+	},
+	{
+		text = "Holy banana!",
+		yell = false,
+	},
+	{
+		text = "Chakka! Chakka!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 69500, maxCount = 45 },
-	{ name = "small amethyst", chance = 260 },
-	{ id = 3046, chance = 3000 }, -- magic light wand
-	{ name = "wand of decay", chance = 1050 },
-	{ name = "orange", chance = 1000, maxCount = 5 },
-	{ name = "banana", chance = 30350, maxCount = 12 },
-	{ name = "banana staff", chance = 100 },
-	{ name = "ape fur", chance = 1000 },
-	{ name = "mana potion", chance = 660 },
-	{ name = "banana sash", chance = 1800 },
+	{
+		id = 2150,
+		chance = 500,
+	},
+	{
+		id = 2675,
+		chance = 1000,
+		maxCount = 5,
+	},
+	{
+		id = 2162,
+		chance = 5000,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 25,
+	},
+	{
+		id = 3966,
+		chance = 100,
+	},
+	{
+		id = 2676,
+		chance = 5000,
+		maxCount = 10,
+	},
+	{
+		id = 2676,
+		chance = 30000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

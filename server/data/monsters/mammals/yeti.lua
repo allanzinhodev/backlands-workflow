@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 950
 monster.maxHealth = 950
 monster.race = "blood"
-monster.corpse = 6038
-monster.speed = 125
+monster.corpse = 3055
+monster.speed = 85
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -72,17 +72,50 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Yooodelaaahooohooo", yell = false },
-	{ text = "Yooodelaaaheehee", yell = false },
+	{
+		text = "Yooodelaaahooohooo!",
+		yell = false,
+	},
+	{
+		text = "Yooodelaaaheeeheee!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2992, chance = 10000, maxCount = 22 }, -- snowball
-	{ name = "gold coin", chance = 100000, maxCount = 60 },
-	{ name = "gold coin", chance = 100000, maxCount = 40 },
-	{ name = "bunnyslippers", chance = 1333 },
-	{ name = "meat", chance = 33333, maxCount = 4 },
-	{ name = "ham", chance = 10000, maxCount = 5 },
+	{
+		id = 2129,
+		chance = 500,
+	},
+	{
+		id = 2111,
+		chance = 50000,
+		maxCount = 22,
+	},
+	{
+		id = 2666,
+		chance = 75000,
+		maxCount = 4,
+	},
+	{
+		id = 2671,
+		chance = 35000,
+		maxCount = 6,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 20,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 10,
+	},
+	{
+		id = 2644,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

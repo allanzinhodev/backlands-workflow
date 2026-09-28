@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 1000
 monster.maxHealth = 1000
 monster.race = "venom"
-monster.corpse = 6021
-monster.speed = 109
+monster.corpse = 3004
+monster.speed = 69
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -74,7 +74,12 @@ monster.light = {
 monster.summon = {
 	maxSummons = 3,
 	summons = {
-		{ name = "Larva", chance = 10, interval = 2000, count = 3 },
+		{
+			name = "Larva",
+			interval = 7000,
+			chance = 100,
+			count = 3,
+		},
 	},
 }
 
@@ -84,20 +89,64 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "scarab amulet", chance = 3410 },
-	{ id = 3025, chance = 2500 }, -- ancient amulet
-	{ name = "gold coin", chance = 100000, maxCount = 187 },
-	{ name = "small emerald", chance = 6000, maxCount = 3 },
-	{ name = "small amethyst", chance = 6000, maxCount = 4 },
-	{ name = "scarab coin", chance = 8000, maxCount = 2 },
-	{ id = 3046, chance = 11480 }, -- magic light wand
-	{ name = "daramian waraxe", chance = 300 },
-	{ name = "plate armor", chance = 5000 },
-	{ name = "scarab shield", chance = 480 },
-	{ name = "strong health potion", chance = 1500 },
-	{ name = "springsprout rod", chance = 1000 },
-	{ name = "terra hood", chance = 490 },
-	{ name = "scarab pincers", chance = 7000 },
+	{
+		id = 2149,
+		chance = 600,
+		maxCount = 3,
+	},
+	{
+		id = 2150,
+		chance = 1200,
+		maxCount = 4,
+	},
+	{
+		id = 2540,
+		chance = 500,
+	},
+	{
+		id = 2159,
+		chance = 1000,
+	},
+	{
+		id = 2159,
+		chance = 5000,
+		maxCount = 2,
+	},
+	{
+		id = 2135,
+		chance = 500,
+	},
+	{
+		id = 2463,
+		chance = 10000,
+	},
+	{
+		id = 2162,
+		chance = 10900,
+	},
+	{
+		id = 2148,
+		chance = 99900,
+		maxCount = 22,
+	},
+	{
+		id = 2148,
+		chance = 75700,
+		maxCount = 66,
+	},
+	{
+		id = 2148,
+		chance = 44400,
+		maxCount = 100,
+	},
+	{
+		id = 2440,
+		chance = 300,
+	},
+	{
+		id = 2142,
+		chance = 1000,
+	},
 }
 
 monster.attacks = {

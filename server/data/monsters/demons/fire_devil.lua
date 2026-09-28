@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Fire Devil"
 monster.description = "a fire devil"
-monster.experience = 145
+monster.experience = 110
 monster.outfit = {
 	lookType = 40,
 	lookHead = 0,
@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 200
 monster.maxHealth = 200
 monster.race = "blood"
-monster.corpse = 5985
-monster.speed = 90
+monster.corpse = 2886
+monster.speed = 50
 monster.manaCost = 530
 
 monster.changeTarget = {
@@ -72,21 +72,54 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Hot, eh?", yell = false },
-	{ text = "Hell, oh, hell!", yell = false },
+	{
+		text = "Hot, eh?",
+		yell = false,
+	},
+	{
+		text = "Hell, oh hell!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 10000 }, -- torch
-	{ id = 2920, chance = 1420, maxCount = 2 }, -- torch
-	{ name = "small amethyst", chance = 300 },
-	{ name = "necrotic rod", chance = 460 },
-	{ name = "blank rune", chance = 10950 },
-	{ name = "double axe", chance = 1500 },
-	{ id = 3307, chance = 3000 }, -- scimitar
-	{ name = "guardian shield", chance = 210 },
-	{ name = "cleaver", chance = 1100 },
-	{ name = "small pitchfork", chance = 19770 },
+	{
+		id = 2191,
+		chance = 1,
+	},
+	{
+		id = 2050,
+		chance = 15000,
+		maxCount = 2,
+	},
+	{
+		id = 2150,
+		chance = 300,
+	},
+	{
+		id = 2419,
+		chance = 6000,
+	},
+	{
+		id = 2548,
+		chance = 50000,
+	},
+	{
+		id = 2515,
+		chance = 200,
+	},
+	{
+		id = 2387,
+		chance = 1500,
+	},
+	{
+		id = 2568,
+		chance = 9000,
+	},
+	{
+		id = 2260,
+		chance = 11000,
+	},
 }
 
 monster.attacks = {

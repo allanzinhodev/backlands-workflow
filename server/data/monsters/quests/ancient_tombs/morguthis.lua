@@ -22,8 +22,8 @@ monster.bosstiary = {
 monster.health = 4800
 monster.maxHealth = 4800
 monster.race = "undead"
-monster.corpse = 6025
-monster.speed = 295
+monster.corpse = 3016
+monster.speed = 175
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -63,35 +63,90 @@ monster.light = {
 }
 
 monster.summon = {
-	maxSummons = 3,
+	maxSummons = 2,
 	summons = {
-		{ name = "Hero", chance = 100, interval = 2000, count = 3 },
+		{
+			name = "Hero",
+			interval = 15000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Vengeance!", yell = false },
-	{ text = "You will make a fine trophy.", yell = false },
-	{ text = "Come and fight me, cowards!", yell = false },
-	{ text = "I am the supreme warrior!", yell = false },
-	{ text = "Let me hear the music of battle.", yell = false },
-	{ text = "Another one to bite the dust!", yell = false },
+	{
+		text = "Vengeance!",
+		yell = false,
+	},
+	{
+		text = "You will make a fine trophy.",
+		yell = false,
+	},
+	{
+		text = "Come and fight me, cowards!",
+		yell = false,
+	},
+	{
+		text = "I am the supreme warrior!",
+		yell = false,
+	},
+	{
+		text = "Let me hear the music of battle.",
+		yell = false,
+	},
+	{
+		text = "Anotherone to bite the dust!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 3019, chance = 500 }, -- demonbone amulet
-	{ name = "black pearl", chance = 7000 },
-	{ name = "gold coin", chance = 50000, maxCount = 80 },
-	{ name = "gold coin", chance = 50000, maxCount = 73 },
-	{ name = "stone skin amulet", chance = 7000 },
-	{ name = "sword hilt", chance = 100000 },
-	{ name = "knight axe", chance = 7000 },
-	{ name = "ravager's axe", chance = 300 },
-	{ name = "steel boots", chance = 500 },
-	{ name = "assassin star", chance = 500, maxCount = 3 },
-	{ name = "great health potion", chance = 1500 },
+	{
+		id = 2350,
+		chance = 100000,
+	},
+	{
+		id = 2197,
+		chance = 5000,
+	},
+	{
+		id = 2645,
+		chance = 100,
+	},
+	{
+		id = 2443,
+		chance = 100,
+	},
+	{
+		id = 2430,
+		chance = 5000,
+	},
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 95,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 85,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 80,
+	},
+	{
+		id = 2136,
+		chance = 100,
+	},
+	{
+		id = 2144,
+		chance = 10000,
+	},
 }
 
 monster.attacks = {

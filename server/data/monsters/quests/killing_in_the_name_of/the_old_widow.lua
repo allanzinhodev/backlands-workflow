@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "The Old Widow"
 monster.description = "The Old Widow"
-monster.experience = 4200
+monster.experience = 2800
 monster.outfit = {
 	lookType = 208,
 	lookHead = 0,
@@ -14,11 +14,11 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.health = 3200
-monster.maxHealth = 3200
-monster.race = "blood"
-monster.corpse = 5977
-monster.speed = 219
+monster.health = 3550
+monster.maxHealth = 3550
+monster.race = "venom"
+monster.corpse = 2857
+monster.speed = 99
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -60,7 +60,12 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "giant spider", chance = 13, interval = 1000, count = 2 },
+		{
+			name = "Giant Spider",
+			interval = 8000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
@@ -70,21 +75,49 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 3031, chance = 100000, maxCount = 99 }, -- gold coin
-	{ id = 3035, chance = 100000, maxCount = 10 }, -- platinum coin
-	{ id = 5879, chance = 100000 }, -- spider silk
-	{ id = 3351, chance = 100000 }, -- steel helmet
-	{ id = 239, chance = 100000, maxCount = 4 }, -- great health potion
-	{ id = 3370, chance = 50000 }, -- knight armor
-	{ id = 3049, chance = 33333 }, -- stealth ring
-	{ id = 3051, chance = 33333 }, -- energy ring
-	{ id = 3053, chance = 33333 }, -- time ring
-	{ id = 12320, chance = 33333 }, -- sweet smelling bait
-	{ id = 3371, chance = 25000 }, -- knight legs
-	{ id = 3055, chance = 25000 }, -- platinum amulet
-	{ id = 5886, chance = 25000 }, -- spool of yarn
-	{ id = 7416, chance = 3225 }, -- bloody edge
-	{ id = 7419, chance = 1639 }, -- dreaded cleaver
+	{
+		id = 2169,
+		chance = 1400,
+	},
+	{
+		id = 2457,
+		chance = 10000,
+	},
+	{
+		id = 2171,
+		chance = 200,
+	},
+	{
+		id = 2463,
+		chance = 20000,
+	},
+	{
+		id = 2477,
+		chance = 600,
+	},
+	{
+		id = 2476,
+		chance = 600,
+	},
+	{
+		id = 2148,
+		chance = 99900,
+		maxCount = 22,
+	},
+	{
+		id = 2148,
+		chance = 99900,
+		maxCount = 66,
+	},
+	{
+		id = 2148,
+		chance = 66600,
+		maxCount = 77,
+	},
+	{
+		id = 2478,
+		chance = 16000,
+	},
 }
 
 monster.attacks = {

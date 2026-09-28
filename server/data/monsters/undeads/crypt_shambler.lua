@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 330
 monster.maxHealth = 330
 monster.race = "undead"
-monster.corpse = 6029
-monster.speed = 70
+monster.corpse = 3028
+monster.speed = 30
 monster.manaCost = 580
 
 monster.changeTarget = {
@@ -73,24 +73,68 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Aaaaahhhh!", yell = false },
-	{ text = "Hoooohhh!", yell = false },
-	{ text = "Uhhhhhhh!", yell = false },
-	{ text = "Chhhhhhh!", yell = false },
+	{
+		text = "Uhhhhhhh!",
+		yell = false,
+	},
+	{
+		text = "Aaaaahhhh!",
+		yell = false,
+	},
+	{
+		text = "Hoooohhh!",
+		yell = false,
+	},
+	{
+		text = "Chhhhhhh!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "small diamond", chance = 510 },
-	{ name = "gold coin", chance = 57000, maxCount = 55 },
-	{ name = "rotten meat", chance = 1850 },
-	{ id = 3115, chance = 5000 }, -- bone
-	{ name = "throwing star", chance = 910, maxCount = 3 },
-	{ name = "bone sword", chance = 1000 },
-	{ name = "iron helmet", chance = 2130 },
-	{ name = "iron helmet", chance = 2000 },
-	{ name = "bone shield", chance = 1000 },
-	{ name = "worm", chance = 9000, maxCount = 10 },
-	{ name = "half-digested piece of meat", chance = 5000 },
+	{
+		id = 2377,
+		chance = 2000,
+	},
+	{
+		id = 2399,
+		chance = 1000,
+		maxCount = 3,
+	},
+	{
+		id = 2145,
+		chance = 500,
+	},
+	{
+		id = 2227,
+		chance = 20000,
+	},
+	{
+		id = 2459,
+		chance = 2000,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 30,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 25,
+	},
+	{
+		id = 2450,
+		chance = 1000,
+	},
+	{
+		id = 2541,
+		chance = 1000,
+	},
+	{
+		id = 2230,
+		chance = 50000,
+	},
 }
 
 monster.attacks = {

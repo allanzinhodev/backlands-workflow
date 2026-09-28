@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Green Djinn"
 monster.description = "a green djinn"
-monster.experience = 215
+monster.experience = 190
 monster.outfit = {
 	lookType = 51,
 	lookHead = 0,
@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 330
 monster.maxHealth = 330
 monster.race = "blood"
-monster.corpse = 6016
-monster.speed = 110
+monster.corpse = 2989
+monster.speed = 70
 monster.manaCost = 0
 
 monster.faction = FACTION_EFREET
@@ -75,24 +75,59 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "I grant you a deathwish!", yell = false },
-	{ text = "Muahahahahaha", yell = false },
-	{ text = "I wish you a merry trip to hell!", yell = false },
-	{ text = "Good wishes are for fairytales", yell = false },
+	{
+		text = "I grant you a deathwish!",
+		yell = false,
+	},
+	{
+		text = "Muhahahaha!",
+		yell = false,
+	},
+	{
+		text = "I wish you a merry trip to hell!",
+		yell = false,
+	},
+	{
+		text = "Tell me your last wish!",
+		yell = false,
+	},
+	{
+		text = "Good wishes are for fairytales",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2831, chance = 2280 }, -- book
-	{ name = "gold coin", chance = 41000, maxCount = 70 },
-	{ name = "gold coin", chance = 51000, maxCount = 45 },
-	{ name = "small emerald", chance = 2960, maxCount = 4 },
-	{ name = "mystic turban", chance = 140 },
-	{ id = 3607, chance = 23500 }, -- cheese
-	{ name = "grave flower", chance = 1000 },
-	{ name = "green piece of cloth", chance = 2000 },
-	{ name = "royal spear", chance = 4870, maxCount = 2 },
-	{ name = "mana potion", chance = 490 },
-	{ name = "dirty turban", chance = 2210 },
+	{
+		id = 2063,
+		chance = 7500,
+	},
+	{
+		id = 2149,
+		chance = 2700,
+		maxCount = 4,
+	},
+	{
+		id = 2663,
+		chance = 100,
+	},
+	{
+		id = 2747,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 50,
+	},
+	{
+		id = 2696,
+		chance = 25000,
+	},
+	{
+		id = 1980,
+		chance = 2500,
+	},
 }
 
 monster.attacks = {

@@ -29,9 +29,9 @@ monster.Bestiary = {
 
 monster.health = 120
 monster.maxHealth = 120
-monster.race = "venom"
-monster.corpse = 6036
-monster.speed = 70
+monster.race = "blood"
+monster.corpse = 3049
+monster.speed = 30
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -71,14 +71,40 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Mommy!?", yell = false },
-	{ text = "Buuuuhaaaahhaaaaa!", yell = false },
-	{ text = "Me need mana!", yell = false },
+	{
+		text = "Mommy!?",
+		yell = false,
+	},
+	{
+		text = "Buuuuhaaaahhaaaaa!",
+		yell = false,
+	},
+	{
+		text = "Me need mana!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 99350, maxCount = 16 },
-	{ name = "small flask of eyedrops", chance = 3200 },
+	{
+		id = 2512,
+		chance = 3000,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 10,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 8,
+	},
+	{
+		id = 2148,
+		chance = 90000,
+		maxCount = 6,
+	},
 }
 
 monster.attacks = {

@@ -34,8 +34,8 @@ monster.Bestiary = {
 monster.health = 225
 monster.maxHealth = 225
 monster.race = "venom"
-monster.corpse = 6060
-monster.speed = 107
+monster.corpse = 4320
+monster.speed = 67
 monster.manaCost = 485
 
 monster.changeTarget = {
@@ -52,7 +52,7 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = false,
 	rewardBoss = false,
 	illusionable = true,
@@ -79,14 +79,32 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 79000, maxCount = 40 },
-	{ id = 3053, chance = 120 }, -- time ring
-	{ name = "steel helmet", chance = 990 },
-	{ name = "brass legs", chance = 3050 },
-	{ name = "plate shield", chance = 2000 },
-	{ name = "spider fangs", chance = 4820 },
-	{ name = "tarantula egg", chance = 10000 },
-	{ name = "monk robe", chance = 390 },
+	{
+		id = 2169,
+		chance = 100,
+	},
+	{
+		id = 2457,
+		chance = 1000,
+	},
+	{
+		id = 2510,
+		chance = 2000,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 30,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 10,
+	},
+	{
+		id = 2478,
+		chance = 3000,
+	},
 }
 
 monster.attacks = {

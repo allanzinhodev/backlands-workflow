@@ -33,8 +33,8 @@ monster.Bestiary = {
 monster.health = 1000
 monster.maxHealth = 1000
 monster.race = "undead"
-monster.corpse = 6019
-monster.speed = 110
+monster.corpse = 2998
+monster.speed = 70
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -76,38 +76,114 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Dance for me your dance of death!", yell = false },
-	{ text = "Let the music play!", yell = false },
-	{ text = "I will mourn your death!", yell = false },
-	{ text = "Are you ready to rock?", yell = false },
-	{ text = "Feel my gentle kiss of death.", yell = false },
-	{ text = "That's what I call easy listening!", yell = false },
-	{ text = "IIIIEEEeeeeeehhhHHHH!", yell = false },
+	{
+		text = "Are you ready to rock?",
+		yell = false,
+	},
+	{
+		text = "That's what I call easy listening!",
+		yell = false,
+	},
+	{
+		text = "Let the music play!",
+		yell = false,
+	},
+	{
+		text = "I will mourn your death!",
+		yell = false,
+	},
+	{
+		text = "IIIIEEEeeeeeehhhHHHHH!",
+		yell = true,
+	},
+	{
+		text = "Dance for me your dance of death!",
+		yell = false,
+	},
+	{
+		text = "Feel my gentle kiss of death.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "candlestick", chance = 70000 },
-	{ name = "wedding ring", chance = 460 },
-	{ id = 3007, chance = 60 }, -- crystal ring
-	{ name = "silver brooch", chance = 1250 },
-	{ name = "white pearl", chance = 1010 },
-	{ name = "black pearl", chance = 2030 },
-	{ name = "gold coin", chance = 30000, maxCount = 80 },
-	{ name = "silver amulet", chance = 8700 },
-	{ id = 3059, chance = 520 }, -- spellbook
-	{ name = "life crystal", chance = 70 },
-	{ name = "stone skin amulet", chance = 820 },
-	{ id = 3098, chance = 730 }, -- ring of healing
-	{ id = 2949, chance = 910 }, -- lyre
-	{ name = "poison dagger", chance = 1350 },
-	{ name = "red robe", chance = 150 },
-	{ name = "blue robe", chance = 700 },
-	{ name = "simple dress", chance = 6050 },
-	{ name = "strong mana potion", chance = 680 },
-	{ name = "terra mantle", chance = 340 },
-	{ name = "petrified scream", chance = 4150 },
-	{ name = "hair of a banshee", chance = 4810 },
-	{ name = "sweet smelling bait", chance = 40 },
+	{
+		id = 2143,
+		chance = 1000,
+	},
+	{
+		id = 2121,
+		chance = 500,
+	},
+	{
+		id = 2197,
+		chance = 800,
+	},
+	{
+		id = 2175,
+		chance = 500,
+	},
+	{
+		id = 2657,
+		chance = 60000,
+	},
+	{
+		id = 2134,
+		chance = 1500,
+	},
+	{
+		id = 2170,
+		chance = 9000,
+	},
+	{
+		id = 2214,
+		chance = 800,
+	},
+	{
+		id = 2655,
+		chance = 100,
+	},
+	{
+		id = 2411,
+		chance = 1500,
+	},
+	{
+		id = 2560,
+		chance = 7000,
+	},
+	{
+		id = 2071,
+		chance = 1000,
+	},
+	{
+		id = 2177,
+		chance = 100,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 80,
+	},
+	{
+		id = 2237,
+		chance = 19900,
+	},
+	{
+		id = 2124,
+		chance = 100,
+	},
+	{
+		id = 2047,
+		chance = 70000,
+	},
+	{
+		id = 2656,
+		chance = 600,
+	},
+	{
+		id = 2144,
+		chance = 2000,
+	},
 }
 
 monster.attacks = {

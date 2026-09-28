@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Dworc Fleshhunter"
 monster.description = "a dworc fleshhunter"
-monster.experience = 40
+monster.experience = 35
 monster.outfit = {
 	lookType = 215,
 	lookHead = 0,
@@ -30,9 +30,9 @@ monster.Bestiary = {
 monster.health = 85
 monster.maxHealth = 85
 monster.race = "blood"
-monster.corpse = 6058
-monster.speed = 74
-monster.manaCost = 0
+monster.corpse = 4307
+monster.speed = 34
+monster.manaCost = 300
 
 monster.changeTarget = {
 	interval = 4000,
@@ -47,11 +47,11 @@ monster.flags = {
 	summonable = false,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -71,21 +71,63 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Grow truk grrrrr.", yell = false },
-	{ text = "Brak brrretz!", yell = false },
-	{ text = "Prek tars, dekklep zurk.", yell = false },
+	{
+		text = "Grak brrretz!",
+		yell = false,
+	},
+	{
+		text = "Grow truk grrrrr.",
+		yell = false,
+	},
+	{
+		text = "Prek tars, dekklep zurk.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 4750 }, -- torch
-	{ name = "gold coin", chance = 69000, maxCount = 13 },
-	{ id = 3114, chance = 3300, maxCount = 3 }, -- skull
-	{ name = "poison dagger", chance = 2250 },
-	{ name = "bone shield", chance = 1000 },
-	{ name = "cleaver", chance = 9750 },
-	{ name = "ripper lance", chance = 90 },
-	{ name = "hunting spear", chance = 2000 },
-	{ name = "tribal mask", chance = 500 },
+	{
+		id = 3967,
+		chance = 500,
+	},
+	{
+		id = 2050,
+		chance = 5500,
+	},
+	{
+		id = 2229,
+		chance = 3000,
+		maxCount = 3,
+	},
+	{
+		id = 3964,
+		chance = 100,
+	},
+	{
+		id = 2411,
+		chance = 2000,
+	},
+	{
+		id = 2467,
+		chance = 11000,
+	},
+	{
+		id = 3965,
+		chance = 500,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 10,
+	},
+	{
+		id = 2568,
+		chance = 9000,
+	},
+	{
+		id = 2541,
+		chance = 1000,
+	},
 }
 
 monster.attacks = {

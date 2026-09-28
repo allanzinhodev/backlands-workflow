@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 25
 monster.maxHealth = 25
 monster.race = "blood"
-monster.corpse = 6054
-monster.speed = 84
+monster.corpse = 4301
+monster.speed = 44
 monster.manaCost = 250
 
 monster.changeTarget = {
@@ -48,10 +48,10 @@ monster.flags = {
 	attackable = true,
 	hostile = false,
 	convinceable = true,
-	pushable = false,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -73,9 +73,7 @@ monster.voices = {
 	chance = 10,
 }
 
-monster.loot = {
-	{ name = "downy feather", chance = 1040 },
-}
+monster.loot = {}
 
 monster.defenses = {
 	defense = 5,

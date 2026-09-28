@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Kongra"
 monster.description = "a kongra"
-monster.experience = 115
+monster.experience = 110
 monster.outfit = {
 	lookType = 116,
 	lookHead = 0,
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 340
 monster.maxHealth = 340
 monster.race = "blood"
-monster.corpse = 6043
-monster.speed = 92
+monster.corpse = 4268
+monster.speed = 52
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -71,21 +71,57 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Ungh! Ungh!", yell = false },
-	{ text = "Hugah!", yell = false },
-	{ text = "Huaauaauaauaa!", yell = false },
+	{
+		text = "Hugah!",
+		yell = false,
+	},
+	{
+		text = "Ungh! Ungh!",
+		yell = false,
+	},
+	{
+		text = "Huaauaauaauaa!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 69000, maxCount = 40 },
-	{ id = 3050, chance = 300 }, -- power ring
-	{ name = "protection amulet", chance = 990 },
-	{ id = 3093, chance = 230 }, -- club ring
-	{ name = "plate armor", chance = 950 },
-	{ name = "banana", chance = 30000, maxCount = 12 },
-	{ name = "ape fur", chance = 980 },
-	{ name = "health potion", chance = 570 },
-	{ name = "kongra's shoulderpad", chance = 4900 },
+	{
+		id = 2200,
+		chance = 1000,
+	},
+	{
+		id = 2166,
+		chance = 500,
+	},
+	{
+		id = 2463,
+		chance = 1000,
+	},
+	{
+		id = 2148,
+		chance = 10000,
+		maxCount = 30,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 25,
+	},
+	{
+		id = 2209,
+		chance = 200,
+	},
+	{
+		id = 2676,
+		chance = 5000,
+		maxCount = 10,
+	},
+	{
+		id = 2676,
+		chance = 30000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

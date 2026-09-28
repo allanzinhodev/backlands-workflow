@@ -34,9 +34,9 @@ monster.Bestiary = {
 
 monster.health = 260
 monster.maxHealth = 260
-monster.race = "venom"
-monster.corpse = 5992
-monster.speed = 75
+monster.race = "blood"
+monster.corpse = 2908
+monster.speed = 35
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -79,32 +79,80 @@ monster.light = {
 monster.summon = {
 	maxSummons = 6,
 	summons = {
-		{ name = "Skeleton", chance = 20, interval = 2000, count = 6 },
+		{
+			name = "Skeleton",
+			interval = 9000,
+			chance = 100,
+			count = 6,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You've got the look!", yell = false },
-	{ text = "Let me take a look at you.", yell = false },
-	{ text = "Eye for eye!", yell = false },
-	{ text = "I've got to look!", yell = false },
-	{ text = "Here's looking at you!", yell = false },
+	{
+		text = "Eye for eye!",
+		yell = false,
+	},
+	{
+		text = "Here's looking at you!",
+		yell = false,
+	},
+	{
+		text = "Let me take a look at you!",
+		yell = false,
+	},
+	{
+		text = "You've got the look!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 99400, maxCount = 48 },
-	{ id = 3059, chance = 4990 }, -- spellbook
-	{ name = "terra rod", chance = 510 },
-	{ name = "two handed sword", chance = 3950 },
-	{ name = "morning star", chance = 7020 },
-	{ name = "longsword", chance = 9060 },
-	{ name = "steel shield", chance = 3980 },
-	{ name = "bonelord shield", chance = 110 },
-	{ name = "bonelord eye", chance = 1000 },
-	{ name = "mana potion", chance = 300 },
-	{ name = "small flask of eyedrops", chance = 5060 },
+	{
+		id = 2512,
+		chance = 3000,
+	},
+	{
+		id = 2377,
+		chance = 4000,
+	},
+	{
+		id = 2509,
+		chance = 4000,
+	},
+	{
+		id = 2175,
+		chance = 5000,
+	},
+	{
+		id = 2394,
+		chance = 7000,
+	},
+	{
+		id = 2397,
+		chance = 9000,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 20,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 16,
+	},
+	{
+		id = 2148,
+		chance = 90000,
+		maxCount = 12,
+	},
+	{
+		id = 2518,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

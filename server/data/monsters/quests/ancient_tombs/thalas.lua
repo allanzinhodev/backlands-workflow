@@ -22,8 +22,8 @@ monster.bosstiary = {
 monster.health = 4100
 monster.maxHealth = 4100
 monster.race = "undead"
-monster.corpse = 6025
-monster.speed = 210
+monster.corpse = 3016
+monster.speed = 90
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -65,28 +65,89 @@ monster.light = {
 monster.summon = {
 	maxSummons = 8,
 	summons = {
-		{ name = "Slime", chance = 100, interval = 2000, count = 8 },
+		{
+			name = "Slime",
+			interval = 12000,
+			chance = 100,
+			count = 8,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You will become a feast for my maggots!", yell = false },
+	{
+		text = "You will become a feast for my maggots.",
+		yell = false,
+	},
+	{
+		text = "Death and decay!",
+		yell = false,
+	},
+	{
+		text = "Death awaits you.",
+		yell = false,
+	},
+	{
+		text = "Your precious life will be wasted.",
+		yell = false,
+	},
+	{
+		text = "Green is my favourite color.",
+		yell = false,
+	},
+	{
+		text = "Flesssh to dussst!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 50000, maxCount = 80 },
-	{ name = "gold coin", chance = 50000, maxCount = 80 },
-	{ name = "small emerald", chance = 7000, maxCount = 3 },
-	{ name = "green gem", chance = 500 },
-	{ id = 3049, chance = 1500 }, -- stealth ring
-	{ id = 3053, chance = 7000 }, -- time ring
-	{ name = "cobrafang dagger", chance = 100000 },
-	{ name = "serpent sword", chance = 500 },
-	{ name = "poison dagger", chance = 7000 },
-	{ name = "djinn blade", chance = 200 },
-	{ name = "great health potion", chance = 1500 },
+	{
+		id = 2169,
+		chance = 5000,
+	},
+	{
+		id = 2149,
+		chance = 10000,
+		maxCount = 3,
+	},
+	{
+		id = 2409,
+		chance = 2000,
+	},
+	{
+		id = 2411,
+		chance = 20000,
+	},
+	{
+		id = 2155,
+		chance = 1000,
+	},
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 95,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 85,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 80,
+	},
+	{
+		id = 2451,
+		chance = 1500,
+	},
+	{
+		id = 2351,
+		chance = 100000,
+	},
 }
 
 monster.attacks = {

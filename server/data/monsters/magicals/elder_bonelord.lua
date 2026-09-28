@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 500
 monster.maxHealth = 500
 monster.race = "blood"
-monster.corpse = 6037
-monster.speed = 85
+monster.corpse = 3052
+monster.speed = 45
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -76,33 +76,86 @@ monster.light = {
 monster.summon = {
 	maxSummons = 6,
 	summons = {
-		{ name = "Gazer", chance = 10, interval = 2000, count = 6 },
-		{ name = "Crypt Shambler", chance = 15, interval = 2000, count = 6 },
+		{
+			name = "Crypt Shambler",
+			interval = 9000,
+			chance = 100,
+			count = 6,
+		},
+		{
+			name = "Gazer",
+			interval = 8000,
+			chance = 100,
+			count = 6,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Inferior creatures, bow before my power!", yell = false },
-	{ text = "Let me take a look at you!", yell = false },
-	{ text = "659978 54764!", yell = false },
-	{ text = "653768764!", yell = false },
+	{
+		text = "653768764!",
+		yell = false,
+	},
+	{
+		text = "Let me take a look at you!",
+		yell = false,
+	},
+	{
+		text = "Inferior creatures, bow before my power!",
+		yell = false,
+	},
+	{
+		text = "659978 54764!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 99290, maxCount = 86 },
-	{ name = "elder bonelord tentacle", chance = 20040 },
-	{ name = "small flask of eyedrops", chance = 9720 },
-	{ name = "sniper arrow", chance = 8780, maxCount = 5 },
-	{ name = "two handed sword", chance = 2980 },
-	{ name = "steel shield", chance = 2040 },
-	{ id = 3059, chance = 1030 }, -- spellbook
-	{ name = "strong mana potion", chance = 830 },
-	{ name = "giant eye", chance = 460 },
-	{ name = "bonelord shield", chance = 90 },
-	{ name = "bonelord helmet", chance = 90 },
-	{ name = "bonelord eye", chance = 1920 },
+	{
+		id = 2377,
+		chance = 6000,
+	},
+	{
+		id = 2509,
+		chance = 6000,
+	},
+	{
+		id = 2175,
+		chance = 1000,
+	},
+	{
+		id = 2394,
+		chance = 10000,
+	},
+	{
+		id = 2397,
+		chance = 12000,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 35,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 32,
+	},
+	{
+		id = 2148,
+		chance = 90000,
+		maxCount = 24,
+	},
+	{
+		id = 2518,
+		chance = 100,
+	},
+	{
+		id = 3972,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

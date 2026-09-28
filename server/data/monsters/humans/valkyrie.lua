@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 190
 monster.maxHealth = 190
 monster.race = "blood"
-monster.corpse = 18242
-monster.speed = 88
+monster.corpse = 3065
+monster.speed = 48
 monster.manaCost = 450
 
 monster.changeTarget = {
@@ -72,28 +72,74 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Another head for me!", yell = false },
-	{ text = "Head off!", yell = false },
-	{ text = "Your head will be mine!", yell = false },
-	{ text = "Stand still!", yell = false },
-	{ text = "One more head for me!", yell = false },
+	{
+		text = "Stand still!",
+		yell = false,
+	},
+	{
+		text = "One more head for me!",
+		yell = false,
+	},
+	{
+		text = "Head off!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "spear", chance = 55000, maxCount = 3 },
-	{ name = "gold coin", chance = 32000, maxCount = 12 },
-	{ name = "meat", chance = 30000 },
-	{ name = "chain armor", chance = 10000 },
-	{ name = "red apple", chance = 7500, maxCount = 2 },
-	{ name = "girlish hair decoration", chance = 5900 },
-	{ name = "hunting spear", chance = 5155 },
-	{ name = "protective charm", chance = 3200 },
-	{ name = "protection amulet", chance = 1100 },
-	{ name = "plate armor", chance = 830 },
-	{ id = 3114, chance = 760 }, -- skull
-	{ name = "health potion", chance = 500 },
-	{ name = "double axe", chance = 430 },
-	{ name = "small diamond", chance = 130 },
+	{
+		id = 2389,
+		chance = 60000,
+		maxCount = 3,
+	},
+	{
+		id = 2145,
+		chance = 100,
+	},
+	{
+		id = 2229,
+		chance = 80000,
+		maxCount = 2,
+	},
+	{
+		id = 2674,
+		chance = 7500,
+		maxCount = 2,
+	},
+	{
+		id = 2200,
+		chance = 1100,
+	},
+	{
+		id = 2463,
+		chance = 800,
+	},
+	{
+		id = 2666,
+		chance = 30000,
+		maxCount = 3,
+	},
+	{
+		id = 2148,
+		chance = 32000,
+		maxCount = 12,
+	},
+	{
+		id = 2387,
+		chance = 400,
+	},
+	{
+		id = 2379,
+		chance = 25000,
+	},
+	{
+		id = 2458,
+		chance = 4000,
+	},
+	{
+		id = 2464,
+		chance = 10000,
+	},
 }
 
 monster.attacks = {

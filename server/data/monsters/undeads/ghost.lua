@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 150
 monster.maxHealth = 150
 monster.race = "undead"
-monster.corpse = 5993
-monster.speed = 80
+monster.corpse = 2913
+monster.speed = 40
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -73,21 +73,57 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Huh!", yell = false },
-	{ text = "Shhhhhh", yell = false },
-	{ text = "Buuuuuh", yell = false },
+	{
+		text = "Huh!",
+		yell = false,
+	},
+	{
+		text = "Shhhhhh",
+		yell = false,
+	},
+	{
+		text = "Buuuuuh",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2828, chance = 1310 }, -- book
-	{ id = 3049, chance = 180 }, -- stealth ring
-	{ name = "morning star", chance = 10610 },
-	{ name = "combat knife", chance = 7002 },
-	{ name = "ancient shield", chance = 860 },
-	{ name = "cape", chance = 8800 },
-	{ name = "shadow herb", chance = 14400 },
-	{ id = 5909, chance = 1940 }, -- white piece of cloth
-	{ name = "ghostly tissue", chance = 1870 },
+	{
+		id = 2182,
+		chance = 1,
+	},
+	{
+		id = 2165,
+		chance = 200,
+	},
+	{
+		id = 2804,
+		chance = 15000,
+	},
+	{
+		id = 2642,
+		chance = 20000,
+	},
+	{
+		id = 2394,
+		chance = 11000,
+	},
+	{
+		id = 2404,
+		chance = 7000,
+	},
+	{
+		id = 2654,
+		chance = 9000,
+	},
+	{
+		id = 1977,
+		chance = 1500,
+	},
+	{
+		id = 2532,
+		chance = 800,
+	},
 }
 
 monster.attacks = {

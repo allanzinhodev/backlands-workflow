@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 250
 monster.maxHealth = 250
 monster.race = "undead"
-monster.corpse = 6027
-monster.speed = 100
+monster.corpse = 3022
+monster.speed = 60
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -73,26 +73,81 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Feel my claws, softskin.", yell = false },
-	{ text = "There is a stone in your shoe!", yell = false },
-	{ text = "Stone sweet stone.", yell = false },
-	{ text = "Harrrr harrrr!", yell = false },
-	{ text = "Chhhhhrrrrk!", yell = false },
+	{
+		text = "Harrrr Harrrr!",
+		yell = false,
+	},
+	{
+		text = "Stone sweet stone.",
+		yell = false,
+	},
+	{
+		text = "Feel my claws, softskin.",
+		yell = false,
+	},
+	{
+		text = "Chhhhhrrrrk!",
+		yell = false,
+	},
+	{
+		text = "There is a stone in your shoe!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 3012, chance = 1480 }, -- wolf tooth chain
-	{ name = "gold coin", chance = 88000, maxCount = 30 },
-	{ id = 3093, chance = 260 }, -- club ring
-	{ name = "morning star", chance = 2150 },
-	{ name = "steel helmet", chance = 850 },
-	{ name = "dark armor", chance = 300 },
-	{ name = "battle shield", chance = 1000 },
-	{ name = "strawberry", chance = 1810, maxCount = 5 },
-	{ name = "potato", chance = 9220, maxCount = 2 },
-	{ name = "stone wing", chance = 11730 },
-	{ name = "shiny stone", chance = 190 },
-	{ name = "piece of marble rock", chance = 630 },
+	{
+		id = 2129,
+		chance = 200,
+	},
+	{
+		id = 2448,
+		chance = 8000,
+	},
+	{
+		id = 2457,
+		chance = 200,
+	},
+	{
+		id = 1294,
+		chance = 10000,
+		maxCount = 10,
+	},
+	{
+		id = 2394,
+		chance = 1000,
+	},
+	{
+		id = 2666,
+		chance = 50000,
+	},
+	{
+		id = 2671,
+		chance = 20000,
+		maxCount = 2,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 20,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 10,
+	},
+	{
+		id = 2489,
+		chance = 200,
+	},
+	{
+		id = 2209,
+		chance = 100,
+	},
+	{
+		id = 2513,
+		chance = 1500,
+	},
 }
 
 monster.attacks = {

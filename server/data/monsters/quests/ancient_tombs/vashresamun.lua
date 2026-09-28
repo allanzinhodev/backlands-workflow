@@ -22,8 +22,8 @@ monster.bosstiary = {
 monster.health = 4000
 monster.maxHealth = 4000
 monster.race = "undead"
-monster.corpse = 6025
-monster.speed = 170
+monster.corpse = 3016
+monster.speed = 115
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -65,32 +65,92 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "Banshee", chance = 20, interval = 2000, count = 2 },
+		{
+			name = "Banshee",
+			interval = 5000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Come my maidens, we have visitors!", yell = false },
-	{ text = "Are you enjoying my music?", yell = false },
-	{ text = "If music is the food of death, drop dead.", yell = false },
-	{ text = "Chakka Chakka!", yell = false },
-	{ text = "Heheheheee!", yell = false },
+	{
+		text = "Heheheheee!",
+		yell = false,
+	},
+	{
+		text = "Come my maidens, we have visitors!",
+		yell = false,
+	},
+	{
+		text = "Are you enjoying my music?",
+		yell = false,
+	},
+	{
+		text = "Dance a dance of death for me!",
+		yell = false,
+	},
+	{
+		text = "If music is the food of death, drop dead.",
+		yell = false,
+	},
+	{
+		text = "Chakka Chakka!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2950, chance = 7000 }, -- lute
-	{ id = 2953, chance = 1500 }, -- panpipes
-	{ id = 3007, chance = 1500 }, -- crystal ring
-	{ name = "ancient tiara", chance = 300 },
-	{ name = "white pearl", chance = 7000 },
-	{ name = "gold coin", chance = 50000, maxCount = 90 },
-	{ name = "gold coin", chance = 50000, maxCount = 80 },
-	{ name = "gold coin", chance = 50000, maxCount = 65 },
-	{ name = "blue note", chance = 100000 },
-	{ name = "crystal mace", chance = 500 },
-	{ name = "blue robe", chance = 2500 },
+	{
+		id = 2143,
+		chance = 10000,
+	},
+	{
+		id = 2074,
+		chance = 200,
+	},
+	{
+		id = 2072,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 95,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 85,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 80,
+	},
+	{
+		id = 2124,
+		chance = 1500,
+	},
+	{
+		id = 2445,
+		chance = 100,
+	},
+	{
+		id = 2656,
+		chance = 1000,
+	},
+	{
+		id = 2349,
+		chance = 100000,
+	},
+	{
+		id = 2139,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

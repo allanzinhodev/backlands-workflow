@@ -16,8 +16,8 @@ monster.outfit = {
 monster.health = 4200
 monster.maxHealth = 4200
 monster.race = "undead"
-monster.corpse = 6031
-monster.speed = 240
+monster.corpse = 3034
+monster.speed = 120
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -63,31 +63,97 @@ monster.light = {
 monster.summon = {
 	maxSummons = 4,
 	summons = {
-		{ name = "Priestess", chance = 15, interval = 2000, count = 4 },
+		{
+			name = "Priestess",
+			interval = 7000,
+			chance = 100,
+			count = 4,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You can't escape death forever", yell = false },
-	{ text = "Come closer to learn the final lesson", yell = false },
-	{ text = "Undeath will shatter my shackles.", yell = false },
-	{ text = "You don't need this magic anymore.", yell = false },
+	{
+		text = "Come closer to learn the final lesson.",
+		yell = false,
+	},
+	{
+		text = "I sense the weakness of your akh.",
+		yell = false,
+	},
+	{
+		text = "Mortality and fear are your fate and your doom.",
+		yell = false,
+	},
+	{
+		text = "Undeath will shatter my shackles.",
+		yell = false,
+	},
+	{
+		text = "You can't escape death forever.",
+		yell = false,
+	},
+	{
+		text = "You don't need this magic anymore.",
+		yell = false,
+	},
+	{
+		text = "Feel the powers of my mind.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "small sapphire", chance = 7000, maxCount = 3 },
-	{ name = "gold coin", chance = 50000, maxCount = 80 },
-	{ name = "gold coin", chance = 50000, maxCount = 80 },
-	{ name = "blue gem", chance = 1500 },
-	{ id = 3051, chance = 7000 }, -- energy ring
-	{ name = "mind stone", chance = 1500 },
-	{ name = "ankh", chance = 500 },
-	{ name = "ornamented ankh", chance = 100000 },
-	{ name = "skull staff", chance = 500 },
-	{ name = "pharaoh sword", chance = 300 },
-	{ id = 238, chance = 7000 }, -- great mana potion
+	{
+		id = 2146,
+		chance = 10000,
+		maxCount = 3,
+	},
+	{
+		id = 2436,
+		chance = 500,
+	},
+	{
+		id = 2446,
+		chance = 100,
+	},
+	{
+		id = 2354,
+		chance = 100000,
+	},
+	{
+		id = 2178,
+		chance = 1000,
+	},
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 95,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 85,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 80,
+	},
+	{
+		id = 2167,
+		chance = 5000,
+	},
+	{
+		id = 2158,
+		chance = 1000,
+	},
+	{
+		id = 2193,
+		chance = 500,
+	},
 }
 
 monster.attacks = {

@@ -5,12 +5,12 @@ monster.name = "Assassin"
 monster.description = "an assassin"
 monster.experience = 105
 monster.outfit = {
-	lookType = 152,
+	lookType = 129,
 	lookHead = 95,
 	lookBody = 95,
 	lookLegs = 95,
 	lookFeet = 95,
-	lookAddons = 3,
+	lookAddons = 0,
 	lookMount = 0,
 }
 
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 175
 monster.maxHealth = 175
 monster.race = "blood"
-monster.corpse = 18046
-monster.speed = 112
+monster.corpse = 3058
+monster.speed = 72
 monster.manaCost = 450
 
 monster.changeTarget = {
@@ -73,25 +73,72 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You are on my deathlist!", yell = false },
-	{ text = "Die!", yell = false },
-	{ text = "Feel the hand of death!", yell = false },
+	{
+		text = "Die!",
+		yell = false,
+	},
+	{
+		text = "Feel the hand of death!",
+		yell = false,
+	},
+	{
+		text = "You are on my deathlist!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 29980, maxCount = 2 }, -- torch
-	{ name = "small diamond", chance = 220 },
-	{ name = "gold coin", chance = 83210, maxCount = 50 },
-	{ name = "gold coin", chance = 7250, maxCount = 14 },
-	{ name = "knife", chance = 9500 },
-	{ name = "combat knife", chance = 4000 },
-	{ name = "steel helmet", chance = 3230 },
-	{ name = "steel shield", chance = 970 },
-	{ name = "plate shield", chance = 1900 },
-	{ name = "battle shield", chance = 1600 },
-	{ name = "leopard armor", chance = 480 },
-	{ name = "horseman helmet", chance = 230 },
-	{ name = "viper star", chance = 4200, maxCount = 7 },
+	{
+		id = 2050,
+		chance = 30000,
+		maxCount = 2,
+	},
+	{
+		id = 2509,
+		chance = 1000,
+	},
+	{
+		id = 2457,
+		chance = 3000,
+	},
+	{
+		id = 2145,
+		chance = 200,
+	},
+	{
+		id = 2510,
+		chance = 2000,
+	},
+	{
+		id = 3968,
+		chance = 500,
+	},
+	{
+		id = 2403,
+		chance = 10000,
+	},
+	{
+		id = 3969,
+		chance = 200,
+	},
+	{
+		id = 2148,
+		chance = 15000,
+		maxCount = 10,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 40,
+	},
+	{
+		id = 2404,
+		chance = 4000,
+	},
+	{
+		id = 2513,
+		chance = 1500,
+	},
 }
 
 monster.attacks = {

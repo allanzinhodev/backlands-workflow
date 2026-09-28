@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Dwarf Geomancer"
 monster.description = "a dwarf geomancer"
-monster.experience = 265
+monster.experience = 245
 monster.outfit = {
 	lookType = 66,
 	lookHead = 0,
@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 380
 monster.maxHealth = 380
 monster.race = "blood"
-monster.corpse = 6015
-monster.speed = 100
+monster.corpse = 2987
+monster.speed = 60
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -56,7 +56,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 70,
 	targetDistance = 4,
-	runHealth = 110,
+	runHealth = 150,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,
@@ -72,25 +72,76 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Hail Durin!", yell = false },
-	{ text = "Earth is the strongest element.", yell = false },
-	{ text = "Dust to dust.", yell = false },
+	{
+		text = "Hail Durin!",
+		yell = false,
+	},
+	{
+		text = "Earth is the strongest element.",
+		yell = false,
+	},
+	{
+		text = "Dust to dust.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "small sapphire", chance = 710 },
-	{ name = "gold coin", chance = 50000, maxCount = 35 },
-	{ id = 3046, chance = 14000 }, -- magic light wand
-	{ id = 3059, chance = 360 }, -- spellbook
-	{ id = 3097, chance = 530 }, -- dwarven ring
-	{ name = "blank rune", chance = 33000 },
-	{ name = "clerical mace", chance = 1120 },
-	{ name = "pear", chance = 25000 },
-	{ name = "white mushroom", chance = 60000, maxCount = 2 },
-	{ name = "iron ore", chance = 120 },
-	{ name = "terra boots", chance = 470 },
-	{ name = "geomancer's robe", chance = 8000 },
-	{ name = "geomancer's staff", chance = 7000 },
+	{
+		id = 2787,
+		chance = 60000,
+		maxCount = 2,
+	},
+	{
+		id = 2468,
+		chance = 20000,
+	},
+	{
+		id = 2175,
+		chance = 400,
+	},
+	{
+		id = 2481,
+		chance = 8000,
+	},
+	{
+		id = 2146,
+		chance = 100,
+	},
+	{
+		id = 2673,
+		chance = 18000,
+		maxCount = 2,
+	},
+	{
+		id = 2162,
+		chance = 12000,
+	},
+	{
+		id = 2643,
+		chance = 40000,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 30,
+	},
+	{
+		id = 2213,
+		chance = 300,
+	},
+	{
+		id = 2423,
+		chance = 1000,
+	},
+	{
+		id = 2260,
+		chance = 10000,
+	},
+	{
+		id = 1987,
+		chance = 50000,
+	},
 }
 
 monster.attacks = {

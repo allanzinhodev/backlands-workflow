@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 23
 monster.maxHealth = 23
 monster.race = "blood"
-monster.corpse = 6034
-monster.speed = 70
+monster.corpse = 3043
+monster.speed = 30
 monster.manaCost = 200
 
 monster.changeTarget = {
@@ -48,10 +48,10 @@ monster.flags = {
 	attackable = true,
 	hostile = true,
 	convinceable = true,
-	pushable = false,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -74,9 +74,10 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 10299, chance = 10230 }, -- badger fur
-	{ name = "beetroot", chance = 40710 },
-	{ name = "acorn", chance = 5130 },
+	{
+		id = 2666,
+		chance = 40000,
+	},
 }
 
 monster.attacks = {

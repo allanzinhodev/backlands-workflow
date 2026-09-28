@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 260
 monster.maxHealth = 260
 monster.race = "blood"
-monster.corpse = 5962
-monster.speed = 95
+monster.corpse = 2808
+monster.speed = 55
 monster.manaCost = 490
 
 monster.changeTarget = {
@@ -73,27 +73,76 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Human, uh whil dyh!", yell = false },
-	{ text = "Youh ah trak!", yell = false },
-	{ text = "Let da mashing begin!", yell = false },
-	{ text = "Toks utat.", yell = false },
-	{ text = "Il lorstok human!", yell = false },
+	{
+		text = "Il lorstok human!",
+		yell = false,
+	},
+	{
+		text = "Toks utat.",
+		yell = false,
+	},
+	{
+		text = "Human, uh whil dyh!",
+		yell = false,
+	},
+	{
+		text = "Youh ah trak!",
+		yell = false,
+	},
+	{
+		text = "Let da mashing begin!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 3012, chance = 190 }, -- wolf tooth chain
-	{ name = "gold coin", chance = 82000, maxCount = 47 },
-	{ id = 3093, chance = 90 }, -- club ring
-	{ name = "halberd", chance = 1003 },
-	{ name = "short sword", chance = 8000 },
-	{ name = "dark helmet", chance = 220 },
-	{ name = "plate shield", chance = 2500 },
-	{ name = "battle shield", chance = 1400 },
-	{ name = "meat", chance = 30070 },
-	{ id = 7398, chance = 80 }, -- cyclops trophy
-	{ name = "health potion", chance = 210 },
-	{ name = "cyclops toe", chance = 4930 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2129,
+		chance = 200,
+	},
+	{
+		id = 2406,
+		chance = 8000,
+	},
+	{
+		id = 2510,
+		chance = 2000,
+	},
+	{
+		id = 2666,
+		chance = 50000,
+	},
+	{
+		id = 2671,
+		chance = 20000,
+		maxCount = 2,
+	},
+	{
+		id = 2381,
+		chance = 700,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 20,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 10,
+	},
+	{
+		id = 2490,
+		chance = 200,
+	},
+	{
+		id = 2209,
+		chance = 100,
+	},
+	{
+		id = 2513,
+		chance = 1500,
+	},
 }
 
 monster.attacks = {

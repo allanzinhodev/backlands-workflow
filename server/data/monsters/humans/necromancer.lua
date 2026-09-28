@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 580
 monster.maxHealth = 580
 monster.race = "blood"
-monster.corpse = 18174
-monster.speed = 94
+monster.corpse = 3058
+monster.speed = 54
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -70,34 +70,80 @@ monster.light = {
 }
 
 monster.summon = {
-	maxSummons = 3,
+	maxSummons = 2,
 	summons = {
-		{ name = "Ghoul", chance = 15, interval = 2000, count = 1 },
-		{ name = "Ghost", chance = 5, interval = 2000, count = 1 },
-		{ name = "Mummy", chance = 5, interval = 2000, count = 1 },
+		{
+			name = "Mummy",
+			interval = 8000,
+			chance = 100,
+			count = 1,
+		},
+		{
+			name = "Ghost",
+			interval = 7000,
+			chance = 100,
+			count = 1,
+		},
+		{
+			name = "Ghoul",
+			interval = 6000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Taste the sweetness of death!", yell = false },
-	{ text = "Your corpse will be mine.", yell = false },
+	{
+		text = "Your corpse will be mine!",
+		yell = false,
+	},
+	{
+		text = "Taste the sweetness of death!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 30050, maxCount = 90 },
-	{ name = "boots of haste", chance = 210 },
-	{ name = "clerical mace", chance = 390 },
-	{ name = "skull staff", chance = 100 },
-	{ name = "poison arrow", chance = 15000, maxCount = 5 },
-	{ name = "mystic turban", chance = 500 },
-	{ name = "green mushroom", chance = 1470 },
-	{ name = "noble axe", chance = 10 },
-	{ name = "strong mana potion", chance = 300 },
-	{ name = "spellbook of warding", chance = 130 },
-	{ name = "book of necromantic rituals", chance = 10130 },
-	{ name = "necromantic robe", chance = 1001 },
+	{
+		id = 2186,
+		chance = 1,
+	},
+	{
+		id = 2436,
+		chance = 100,
+	},
+	{
+		id = 2406,
+		chance = 15000,
+	},
+	{
+		id = 2483,
+		chance = 10000,
+	},
+	{
+		id = 2663,
+		chance = 500,
+	},
+	{
+		id = 2796,
+		chance = 1500,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 90,
+	},
+	{
+		id = 2423,
+		chance = 1000,
+	},
+	{
+		id = 2195,
+		chance = 200,
+	},
 }
 
 monster.attacks = {

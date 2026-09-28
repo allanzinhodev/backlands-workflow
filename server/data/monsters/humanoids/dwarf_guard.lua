@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Dwarf Guard"
 monster.description = "a dwarf guard"
-monster.experience = 165
+monster.experience = 170
 monster.outfit = {
 	lookType = 70,
 	lookHead = 0,
@@ -28,12 +28,12 @@ monster.Bestiary = {
 		Stonehome Rotworm cave (near Edron), Maze of Lost Souls, Tiquanda Dwarf Cave, Beregar, Cormaya Dwarf Cave.",
 }
 
-monster.health = 245
-monster.maxHealth = 245
+monster.health = 240
+monster.maxHealth = 240
 monster.race = "blood"
-monster.corpse = 6013
-monster.speed = 103
-monster.manaCost = 650
+monster.corpse = 2983
+monster.speed = 63
+monster.manaCost = 600
 
 monster.changeTarget = {
 	interval = 4000,
@@ -74,23 +74,55 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Hail Durin!", yell = false },
+	{
+		text = "Hail Durin!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 40000, maxCount = 30 },
-	{ name = "small amethyst", chance = 140 },
-	{ id = 3092, chance = 190 }, -- axe ring
-	{ name = "double axe", chance = 600 },
-	{ name = "battle hammer", chance = 4000 },
-	{ name = "steel helmet", chance = 1600 },
-	{ name = "scale armor", chance = 9200 },
-	{ name = "battle shield", chance = 6000 },
-	{ name = "leather boots", chance = 40000 },
-	{ name = "white mushroom", chance = 55000, maxCount = 2 },
-	{ name = "iron ore", chance = 510 },
-	{ name = "health potion", chance = 380 },
-	{ id = 12600, chance = 280 }, -- coal
+	{
+		id = 2787,
+		chance = 55000,
+		maxCount = 2,
+	},
+	{
+		id = 2457,
+		chance = 2000,
+	},
+	{
+		id = 2150,
+		chance = 100,
+	},
+	{
+		id = 2483,
+		chance = 10000,
+	},
+	{
+		id = 2643,
+		chance = 40000,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 30,
+	},
+	{
+		id = 2387,
+		chance = 600,
+	},
+	{
+		id = 2513,
+		chance = 7500,
+	},
+	{
+		id = 2417,
+		chance = 4000,
+	},
+	{
+		id = 2208,
+		chance = 200,
+	},
 }
 
 monster.attacks = {

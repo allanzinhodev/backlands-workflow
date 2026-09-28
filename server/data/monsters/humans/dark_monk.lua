@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 190
 monster.maxHealth = 190
 monster.race = "blood"
-monster.corpse = 18281
-monster.speed = 115
+monster.corpse = 3058
+monster.speed = 75
 monster.manaCost = 480
 
 monster.changeTarget = {
@@ -73,26 +73,70 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You are no match to us!", yell = false },
-	{ text = "Your end has come!", yell = false },
-	{ text = "This is where your path will end!", yell = false },
+	{
+		text = "This is where your path will end!",
+		yell = false,
+	},
+	{
+		text = "Your end has come.",
+		yell = false,
+	},
+	{
+		text = "You are no match for us!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2815, chance = 1790 }, -- scroll
-	{ name = "brown flask", chance = 380 },
-	{ id = 2914, chance = 550 }, -- lamp
-	{ name = "gold coin", chance = 14600, maxCount = 18 },
-	{ id = 3050, chance = 120 }, -- power ring
-	{ name = "life crystal", chance = 990 },
-	{ name = "ankh", chance = 900 },
-	{ name = "sandals", chance = 890 },
-	{ name = "bread", chance = 20550 },
-	{ name = "mana potion", chance = 790 },
-	{ name = "book of prayers", chance = 1900 },
-	{ name = "dark rosary", chance = 10500 },
-	{ name = "rope belt", chance = 6666 },
-	{ name = "safety pin", chance = 990 },
+	{
+		id = 2401,
+		chance = 11000,
+	},
+	{
+		id = 1949,
+		chance = 20000,
+	},
+	{
+		id = 2642,
+		chance = 8000,
+	},
+	{
+		id = 2166,
+		chance = 100,
+	},
+	{
+		id = 2044,
+		chance = 10000,
+	},
+	{
+		id = 2177,
+		chance = 1000,
+	},
+	{
+		id = 2467,
+		chance = 5500,
+	},
+	{
+		id = 2148,
+		chance = 15000,
+		maxCount = 18,
+	},
+	{
+		id = 1987,
+		chance = 13000,
+	},
+	{
+		id = 2015,
+		chance = 9000,
+	},
+	{
+		id = 2689,
+		chance = 20000,
+	},
+	{
+		id = 2193,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

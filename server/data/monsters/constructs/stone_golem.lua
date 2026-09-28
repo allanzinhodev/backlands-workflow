@@ -33,8 +33,8 @@ monster.Bestiary = {
 monster.health = 270
 monster.maxHealth = 270
 monster.race = "undead"
-monster.corpse = 6005
-monster.speed = 90
+monster.corpse = 2952
+monster.speed = 50
 monster.manaCost = 590
 
 monster.changeTarget = {
@@ -77,18 +77,44 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "small stone", chance = 13890, maxCount = 4 },
-	{ id = 3007, chance = 120 }, -- crystal ring
-	{ name = "gold coin", chance = 90000, maxCount = 40 },
-	{ id = 3039, chance = 30 }, -- red gem
-	{ id = 3050, chance = 5070 }, -- power ring
-	{ name = "carlin sword", chance = 2500 },
-	{ name = "iron ore", chance = 1980 },
-	{ name = "ancient stone", chance = 1020 },
-	{ name = "shiny stone", chance = 760 },
-	{ name = "sulphurous stone", chance = 10370 },
-	{ name = "piece of marble rock", chance = 380 },
-	{ id = 12600, chance = 550 }, -- coal
+	{
+		id = 2050,
+		chance = 5500,
+	},
+	{
+		id = 2509,
+		chance = 7000,
+	},
+	{
+		id = 1294,
+		chance = 13000,
+		maxCount = 4,
+	},
+	{
+		id = 2483,
+		chance = 5000,
+	},
+	{
+		id = 2156,
+		chance = 100,
+	},
+	{
+		id = 2166,
+		chance = 5000,
+	},
+	{
+		id = 2148,
+		chance = 16000,
+		maxCount = 15,
+	},
+	{
+		id = 2124,
+		chance = 200,
+	},
+	{
+		id = 2395,
+		chance = 1500,
+	},
 }
 
 monster.attacks = {

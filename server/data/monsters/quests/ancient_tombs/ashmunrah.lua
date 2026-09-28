@@ -21,8 +21,8 @@ monster.bosstiary = {
 monster.health = 5000
 monster.maxHealth = 5000
 monster.race = "undead"
-monster.corpse = 6031
-monster.speed = 215
+monster.corpse = 3034
+monster.speed = 175
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -63,31 +63,95 @@ monster.light = {
 monster.summon = {
 	maxSummons = 4,
 	summons = {
-		{ name = "Ancient Scarab", chance = 100, interval = 1000, count = 2 },
-		{ name = "Green Djinn", chance = 100, interval = 1000, count = 2 },
+		{
+			name = "Green Djinn",
+			interval = 9000,
+			chance = 100,
+			count = 4,
+		},
+		{
+			name = "Ancient Scarab",
+			interval = 7000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "No mortal or undead will steal my secrets!", yell = false },
-	{ text = "Ahhhh all those long years.", yell = false },
-	{ text = "My traitorous son has thee.", yell = false },
-	{ text = "Come to me, my allys and underlings.", yell = false },
-	{ text = "I might be trapped but not without power", yell = false },
-	{ text = "Ages come, ages go. Ashmunrah remains.", yell = false },
-	{ text = "You will be history soon.", yell = false },
+	{
+		text = "I might be trapped but not without power.",
+		yell = false,
+	},
+	{
+		text = "Ahhhh all those long years.",
+		yell = false,
+	},
+	{
+		text = "Ages come, ages go. Asmumrah remains.",
+		yell = false,
+	},
+	{
+		text = "My traitorous son has sent thee.",
+		yell = false,
+	},
+	{
+		text = "No mortal or undead will steal my secrets.",
+		yell = false,
+	},
+	{
+		text = "You will be history soon.",
+		yell = false,
+	},
+	{
+		text = "Come to me, my allys and underlings.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "silver brooch", chance = 7000 },
-	{ name = "holy scarab", chance = 400 },
-	{ name = "gold coin", chance = 50000, maxCount = 80 },
-	{ name = "gold coin", chance = 50000, maxCount = 60 },
-	{ name = "might ring", chance = 1000 },
-	{ name = "crown armor", chance = 80000 },
-	{ id = 238, chance = 1500 }, -- great mana potion
+	{
+		id = 2134,
+		chance = 4000,
+	},
+	{
+		id = 2164,
+		chance = 5000,
+	},
+	{
+		id = 2140,
+		chance = 100,
+	},
+	{
+		id = 2444,
+		chance = 100,
+	},
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 95,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 85,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 80,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 90,
+	},
+	{
+		id = 2487,
+		chance = 500,
+	},
 }
 
 monster.attacks = {

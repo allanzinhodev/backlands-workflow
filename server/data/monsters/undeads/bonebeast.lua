@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 515
 monster.maxHealth = 515
 monster.race = "undead"
-monster.corpse = 6030
-monster.speed = 109
+monster.corpse = 3031
+monster.speed = 69
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -72,22 +72,50 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Knooorrrrr!", yell = false },
-	{ text = "Cccchhhhhhhhh!", yell = false },
+	{
+		text = "Cccchhhhhhhhh!",
+		yell = false,
+	},
+	{
+		text = "Knooorrrrr!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 50000, maxCount = 90 },
-	{ id = 3114, chance = 20000 }, -- skull
-	{ id = 3115, chance = 47750 }, -- bone
-	{ name = "bone club", chance = 4950 },
-	{ name = "plate armor", chance = 8000 },
-	{ name = "bone shield", chance = 2000 },
-	{ name = "green mushroom", chance = 1350 },
-	{ name = "hardened bone", chance = 960 },
-	{ name = "health potion", chance = 540 },
-	{ name = "bonebeast trophy", chance = 120 },
-	{ name = "bony tail", chance = 9780 },
+	{
+		id = 2229,
+		chance = 20000,
+	},
+	{
+		id = 2463,
+		chance = 8000,
+	},
+	{
+		id = 2796,
+		chance = 1500,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 90,
+	},
+	{
+		id = 2541,
+		chance = 2000,
+	},
+	{
+		id = 2449,
+		chance = 5000,
+	},
+	{
+		id = 2230,
+		chance = 50000,
+	},
+	{
+		id = 2231,
+		chance = 10000,
+	},
 }
 
 monster.attacks = {

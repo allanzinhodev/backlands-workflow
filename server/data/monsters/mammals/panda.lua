@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 80
 monster.maxHealth = 80
 monster.race = "blood"
-monster.corpse = 6049
-monster.speed = 78
+monster.corpse = 4286
+monster.speed = 38
 monster.manaCost = 300
 
 monster.changeTarget = {
@@ -51,7 +51,7 @@ monster.flags = {
 	pushable = false,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -71,14 +71,27 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Groar", yell = false },
-	{ text = "Grrrr", yell = false },
+	{
+		text = "Grrrr",
+		yell = false,
+	},
+	{
+		text = "Groar",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "meat", chance = 70500, maxCount = 4 },
-	{ name = "ham", chance = 39000, maxCount = 2 },
-	{ name = "bamboo stick", chance = 10000 },
+	{
+		id = 2666,
+		chance = 70000,
+		maxCount = 4,
+	},
+	{
+		id = 2671,
+		chance = 40000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

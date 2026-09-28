@@ -31,9 +31,9 @@ monster.Bestiary = {
 monster.health = 240
 monster.maxHealth = 240
 monster.race = "undead"
-monster.corpse = 6004
-monster.speed = 75
-monster.manaCost = 0
+monster.corpse = 2949
+monster.speed = 35
+monster.manaCost = 510
 
 monster.changeTarget = {
 	interval = 4000,
@@ -72,29 +72,74 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "I will ssswallow your sssoul!", yell = false },
-	{ text = "Mort ulhegh dakh visss.", yell = false },
-	{ text = "Flesssh to dussst!", yell = false },
-	{ text = "I will tassste life again!", yell = false },
-	{ text = "Ahkahra exura belil mort!", yell = false },
-	{ text = "Yohag Sssetham!", yell = false },
+	{
+		text = "I will ssswallow your sssoul!",
+		yell = false,
+	},
+	{
+		text = "Ahkahra exura belil mort!",
+		yell = false,
+	},
+	{
+		text = "Yohag Sssetham!",
+		yell = false,
+	},
+	{
+		text = "I will tassste life again!",
+		yell = false,
+	},
+	{
+		text = "Mort ulhegh dakh visss.",
+		yell = false,
+	},
+	{
+		text = "Flesssh to dussst!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 3007, chance = 1500 }, -- crystal ring
-	{ name = "silver brooch", chance = 4000 },
-	{ name = "black pearl", chance = 1000 },
-	{ name = "gold coin", chance = 38000, maxCount = 80 },
-	{ name = "strange talisman", chance = 5000 },
-	{ id = 3046, chance = 5800 }, -- magic light wand
-	{ name = "silver amulet", chance = 100 },
-	{ name = "poison dagger", chance = 450 },
-	{ name = "black shield", chance = 170 },
-	{ name = "worm", chance = 19000, maxCount = 3 },
-	{ name = "yellow piece of cloth", chance = 900 },
-	{ name = "gauze bandage", chance = 10000 },
-	{ name = "mini mummy", chance = 10 },
-	{ name = "flask of embalming fluid", chance = 11690 },
+	{
+		id = 2161,
+		chance = 5000,
+	},
+	{
+		id = 2134,
+		chance = 4000,
+	},
+	{
+		id = 2170,
+		chance = 100,
+	},
+	{
+		id = 2406,
+		chance = 8000,
+	},
+	{
+		id = 2411,
+		chance = 2500,
+	},
+	{
+		id = 2162,
+		chance = 16000,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 80,
+	},
+	{
+		id = 2124,
+		chance = 1500,
+	},
+	{
+		id = 2529,
+		chance = 200,
+	},
+	{
+		id = 2144,
+		chance = 1000,
+	},
 }
 
 monster.attacks = {

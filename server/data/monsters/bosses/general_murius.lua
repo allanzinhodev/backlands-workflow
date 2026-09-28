@@ -3,9 +3,9 @@ local monster = {}
 
 monster.name = "General Murius"
 monster.description = "General Murius"
-monster.experience = 450
+monster.experience = 300
 monster.outfit = {
-	lookType = 611,
+	lookType = 207,
 	lookHead = 0,
 	lookBody = 0,
 	lookLegs = 0,
@@ -22,8 +22,8 @@ monster.bosstiary = {
 monster.health = 550
 monster.maxHealth = 550
 monster.race = "blood"
-monster.corpse = 21091
-monster.speed = 125
+monster.corpse = 2876
+monster.speed = 85
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -63,41 +63,74 @@ monster.light = {
 }
 
 monster.summon = {
-	maxSummons = 4,
+	maxSummons = 2,
 	summons = {
-		{ name = "Minotaur Archer", chance = 15, interval = 1000, count = 2 },
-		{ name = "Minotaur Guard", chance = 12, interval = 1000, count = 2 },
+		{
+			name = "Minotaur Guard",
+			interval = 9000,
+			chance = 100,
+			count = 2,
+		},
+		{
+			name = "Minotaur Archer",
+			interval = 7000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You will get what you deserve!", yell = false },
-	{ text = "Feel the power of the Mooh'Tah!", yell = false },
-	{ text = "For the king!", yell = false },
-	{ text = "Guards!", yell = false },
+	{
+		text = "Feel the power of the Mooh'Tah!",
+		yell = false,
+	},
+	{
+		text = "You will get what you deserve!",
+		yell = false,
+	},
+	{
+		text = "For the king!",
+		yell = false,
+	},
+	{
+		text = "Guards!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "minotaur horn", chance = 100000, maxCount = 2 },
-	{ name = "minotaur leather", chance = 100000 },
-	{ name = "gold coin", chance = 97060, maxCount = 97 },
-	{ name = "platinum coin", chance = 97060, maxCount = 3 },
-	{ name = "brass armor", chance = 70590 },
-	{ name = "double axe", chance = 85290 },
-	{ name = "piercing bolt", chance = 35290, maxCount = 11 },
-	{ name = "meat", chance = 20590 },
-	{ name = "battle shield", chance = 29410 },
-	{ name = "chain legs", chance = 11760 },
-	{ id = 7401, chance = 20590 }, -- minotaur trophy
-	{ name = "power bolt", chance = 8820, maxCount = 7 },
-	{ name = "fishing rod", chance = 2940 },
-	{ name = "strong health potion", chance = 2940 },
-	{ name = "steel shield", chance = 7000 },
-	{ name = "chain armor", chance = 6000 },
-	{ name = "scale armor", chance = 8000 },
-	{ name = "wand of cosmic energy", chance = 5500 },
+	{
+		id = 2666,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 50,
+	},
+	{
+		id = 2580,
+		chance = 5000,
+	},
+	{
+		id = 2387,
+		chance = 7500,
+	},
+	{
+		id = 2648,
+		chance = 35000,
+	},
+	{
+		id = 2465,
+		chance = 28000,
+	},
+	{
+		id = 2513,
+		chance = 18000,
+	},
 }
 
 monster.attacks = {

@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 950
 monster.maxHealth = 950
 monster.race = "blood"
-monster.corpse = 6008
-monster.speed = 117
+monster.corpse = 2967
+monster.speed = 77
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -73,36 +73,93 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Ikem rambo zambo!", yell = false },
-	{ text = "Orc buta bana!", yell = false },
-	{ text = "Ranat Ulderek!", yell = false },
-	{ text = "Futchi maruk buta!", yell = false },
+	{
+		text = "Ranat Ulderek!",
+		yell = false,
+	},
+	{
+		text = "Orc buta bana!",
+		yell = false,
+	},
+	{
+		text = "Ikem rambo zambo!",
+		yell = false,
+	},
+	{
+		text = "Futchi maruk buta!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 18000, maxCount = 45 },
-	{ id = 3049, chance = 90 }, -- stealth ring
-	{ name = "gold ring", chance = 30 },
-	{ name = "protection amulet", chance = 2190 },
-	{ name = "two handed sword", chance = 1680 },
-	{ name = "throwing star", chance = 13920, maxCount = 18 },
-	{ id = 3307, chance = 3450 }, -- scimitar
-	{ name = "orcish axe", chance = 5400 },
-	{ name = "dragon hammer", chance = 320 },
-	{ name = "plate armor", chance = 5210 },
-	{ name = "brass armor", chance = 740 },
-	{ name = "dark helmet", chance = 1260 },
-	{ name = "crusader helmet", chance = 280 },
-	{ name = "plate legs", chance = 4280 },
-	{ id = 3578, chance = 10800, maxCount = 2 }, -- fish
-	{ name = "hunting spear", chance = 5260 },
-	{ id = 7395, chance = 50 }, -- orc trophy
-	{ name = "health potion", chance = 470 },
-	{ name = "magma boots", chance = 280 },
-	{ name = "orc tooth", chance = 9640 },
-	{ name = "broken helmet", chance = 24350 },
-	{ name = "orc leather", chance = 20620 },
-	{ name = "skull belt", chance = 4610 },
+	{
+		id = 2377,
+		chance = 2000,
+	},
+	{
+		id = 2399,
+		chance = 30000,
+		maxCount = 40,
+	},
+	{
+		id = 2165,
+		chance = 100,
+	},
+	{
+		id = 2419,
+		chance = 12000,
+	},
+	{
+		id = 2200,
+		chance = 2000,
+	},
+	{
+		id = 2647,
+		chance = 4000,
+	},
+	{
+		id = 2463,
+		chance = 6000,
+	},
+	{
+		id = 2428,
+		chance = 15000,
+	},
+	{
+		id = 2666,
+		chance = 20000,
+		maxCount = 2,
+	},
+	{
+		id = 2148,
+		chance = 19000,
+		maxCount = 45,
+	},
+	{
+		id = 2667,
+		chance = 10000,
+		maxCount = 2,
+	},
+	{
+		id = 2434,
+		chance = 200,
+	},
+	{
+		id = 2490,
+		chance = 1500,
+	},
+	{
+		id = 2497,
+		chance = 200,
+	},
+	{
+		id = 2478,
+		chance = 10000,
+	},
+	{
+		id = 2465,
+		chance = 1000,
+	},
 }
 
 monster.attacks = {

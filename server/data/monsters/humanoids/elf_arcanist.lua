@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 220
 monster.maxHealth = 220
 monster.race = "blood"
-monster.corpse = 6011
-monster.speed = 110
+monster.corpse = 2979
+monster.speed = 70
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -72,35 +72,94 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "I'll bring balance upon you!", yell = false },
-	{ text = "Vihil Ealuel!", yell = false },
-	{ text = "For the Daughter of the Stars!", yell = false },
-	{ text = "Tha'shi Cenath!", yell = false },
-	{ text = "Feel my wrath!", yell = false },
+	{
+		text = "Feel my wrath!",
+		yell = false,
+	},
+	{
+		text = "For the Daughter of the Stars!",
+		yell = false,
+	},
+	{
+		text = "I'll bring balance upon you!",
+		yell = false,
+	},
+	{
+		text = "Tha'shi Cenath!",
+		yell = false,
+	},
+	{
+		text = "Vihil Ealuel!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2815, chance = 31000 }, -- scroll
-	{ name = "candlestick", chance = 2100 },
-	{ name = "gold coin", chance = 37000, maxCount = 47 },
-	{ name = "yellow gem", chance = 50 },
-	{ name = "life crystal", chance = 970 },
-	{ name = "wand of cosmic energy", chance = 1160 },
-	{ name = "elven amulet", chance = 1999 },
-	{ name = "blank rune", chance = 18000 },
-	{ name = "arrow", chance = 6000, maxCount = 3 },
-	{ id = 3509, chance = 1000 }, -- inkwell
-	{ name = "sandals", chance = 950 },
-	{ name = "green tunic", chance = 7000 },
-	{ name = "melon", chance = 22000 },
-	{ name = "bread", chance = 14000 },
-	{ name = "grave flower", chance = 880 },
-	{ name = "sling herb", chance = 5000 },
-	{ name = "holy orchid", chance = 2100 },
-	{ name = "strong mana potion", chance = 3000 },
-	{ name = "health potion", chance = 4000 },
-	{ name = "elvish talisman", chance = 10000 },
-	{ name = "elven astral observer", chance = 7710 },
+	{
+		id = 2154,
+		chance = 200,
+	},
+	{
+		id = 2401,
+		chance = 11000,
+	},
+	{
+		id = 2802,
+		chance = 5000,
+	},
+	{
+		id = 1949,
+		chance = 30000,
+	},
+	{
+		id = 2642,
+		chance = 13000,
+	},
+	{
+		id = 2682,
+		chance = 22000,
+	},
+	{
+		id = 2177,
+		chance = 1000,
+	},
+	{
+		id = 2600,
+		chance = 9000,
+	},
+	{
+		id = 2652,
+		chance = 7000,
+	},
+	{
+		id = 2747,
+		chance = 7000,
+	},
+	{
+		id = 2198,
+		chance = 2000,
+	},
+	{
+		id = 2047,
+		chance = 22000,
+	},
+	{
+		id = 2689,
+		chance = 14000,
+	},
+	{
+		id = 2032,
+		chance = 5500,
+	},
+	{
+		id = 2260,
+		chance = 18000,
+	},
+	{
+		id = 2544,
+		chance = 6000,
+		maxCount = 3,
+	},
 }
 
 monster.attacks = {

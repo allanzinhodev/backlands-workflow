@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 25
 monster.maxHealth = 25
 monster.race = "blood"
-monster.corpse = 6056
-monster.speed = 160
+monster.corpse = 4314
+monster.speed = 120
 monster.manaCost = 250
 
 monster.changeTarget = {
@@ -48,10 +48,10 @@ monster.flags = {
 	attackable = true,
 	hostile = false,
 	convinceable = true,
-	pushable = false,
+	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
-	canPushItems = true,
+	canPushItems = false,
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
@@ -71,19 +71,30 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "You advanshed, you advanshed!", yell = false },
-	{ text = "Neeewbiiieee!", yell = false },
-	{ text = "Screeech!", yell = false },
-	{ text = "Hunterrr ish PK!", yell = false },
-	{ text = "BR? PL? SWE?", yell = true },
-	{ text = "Hope you die and loooosh it!", yell = false },
-	{ text = "You powerrrrrrabuserrrrr!", yell = false },
-	{ text = "You are corrrrupt! Corrrrupt!", yell = false },
-	{ text = "Tarrrrp?", yell = false },
-	{ text = "Blesshhh my stake! Screeech!", yell = false },
-	{ text = "Leeave orrr hunted!!", yell = false },
-	{ text = "Shhtop whining! Rraaah!", yell = false },
-	{ text = "I'm heeerrre! Screeeech!", yell = false },
+	{
+		text = "BR? PL? SWE?",
+		yell = false,
+	},
+	{
+		text = "Screeeeeeech!",
+		yell = false,
+	},
+	{
+		text = "Neeeewbiiieee!",
+		yell = false,
+	},
+	{
+		text = "You advanshed, you advanshed!",
+		yell = false,
+	},
+	{
+		text = "Hope you die and loooosh it!",
+		yell = false,
+	},
+	{
+		text = "Hunterrr ish PK!",
+		yell = false,
+	},
 }
 
 monster.loot = {}

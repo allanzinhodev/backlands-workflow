@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 35
 monster.maxHealth = 35
 monster.race = "venom"
-monster.corpse = 5989
-monster.speed = 160
+monster.corpse = 2899
+monster.speed = 120
 monster.manaCost = 280
 
 monster.changeTarget = {
@@ -50,7 +50,7 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
@@ -74,12 +74,13 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Bssssss", yell = false },
+	{
+		text = "Bsssssss",
+		yell = false,
+	},
 }
 
-monster.loot = {
-	{ name = "honeycomb", chance = 3000 },
-}
+monster.loot = {}
 
 monster.attacks = {
 	{ name = "melee", interval = 1500, chance = 100, minDamage = 0, maxDamage = -20, condition = { type = CONDITION_POISON, totalDamage = 20, interval = 4000 } },

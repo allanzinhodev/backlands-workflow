@@ -37,8 +37,8 @@ monster.Bestiary = {
 monster.health = 100
 monster.maxHealth = 100
 monster.race = "blood"
-monster.corpse = 5976
-monster.speed = 72
+monster.corpse = 2853
+monster.speed = 32
 monster.manaCost = 450
 
 monster.changeTarget = {
@@ -81,18 +81,39 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 2920, chance = 5000 }, -- torch
-	{ name = "gold coin", chance = 68000, maxCount = 30 },
-	{ id = 3052, chance = 180 }, -- life ring
-	{ id = 3114, chance = 240 }, -- skull
-	{ name = "viking helmet", chance = 990 },
-	{ name = "scale armor", chance = 1000 },
-	{ name = "worm", chance = 9600, maxCount = 2 },
-	{ name = "brown piece of cloth", chance = 1000 },
-	{ name = "rotten piece of cloth", chance = 14470 },
-	{ name = "ghoul snack", chance = 5130 },
-	{ name = "pile of grave earth", chance = 950 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2473,
+		chance = 5000,
+	},
+	{
+		id = 2050,
+		chance = 60000,
+	},
+	{
+		id = 2229,
+		chance = 3000,
+	},
+	{
+		id = 2483,
+		chance = 4000,
+	},
+	{
+		id = 2168,
+		chance = 200,
+	},
+	{
+		id = 2403,
+		chance = 15000,
+	},
+	{
+		id = 2148,
+		chance = 75000,
+		maxCount = 30,
+	},
+	{
+		id = 2460,
+		chance = 20000,
+	},
 }
 
 monster.attacks = {

@@ -35,8 +35,8 @@ monster.Bestiary = {
 monster.health = 1000
 monster.maxHealth = 1000
 monster.race = "blood"
-monster.corpse = 5973
-monster.speed = 86
+monster.corpse = 2844
+monster.speed = 45
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -78,32 +78,93 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "FCHHHHH", yell = true },
-	{ text = "GROOAAARRR", yell = true },
+	{
+		text = "GROOAAARRR",
+		yell = true,
+	},
+	{
+		text = "FCHHHHH",
+		yell = true,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 89920, maxCount = 102 },
-	{ name = "dragon ham", chance = 66270, maxCount = 2 },
-	{ name = "steel shield", chance = 15650 },
-	{ name = "dragon's tail", chance = 9680 },
-	{ name = "crossbow", chance = 9120 },
-	{ id = 3449, chance = 8060, maxCount = 10 }, -- burst arrow
-	{ name = "longsword", chance = 3830 },
-	{ name = "steel helmet", chance = 3490 },
-	{ name = "broadsword", chance = 2700 },
-	{ name = "plate legs", chance = 2029 },
-	{ name = "double axe", chance = 1580 },
-	{ name = "strong health potion", chance = 1130 },
-	{ name = "green dragon leather", chance = 1070 },
-	{ name = "green dragon scale", chance = 1010 },
-	{ name = "wand of inferno", chance = 560 },
-	{ name = "small diamond", chance = 450 },
-	{ name = "serpent sword", chance = 230 },
-	{ name = "dragon hammer", chance = 230 },
-	{ name = "dragonbone staff", chance = 170 },
-	{ name = "life crystal", chance = 170 },
-	{ name = "dragon shield", chance = 110 },
+	{
+		id = 2509,
+		chance = 15000,
+	},
+	{
+		id = 2457,
+		chance = 3000,
+	},
+	{
+		id = 2145,
+		chance = 400,
+	},
+	{
+		id = 2406,
+		chance = 25000,
+	},
+	{
+		id = 2409,
+		chance = 500,
+	},
+	{
+		id = 2647,
+		chance = 2000,
+	},
+	{
+		id = 2398,
+		chance = 20000,
+	},
+	{
+		id = 2397,
+		chance = 4000,
+	},
+	{
+		id = 2177,
+		chance = 100,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 60,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 45,
+	},
+	{
+		id = 2516,
+		chance = 300,
+	},
+	{
+		id = 2434,
+		chance = 500,
+	},
+	{
+		id = 2672,
+		chance = 45000,
+		maxCount = 3,
+	},
+	{
+		id = 2387,
+		chance = 1000,
+	},
+	{
+		id = 2455,
+		chance = 10000,
+	},
+	{
+		id = 2546,
+		chance = 8000,
+		maxCount = 10,
+	},
+	{
+		id = 2413,
+		chance = 2000,
+	},
 }
 
 monster.attacks = {

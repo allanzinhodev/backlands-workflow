@@ -33,8 +33,8 @@ monster.Bestiary = {
 monster.health = 300
 monster.maxHealth = 300
 monster.race = "blood"
-monster.corpse = 18254
-monster.speed = 102
+monster.corpse = 3065
+monster.speed = 62
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -74,27 +74,71 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Herba budinia ex!", yell = false },
-	{ text = "Horax Pokti!", yell = false },
-	{ text = "Hihihihi!", yell = false },
+	{
+		text = "Horax pokti!",
+		yell = false,
+	},
+	{
+		text = "Hihihihi!",
+		yell = false,
+	},
+	{
+		text = "Herba budinia ex!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 3012, chance = 10120 }, -- wolf tooth chain
-	{ name = "gold coin", chance = 64000, maxCount = 40 },
-	{ name = "necrotic rod", chance = 1140 },
-	{ name = "garlic necklace", chance = 1000 },
-	{ name = "silver dagger", chance = 500 },
-	{ name = "sickle", chance = 3910 },
-	{ name = "leather boots", chance = 4950 },
-	{ name = "coat", chance = 2010 },
-	{ name = "cape", chance = 4870 },
-	{ name = "cookie", chance = 29750, maxCount = 8 },
-	{ name = "star herb", chance = 8950 },
-	{ name = "witch broom", chance = 10000 },
-	{ name = "witch hat", chance = 80 },
-	{ name = "stuffed toad", chance = 10 },
-	{ name = "bag of apple slices", chance = 920 },
+	{
+		id = 2129,
+		chance = 10000,
+	},
+	{
+		id = 2800,
+		chance = 9000,
+	},
+	{
+		id = 2402,
+		chance = 500,
+	},
+	{
+		id = 2405,
+		chance = 40000,
+	},
+	{
+		id = 2643,
+		chance = 50000,
+	},
+	{
+		id = 2148,
+		chance = 10000,
+		maxCount = 10,
+	},
+	{
+		id = 2199,
+		chance = 2500,
+	},
+	{
+		id = 2687,
+		chance = 30000,
+		maxCount = 8,
+	},
+	{
+		id = 2651,
+		chance = 20000,
+	},
+	{
+		id = 2696,
+		chance = 40000,
+	},
+	{
+		id = 2654,
+		chance = 50000,
+	},
+	{
+		id = 2551,
+		chance = 20000,
+	},
 }
 
 monster.attacks = {

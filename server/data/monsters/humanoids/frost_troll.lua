@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 55
 monster.maxHealth = 55
 monster.race = "blood"
-monster.corpse = 5998
-monster.speed = 70
+monster.corpse = 2928
+monster.speed = 30
 monster.manaCost = 300
 
 monster.changeTarget = {
@@ -71,19 +71,50 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Brrr", yell = false },
-	{ text = "Broar!", yell = false },
+	{
+		text = "Brrrr",
+		yell = false,
+	},
+	{
+		text = "Broar!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 50840, maxCount = 12 },
-	{ id = 3130, chance = 8300 }, -- twigs
-	{ name = "rapier", chance = 15500 },
-	{ name = "spear", chance = 21500 },
-	{ id = 3412, chance = 15850 }, -- wooden shield
-	{ name = "coat", chance = 1200 },
-	{ id = 3578, chance = 18000 }, -- fish
-	{ name = "frosty ear of a troll", chance = 2000 },
+	{
+		id = 2512,
+		chance = 15000,
+	},
+	{
+		id = 2245,
+		chance = 8000,
+	},
+	{
+		id = 2389,
+		chance = 20000,
+	},
+	{
+		id = 2384,
+		chance = 15000,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 12,
+	},
+	{
+		id = 2667,
+		chance = 18000,
+	},
+	{
+		id = 2651,
+		chance = 12000,
+	},
+	{
+		id = 2382,
+		chance = 9000,
+	},
 }
 
 monster.attacks = {

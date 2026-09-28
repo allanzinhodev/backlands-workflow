@@ -31,9 +31,9 @@ monster.Bestiary = {
 monster.health = 255
 monster.maxHealth = 255
 monster.race = "venom"
-monster.corpse = 6047
-monster.speed = 55
-monster.manaCost = 0
+monster.corpse = 4280
+monster.speed = 15
+monster.manaCost = 490
 
 monster.changeTarget = {
 	interval = 4000,
@@ -76,14 +76,45 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 90000, maxCount = 40 },
-	{ name = "corncob", chance = 890 },
-	{ name = "dark mushroom", chance = 7692 },
-	{ name = "sling herb", chance = 446, maxCount = 2 },
-	{ name = "shadow herb", chance = 880 },
-	{ name = "seeds", chance = 490 },
-	{ name = "carniphila seeds", chance = 4166 },
-	{ name = "carrot on a stick", chance = 170 },
+	{
+		id = 2802,
+		chance = 500,
+	},
+	{
+		id = 2802,
+		chance = 500,
+	},
+	{
+		id = 2804,
+		chance = 1000,
+	},
+	{
+		id = 2666,
+		chance = 70000,
+		maxCount = 2,
+	},
+	{
+		id = 2671,
+		chance = 40000,
+	},
+	{
+		id = 2747,
+		chance = 500,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 10,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 30,
+	},
+	{
+		id = 2792,
+		chance = 8000,
+	},
 }
 
 monster.attacks = {

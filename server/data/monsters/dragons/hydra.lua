@@ -29,11 +29,11 @@ monster.Bestiary = {
 	Ferumbras Citadel, Yalahar Arena and Zoo Quarter, Yalahar Foreigner Quarter (Crystal Lake), Oramond Hydra/Bog Raider Cave.",
 }
 
-monster.health = 2350
-monster.maxHealth = 2350
+monster.health = 2250
+monster.maxHealth = 2250
 monster.race = "blood"
-monster.corpse = 6048
-monster.speed = 180
+monster.corpse = 4283
+monster.speed = 60
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -76,27 +76,82 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "FCHHHHH", yell = true },
-	{ text = "HISSSS", yell = true },
+	{
+		text = "FCHHHHH",
+		yell = true,
+	},
+	{
+		text = "HISSSS",
+		yell = true,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 87970, maxCount = 212 },
-	{ name = "ham", chance = 59510, maxCount = 3 },
-	{ name = "platinum coin", chance = 49910, maxCount = 3 },
-	{ name = "hydra head", chance = 10820 },
-	{ name = "cucumber", chance = 6900 },
-	{ name = "small sapphire", chance = 3920 },
-	{ name = "warrior helmet", chance = 1310 },
-	{ name = "knight armor", chance = 1120 },
-	{ name = "life crystal", chance = 930 },
-	{ id = 3098, chance = 840 }, -- ring of healing
-	{ name = "hydra egg", chance = 840 },
-	{ name = "strong mana potion", chance = 840 },
-	{ name = "stone skin amulet", chance = 750 },
-	{ name = "boots of haste", chance = 190 },
-	{ name = "medusa shield", chance = 190 },
-	{ name = "royal helmet", chance = 90 },
+	{
+		id = 2475,
+		chance = 1000,
+	},
+	{
+		id = 2197,
+		chance = 800,
+	},
+	{
+		id = 2146,
+		chance = 5000,
+	},
+	{
+		id = 2498,
+		chance = 200,
+	},
+	{
+		id = 2214,
+		chance = 1200,
+	},
+	{
+		id = 2536,
+		chance = 100,
+	},
+	{
+		id = 2666,
+		chance = 90000,
+		maxCount = 4,
+	},
+	{
+		id = 2177,
+		chance = 600,
+	},
+	{
+		id = 2476,
+		chance = 1000,
+	},
+	{
+		id = 4850,
+		chance = 900,
+	},
+	{
+		id = 2671,
+		chance = 60000,
+		maxCount = 3,
+	},
+	{
+		id = 2148,
+		chance = 40000,
+		maxCount = 50,
+	},
+	{
+		id = 2148,
+		chance = 60000,
+		maxCount = 100,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 100,
+	},
+	{
+		id = 2195,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

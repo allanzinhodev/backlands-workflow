@@ -32,8 +32,8 @@ monster.Bestiary = {
 monster.health = 160
 monster.maxHealth = 160
 monster.race = "blood"
-monster.corpse = 6012
-monster.speed = 110
+monster.corpse = 2981
+monster.speed = 70
 monster.manaCost = 360
 
 monster.changeTarget = {
@@ -46,7 +46,7 @@ monster.strategiesTarget = {
 }
 
 monster.flags = {
-	summonable = false,
+	summonable = true,
 	attackable = true,
 	hostile = true,
 	convinceable = true,
@@ -73,25 +73,72 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Tha'shi Ab'Dendriel!", yell = false },
-	{ text = "Evicor guide my arrow!", yell = false },
-	{ text = "Your existence will end here!", yell = false },
-	{ text = "Feel the sting of my arrows!", yell = false },
-	{ text = "Thy blood will quench the soil's thirst!", yell = false },
+	{
+		text = "Tha'shi Ab'Dendriel!",
+		yell = false,
+	},
+	{
+		text = "Feel the sting of my arrows!",
+		yell = false,
+	},
+	{
+		text = "Thy blood will quench the soil's thirst!",
+		yell = false,
+	},
+	{
+		text = "Evicor guide my arrow.",
+		yell = false,
+	},
+	{
+		text = "Your existence will end here!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "waterskin", chance = 1350 },
-	{ name = "gold coin", chance = 75000, maxCount = 25 },
-	{ name = "bow", chance = 4000 },
-	{ name = "arrow", chance = 30710, maxCount = 12 },
-	{ name = "poison arrow", chance = 15400, maxCount = 4 },
-	{ name = "sandals", chance = 1180 },
-	{ name = "grapes", chance = 17750 },
-	{ id = 5921, chance = 1130 }, -- heaven blossom
-	{ name = "elvish bow", chance = 140 },
-	{ name = "elvish talisman", chance = 5200 },
-	{ name = "elven scouting glass", chance = 9750 },
+	{
+		id = 2031,
+		chance = 14000,
+	},
+	{
+		id = 2482,
+		chance = 8000,
+	},
+	{
+		id = 2484,
+		chance = 12000,
+	},
+	{
+		id = 2642,
+		chance = 10000,
+	},
+	{
+		id = 2545,
+		chance = 15000,
+		maxCount = 3,
+	},
+	{
+		id = 2397,
+		chance = 6000,
+	},
+	{
+		id = 2681,
+		chance = 18000,
+	},
+	{
+		id = 2148,
+		chance = 30000,
+		maxCount = 5,
+	},
+	{
+		id = 2456,
+		chance = 4000,
+	},
+	{
+		id = 2544,
+		chance = 30000,
+		maxCount = 12,
+	},
 }
 
 monster.attacks = {

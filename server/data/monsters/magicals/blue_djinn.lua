@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Blue Djinn"
 monster.description = "a blue djinn"
-monster.experience = 215
+monster.experience = 190
 monster.outfit = {
 	lookType = 80,
 	lookHead = 0,
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 330
 monster.maxHealth = 330
 monster.race = "blood"
-monster.corpse = 6020
-monster.speed = 110
+monster.corpse = 3001
+monster.speed = 70
 monster.manaCost = 0
 
 monster.faction = FACTION_MARID
@@ -74,25 +74,55 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Simsalabim", yell = false },
-	{ text = "Wishes can come true.", yell = false },
-	{ text = "Feel the power of my magic, tiny mortal!", yell = false },
-	{ text = "Be careful what you wish for.", yell = false },
+	{
+		text = "Simsalabim",
+		yell = false,
+	},
+	{
+		text = "Feel the power of my magic, tiny mortal!",
+		yell = false,
+	},
+	{
+		text = "Be careful what you wish for.",
+		yell = false,
+	},
+	{
+		text = "Wishes can come true.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2829, chance = 2350 }, -- book
-	{ name = "small oil lamp", chance = 690 },
-	{ name = "small sapphire", chance = 2560, maxCount = 4 },
-	{ name = "gold coin", chance = 60000, maxCount = 70 },
-	{ name = "gold coin", chance = 70000, maxCount = 45 },
-	{ name = "mystic turban", chance = 70 },
-	{ id = 3595, chance = 23480 }, -- carrot
-	{ name = "blue rose", chance = 440 },
-	{ name = "blue piece of cloth", chance = 1920 },
-	{ name = "royal spear", chance = 4500, maxCount = 2 },
-	{ name = "mana potion", chance = 860 },
-	{ name = "dirty turban", chance = 1890 },
+	{
+		id = 2146,
+		chance = 2500,
+		maxCount = 4,
+	},
+	{
+		id = 2063,
+		chance = 7500,
+	},
+	{
+		id = 2663,
+		chance = 100,
+	},
+	{
+		id = 2148,
+		chance = 70000,
+		maxCount = 50,
+	},
+	{
+		id = 2684,
+		chance = 25000,
+	},
+	{
+		id = 1978,
+		chance = 2500,
+	},
+	{
+		id = 2745,
+		chance = 500,
+	},
 }
 
 monster.attacks = {

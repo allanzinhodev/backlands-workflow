@@ -33,8 +33,8 @@ monster.Bestiary = {
 monster.health = 155
 monster.maxHealth = 155
 monster.race = "blood"
-monster.corpse = 5981
-monster.speed = 85
+monster.corpse = 2866
+monster.speed = 45
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -74,22 +74,60 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Learrn tha secrret uf deathhh!", yell = false },
-	{ text = "Kaplar!", yell = false },
+	{
+		text = "Learrn tha secrret uf deathhh!",
+		yell = true,
+	},
+	{
+		text = "Kaplar!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 4950 }, -- torch
-	{ name = "gold coin", chance = 85780, maxCount = 35 },
-	{ name = "wand of cosmic energy", chance = 600 },
-	{ name = "leather helmet", chance = 3000 },
-	{ name = "leather legs", chance = 5190 },
-	{ id = 3595, chance = 15003, maxCount = 8 }, -- carrot
-	{ name = "minotaur leather", chance = 2290 },
-	{ name = "taurus mace", chance = 1000 },
-	{ name = "mana potion", chance = 490 },
-	{ name = "minotaur horn", chance = 3020, maxCount = 2 },
-	{ name = "purple robe", chance = 6430, maxCount = 2 },
+	{
+		id = 2050,
+		chance = 30000,
+		maxCount = 2,
+	},
+	{
+		id = 2649,
+		chance = 15000,
+	},
+	{
+		id = 2461,
+		chance = 10000,
+	},
+	{
+		id = 2403,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 10,
+	},
+	{
+		id = 2817,
+		chance = 70000,
+	},
+	{
+		id = 2404,
+		chance = 4000,
+	},
+	{
+		id = 2648,
+		chance = 2000,
+	},
+	{
+		id = 2684,
+		chance = 10000,
+		maxCount = 7,
+	},
+	{
+		id = 2465,
+		chance = 4000,
+	},
 }
 
 monster.attacks = {

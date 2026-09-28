@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 70
 monster.maxHealth = 70
 monster.race = "blood"
-monster.corpse = 5966
-monster.speed = 75
+monster.corpse = 2820
+monster.speed = 35
 monster.manaCost = 300
 
 monster.changeTarget = {
@@ -72,22 +72,50 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Grow truk grrrrr.", yell = false },
-	{ text = "Prek tars, dekklep zurk.", yell = false },
-	{ text = "Grak brrretz!", yell = false },
+	{
+		text = "Grak brrretz!",
+		yell = false,
+	},
+	{
+		text = "Grow truk grrrrr.",
+		yell = false,
+	},
+	{
+		text = "Prek tars, dekklep zurk.",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 84810, maxCount = 14 },
-	{ name = "sabre", chance = 5850 },
-	{ name = "axe", chance = 4960 },
-	{ name = "studded helmet", chance = 2950 },
-	{ name = "studded armor", chance = 7860 },
-	{ name = "studded shield", chance = 7300 },
-	{ name = "meat", chance = 10160 },
-	{ name = "orc tooth", chance = 210 },
-	{ name = "orc leather", chance = 590 },
-	{ id = 23986, chance = 1000 }, -- heavy old tome
+	{
+		id = 2526,
+		chance = 10000,
+	},
+	{
+		id = 2482,
+		chance = 9000,
+	},
+	{
+		id = 2484,
+		chance = 12000,
+	},
+	{
+		id = 2385,
+		chance = 6000,
+	},
+	{
+		id = 2666,
+		chance = 20000,
+	},
+	{
+		id = 2148,
+		chance = 85000,
+		maxCount = 8,
+	},
+	{
+		id = 2386,
+		chance = 8000,
+	},
 }
 
 monster.attacks = {

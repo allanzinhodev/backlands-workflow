@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Sibang"
 monster.description = "a sibang"
-monster.experience = 105
+monster.experience = 100
 monster.outfit = {
 	lookType = 118,
 	lookHead = 0,
@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 225
 monster.maxHealth = 225
 monster.race = "blood"
-monster.corpse = 6045
-monster.speed = 107
+monster.corpse = 4274
+monster.speed = 67
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -71,20 +71,54 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Eeeeek! Eeeeek!", yell = false },
-	{ text = "Huh! Huh! Huh!", yell = false },
-	{ text = "Ahhuuaaa!", yell = false },
+	{
+		text = "Eeeeek! Eeeeek",
+		yell = false,
+	},
+	{
+		text = "Huh! Huh! Huh!",
+		yell = false,
+	},
+	{
+		text = "Ahhuuaaa!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "small stone", chance = 30060, maxCount = 3 },
-	{ name = "gold coin", chance = 56000, maxCount = 35 },
-	{ name = "orange", chance = 19840, maxCount = 5 },
-	{ name = "banana", chance = 30000, maxCount = 12 },
-	{ name = "coconut", chance = 1960, maxCount = 3 },
-	{ name = "melon", chance = 1000 },
-	{ name = "ape fur", chance = 1000 },
-	{ name = "banana sash", chance = 5000 },
+	{
+		id = 1294,
+		chance = 30000,
+		maxCount = 3,
+	},
+	{
+		id = 2675,
+		chance = 20000,
+		maxCount = 5,
+	},
+	{
+		id = 2682,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 25,
+	},
+	{
+		id = 2458,
+		chance = 4000,
+	},
+	{
+		id = 2676,
+		chance = 5000,
+		maxCount = 10,
+	},
+	{
+		id = 2676,
+		chance = 30000,
+		maxCount = 2,
+	},
 }
 
 monster.attacks = {

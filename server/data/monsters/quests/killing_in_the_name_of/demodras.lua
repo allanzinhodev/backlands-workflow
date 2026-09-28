@@ -3,7 +3,7 @@ local monster = {}
 
 monster.name = "Demodras"
 monster.description = "Demodras"
-monster.experience = 6000
+monster.experience = 4000
 monster.outfit = {
 	lookType = 204,
 	lookHead = 0,
@@ -14,11 +14,11 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.health = 4500
-monster.maxHealth = 4500
+monster.health = 3750
+monster.maxHealth = 3750
 monster.race = "blood"
-monster.corpse = 5984
-monster.speed = 197
+monster.corpse = 2881
+monster.speed = 77
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -40,7 +40,7 @@ monster.flags = {
 	convinceable = false,
 	pushable = false,
 	rewardBoss = true,
-	illusionable = false,
+	illusionable = true,
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
@@ -61,34 +61,102 @@ monster.light = {
 monster.summon = {
 	maxSummons = 2,
 	summons = {
-		{ name = "Dragon", chance = 17, interval = 1000, count = 2 },
+		{
+			name = "Dragon Lord",
+			interval = 6000,
+			chance = 100,
+			count = 2,
+		},
 	},
 }
 
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "I WILL SET THE WORLD ON FIRE!", yell = true },
-	{ text = "I WILL PROTECT MY BROOD!", yell = true },
+	{
+		text = "ZCHHHHH",
+		yell = true,
+	},
+	{
+		text = "I WILL SET THE WORLD IN FIRE!",
+		yell = true,
+	},
+	{
+		text = "I WILL PROTECT MY BROOD!",
+		yell = true,
+	},
 }
 
 monster.loot = {
-	{ id = 3035, chance = 99150, maxCount = 10 }, -- platinum coin
-	{ id = 5919, chance = 100000 }, -- dragon claw
-	{ id = 3732, chance = 25650, maxCount = 7 }, -- green mushroom
-	{ id = 3029, chance = 12000 }, -- small sapphire
-	{ id = 238, chance = 9500 }, -- great mana potion
-	{ id = 7365, chance = 4250, maxCount = 5 }, -- onyx arrow
-	{ id = 3061, chance = 850 }, -- life crystal
-	{ id = 3450, chance = 19650, maxCount = 10 }, -- power bolt
-	{ id = 3051, chance = 10250 }, -- energy ring
-	{ id = 239, chance = 9500 }, -- great health potion
-	{ id = 3386, chance = 1700 }, -- dragon scale mail
-	{ id = 3583, chance = 75200, maxCount = 10 }, -- dragon ham
-	{ id = 5948, chance = 13700 }, -- red dragon leather
-	{ id = 2842, chance = 10250 }, -- book (gemmed)
-	{ id = 2903, chance = 6000 }, -- golden mug
-	{ id = 3280, chance = 1700 }, -- fire sword
+	{
+		id = 2528,
+		chance = 600,
+	},
+	{
+		id = 2479,
+		chance = 800,
+	},
+	{
+		id = 2146,
+		chance = 10000,
+	},
+	{
+		id = 2498,
+		chance = 400,
+	},
+	{
+		id = 2547,
+		chance = 16000,
+	},
+	{
+		id = 2177,
+		chance = 1200,
+	},
+	{
+		id = 2796,
+		chance = 24000,
+		maxCount = 7,
+	},
+	{
+		id = 2033,
+		chance = 6000,
+	},
+	{
+		id = 2148,
+		chance = 55000,
+		maxCount = 50,
+	},
+	{
+		id = 2148,
+		chance = 80000,
+		maxCount = 100,
+	},
+	{
+		id = 2148,
+		chance = 95000,
+		maxCount = 100,
+	},
+	{
+		id = 2392,
+		chance = 600,
+	},
+	{
+		id = 2167,
+		chance = 10000,
+	},
+	{
+		id = 2492,
+		chance = 300,
+	},
+	{
+		id = 2672,
+		chance = 75000,
+		maxCount = 10,
+	},
+	{
+		id = 1976,
+		chance = 9000,
+	},
 }
 
 monster.attacks = {

@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 100
 monster.maxHealth = 100
 monster.race = "blood"
-monster.corpse = 6003
-monster.speed = 95
+monster.corpse = 2945
+monster.speed = 55
 monster.manaCost = 320
 
 monster.changeTarget = {
@@ -45,7 +45,7 @@ monster.strategiesTarget = {
 }
 
 monster.flags = {
-	summonable = false,
+	summonable = true,
 	attackable = true,
 	hostile = true,
 	convinceable = true,
@@ -72,24 +72,59 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Death to the Defilers!", yell = false },
-	{ text = "You are not welcome here.", yell = false },
-	{ text = "Flee as long as you can.", yell = false },
-	{ text = "Bahaha aka!", yell = false },
-	{ text = "Ulathil beia Thratha!", yell = false },
+	{
+		text = "Ulathil beia Thratha!",
+		yell = false,
+	},
+	{
+		text = "Bahaha aka!",
+		yell = false,
+	},
+	{
+		text = "You are not welcome here.",
+		yell = false,
+	},
+	{
+		text = "Flee as long as you can.",
+		yell = false,
+	},
+	{
+		text = "Death to the defilers!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 44000, maxCount = 30 },
-	{ name = "longsword", chance = 10800 },
-	{ name = "studded helmet", chance = 13500 },
-	{ name = "studded armor", chance = 8960 },
-	{ name = "plate shield", chance = 9300 },
-	{ name = "arrow", chance = 7060, maxCount = 3 },
-	{ name = "leather boots", chance = 11410 },
-	{ id = 5921, chance = 940 }, -- heaven blossom
-	{ name = "plum", chance = 20000, maxCount = 2 },
-	{ name = "elvish talisman", chance = 2100 },
+	{
+		id = 2482,
+		chance = 15000,
+	},
+	{
+		id = 2484,
+		chance = 11000,
+	},
+	{
+		id = 2674,
+		chance = 20000,
+		maxCount = 2,
+	},
+	{
+		id = 2397,
+		chance = 8000,
+	},
+	{
+		id = 2643,
+		chance = 11000,
+	},
+	{
+		id = 2511,
+		chance = 13000,
+	},
+	{
+		id = 2544,
+		chance = 7000,
+		maxCount = 3,
+	},
 }
 
 monster.attacks = {

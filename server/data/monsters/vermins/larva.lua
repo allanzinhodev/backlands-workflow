@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 70
 monster.maxHealth = 70
 monster.race = "venom"
-monster.corpse = 6023
-monster.speed = 62
+monster.corpse = 3010
+monster.speed = 22
 monster.manaCost = 355
 
 monster.changeTarget = {
@@ -47,7 +47,7 @@ monster.flags = {
 	summonable = true,
 	attackable = true,
 	hostile = true,
-	convinceable = false,
+	convinceable = true,
 	pushable = true,
 	rewardBoss = false,
 	illusionable = true,
@@ -74,8 +74,15 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 63000, maxCount = 15 },
-	{ name = "meat", chance = 14666 },
+	{
+		id = 2666,
+		chance = 30000,
+	},
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 10,
+	},
 }
 
 monster.attacks = {

@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 25
 monster.maxHealth = 25
 monster.race = "blood"
-monster.corpse = 5970
-monster.speed = 98
+monster.corpse = 2835
+monster.speed = 58
 monster.manaCost = 260
 
 monster.changeTarget = {
@@ -75,9 +75,15 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "meat", chance = 80000, maxCount = 4 },
-	{ name = "ham", chance = 50000, maxCount = 2 },
-	{ id = 10297, chance = 870 }, -- antlers
+	{
+		id = 2666,
+		chance = 80000,
+		maxCount = 3,
+	},
+	{
+		id = 2671,
+		chance = 45000,
+	},
 }
 
 monster.attacks = {

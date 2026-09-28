@@ -31,8 +31,8 @@ monster.Bestiary = {
 monster.health = 135
 monster.maxHealth = 135
 monster.race = "blood"
-monster.corpse = 6014
-monster.speed = 88
+monster.corpse = 2985
+monster.speed = 48
 monster.manaCost = 360
 
 monster.changeTarget = {
@@ -72,22 +72,56 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Hail Durin!", yell = false },
+	{
+		text = "Hail Durin!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 28000, maxCount = 12 },
-	{ id = 3092, chance = 120 }, -- axe ring
-	{ name = "battle axe", chance = 2500 },
-	{ name = "crossbow", chance = 3000 },
-	{ name = "chain armor", chance = 8000 },
-	{ name = "soldier helmet", chance = 12000 },
-	{ name = "dwarven shield", chance = 3000 },
-	{ name = "bolt", chance = 40000, maxCount = 7 },
-	{ id = 3457, chance = 10000 }, -- shovel
-	{ name = "white mushroom", chance = 40000, maxCount = 3 },
-	{ name = "iron ore", chance = 300 },
-	{ name = "piercing bolt", chance = 4000, maxCount = 3 },
+	{
+		id = 2787,
+		chance = 40000,
+		maxCount = 2,
+	},
+	{
+		id = 2481,
+		chance = 12000,
+	},
+	{
+		id = 2554,
+		chance = 10000,
+	},
+	{
+		id = 2148,
+		chance = 35000,
+		maxCount = 12,
+	},
+	{
+		id = 2525,
+		chance = 5000,
+	},
+	{
+		id = 2455,
+		chance = 4000,
+	},
+	{
+		id = 2464,
+		chance = 9000,
+	},
+	{
+		id = 2543,
+		chance = 40000,
+		maxCount = 4,
+	},
+	{
+		id = 2378,
+		chance = 2500,
+	},
+	{
+		id = 2208,
+		chance = 100,
+	},
 }
 
 monster.attacks = {

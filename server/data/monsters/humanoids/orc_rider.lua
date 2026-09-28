@@ -30,8 +30,8 @@ monster.Bestiary = {
 monster.health = 180
 monster.maxHealth = 180
 monster.race = "blood"
-monster.corpse = 6010
-monster.speed = 130
+monster.corpse = 2972
+monster.speed = 90
 monster.manaCost = 490
 
 monster.changeTarget = {
@@ -72,22 +72,64 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Orc arga Huummmak!", yell = false },
-	{ text = "Grrrrrrr", yell = false },
+	{
+		text = "Grrrrrrr",
+		yell = false,
+	},
+	{
+		text = "Orc arga Huummmak!",
+		yell = false,
+	},
 }
 
 monster.loot = {
-	{ id = 2920, chance = 980 }, -- torch
-	{ id = 3012, chance = 10210 }, -- wolf tooth chain
-	{ name = "gold coin", chance = 46000, maxCount = 81 },
-	{ name = "obsidian lance", chance = 1100 },
-	{ name = "orcish axe", chance = 6880 },
-	{ name = "scale armor", chance = 610 },
-	{ name = "battle shield", chance = 9900 },
-	{ name = "meat", chance = 24000, maxCount = 3 },
-	{ name = "orc tooth", chance = 2000 },
-	{ name = "warwolf fur", chance = 9410 },
-	{ name = "orc leather", chance = 9760 },
+	{
+		id = 2129,
+		chance = 10000,
+	},
+	{
+		id = 2050,
+		chance = 8000,
+	},
+	{
+		id = 2482,
+		chance = 15000,
+	},
+	{
+		id = 2483,
+		chance = 600,
+	},
+	{
+		id = 2428,
+		chance = 15000,
+	},
+	{
+		id = 2425,
+		chance = 1000,
+	},
+	{
+		id = 2666,
+		chance = 30000,
+		maxCount = 3,
+	},
+	{
+		id = 2148,
+		chance = 100,
+		maxCount = 80,
+	},
+	{
+		id = 2148,
+		chance = 50000,
+		maxCount = 10,
+	},
+	{
+		id = 2513,
+		chance = 1000,
+	},
+	{
+		id = 1988,
+		chance = 30000,
+	},
 }
 
 monster.attacks = {
