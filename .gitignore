@@ -1,15 +1,15 @@
 # Repositórios das ferramentas (clonados separadamente, cada um tem seu próprio git)
 # Origem:
-#   client        -> https://github.com/allanzinhodev/backlands-client
 #   devfolio      -> https://github.com/allanzinhodev/devfolio
 #   mapeditor     -> https://github.com/allanzinhodev/backlands-mapeditor
 #   objectbuilder -> https://github.com/allanzinhodev/backlands-objectbuilder
-#   server        -> https://github.com/allanzinhodev/backlands-server
-/client/
 /devfolio/
 /mapeditor/
 /objectbuilder/
-/server/
+
+# client/ e server/ agora fazem parte deste repositório (clones de conteúdo
+# do upstream Mateuzkl, sem histórico git próprio). Cache de build (vcpkg,
+# binários) já é coberto pelos .gitignore internos de cada pasta.
 
 # Dependências
 node_modules/
