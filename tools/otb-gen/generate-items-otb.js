@@ -4,6 +4,7 @@
  * MetadataReader5 (client 8.60-9.86), SpriteStorage.getSpriteHash and OtbWriter.
  *
  * Usage: node generate-items-otb.js [datDir] [outFile]
+ * Docs: README.md nesta pasta.
  */
 const fs = require('fs');
 const path = require('path');
