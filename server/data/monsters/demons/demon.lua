@@ -29,7 +29,7 @@ monster.Bestiary = {
 monster.health = 8200
 monster.maxHealth = 8200
 monster.race = "fire"
-monster.corpse = 2916
+monster.corpse = 4097
 monster.speed = 80
 monster.manaCost = 0
 
@@ -109,108 +109,108 @@ monster.voices = {
 
 monster.loot = {
 	{
-		id = 2151,
+		id = 3034,
 		chance = 3500,
 	},
 	{
-		id = 2165,
+		id = 3049,
 		chance = 1400,
 	},
 	{
-		id = 2149,
+		id = 3032,
 		chance = 11000,
 	},
 	{
-		id = 2214,
+		id = 3098,
 		chance = 500,
 	},
 	{
-		id = 1982,
+		id = 2848,
 		chance = 1300,
 	},
 	{
-		id = 2171,
+		id = 3055,
 		chance = 700,
 	},
 	{
-		id = 2176,
+		id = 3060,
 		chance = 3000,
 	},
 	{
-		id = 2164,
+		id = 3048,
 		chance = 200,
 	},
 	{
-		id = 2514,
+		id = 3414,
 		chance = 500,
 	},
 	{
-		id = 2472,
+		id = 3366,
 		chance = 100,
 	},
 	{
-		id = 2396,
+		id = 3284,
 		chance = 600,
 	},
 	{
-		id = 2418,
+		id = 3306,
 		chance = 1500,
 	},
 	{
-		id = 2470,
+		id = 3364,
 		chance = 400,
 	},
 	{
-		id = 2179,
+		id = 3063,
 		chance = 1100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 40000,
 		maxCount = 100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 50000,
 		maxCount = 100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 60000,
 		maxCount = 100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 70000,
 		maxCount = 100,
 	},
 	{
-		id = 2393,
+		id = 3281,
 		chance = 2000,
 	},
 	{
-		id = 2795,
+		id = 3731,
 		chance = 20000,
 		maxCount = 6,
 	},
 	{
-		id = 2432,
+		id = 3320,
 		chance = 4000,
 	},
 	{
-		id = 2387,
+		id = 3275,
 		chance = 20000,
 	},
 	{
-		id = 2462,
+		id = 3356,
 		chance = 1200,
 	},
 	{
-		id = 2520,
+		id = 3420,
 		chance = 700,
 	},
 	{
-		id = 2678,
+		id = 3589,
 		chance = 45000,
 		maxCount = 6,
 	},

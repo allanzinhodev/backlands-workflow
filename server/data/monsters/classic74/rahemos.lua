@@ -19,7 +19,7 @@ monster.raceId = 3008
 monster.health = 3700
 monster.maxHealth = 3700
 monster.race = "undead"
-monster.corpse = 3034
+monster.corpse = 4215
 monster.speed = 100
 monster.manaCost = 0
 
@@ -89,51 +89,51 @@ monster.voices = {
 
 monster.loot = {
 	{
-		id = 2153,
+		id = 3036,
 		chance = 1000,
 	},
 	{
-		id = 2447,
+		id = 3335,
 		chance = 100,
 	},
 	{
-		id = 2150,
+		id = 3033,
 		chance = 10000,
 		maxCount = 3,
 	},
 	{
-		id = 2214,
+		id = 3098,
 		chance = 5000,
 	},
 	{
-		id = 2176,
+		id = 3060,
 		chance = 500,
 	},
 	{
-		id = 2662,
+		id = 3573,
 		chance = 2000,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 35000,
 		maxCount = 95,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 50000,
 		maxCount = 85,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 70000,
 		maxCount = 80,
 	},
 	{
-		id = 2184,
+		id = 3068,
 		chance = 100,
 	},
 	{
-		id = 2348,
+		id = 3235,
 		chance = 100000,
 	},
 }

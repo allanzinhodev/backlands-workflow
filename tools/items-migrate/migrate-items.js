@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
- * Migrates Server IDs and attributes from the Tibia 7.4 reference datapack
- * (74/items/items.xml) into the current server's items.xml, using the 7.4
- * Server ID as source of truth.
+ * Migrates items and attributes from the Tibia 7.4 reference datapack
+ * (74/items/items.xml) into the current server's items.xml. The 7.4 file
+ * speaks 7.4 Server IDs; the server indexes items by Client ID, so every
+ * 7.4 item is first translated to its Client ID via 74/items/items.otb.
  *
  * Usage: node migrate-items.js [--dry-run]
  * Docs: README.md nesta pasta.
@@ -11,13 +12,17 @@
 const fs = require('fs');
 const path = require('path');
 const { parseXmlFile, serializeAttrs, serializeNode } = require('./xml-lite');
-const { readOtbServerIds } = require('./read-otb-ids');
+const { readOtbServerIds, readOtbIdPairs } = require('./read-otb-ids');
 
-const REPO = 'D:/backlands';
+const REPO = path.resolve(__dirname, '..', '..');
 const FILE_74 = path.join(REPO, '74/items/items.xml');
+const FILE_OTB_74 = path.join(REPO, '74/items/items.otb');
 const FILE_CURRENT = path.join(REPO, 'server/data/items/items.xml');
 const FILE_OTB = path.join(REPO, 'server/data/items/items.otb');
 const REPORT_DIR = path.join(REPO, 'tools/items-migrate/reports');
+
+// <attribute key=... value=...> keys whose value is another item's id.
+const ITEM_ID_KEYS = new Set(['decayto', 'destroyto', 'rotateto', 'malesleeper', 'femalesleeper', 'transformequipto', 'transformdeequipto']);
 
 const PRESERVED_IDS = new Set(Array.from({ length: 20 }, (_, i) => i + 1)); // 1-20
 
@@ -226,6 +231,41 @@ function makeRangeFragment(from, to, baseAttrsNoIds) {
 }
 
 // ---------------------------------------------------------------------------
+// Step 0: translate the 7.4 file from 7.4 Server IDs to Client IDs
+// ---------------------------------------------------------------------------
+
+// Rewrites, in place, each 7.4 item's id and its item-id-valued attributes.
+// Two 7.4 Server IDs can share one Client ID; the first keeps it, the rest
+// are dropped from the migration (there is only one item per Client ID).
+function translate74ToClientIds(items74Root, sidToCid) {
+  const translate = (sid) => sidToCid.get(sid) ?? null;
+  const seenCids = new Set();
+  const report = { missingInOtb: [], sharedClientId: [], attrsUntranslated: [] };
+
+  items74Root.children = items74Root.children.filter((node) => {
+    if (node.tag !== 'item' || !node.attr('id')) return true;
+    const sid = Number(node.attr('id').value);
+    const cid = translate(sid);
+    if (cid === null) { report.missingInOtb.push(sid); return false; }
+    if (seenCids.has(cid)) { report.sharedClientId.push({ sid, cid }); return false; }
+    seenCids.add(cid);
+    node.attrs.get('id').value = String(cid);
+
+    for (const child of node.children) {
+      const key = child.attr('key');
+      const value = child.attr('value');
+      if (!key || !value || !ITEM_ID_KEYS.has(key.value.toLowerCase())) continue;
+      const target = translate(Number(value.value));
+      if (target === null) report.attrsUntranslated.push({ sid, key: key.value, value: value.value });
+      else value.value = String(target);
+    }
+    return true;
+  });
+
+  return report;
+}
+
+// ---------------------------------------------------------------------------
 // Main migration
 // ---------------------------------------------------------------------------
 
@@ -413,6 +453,10 @@ function main() {
   const data74 = loadItems(FILE_74);
   console.log(`  ${data74.root.children.length} items`);
 
+  console.log(`Translating 7.4 Server IDs to Client IDs: ${FILE_OTB_74}`);
+  const translationReport = translate74ToClientIds(data74.root, readOtbIdPairs(FILE_OTB_74));
+  console.log(`  missing in 7.4 otb: ${translationReport.missingInOtb.length}, shared client id (dropped): ${translationReport.sharedClientId.length}, id attributes left untranslated: ${translationReport.attrsUntranslated.length}`);
+
   console.log(`Reading current items.xml: ${FILE_CURRENT}`);
   const dataCurrent = loadItems(FILE_CURRENT);
   console.log(`  ${dataCurrent.root.children.length} nodes`);
@@ -445,7 +489,7 @@ function main() {
   fs.mkdirSync(REPORT_DIR, { recursive: true });
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   const reportPath = path.join(REPORT_DIR, `migration-report-${timestamp}.json`);
-  fs.writeFileSync(reportPath, JSON.stringify({ stats, ambiguityReport, missingOtbIds: missingIds }, null, 2));
+  fs.writeFileSync(reportPath, JSON.stringify({ stats, translationReport, ambiguityReport, missingOtbIds: missingIds }, null, 2));
   console.log(`\nReport written to ${reportPath}`);
 
   if (DRY_RUN) {

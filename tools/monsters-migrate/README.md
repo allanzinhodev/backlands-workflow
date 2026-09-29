@@ -45,6 +45,25 @@ parênteses balanceados, `raceId` únicos, presença de
 `createMonsterType`/`register`) — útil pra reauditar depois de qualquer
 edição manual subsequente.
 
+### IDs de item: `remap-item-ids.js`
+
+`corpse` e o `loot` vêm do XML do 7.4, que fala os **Server IDs do 7.4**;
+o servidor indexa itens por **Client ID** (ver `tools/items-migrate/
+README.md`, "Por que Client ID"). Depois da migração, rode:
+
+```
+node remap-item-ids.js [--dry-run] [reference.otb]
+```
+
+Ele troca `monster.corpse` e todo `id = N` dentro do bloco `monster.loot`
+de cada `.lua` em `server/data/monsters/`, pelos pares de
+`74/items/items.otb` (default). Nada fora desses dois campos é tocado.
+Execução atual: 157 arquivos, 1639 IDs remapeados, nenhum sem Client ID
+(ex.: rat — gold coin 2148 → 3031, cheese 2696 → 3607, corpse 2813 →
+3994 "dead rat"). Todo `.lua` restante veio do 7.4 (relatório: 146 merges,
+11 criados, 0 ambíguos), então o script roda sobre a pasta inteira; **não
+rode duas vezes** — um ID já em Client ID seria remapeado de novo.
+
 ## O que o script faz
 
 1. **Casa cada monstro do 74 com um monstro do atual por nome**

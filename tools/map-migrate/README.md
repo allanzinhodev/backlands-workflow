@@ -34,39 +34,47 @@ Scripts individuais (também podem ser rodados sozinhos):
   nodes `HOUSETILE` e cruza contra um `map-house.xml`.
 - `convert-spawn.js <map-spawn.xml> <world-spawn.xml> [--dry-run]`:
   converte o formato de spawn (ver abaixo).
+- `remap-item-ids.js <in.otbm> <out.otbm> [reference.otb]`: reescreve todo
+  item ID do mapa (nós `ITEM` e o item embutido de `TILE`/`HOUSETILE`) de
+  Server ID para Client ID, pelos pares do `.otb` de referência (default
+  `74/items/items.otb`). O resto do arquivo sai byte a byte igual: rodar com
+  um `.otb` 1:1 como referência reproduz o arquivo de entrada idêntico.
 
-## Por que o header é a única coisa que precisa de patch
+## Os IDs do mapa precisam virar Client ID
+
+O `.otbm` grava **Server IDs**, e o `map.otbm` do 7.4 grava os Server IDs
+do 7.4. O servidor, porém, indexa itens por **Client ID** e descarta o
+Server ID do `items.otb` (`server/src/items.cpp`, `ignoredLegacyId`) — o
+mesmo número do mapa é usado como Client ID. No 7.4 as duas numerações
+divergem em 4652 dos 4990 itens (Server ID 2700 "fir tree" é o Client ID
+3614), então o mapa copiado sem conversão desenha cada item com o sprite de
+outro. `world.otbm` foi convertido com:
+
+```
+node remap-item-ids.js ../../server/data/world/world.otbm <saida.otbm>
+```
+
+Resultado: 653 507 nós de item e 7 733 966 itens de tile remapeados, nenhum
+ID sem Client ID, e 2380 IDs distintos (eram 2383 — seis pares de Server IDs
+do 7.4 dividem o mesmo Client ID). Com o `items.otb` 1:1 do servidor, o
+editor de mapa também passa a desenhar certo.
+
+## Por que o header precisa de patch
 
 `server/src/iomap.cpp:265-280` rejeita o mapa se `majorVersionItems<3` ou
 `minorVersionItems<CLIENT_VERSION_810(8)`. O `map.otbm` do 7.4 tem
-`major=2, minor=7` — falharia nesses floors. Nada além disso precisa
-mudar: **os Client IDs gravados na árvore de tiles já batem 1:1 com o
-`items.otb` atual**, confirmado cruzando `74/items/items.otb` contra
-`server/data/items/items.otb` por Client ID + hash de sprite (99,2% de
-correspondência exata, mesma técnica de `tools/otb-gen`; os 41 que
-divergem são variações de ordem de frame em bordas de terreno animadas,
-não itens de inventário) — e depois confirmado de novo, de forma direta,
-percorrendo a árvore inteira do `map.otbm` e checando cada um dos 2383
-Client IDs distintos usados nos tiles contra o `items.otb`: **zero
-ausentes**.
+`major=2, minor=7` — falharia nesses floors. Além do header, só os item
+IDs mudam (seção anterior). O Client ID do `74/items/items.otb` indexa o
+`.dat` atual sem remapeamento: cruzando os dois `.otb` por Client ID + hash
+de sprite, 99,2% batem exatamente (mesma técnica de `tools/otb-gen`; os 41
+que divergem são variações de ordem de frame em bordas de terreno
+animadas, não itens de inventário).
 
-Isso foi verificado investigando o parser oficial do Remere's Map Editor
-(`hjnilsson/rme`, clonado e depois removido — só usado para ler o
-código-fonte): a função que deveria remapear item ID entre versões de
-client diferentes (`Map::convert`, `source/map.cpp`) nunca foi
-implementada — a lógica real está comentada dentro de um bloco `/* TODO
-*/`, tanto no editor oficial quanto no fork local em
-`D:\backlands\mapeditor`. Ou seja, não havia atalho de ferramenta pronta
-para essa conversão; a resposta certa era confirmar que ela nem era
-necessária.
-
-> **Correção:** o `.otbm` grava **Server IDs**, não Client IDs. Os IDs da
-> árvore são os Server IDs do 7.4, e o "zero ausentes" acima só passou porque
-> as duas numerações vão até 5089. O mapa em si não precisa de remapeamento —
-> quem precisa falar os Server IDs do 7.4 é o `items.otb`, gerado com
-> `tools/otb-gen --ids 74/items/items.otb` (ver o README de lá). Com o `.otb`
-> 1:1 anterior, o editor e o servidor desenhavam cada item com o sprite de
-> outro Client ID.
+O Remere's Map Editor não tinha atalho pronto para converter IDs entre
+versões: `Map::convert` (`source/map.cpp`) nunca foi implementado — a
+lógica real está comentada dentro de um bloco `/* TODO */`, tanto no editor
+oficial (`hjnilsson/rme`, só lido) quanto no fork local em `mapeditor/`.
+Por isso `remap-item-ids.js` existe.
 
 ## Por que `map-house.xml` não precisa de conversão
 

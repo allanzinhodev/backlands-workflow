@@ -29,19 +29,19 @@ node generate-items-otb.js [datDir] [outFile] [--ids reference.otb]
   hash de sprite e atributos continuam vindo do `.dat`/`.spr`, pelo Client
   ID de cada par.
 
-**O `items.otb` do servidor é gerado com `--ids 74/items/items.otb`:**
+**O `items.otb` do servidor é gerado sem `--ids` (1:1).** O servidor indexa
+os itens por Client ID e descarta o Server ID do `.otb`
+(`server/src/items.cpp`, `ignoredLegacyId`); `items.xml`, mapa, loot e
+scripts falam Client ID. O editor de mapa usa o Server ID do `.otb`, então
+com o `.otb` 1:1 os dois lados concordam.
 
-```
-node generate-items-otb.js "D:/backlands/client/data/things" "D:/backlands/server/data/items/items.otb" --ids "D:/backlands/74/items/items.otb"
-```
-
-O mapa (`world.otbm`) e o `items.xml` do servidor falam os Server IDs do
-7.4, e no 7.4 Server ID e Client ID divergem em 4652 dos 4990 itens (ex.:
-Server ID 2700 "fir tree" usa o Client ID 3614). Sem `--ids`, o `.otb` sai
-1:1 e cada Server ID do mapa é desenhado/tratado como o item de outro Client
-ID. O Client ID do `.otb` do 7.4 indexa o `.dat` atual sem remapeamento:
-4949/4990 hashes de sprite idênticos (os 41 restantes são bordas animadas
-com ordem de frame diferente) e flags idênticas em 4989/4990.
+`--ids` serve para gerar um `.otb` que fale outra numeração de Server ID —
+por exemplo, `--ids 74/items/items.otb` reproduz a numeração do 7.4, em que
+Server ID e Client ID divergem em 4652 dos 4990 itens (Server ID 2700 "fir
+tree" usa o Client ID 3614). O Client ID do `.otb` do 7.4 indexa o `.dat`
+atual sem remapeamento: 4949/4990 hashes de sprite idênticos (os 41
+restantes são bordas animadas com ordem de frame diferente) e flags
+idênticas em 4989/4990.
 
 O script sobrescreve o arquivo de saída (escreve em `.tmp` e renomeia por
 cima, mesma estratégia do `OtbWriter` do Object Builder).

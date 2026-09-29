@@ -31,7 +31,7 @@ monster.Bestiary = {
 monster.health = 135
 monster.maxHealth = 135
 monster.race = "blood"
-monster.corpse = 2985
+monster.corpse = 4166
 monster.speed = 48
 monster.manaCost = 360
 
@@ -80,46 +80,46 @@ monster.voices = {
 
 monster.loot = {
 	{
-		id = 2787,
+		id = 3723,
 		chance = 40000,
 		maxCount = 2,
 	},
 	{
-		id = 2481,
+		id = 3375,
 		chance = 12000,
 	},
 	{
-		id = 2554,
+		id = 3457,
 		chance = 10000,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 35000,
 		maxCount = 12,
 	},
 	{
-		id = 2525,
+		id = 3425,
 		chance = 5000,
 	},
 	{
-		id = 2455,
+		id = 3349,
 		chance = 4000,
 	},
 	{
-		id = 2464,
+		id = 3358,
 		chance = 9000,
 	},
 	{
-		id = 2543,
+		id = 3446,
 		chance = 40000,
 		maxCount = 4,
 	},
 	{
-		id = 2378,
+		id = 3266,
 		chance = 2500,
 	},
 	{
-		id = 2208,
+		id = 3092,
 		chance = 100,
 	},
 }

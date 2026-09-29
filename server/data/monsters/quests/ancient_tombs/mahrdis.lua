@@ -22,7 +22,7 @@ monster.bosstiary = {
 monster.health = 3900
 monster.maxHealth = 3900
 monster.race = "undead"
-monster.corpse = 3016
+monster.corpse = 4197
 monster.speed = 110
 monster.manaCost = 0
 
@@ -105,47 +105,47 @@ monster.voices = {
 
 monster.loot = {
 	{
-		id = 2147,
+		id = 3030,
 		chance = 10000,
 		maxCount = 3,
 	},
 	{
-		id = 2156,
+		id = 3039,
 		chance = 1000,
 	},
 	{
-		id = 2539,
+		id = 3439,
 		chance = 100,
 	},
 	{
-		id = 2168,
+		id = 3052,
 		chance = 5000,
 	},
 	{
-		id = 2141,
+		id = 3024,
 		chance = 100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 35000,
 		maxCount = 95,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 50000,
 		maxCount = 85,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 70000,
 		maxCount = 80,
 	},
 	{
-		id = 2432,
+		id = 3320,
 		chance = 200,
 	},
 	{
-		id = 2353,
+		id = 3240,
 		chance = 100000,
 	},
 }

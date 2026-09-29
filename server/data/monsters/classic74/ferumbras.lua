@@ -19,7 +19,7 @@ monster.raceId = 3001
 monster.health = 28000
 monster.maxHealth = 28000
 monster.race = "venom"
-monster.corpse = 3058
+monster.corpse = 4240
 monster.speed = 155
 monster.manaCost = 0
 
@@ -93,222 +93,222 @@ monster.voices = {
 
 monster.loot = {
 	{
-		id = 2143,
+		id = 3026,
 		chance = 12500,
 		maxCount = 15,
 	},
 	{
-		id = 3955,
+		id = 3002,
 		chance = 100,
 	},
 	{
-		id = 2377,
+		id = 3265,
 		chance = 20000,
 	},
 	{
-		id = 2421,
+		id = 3309,
 		chance = 13500,
 	},
 	{
-		id = 2112,
+		id = 2993,
 		chance = 14500,
 	},
 	{
-		id = 2151,
+		id = 3034,
 		chance = 14000,
 		maxCount = 7,
 	},
 	{
-		id = 2174,
+		id = 3058,
 		chance = 2500,
 	},
 	{
-		id = 2197,
+		id = 3081,
 		chance = 4000,
 	},
 	{
-		id = 2165,
+		id = 3049,
 		chance = 9500,
 	},
 	{
-		id = 2146,
+		id = 3029,
 		chance = 13500,
 		maxCount = 10,
 	},
 	{
-		id = 2149,
+		id = 3032,
 		chance = 15500,
 		maxCount = 10,
 	},
 	{
-		id = 2145,
+		id = 3028,
 		chance = 9500,
 		maxCount = 5,
 	},
 	{
-		id = 2150,
+		id = 3033,
 		chance = 13500,
 		maxCount = 20,
 	},
 	{
-		id = 2436,
+		id = 3324,
 		chance = 5000,
 	},
 	{
-		id = 2402,
+		id = 3290,
 		chance = 15500,
 	},
 	{
-		id = 2170,
+		id = 3054,
 		chance = 13000,
 	},
 	{
-		id = 2123,
+		id = 3006,
 		chance = 3500,
 	},
 	{
-		id = 2214,
+		id = 3098,
 		chance = 13000,
 	},
 	{
-		id = 1982,
+		id = 2848,
 		chance = 2600,
 	},
 	{
-		id = 2200,
+		id = 3084,
 		chance = 4500,
 	},
 	{
-		id = 2171,
+		id = 3055,
 		chance = 4500,
 	},
 	{
-		id = 2176,
+		id = 3060,
 		chance = 12000,
 	},
 	{
-		id = 2178,
+		id = 3062,
 		chance = 4000,
 	},
 	{
-		id = 2164,
+		id = 3048,
 		chance = 5000,
 	},
 	{
-		id = 2514,
+		id = 3414,
 		chance = 7500,
 	},
 	{
-		id = 2472,
+		id = 3366,
 		chance = 3000,
 	},
 	{
-		id = 2162,
+		id = 3046,
 		chance = 11500,
 	},
 	{
-		id = 2177,
+		id = 3061,
 		chance = 1000,
 	},
 	{
-		id = 2396,
+		id = 3284,
 		chance = 7500,
 	},
 	{
-		id = 2155,
+		id = 3038,
 		chance = 1500,
 	},
 	{
-		id = 2418,
+		id = 3306,
 		chance = 4500,
 	},
 	{
-		id = 2033,
+		id = 2903,
 		chance = 7500,
 	},
 	{
-		id = 2470,
+		id = 3364,
 		chance = 5000,
 	},
 	{
-		id = 2179,
+		id = 3063,
 		chance = 8000,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 66600,
 		maxCount = 100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 77700,
 		maxCount = 100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 88800,
 		maxCount = 100,
 	},
 	{
-		id = 2148,
+		id = 3031,
 		chance = 99900,
 		maxCount = 100,
 	},
 	{
-		id = 2393,
+		id = 3281,
 		chance = 12500,
 	},
 	{
-		id = 2432,
+		id = 3320,
 		chance = 17000,
 	},
 	{
-		id = 2167,
+		id = 3051,
 		chance = 13500,
 	},
 	{
-		id = 2434,
+		id = 3322,
 		chance = 4500,
 	},
 	{
-		id = 2387,
+		id = 3275,
 		chance = 20000,
 	},
 	{
-		id = 2462,
+		id = 3356,
 		chance = 11000,
 	},
 	{
-		id = 2520,
+		id = 3420,
 		chance = 15500,
 	},
 	{
-		id = 2124,
+		id = 3007,
 		chance = 5500,
 	},
 	{
-		id = 2125,
+		id = 3008,
 		chance = 1500,
 	},
 	{
-		id = 2192,
+		id = 3076,
 		chance = 2500,
 	},
 	{
-		id = 2195,
+		id = 3079,
 		chance = 4000,
 	},
 	{
-		id = 2158,
+		id = 3041,
 		chance = 1500,
 	},
 	{
-		id = 2144,
+		id = 3027,
 		chance = 15000,
 		maxCount = 15,
 	},
 	{
-		id = 2142,
+		id = 3025,
 		chance = 3500,
 	},
 }

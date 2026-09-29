@@ -10,6 +10,11 @@ const fs = require('fs');
 const NODE_START = 0xFE, NODE_END = 0xFF, ESCAPE = 0xFD;
 
 function readOtbServerIds(otbPath) {
+  return new Set(readOtbIdPairs(otbPath).keys());
+}
+
+// Server ID -> Client ID for every item node (SERVER_ID = 0x10, CLIENT_ID = 0x11).
+function readOtbIdPairs(otbPath) {
   const data = fs.readFileSync(otbPath);
   let pos = 4; // skip header uint32
 
@@ -28,7 +33,7 @@ function readOtbServerIds(otbPath) {
     pos++;
   }
 
-  const ids = new Set();
+  const pairs = new Map();
   while (data[pos] === NODE_START) {
     pos++; // NODE_START
     pos++; // group/type byte
@@ -40,17 +45,21 @@ function readOtbServerIds(otbPath) {
       bytes.push(b); pos++;
     }
     const buf = Buffer.from(bytes);
-    // flags(4) then TLV attrs; SERVER_ID = 0x10, 2-byte little-endian value.
+    // flags(4) then TLV attrs, 2-byte little-endian ids.
     let p = 4;
+    let serverId = null;
+    let clientId = null;
     while (p < buf.length) {
       const attr = buf[p]; p++;
       const len = buf.readUInt16LE(p); p += 2;
-      if (attr === 0x10) ids.add(buf.readUInt16LE(p));
+      if (attr === 0x10) serverId = buf.readUInt16LE(p);
+      if (attr === 0x11) clientId = buf.readUInt16LE(p);
       p += len;
     }
+    if (serverId !== null) pairs.set(serverId, clientId);
   }
 
-  return ids;
+  return pairs;
 }
 
-module.exports = { readOtbServerIds };
+module.exports = { readOtbServerIds, readOtbIdPairs };

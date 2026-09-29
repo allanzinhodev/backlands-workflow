@@ -1,21 +1,35 @@
 # items-migrate
 
-Migra Server IDs e atributos do `items.xml` do datapack de referência
-Tibia 7.4 (`74/items/items.xml`) para o `items.xml` do servidor atual
-(`server/data/items/items.xml`), usando o **Server ID do 7.4 como fonte da
-verdade**.
+Migra itens e atributos do `items.xml` do datapack de referência Tibia 7.4
+(`74/items/items.xml`) para o `items.xml` do servidor atual
+(`server/data/items/items.xml`), com os itens do 7.4 **convertidos para
+Client ID** e os atributos do 7.4 como fonte da verdade.
 
 ## Por que existe
 
 O `items.xml` atual foi herdado de uma base de servidor moderna genérica
-("upstream Mateuzkl") e não tem relação semântica com a numeração de itens
-do Tibia 7.4 — é coincidência de numeração (ex: o ID 194 no atual é "dirt"
-moderno, mas no 7.4 outro item completamente diferente usa esse mesmo ID).
-Para o servidor voltar a se comportar como 7.4, os Server IDs e atributos
-do datapack 7.4 precisam substituir o que está no arquivo atual, preservando
-ao mesmo tempo os atributos "modernos" (imbuements, scripts, elemental
-protection, classification, etc. — conceitos que não existiam em 1998)
-quando o mesmo item, identificado por nome, já existe na base atual.
+("upstream Mateuzkl"). Para o servidor voltar a se comportar como 7.4, os
+atributos do datapack 7.4 precisam substituir os do arquivo atual,
+preservando ao mesmo tempo os atributos "modernos" (imbuements, scripts,
+elemental protection, classification, etc. — conceitos que não existiam em
+1998) quando o mesmo item, identificado por nome, já existe na base atual.
+
+## Por que Client ID
+
+O servidor indexa itens por **Client ID**: `Items::loadFromOtb`
+(`server/src/items.cpp`) descarta o Server ID do `.otb` (`ignoredLegacyId`)
+e o `id` do `items.xml` endereça essa mesma tabela. O `74/items/items.xml`
+fala os **Server IDs do 7.4**, que divergem do Client ID em 4652 dos 4990
+itens (Server ID 2148 "gold coin" é o Client ID 3031). Por isso, antes do
+merge, cada item do 7.4 é traduzido pelos pares de `74/items/items.otb`:
+o `id` e os atributos cujo valor é outro item (`decayto`, `destroyto`,
+`rotateto`, `maleSleeper`, `femaleSleeper`, `transformEquipTo`,
+`transformDeEquipTo`). Nessa numeração o 7.4 e o arquivo moderno falam a
+mesma língua (3031 é "gold coin" nos dois).
+
+Dois Server IDs do 7.4 podem dividir um Client ID (seis pares); o primeiro
+fica com ele e o outro sai da migração. `decayto="0"` ("some") não é item e
+fica como está. Tudo isso vai para `translationReport` no relatório JSON.
 
 ## Uso
 
@@ -36,7 +50,15 @@ Outros scripts desta pasta:
   ao original. É o teste de round-trip do parser/serializer — rode depois
   de qualquer mudança em `xml-lite.js`.
 - `xml-lite.js` / `read-otb-ids.js`: módulos internos (parser/serializer
-  XML manual e leitor de Server IDs de um `.otb`), não scripts standalone.
+  XML manual e leitor dos pares Server ID → Client ID de um `.otb`), não
+  scripts standalone.
+
+**Sempre parta do `items.xml` não migrado** (o de antes de `1d8b5e0`):
+
+```
+git show 1d8b5e0~1:server/data/items/items.xml > server/data/items/items.xml
+node migrate-items.js
+```
 
 ## O que o script faz
 
@@ -68,7 +90,7 @@ Outros scripts desta pasta:
      — nenhum item com `attack`/`defense`/`armor`/`weapontype`/`slottype`
      no lado do 74 caiu em ambiguidade na migração de referência.
 4. **Regra de merge** (quando há match único): o item final usa sempre o
-   Server ID do 74. Os atributos partem da base do item **atual** (preserva
+   ID do 74 (já traduzido para Client ID). Os atributos partem da base do item **atual** (preserva
    imbuements, scripts, elemental protection, classification, description —
    tudo que só existe no lado moderno), e por cima são aplicados os
    atributos do **74**, que vencem em qualquer key que definam — mesmo que
@@ -76,14 +98,11 @@ Outros scripts desta pasta:
    Isso é determinístico: nunca há ambiguidade sobre "quem vence", porque
    o 74 é declarado como fonte da verdade para o que ele efetivamente
    define.
-5. **Sobrescreve sem hesitar quando o Server ID do 74 já está ocupado por
-   um item diferente no atual** — essa é a política adotada: o Server ID
-   do 74 é o que importa, e o item moderno que ocupava aquele ID perde o
-   lugar (ele pode continuar existindo em outro ID, se esse outro ID não
-   colidir com nada do 74 — ver exemplo do "blue robe" abaixo). Isso é uma
-   escolha consciente: referências a esses IDs em scripts Lua, loot de
-   monstros ou no mapa `.otbm` podem passar a apontar para o item errado.
-   Não há verificação cruzada com esses outros sistemas.
+5. **Sobrescreve quando o ID do 74 já está ocupado por um item diferente
+   no atual** — o ID do 74 é o que importa, e o item moderno que ocupava
+   aquele ID perde o lugar. Em Client ID isso é raro: o 7.4 e o arquivo
+   moderno usam a mesma numeração para os itens clássicos, então o ID
+   ocupado quase sempre é o próprio item.
 6. **Divide ranges (`fromid`/`toid`) que colidem parcialmente** com IDs do
    74. Um range do atual como `fromid="108" toid="109" name="flowers"` é
    quebrado em torno dos IDs que o 74 ocupa, preservando como range (ou
@@ -91,7 +110,7 @@ Outros scripts desta pasta:
    arquivo atual nunca têm `<attribute>` filho (confirmado no dataset),
    então a fragmentação nunca perde atributos aninhados.
 7. **Insere os itens do 74 que caem em slot totalmente livre** (nem ID
-   individual nem range ocupam aquele Server ID no atual) na posição que
+   individual nem range ocupam aquele ID no atual) na posição que
    mantém a ordem local do arquivo.
 8. **Reconstrói (nunca copia texto cru) qualquer item tocado** — mesmo no
    caso "sem match", o item do 74 é reconstruído nó a nó no estilo do
@@ -101,26 +120,27 @@ Outros scripts desta pasta:
 
 ## Exemplo real (blue robe)
 
-No 7.4, ID 2656 é "blue robe" com só `armor`/`weight`/`slottype`. No
-servidor atual, existia um "blue robe" diferente no ID 3567, com
-`imbuementslot` (7 atributos de elemental protection/life leech), `script`
-(moveevent), `classification` e `primarytype`. Depois da migração:
+No 7.4, o "blue robe" é o Server ID 2656, com só `armor`/`weight`/
+`slottype`; seu Client ID é 3567. No servidor atual, o "blue robe" já é o
+ID 3567, com `imbuementslot` (7 atributos de elemental protection/life
+leech), `script` (moveevent), `classification` e `primarytype`. Depois da
+tradução, o item do 74 cai no mesmo ID 3567 (match único por nome) e o
+resultado é o "blue robe" com `armor`/`weight`/`slottype` do 74 **mais**
+os atributos modernos herdados.
 
-- ID 2656 (o Server ID do 74) passa a ser o "blue robe", com `armor`/
-  `weight`/`slottype` do 74 **mais** `imbuementslot`/`script`/
-  `classification`/`primarytype` herdados do antigo item 3567 (match único
-  por nome).
-- ID 3567 passa a ser o que quer que o 74 definisse para esse Server ID
-  (nesse caso, um item de fluido/água — o "blue robe" antigo não existe
-  mais nesse ID, porque o 74 reivindicou esse número para outra coisa).
-- O item de arma que antes ocupava o ID 2656 no arquivo atual foi
-  descartado (sobrescrito), conforme a política do item 5.
+A primeira versão desta ferramenta usava o Server ID do 7.4 direto: o
+"blue robe" ia para o ID 2656, sobrescrevia uma arma, e o 3567 virava
+outro item — era isso que embaralhava itens no jogo e no mapa.
+
+Estatísticas da execução atual: 4964 sobrescritos, 1061 mesclados, 2724
+ambíguos tratados como sem match, 20 inseridos em slot livre, 422 ranges
+divididos, 14753 itens modernos preservados sem mudança.
 
 ## Validação
 
 - **XML bem formado**: o resultado é reparseado com o mesmo parser antes
   de escrever, para garantir ausência de tag malformada.
-- **Todo Server ID migrado existe no `items.otb`**: reusa a leitura de OTB
+- **Todo ID migrado existe no `items.otb`** (1:1, então Server ID = Client ID): reusa a leitura de OTB
   (`read-otb-ids.js`, baseado no mesmo formato binário de
   `tools/otb-gen/generate-items-otb.js`) para confirmar que nenhum ID usado
   pela migração seria descartado silenciosamente pelo parser C++ do

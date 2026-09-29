@@ -19,7 +19,7 @@ monster.raceId = 3009
 monster.health = 2
 monster.maxHealth = 2
 monster.race = "venom"
-monster.corpse = 4992
+monster.corpse = 4991
 monster.speed = 120
 monster.manaCost = 0
 
