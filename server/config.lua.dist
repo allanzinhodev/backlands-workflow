@@ -250,7 +250,7 @@ allowMountInPz = false
 -- Crystal Lua NPCs are loaded from data/npc/crystalserver (preferred),
 -- then data/npc/crystal and data/npc/npc_Crystal_Server_15x for compatibility.
 -- XML NPCs remain supported in both modes.
-npcSystem = "tfs"
+npcSystem = "crystal"
 
 -- Forge Tier Abilities
 -- Formula: chance = A * tier^2 + B * tier + C
