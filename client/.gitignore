@@ -19,7 +19,9 @@ Makefile
 !tests.7z
 !android_libs.7z
 *.spr
+!/data/things/Tibia.spr
 *.dat
+!/data/things/Tibia.dat
 *.kdev*
 *.cbp
 *~
