@@ -34,13 +34,16 @@ local function getVersionFromPath(datPath)
   return tonumber(version)
 end
 
-local function hasModernAssetFeatures(datPath)
+local function readOtfi(datPath)
   local otfiPath = datPath .. '.otfi'
   if not g_resources.fileExists(otfiPath) then
-    return false
+    return nil
   end
+  return g_resources.readFileContents(otfiPath)
+end
 
-  local otfi = g_resources.readFileContents(otfiPath)
+local function hasModernAssetFeatures(datPath)
+  local otfi = readOtfi(datPath)
   if not otfi then
     return false
   end
@@ -48,10 +51,20 @@ local function hasModernAssetFeatures(datPath)
   return otfi:find('frame%-groups:%s*true') ~= nil or otfi:find('sprite%-data%-size:%s*4096') ~= nil
 end
 
-local function enableModernAssetFeatures()
+-- "transparency: true" means every sprite pixel carries an alpha byte (RGBA);
+-- reading such a .spr as RGB shifts each sprite into noise.
+local function hasTransparentSprites(datPath)
+  local otfi = readOtfi(datPath)
+  return otfi ~= nil and otfi:find('transparency:%s*true') ~= nil
+end
+
+local function enableModernAssetFeatures(transparentSprites)
   g_game.enableFeature(GameSpritesU32)
   g_game.enableFeature(GameIdleAnimations)
   g_game.enableFeature(GameEnhancedAnimations)
+  if transparentSprites then
+    g_game.enableFeature(GameSpritesAlphaChannel)
+  end
 end
 
 local function getResourceGeneration()
@@ -67,6 +80,7 @@ local function isSameLoad(left, right)
     left.datPath == right.datPath and
     left.sprPath == right.sprPath and
     left.modernAssets == right.modernAssets and
+    left.transparentSprites == right.transparentSprites and
     left.resourceGeneration == right.resourceGeneration and
     -- A loaded U32 asset remains valid after a feature-table reset and can
     -- restore its required flag. A loaded U16 asset must never be reused when
@@ -114,11 +128,13 @@ function load()
   local protocolVersion = g_game.getProtocolVersion()
   local assetVersion = getVersionFromPath(datPath) or version
   local modernAssets = hasModernAssetFeatures(datPath)
+  local transparentSprites = hasTransparentSprites(datPath)
   local requestedLoad = {
     assetVersion = assetVersion,
     datPath = datPath,
     sprPath = sprPath,
     modernAssets = modernAssets,
+    transparentSprites = transparentSprites,
     resourceGeneration = getResourceGeneration(),
     spritesU32 = g_game.getFeature(GameSpritesU32)
   }
@@ -128,7 +144,7 @@ function load()
       g_game.enableFeature(GameSpritesU32)
     end
     if modernAssets then
-      enableModernAssetFeatures()
+      enableModernAssetFeatures(transparentSprites)
     end
     loaded = true
     loading = false
@@ -145,7 +161,7 @@ function load()
   end
 
   if modernAssets then
-    enableModernAssetFeatures()
+    enableModernAssetFeatures(transparentSprites)
   end
 
   local errorMessage = ''
@@ -184,7 +200,7 @@ function load()
       g_game.enableFeature(GameSpritesU32)
     end
     if modernAssets then
-      enableModernAssetFeatures()
+      enableModernAssetFeatures(transparentSprites)
     end
   else
     invalidateAssetCache()
