@@ -4,8 +4,10 @@ Reserved storage ranges:
 - 20000 to 21000+ reserved for achievement progress
 - 10000000 to 20000000 reserved for outfits and mounts on source
 - 40000 to 45000+ reserved for house protection system
+- 74000 to 74999 reserved for Tibia 7.4 quest values (classic74QuestBase + QuestValue number)
 ]] --
 PlayerStorageKeys = {
+    classic74QuestBase = 74000,
     annihilatorReward = 30015,
     promotion = 30018,
     delayLargeSeaShell = 30019,
