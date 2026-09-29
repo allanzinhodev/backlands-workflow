@@ -21,6 +21,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const REPO = path.resolve(__dirname, '..', '..');
+
 function collectServerMonsterNames(monstersDir) {
   const names = new Set();
   function walk(dir) {
@@ -51,6 +53,29 @@ const MONSTER_NAME_FIXUPS = {
   'illusion': 'Demon Illusion',
   'training monk': 'Monk',
 };
+
+// <tvpspawn npcname="..."> is the 7.4 NPC file name (lowercase), not the NPC's
+// display name. The server and the map editor match NPC names ignoring case,
+// but "cobra npc"/"demon skeleton npc" match nothing, so the spawn gets the
+// display name from the name="..." of 74/npc/<npcname>.xml. Two of them
+// are named "Cobra"/"Demon Skeleton" there, which are also monster names (954
+// spawns); the map editor keys creatures by name only, so the Canary scripts
+// (server/data/npc/crystalserver/quests/cobra.lua, services/demon_skeleton.lua)
+// were renamed and these fixups use the new names.
+const NPC_NAME_FIXUPS = {
+  'cobra npc': 'Cobra Statue',
+  'demon skeleton npc': 'Demon Skeleton Guard',
+};
+
+function collect74NpcNames(npcDir) {
+  const names = new Map();
+  for (const file of fs.readdirSync(npcDir)) {
+    if (!file.endsWith('.xml')) continue;
+    const m = /<npc[^>]*\sname="([^"]+)"/.exec(fs.readFileSync(path.join(npcDir, file), 'latin1'));
+    if (m) names.set(file.slice(0, -4).toLowerCase(), m[1]);
+  }
+  return names;
+}
 
 // Applies MONSTER_NAME_FIXUPS to name="..." attributes inside a raw
 // <spawn>...</spawn> block's <monster> children (used for the 36
@@ -134,6 +159,9 @@ function convert(inputPath, outputPath, dryRun) {
   console.log('standard <spawn> blocks (name-fixed, otherwise verbatim):', standardSpawns.length);
   console.log('<tvpspawn> entries to convert:', tvpEntries.length);
 
+  const npcNames74 = collect74NpcNames(path.join(REPO, '74/npc'));
+  const unresolvedNpcs = new Set();
+
   let monsterCount = 0, npcCount = 0, skipped = 0;
   const convertedBlocks = tvpEntries.map((attrs) => {
     const centerx = attrs.centerx, centery = attrs.centery, centerz = attrs.centerz;
@@ -153,8 +181,11 @@ function convert(inputPath, outputPath, dryRun) {
         monsterCount++;
       }
     } else if (attrs.npcname) {
+      const key = attrs.npcname.trim().toLowerCase();
+      const npcName = NPC_NAME_FIXUPS[key] || npcNames74.get(key);
+      if (!npcName) unresolvedNpcs.add(attrs.npcname);
       const dirAttr = attrs.direction ? ` direction="${attrs.direction}"` : '';
-      children.push(`\t\t<npc name="${escapeXml(attrs.npcname)}" x="0" y="0"${dirAttr} />`);
+      children.push(`\t\t<npc name="${escapeXml(npcName || attrs.npcname)}" x="0" y="0"${dirAttr} />`);
       npcCount++;
     } else {
       skipped++;
@@ -165,8 +196,9 @@ function convert(inputPath, outputPath, dryRun) {
   }).filter(Boolean);
 
   console.log('converted: monsters=', monsterCount, 'npcs=', npcCount, 'skipped (no name attr)=', skipped);
+  console.log('npc names without a 74/npc xml or fixup (kept as is):', unresolvedNpcs.size ? [...unresolvedNpcs] : 0);
 
-  const serverNames = collectServerMonsterNames('D:/backlands/server/data/monsters');
+  const serverNames = collectServerMonsterNames(path.join(REPO, 'server/data/monsters'));
   const usedNames = new Set();
   const nameRe = /<monster name="([^"]*)"/g;
   let nm;

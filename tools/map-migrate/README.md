@@ -129,14 +129,31 @@ para `Monk` (o monstro migrado mais próximo) como decisão de conteúdo,
 não correspondência técnica — sinalizado no código-fonte do conversor
 para quem quiser revisar/ajustar depois.
 
+### Nomes de NPC
+
+`<tvpspawn npcname="...">` traz o nome do **arquivo** do NPC no 7.4, em
+minúsculas (`thanita`), e não o nome de exibição (`Thanita`). Servidor e
+editor comparam nome de NPC ignorando caixa (`caseInsensitiveEqual` em
+`server/src/npc.cpp`), mas `cobra npc`/`demon skeleton npc` não casam com
+nada. `convert-spawn.js` resolve o nome pelo `name=` de
+`74/npc/<npcname>.xml`, exceto `cobra npc` e `demon skeleton npc`, que estão
+na tabela `NPC_NAME_FIXUPS` (`Cobra Statue`, `Demon Skeleton Guard`, ver
+abaixo). Os 336 resolvem, e regenerar o spawn só muda esses atributos
+`name`.
+
+Os scripts vêm dos NPCs do Canary (`server/data/npc/crystalserver/`,
+carregados com `npcSystem = "crystal"` no `config.lua`), inclusive a Cobra
+das Ancient Tombs (`quests/cobra.lua`) e o Demon Skeleton
+(`services/demon_skeleton.lua`). Esses dois foram renomeados para `Cobra
+Statue`/`Demon Skeleton Guard` porque `Cobra` e `Demon Skeleton` também são
+monstros (954 spawns) e o editor de mapa identifica criatura só pelo nome —
+com nomes iguais ele descarta uma das duas e grava spawn de monstro como NPC
+ou o contrário. Os três NPCs do 7.4 que não existiam no Canary (A Wrinkled
+Beholder, The Gatekeeper, The Queen of the Banshee) foram convertidos da DSL
+`.npc` em `crystalserver/classic74/`.
+
 ## Limitações conhecidas
 
-- **336 spawns de NPC** (`<npc name=.../>`) referenciam nomes de NPC que
-  não foram migrados nesta sessão (migração de NPC está fora de escopo
-  até agora). O servidor (`Npc::createNpc` retornando `nullptr`, ver
-  `server/src/spawn.cpp:206-209`) ignora silenciosamente um NPC não
-  encontrado — não impede o mapa de carregar, mas esses NPCs
-  simplesmente não existem no mundo até serem migrados.
 - Coordenadas do mapa são as do continente real do Tibia (~0-65000), bem
   maiores que o mundo customizado anterior (2048×2048) — qualquer script/
   configuração que assumisse os limites antigos (ex: waypoints, zonas
