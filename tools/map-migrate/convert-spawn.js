@@ -65,10 +65,19 @@ function applyNameFixups(blockText) {
 // Deterministic offsets for the Nth (0-indexed) of `total` copies, kept
 // within `radius` tiles of the center. Single copy stays at the center
 // (matches the common amount="1" case and single <monster> semantics).
-function offsetFor(index, total, radius) {
+//
+// `seed` (derived from the spawn's own center coordinates) rotates each
+// spawn's ring by a different amount, so two nearby <tvpspawn> entries
+// with the same amount/radius don't compute identical absolute offsets
+// and collide on the same tile -- confirmed happening for real (server
+// boot log showed ~3200 "Couldn't spawn monster" pairs on the exact same
+// position, same monster name, traced back to two separate spawn blocks
+// producing the same x="3" y="0" offset).
+function offsetFor(index, total, radius, seed) {
   if (total <= 1) return { x: 0, y: 0 };
-  const angle = (2 * Math.PI * index) / total;
-  const r = Math.max(1, Math.min(radius, 3)); // small ring, not the full radius
+  const seedAngle = ((seed % 360) / 360) * 2 * Math.PI;
+  const angle = seedAngle + (2 * Math.PI * index) / total;
+  const r = Math.max(2, Math.min(radius, 5)); // small ring, not the full radius
   return { x: Math.round(Math.cos(angle) * r), y: Math.round(Math.sin(angle) * r) };
 }
 
@@ -137,8 +146,9 @@ function convert(inputPath, outputPath, dryRun) {
       const fixedName = MONSTER_NAME_FIXUPS[key] || attrs.monstername;
       const amount = Math.max(1, Number(attrs.amount) || 1);
       const spawntime = attrs.spawntime || '60';
+      const seed = (Number(centerx) * 7 + Number(centery) * 13 + Number(centerz) * 31) % 360;
       for (let k = 0; k < amount; k++) {
-        const off = offsetFor(k, amount, Number(radius));
+        const off = offsetFor(k, amount, Number(radius), seed);
         children.push(`\t\t<monster name="${escapeXml(fixedName)}" x="${off.x}" y="${off.y}" spawntime="${spawntime}" />`);
         monsterCount++;
       }

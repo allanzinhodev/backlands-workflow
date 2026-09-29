@@ -18,6 +18,7 @@
 const fs = require('fs');
 const path = require('path');
 const { patchHeader } = require('./patch-header');
+const { patchFilenames } = require('./patch-filenames');
 const { walk: validateTree } = require('./validate-tree');
 const { convert: convertSpawn } = require('./convert-spawn');
 
@@ -44,11 +45,22 @@ function main() {
     fs.cpSync(WORLD_DIR, backupDir, { recursive: true });
   }
 
+  const tmpOtbm = path.join(require('os').tmpdir(), 'map-migrate-step1-header.otbm');
   const otbmOut = DRY_RUN ? path.join(require('os').tmpdir(), 'map-migrate-dryrun.otbm') : DST_OTBM;
-  console.log('\n== Step 1: patch OTBM header ==');
-  patchHeader(SRC_OTBM, otbmOut, false); // always writes to a real path (tmp in dry-run) so validate-tree can read it back
 
-  console.log('\n== Step 2: validate patched tree ==');
+  console.log('\n== Step 1: patch OTBM header (version numbers) ==');
+  patchHeader(SRC_OTBM, tmpOtbm, false);
+
+  console.log('\n== Step 2: patch OTBM spawn/house filenames ==');
+  // The server honors whatever filename is embedded in the .otbm binary
+  // (EXT_SPAWN_FILE/EXT_HOUSE_FILE), not a naming convention -- confirmed
+  // by actually running the server against a header-only-patched map: it
+  // tried to load "map-house.xml"/"map-spawn.xml" (the 7.4 originals)
+  // and failed with "File was not found".
+  patchFilenames(tmpOtbm, otbmOut, false);
+  fs.rmSync(tmpOtbm, { force: true });
+
+  console.log('\n== Step 3: validate patched tree ==');
   const stats = validateTree(otbmOut);
   console.log(`  ${stats.consumedBytes} bytes consumed of ${stats.fileSize} (${stats.consumedBytes === stats.fileSize ? 'OK, no trailing bytes' : 'MISMATCH'})`);
   console.log(`  item id range: ${stats.minItemId}-${stats.maxItemId}, ${stats.itemIdCounts.size} distinct ids`);
@@ -56,11 +68,11 @@ function main() {
     throw new Error('Patched OTBM tree validation failed: trailing/mismatched bytes.');
   }
 
-  console.log('\n== Step 3: convert spawn file ==');
+  console.log('\n== Step 4: convert spawn file ==');
   const spawnOut = DRY_RUN ? path.join(require('os').tmpdir(), 'map-migrate-dryrun-spawn.xml') : DST_SPAWN;
   convertSpawn(SRC_SPAWN, spawnOut, false);
 
-  console.log('\n== Step 4: copy house file (schema already identical) ==');
+  console.log('\n== Step 5: copy house file (schema already identical) ==');
   if (DRY_RUN) {
     console.log('  Dry run: would copy', SRC_HOUSE, '->', DST_HOUSE);
   } else {
