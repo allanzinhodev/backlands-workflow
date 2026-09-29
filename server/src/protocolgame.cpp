@@ -4988,7 +4988,9 @@ void ProtocolGame::sendAddCreature(const Creature* creature, const Position& pos
 		sendInventoryItem(static_cast<slots_t>(i), player->getInventoryItem(static_cast<slots_t>(i)));
 	}
 
-	if (isOTC) {
+	// The store inbox item only exists in datapacks that define it (e.g. not in 7.4); sending an
+	// undefined item makes the client read client id 0 and drop the connection.
+	if (isOTC && Item::items[ITEM_STORE_INBOX].id != 0) {
 		sendInventoryItem(CONST_SLOT_STORE_INBOX, player->getStoreInbox());
 	}
 
