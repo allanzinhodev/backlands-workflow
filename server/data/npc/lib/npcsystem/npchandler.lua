@@ -362,8 +362,18 @@ if NpcHandler == nil then
         if self.messages then self.messages[id] = newMessage end
     end
 
-    -- Translates all message tags found in msg using parseInfo
+    -- Translates all message tags found in msg using parseInfo. msg may also be
+    -- a list of messages said in sequence (Canary NPCs set greet/farewell that
+    -- way); say() already accepts that list.
     function NpcHandler:parseMessage(msg, parseInfo)
+        if type(msg) == "table" then
+            local parsed = {}
+            for i, part in ipairs(msg) do
+                parsed[i] = self:parseMessage(part, parseInfo)
+            end
+            return parsed
+        end
+
         local ret = msg
         for search, replace in pairs(parseInfo) do
             ret = string.gsub(ret, search, replace)
