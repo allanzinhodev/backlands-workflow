@@ -3,15 +3,20 @@
  * Generates items.otb from Tibia.dat + Tibia.spr, mirroring ObjectBuilder's
  * MetadataReader5 (client 8.60-9.86), SpriteStorage.getSpriteHash and OtbWriter.
  *
- * Usage: node generate-items-otb.js [datDir] [outFile]
+ * Usage: node generate-items-otb.js [datDir] [outFile] [--ids reference.otb]
  * Docs: README.md nesta pasta.
  */
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const datDir = path.resolve(process.argv[2] || 'D:/backlands/client/data/things');
-const outFile = path.resolve(process.argv[3] || 'D:/backlands/server/data/items/items.otb');
+const args = process.argv.slice(2);
+const idsFlag = args.indexOf('--ids');
+const idsFile = idsFlag >= 0 ? path.resolve(args[idsFlag + 1]) : null;
+if (idsFlag >= 0) args.splice(idsFlag, 2);
+
+const datDir = path.resolve(args[0] || 'D:/backlands/client/data/things');
+const outFile = path.resolve(args[1] || 'D:/backlands/server/data/items/items.otb');
 
 const DAT_PATH = path.join(datDir, 'Tibia.dat');
 const SPR_PATH = path.join(datDir, 'Tibia.spr');
@@ -296,8 +301,8 @@ const ServerItemFlag = {
 
 const CLIENT_VERSION = 860; // 8.60 v2, from client/data/things/Tibia.otfi + versions.xml match
 
-function createServerItem(thing, sprites) {
-  const item = { id: thing.id, clientId: thing.id, name: '', tradeAs: 0 };
+function createServerItem(thing, sprites, serverId = thing.id) {
+  const item = { id: serverId, clientId: thing.id, name: '', tradeAs: 0 };
 
   if (thing.isGround) item.type = ServerItemType.GROUND;
   else if (thing.isContainer) item.type = ServerItemType.CONTAINER;
@@ -501,6 +506,46 @@ function writeOtb(items, majorVersion, minorVersion, buildNumber, clientVersion,
 }
 
 // ---------------------------------------------------------------------------
+// Reference .otb (--ids): Server ID -> Client ID pairs, in file order
+// ---------------------------------------------------------------------------
+function readOtbIdPairs(otbPath) {
+  const raw = fs.readFileSync(otbPath);
+  let i = 4; // skip header version u32
+
+  function readNode() {
+    i++; // NODE_START
+    const node = { type: raw[i++], data: [], children: [] };
+    while (i < raw.length) {
+      const b = raw[i];
+      if (b === ESCAPE_CHAR) { node.data.push(raw[i + 1]); i += 2; continue; }
+      if (b === NODE_START) { node.children.push(readNode()); continue; }
+      if (b === NODE_END) { i++; return node; }
+      node.data.push(b); i++;
+    }
+    throw new Error(`${otbPath}: unterminated node`);
+  }
+
+  const pairs = [];
+  for (const child of readNode().children) {
+    const d = Buffer.from(child.data);
+    let p = 4; // skip item flags u32
+    let serverId = null;
+    let clientId = null;
+    while (p + 3 <= d.length) {
+      const attr = d[p];
+      const len = d.readUInt16LE(p + 1);
+      p += 3;
+      if (attr === 0x10) serverId = d.readUInt16LE(p);
+      if (attr === 0x11) clientId = d.readUInt16LE(p);
+      p += len;
+    }
+    if (serverId === null) throw new Error(`${otbPath}: item node without SERVER_ID`);
+    pairs.push({ serverId, clientId, deprecated: child.type === ServerItemGroup.DEPRECATED });
+  }
+  return pairs;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 function main() {
@@ -515,8 +560,23 @@ function main() {
   console.log(`  ${sprites.count} sprites, extended=${sprites.extended}`);
 
   const serverItems = [];
-  for (const thing of itemsMap.values()) {
-    serverItems.push(createServerItem(thing, sprites));
+  if (idsFile) {
+    // Server IDs come from the reference .otb (the map and items.xml speak them);
+    // flags/attributes still come from the .dat entry of each Client ID.
+    console.log(`Reading Server ID -> Client ID pairs: ${idsFile}`);
+    for (const { serverId, clientId, deprecated } of readOtbIdPairs(idsFile)) {
+      const thing = itemsMap.get(clientId);
+      if (deprecated || !thing) {
+        if (!deprecated) console.warn(`  server id ${serverId}: client id ${clientId} not in .dat, written as deprecated`);
+        serverItems.push({ id: serverId, type: ServerItemType.DEPRECATED });
+        continue;
+      }
+      serverItems.push(createServerItem(thing, sprites, serverId));
+    }
+  } else {
+    for (const thing of itemsMap.values()) {
+      serverItems.push(createServerItem(thing, sprites));
+    }
   }
   console.log(`Built ${serverItems.length} server items`);
 

@@ -60,6 +60,14 @@ implementada — a lógica real está comentada dentro de um bloco `/* TODO
 para essa conversão; a resposta certa era confirmar que ela nem era
 necessária.
 
+> **Correção:** o `.otbm` grava **Server IDs**, não Client IDs. Os IDs da
+> árvore são os Server IDs do 7.4, e o "zero ausentes" acima só passou porque
+> as duas numerações vão até 5089. O mapa em si não precisa de remapeamento —
+> quem precisa falar os Server IDs do 7.4 é o `items.otb`, gerado com
+> `tools/otb-gen --ids 74/items/items.otb` (ver o README de lá). Com o `.otb`
+> 1:1 anterior, o editor e o servidor desenhavam cada item com o sprite de
+> outro Client ID.
+
 ## Por que `map-house.xml` não precisa de conversão
 
 Mesmo schema de atributos que `world-house.xml`

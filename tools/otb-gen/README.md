@@ -17,19 +17,31 @@ client atual.
 ## Uso
 
 ```
-node generate-items-otb.js [datDir] [outFile]
+node generate-items-otb.js [datDir] [outFile] [--ids reference.otb]
 ```
 
 - `datDir` (opcional): pasta com `Tibia.dat` e `Tibia.spr`. Default:
   `D:/backlands/client/data/things`.
 - `outFile` (opcional): caminho do `.otb` de saída. Default:
   `D:/backlands/server/data/items/items.otb`.
+- `--ids reference.otb` (opcional): tira a numeração Server ID → Client ID
+  de um `.otb` de referência em vez de usar Server ID = Client ID. Flags,
+  hash de sprite e atributos continuam vindo do `.dat`/`.spr`, pelo Client
+  ID de cada par.
 
-Exemplo (valores default, equivalente a rodar sem argumentos):
+**O `items.otb` do servidor é gerado com `--ids 74/items/items.otb`:**
 
 ```
-node generate-items-otb.js "D:/backlands/client/data/things" "D:/backlands/server/data/items/items.otb"
+node generate-items-otb.js "D:/backlands/client/data/things" "D:/backlands/server/data/items/items.otb" --ids "D:/backlands/74/items/items.otb"
 ```
+
+O mapa (`world.otbm`) e o `items.xml` do servidor falam os Server IDs do
+7.4, e no 7.4 Server ID e Client ID divergem em 4652 dos 4990 itens (ex.:
+Server ID 2700 "fir tree" usa o Client ID 3614). Sem `--ids`, o `.otb` sai
+1:1 e cada Server ID do mapa é desenhado/tratado como o item de outro Client
+ID. O Client ID do `.otb` do 7.4 indexa o `.dat` atual sem remapeamento:
+4949/4990 hashes de sprite idênticos (os 41 restantes são bordas animadas
+com ordem de frame diferente) e flags idênticas em 4989/4990.
 
 O script sobrescreve o arquivo de saída (escreve em `.tmp` e renomeia por
 cima, mesma estratégia do `OtbWriter` do Object Builder).
@@ -58,8 +70,8 @@ cima, mesma estratégia do `OtbWriter` do Object Builder).
    Builder).
 5. **Escreve o `.otb`** — formato de árvore binária com bytes especiais
    `0xFE`/`0xFF`/`0xFD` (start/end/escape de nó), igual ao `OtbWriter`.
-   Server ID é sempre igual ao Client ID (mapeamento 1:1, já que o `.otb` é
-   gerado do zero, sem reconciliar com um arquivo anterior). Versão do OTB
+   Sem `--ids`, Server ID é igual ao Client ID (mapeamento 1:1); com
+   `--ids`, os pares vêm do `.otb` de referência, na ordem dele. Versão do OTB
    gravada no header: `major=3, minor=20, build=1` (o mesmo trio que já
    estava no `items.otb` anterior, correspondente a "8.60 v2" em
    `versions.xml`).
