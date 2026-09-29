@@ -23,10 +23,11 @@ function extractRaceId(text) {
   return m ? Number(m[1]) : null;
 }
 
-// Finds `monster.<field> = {` and returns the balanced-brace block text
-// (including the outer braces), or null if the field isn't present.
-function extractBlock(text, field) {
-  const anchorRe = new RegExp(`monster\\.${field}\\s*=\\s*\\{`);
+// Finds `<owner>.<field> = {` (owner defaults to `monster`; NPC scripts use
+// `npcConfig`) and returns the balanced-brace block text (including the
+// outer braces), or null if the field isn't present.
+function extractBlock(text, field, owner = 'monster') {
+  const anchorRe = new RegExp(`${owner}\\.${field}\\s*=\\s*\\{`);
   const anchor = anchorRe.exec(text);
   if (!anchor) return null;
 

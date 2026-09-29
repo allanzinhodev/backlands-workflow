@@ -10,3 +10,4 @@ independente, com seu próprio README.
 - [items-migrate](items-migrate/README.md) — migra Server IDs e atributos do `items.xml` do datapack 7.4 para o `items.xml` do servidor atual.
 - [monsters-migrate](monsters-migrate/README.md) — migra monstros do datapack 7.4 (XML) para os scripts de monstro (`.lua`) do servidor atual.
 - [map-migrate](map-migrate/README.md) — migra o mapa (`.otbm` + spawn + house) do datapack 7.4 para `server/data/world/`.
+- [creatures-gen](creatures-gen/README.md) — gera a paleta de criaturas do editor (`mapeditor/data/860/creatures.xml`) com os monstros do servidor e os NPCs do 7.4.
