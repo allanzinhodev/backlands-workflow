@@ -231,11 +231,18 @@ for _, value in ipairs(QuestDoorTable) do
 	end
 end
 
+local function canPassQuestDoor(player, actionId)
+	if Classic74Doors.isQuestDoor(actionId) then
+		return Classic74Doors.canPassQuestDoor(player, actionId)
+	end
+	return player:getStorageValue(actionId) ~= -1
+end
+
 local questDoor = Action()
 function questDoor.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	for _, value in ipairs(QuestDoorTable) do
 		if value.closedDoor == item.itemid then
-			if item.actionid > 0 and (player:getStorageValue(item.actionid) ~= -1 or
+			if item.actionid > 0 and (canPassQuestDoor(player, item.actionid) or
 				player:getGroup():getAccess()) then
 				item:transform(value.openDoor)
 				player:teleportTo(toPosition, true, CONST_ME_NONE)
@@ -280,12 +287,19 @@ for _, value in ipairs(LevelDoorTable) do
 	end
 end
 
+local function canPassLevelDoor(player, actionId)
+	if Classic74Doors.isLevelDoor(actionId) then
+		return Classic74Doors.canPassLevelDoor(player, actionId)
+	end
+	return player:getLevel() >= actionId - actionIds.levelDoor
+end
+
 local levelDoor = Action()
 function levelDoor.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	for _, value in ipairs(LevelDoorTable) do
 		if value.closedDoor == item.itemid then
-			if item.actionid > 0 and (player:getLevel() >= item.actionid -
-				actionIds.levelDoor or player:getGroup():getAccess()) then
+			if item.actionid > 0 and (canPassLevelDoor(player, item.actionid) or
+				player:getGroup():getAccess()) then
 				item:transform(value.openDoor)
 				player:teleportTo(toPosition, true, CONST_ME_NONE)
 				return true
