@@ -1,20 +1,31 @@
 /**
- * Minimal items.otb reader: returns the set of Server IDs present in the
- * file. Reuses the same binary-tree walk as tools/otb-gen/generate-items-otb.js
- * (0xFE/0xFF/0xFD node framing), trimmed down to just extract Server IDs
- * for validating items.xml against the OTB the C++ server actually loads.
+ * Minimal items.otb reader: Server IDs, Server ID -> Client ID pairs, and
+ * per-item group/flags. Reuses the same binary-tree walk as
+ * tools/otb-gen/generate-items-otb.js (0xFE/0xFF/0xFD node framing).
  */
 'use strict';
 const fs = require('fs');
 
 const NODE_START = 0xFE, NODE_END = 0xFF, ESCAPE = 0xFD;
 
+// Item node group byte and the flag bits used by other tools (OtbWriter layout).
+const OTB_GROUP_GROUND = 1;
+const OTB_FLAG_UNPASSABLE = 1 << 0;
+const OTB_FLAG_BLOCK_PATHFINDER = 1 << 2;
+
 function readOtbServerIds(otbPath) {
-  return new Set(readOtbIdPairs(otbPath).keys());
+  return new Set(readOtbItems(otbPath).keys());
 }
 
 // Server ID -> Client ID for every item node (SERVER_ID = 0x10, CLIENT_ID = 0x11).
 function readOtbIdPairs(otbPath) {
+  const pairs = new Map();
+  for (const [serverId, item] of readOtbItems(otbPath)) pairs.set(serverId, item.clientId);
+  return pairs;
+}
+
+// Server ID -> { clientId, group, flags } for every item node.
+function readOtbItems(otbPath) {
   const data = fs.readFileSync(otbPath);
   let pos = 4; // skip header uint32
 
@@ -33,10 +44,10 @@ function readOtbIdPairs(otbPath) {
     pos++;
   }
 
-  const pairs = new Map();
+  const items = new Map();
   while (data[pos] === NODE_START) {
     pos++; // NODE_START
-    pos++; // group/type byte
+    const group = data[pos++];
     const bytes = [];
     while (true) {
       const b = data[pos];
@@ -46,6 +57,7 @@ function readOtbIdPairs(otbPath) {
     }
     const buf = Buffer.from(bytes);
     // flags(4) then TLV attrs, 2-byte little-endian ids.
+    const flags = buf.readUInt32LE(0);
     let p = 4;
     let serverId = null;
     let clientId = null;
@@ -56,10 +68,17 @@ function readOtbIdPairs(otbPath) {
       if (attr === 0x11) clientId = buf.readUInt16LE(p);
       p += len;
     }
-    if (serverId !== null) pairs.set(serverId, clientId);
+    if (serverId !== null) items.set(serverId, { clientId, group, flags });
   }
 
-  return pairs;
+  return items;
 }
 
-module.exports = { readOtbServerIds, readOtbIdPairs };
+module.exports = {
+  readOtbServerIds,
+  readOtbIdPairs,
+  readOtbItems,
+  OTB_GROUP_GROUND,
+  OTB_FLAG_UNPASSABLE,
+  OTB_FLAG_BLOCK_PATHFINDER,
+};

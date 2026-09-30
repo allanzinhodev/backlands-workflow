@@ -16,10 +16,18 @@
  * pattern around the center, sized to the spawn's own radius -- not a
  * real position recovered from the source data, just a reasonable
  * placeholder so N>1 spawns don't stack.
+ *
+ * A ring position that is taken by another entry or is not walkable in the
+ * map (walkable-tiles.js) moves to the nearest free walkable tile inside the
+ * spawn radius; with none left, the copy is dropped and reported. The result
+ * has no two entries on one tile, which the map editor requires to load the
+ * file at all.
  */
 'use strict';
 const fs = require('fs');
 const path = require('path');
+
+const { buildWalkableTiles } = require('./walkable-tiles');
 
 const REPO = path.resolve(__dirname, '..', '..');
 
@@ -106,6 +114,56 @@ function offsetFor(index, total, radius, seed) {
   return { x: Math.round(Math.cos(angle) * r), y: Math.round(Math.sin(angle) * r) };
 }
 
+// Offsets sorted by distance from (0,0), used to look for the nearest free
+// tile when the ring position can't take a monster. Built once for the
+// largest radius asked for.
+let searchOffsets = [];
+function offsetsWithin(radius) {
+  if (searchOffsets.radius !== undefined && searchOffsets.radius >= radius) return searchOffsets;
+  const list = [];
+  for (let dy = -radius; dy <= radius; dy++) {
+    for (let dx = -radius; dx <= radius; dx++) list.push({ x: dx, y: dy, d: dx * dx + dy * dy });
+  }
+  list.sort((a, b) => a.d - b.d);
+  list.radius = radius;
+  searchOffsets = list;
+  return list;
+}
+
+const positionKey = (x, y, z) => `${x}:${y}:${z}`;
+
+// Picks where the Nth copy of a <tvpspawn> goes: its ring position when that
+// tile is walkable and not taken by another spawn entry, otherwise the
+// nearest free walkable tile to it that still lies inside the spawn radius
+// (the server only spawns inside it, and the map editor refuses a spawn file
+// with two entries on one tile that disagree on respawn time). Returns null
+// when no tile in the radius is available.
+function placeCopy(center, preferred, radius, walkable, used) {
+  const inRadius = (x, y) => Math.max(Math.abs(x - center.x), Math.abs(y - center.y)) <= radius;
+  const free = (x, y) => inRadius(x, y) && walkable.isWalkable(x, y, center.z) && !used.has(positionKey(x, y, center.z));
+
+  const px = center.x + preferred.x, py = center.y + preferred.y;
+  if (free(px, py)) return { x: px, y: py, moved: false };
+  for (const off of offsetsWithin(2 * radius)) {
+    const x = px + off.x, y = py + off.y;
+    if (free(x, y)) return { x, y, moved: true };
+  }
+  return null;
+}
+
+// Positions taken by a verbatim <spawn> block's children.
+function standardBlockPositions(blockText) {
+  const open = /<spawn\s[^>]*>/.exec(blockText);
+  const attrs = open ? parseAttrs(open[0]) : {};
+  const cx = Number(attrs.centerx), cy = Number(attrs.centery), cz = Number(attrs.centerz);
+  const positions = [];
+  for (const m of blockText.matchAll(/<(?:monster|npc)\s[^>]*>/g)) {
+    const child = parseAttrs(m[0]);
+    positions.push(positionKey(cx + Number(child.x || 0), cy + Number(child.y || 0), cz));
+  }
+  return positions;
+}
+
 function parseAttrs(tagText) {
   const attrs = {};
   const re = /(\w+)="([^"]*)"/g;
@@ -114,7 +172,20 @@ function parseAttrs(tagText) {
   return attrs;
 }
 
-function convert(inputPath, outputPath, dryRun) {
+// Monster placement reads the map the spawn file belongs to. The map and
+// items.otb/items.xml must speak the same item ids (Client IDs for the
+// server's world.otbm; see remap-item-ids.js).
+const DEFAULT_WORLD = {
+  otbm: path.join(REPO, 'server/data/world/world.otbm'),
+  otb: path.join(REPO, 'server/data/items/items.otb'),
+  itemsXml: path.join(REPO, 'server/data/items/items.xml'),
+};
+
+function convert(inputPath, outputPath, dryRun, world = DEFAULT_WORLD) {
+  console.log(`Reading walkable tiles: ${world.otbm}`);
+  const walkable = buildWalkableTiles(world.otbm, world.otb, world.itemsXml);
+  console.log('  walkable tiles:', walkable.walkableCount);
+
   const text = fs.readFileSync(inputPath, 'latin1');
   const lines = text.split(/\r?\n/);
 
@@ -162,7 +233,16 @@ function convert(inputPath, outputPath, dryRun) {
   const npcNames74 = collect74NpcNames(path.join(REPO, '74/npc'));
   const unresolvedNpcs = new Set();
 
-  let monsterCount = 0, npcCount = 0, skipped = 0;
+  // Tiles already taken: the verbatim blocks, then every NPC (it stays on its
+  // center tile), before any monster copy is placed.
+  const used = new Set();
+  for (const block of standardSpawns) for (const key of standardBlockPositions(block)) used.add(key);
+  for (const attrs of tvpEntries) {
+    if (attrs.npcname && attrs.centerx) used.add(positionKey(Number(attrs.centerx), Number(attrs.centery), Number(attrs.centerz)));
+  }
+
+  let monsterCount = 0, npcCount = 0, skipped = 0, moved = 0, dropped = 0;
+  const droppedByName = new Map();
   const convertedBlocks = tvpEntries.map((attrs) => {
     const centerx = attrs.centerx, centery = attrs.centery, centerz = attrs.centerz;
     const radius = attrs.radius || '1';
@@ -175,11 +255,20 @@ function convert(inputPath, outputPath, dryRun) {
       const amount = Math.max(1, Number(attrs.amount) || 1);
       const spawntime = attrs.spawntime || '60';
       const seed = (Number(centerx) * 7 + Number(centery) * 13 + Number(centerz) * 31) % 360;
+      const center = { x: Number(centerx), y: Number(centery), z: Number(centerz) };
       for (let k = 0; k < amount; k++) {
-        const off = offsetFor(k, amount, Number(radius), seed);
-        children.push(`\t\t<monster name="${escapeXml(fixedName)}" x="${off.x}" y="${off.y}" spawntime="${spawntime}" />`);
+        const spot = placeCopy(center, offsetFor(k, amount, Number(radius), seed), Number(radius), walkable, used);
+        if (!spot) {
+          dropped++;
+          droppedByName.set(fixedName, (droppedByName.get(fixedName) || 0) + 1);
+          continue;
+        }
+        if (spot.moved) moved++;
+        used.add(positionKey(spot.x, spot.y, center.z));
+        children.push(`\t\t<monster name="${escapeXml(fixedName)}" x="${spot.x - center.x}" y="${spot.y - center.y}" spawntime="${spawntime}" />`);
         monsterCount++;
       }
+      if (children.length === 0) return null;
     } else if (attrs.npcname) {
       const key = attrs.npcname.trim().toLowerCase();
       const npcName = NPC_NAME_FIXUPS[key] || npcNames74.get(key);
@@ -196,6 +285,11 @@ function convert(inputPath, outputPath, dryRun) {
   }).filter(Boolean);
 
   console.log('converted: monsters=', monsterCount, 'npcs=', npcCount, 'skipped (no name attr)=', skipped);
+  console.log('monster copies moved off their ring position (taken or not walkable):', moved,
+    '| dropped (no free walkable tile in the spawn radius):', dropped);
+  if (droppedByName.size) {
+    console.log('  dropped by monster:', [...droppedByName].sort((a, b) => b[1] - a[1]).map(([n, c]) => `${n} ${c}`).join(', '));
+  }
   console.log('npc names without a 74/npc xml or fixup (kept as is):', unresolvedNpcs.size ? [...unresolvedNpcs] : 0);
 
   const serverNames = collectServerMonsterNames(path.join(REPO, 'server/data/monsters'));
