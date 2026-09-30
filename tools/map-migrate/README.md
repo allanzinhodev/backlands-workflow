@@ -39,6 +39,29 @@ Scripts individuais (também podem ser rodados sozinhos):
   Server ID para Client ID, pelos pares do `.otb` de referência (default
   `74/items/items.otb`). O resto do arquivo sai byte a byte igual: rodar com
   um `.otb` 1:1 como referência reproduz o arquivo de entrada idêntico.
+  Com `--replace <de>=<para>` (repetível) troca só esses IDs e mantém o
+  resto — usado para tirar o gravel do ID 105 (ver abaixo).
+
+### Gravel 105 → 4555
+
+O engine tem IDs de campos mágicos fixos na numeração moderna
+(`server/src/const.h`) e, ao carregar item do mapa, `Item::CreateItem`
+converte o "poison field PVP" (`ITEM_POISONFIELD_PVP = 105`) no persistente
+(2121). No 7.4, o Client ID 105 é **gravel**: todo gravel do mapa virava
+poison gas no jogo (o editor, sem essa regra, mostrava gravel). Os 719
+gravel 105 do `world.otbm` foram trocados pelo 4555 — mesmo sprite, mesmo
+ground speed (150), mesma cor de minimapa e mesma definição no `items.xml`:
+
+```
+node remap-item-ids.js ../../server/data/world/world.otbm <saida.otbm> --replace 105=4555
+```
+
+Depois disso as constantes de campo do `const.h` foram alinhadas aos
+Client IDs do 7.4 — `ITEM_POISONFIELD_PVP` 2121 / `_PERSISTENT` 2127,
+`ITEM_MAGICWALL` 2128 (some) / `_PERSISTENT` 2129 (permanente, antes
+invertido) e `ITEM_FIREFIELD_NOPVP` 2131 (o 21465 não existe no 7.4) —, então
+o 105 não é mais convertido; a troca para 4555 fica por não ter custo. Fogo e
+energia já batiam.
 
 ## Os IDs do mapa precisam virar Client ID
 
@@ -110,6 +133,32 @@ formato atual é uma posição fixa (sem espalhamento aleatório dentro do
 raio). Para não empilhar as N cópias na mesma posição, elas são
 distribuídas num pequeno padrão circular ao redor do centro — é uma
 aproximação razoável, não uma posição recuperada dos dados originais.
+
+### Posição livre e andável
+
+O anel sozinho deixava 176 tiles com duas criaturas e muitas cópias em
+parede, água ou tile inexistente. O editor de mapa **recusa o spawn
+inteiro** se duas entradas do mesmo tile discordam de `spawntime` ou
+direção (`ValidateBeforeApply` em `mapeditor/source/spawn_format_map.cpp`
+— 24 tiles assim bastavam para ele não mostrar nenhuma criatura), e o
+servidor loga "Couldn't spawn" para cada cópia que não cabe.
+
+`convert-spawn.js` agora lê o mapa (`walkable-tiles.js`: chão, sem item
+unpassable/block pathfinder no `items.otb`, sem `floorchange` no
+`items.xml`, fora de PZ e de casa) e mantém o conjunto de tiles já
+usados (blocos `<spawn>` copiados e NPCs primeiro). Cada cópia vai para a
+posição do anel; se ela estiver ocupada ou não for andável, vai para o
+tile livre e andável mais próximo dentro do raio do spawn. Sem nenhum, a
+cópia é descartada e aparece no relatório por monstro.
+
+O mapa lido é `server/data/world/world.otbm` com `items.otb`/`items.xml`
+do servidor, então rode depois do `remap-item-ids.js` (mapa em Client ID).
+
+Execução atual: 23 069 monstros e 336 NPCs, 11 843 cópias reposicionadas,
+0 tiles com duas entradas. 334 cópias descartadas — os spawns delas caem
+em áreas que não existem ou são rocha maciça neste mapa (ex.: Dark Monk em
+`32610,32384,9` só tem 12 tiles vazios no raio; Assassin, Witch e os
+"throwers" idem), ou seja, o servidor também não conseguiria criá-las.
 
 ### Correção de nomes de monstro
 

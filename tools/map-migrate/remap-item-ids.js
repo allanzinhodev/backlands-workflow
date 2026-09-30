@@ -6,7 +6,13 @@
  * The server indexes items by Client ID (server/src/items.cpp ignores the
  * .otb Server ID), so a map saved with 7.4 Server IDs has to be converted.
  *
+ * With --replace from=to (repeatable) it instead swaps only those ids and
+ * keeps every other id as is -- e.g. --replace 105=4555 moves the gravel off
+ * id 105, which the engine converts to a poison field on map load
+ * (Item::CreateItem, ITEM_POISONFIELD_PVP = 105 in server/src/const.h).
+ *
  * Usage: node remap-item-ids.js <in.otbm> <out.otbm> [reference.otb]
+ *        node remap-item-ids.js <in.otbm> <out.otbm> --replace <from>=<to> [...]
  * Docs: README.md nesta pasta.
  */
 'use strict';
@@ -18,18 +24,36 @@ const NODE_START = 0xFE, NODE_END = 0xFF, ESCAPE = 0xFD;
 const OTBM_TILE = 5, OTBM_ITEM = 6, OTBM_HOUSETILE = 14;
 const OTBM_ATTR_TILE_FLAGS = 3, OTBM_ATTR_ITEM = 9;
 
-const [inFile, outFile, refArg] = process.argv.slice(2);
+const args = process.argv.slice(2);
+const replacements = new Map();
+for (let a = args.indexOf('--replace'); a >= 0; a = args.indexOf('--replace')) {
+  const [from, to] = (args[a + 1] || '').split('=').map(Number);
+  if (!from || !to) {
+    console.error(`Invalid --replace "${args[a + 1]}" (expected <from>=<to>)`);
+    process.exit(1);
+  }
+  replacements.set(from, to);
+  args.splice(a, 2);
+}
+
+const [inFile, outFile, refArg] = args;
 if (!inFile || !outFile) {
-  console.error('Usage: node remap-item-ids.js <in.otbm> <out.otbm> [reference.otb]');
+  console.error('Usage: node remap-item-ids.js <in.otbm> <out.otbm> [reference.otb | --replace <from>=<to> ...]');
   process.exit(1);
 }
-const refOtb = path.resolve(refArg || path.join(__dirname, '../../74/items/items.otb'));
+const refOtb = replacements.size ? null : path.resolve(refArg || path.join(__dirname, '../../74/items/items.otb'));
 
-const sidToCid = readOtbIdPairs(refOtb);
+const sidToCid = refOtb ? readOtbIdPairs(refOtb) : null;
 const raw = fs.readFileSync(inFile);
-const stats = { itemNodes: 0, inlineItems: 0, unmapped: new Map() };
+const stats = { itemNodes: 0, inlineItems: 0, unmapped: new Map(), replaced: new Map() };
 
 function remap(id) {
+  if (!sidToCid) {
+    const to = replacements.get(id);
+    if (to === undefined) return id;
+    stats.replaced.set(id, (stats.replaced.get(id) || 0) + 1);
+    return to;
+  }
   const cid = sidToCid.get(id);
   if (cid === undefined || cid === null) {
     stats.unmapped.set(id, (stats.unmapped.get(id) || 0) + 1);
@@ -117,6 +141,10 @@ if (i !== raw.length) throw new Error(`trailing bytes: stopped at ${i} of ${raw.
 
 fs.writeFileSync(outFile, out.subarray(0, o));
 console.log(`item nodes: ${stats.itemNodes}, tile inline items: ${stats.inlineItems}`);
-console.log(`ids without a Client ID in ${refOtb}: ${stats.unmapped.size} distinct`);
-for (const [id, n] of stats.unmapped) console.log(`  ${id}: ${n}x (kept as is)`);
+if (sidToCid) {
+  console.log(`ids without a Client ID in ${refOtb}: ${stats.unmapped.size} distinct`);
+  for (const [id, n] of stats.unmapped) console.log(`  ${id}: ${n}x (kept as is)`);
+} else {
+  for (const [from, to] of replacements) console.log(`replaced ${from} -> ${to}: ${stats.replaced.get(from) || 0}x`);
+}
 console.log(`wrote ${outFile} (${o} bytes)`);
