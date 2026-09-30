@@ -1,6 +1,7 @@
 dofile(CORE_DIRECTORY .. "/lib/core/achievements.lua")
 dofile(CORE_DIRECTORY .. "/lib/core/actionids.lua")
 dofile(CORE_DIRECTORY .. "/lib/core/class.lua")
+dofile(CORE_DIRECTORY .. "/lib/core/classic74.lua")
 dofile(CORE_DIRECTORY .. "/lib/core/combat.lua")
 dofile(CORE_DIRECTORY .. "/lib/core/constants.lua")
 dofile(CORE_DIRECTORY .. "/lib/core/container.lua")
