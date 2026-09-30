@@ -1,0 +1,22 @@
+-- Ported from the Tibia 7.4 datapack: 74/scripts/movements/map/rookgaard/spike_sword_removal.lua
+-- (tools/scripts-migrate/port-74-scripts.js: item ids 7.4 Server ID -> Client ID, storages -> classic74QuestBase + n)
+
+local moveevent = MoveEvent()
+
+function moveevent.onStepIn(creature, item, position, fromPosition)
+	if creature:isPlayer() and Game.isItemInPosition({x = 32104, y = 32082, z = 07},4601) and Game.isItemInPosition ({x = 32102, y = 32084, z = 07},2123) then 
+		Game.removeItemInPosition({x = 32101, y = 32085, z = 07}, 3271)
+		Game.sendMagicEffect({x = 32101, y = 32085, z = 07}, 14)
+		Game.transformItemInPosition({x = 32100, y = 32084, z = 07}, 2123, 2125)
+		Game.transformItemInPosition({x = 32101, y = 32084, z = 07}, 2123, 2125)
+		Game.transformItemInPosition({x = 32102, y = 32084, z = 07}, 2123, 2125)
+		Game.transformItemInPosition({x = 32100, y = 32085, z = 07}, 2123, 2125)
+		Game.transformItemInPosition({x = 32102, y = 32085, z = 07}, 2123, 2125)
+		Game.transformItemInPosition({x = 32100, y = 32086, z = 07}, 2123, 2125)
+		Game.transformItemInPosition({x = 32101, y = 32086, z = 07}, 2123, 2125)
+		Game.transformItemInPosition({x = 32102, y = 32086, z = 07}, 2123, 2125)
+	end
+end
+
+moveevent:aid(3012)
+moveevent:register()

@@ -1,0 +1,22 @@
+-- Ported from the Tibia 7.4 datapack: 74/scripts/actions/map/rookgaard/library_wall_lever.lua
+-- (tools/scripts-migrate/port-74-scripts.js: item ids 7.4 Server ID -> Client ID, storages -> classic74QuestBase + n)
+
+local action = Action()
+
+function action.onUse(player, item, fromPosition, target, toPosition)
+	if item:getId() == 2772 then
+		item:transform(2773, 1)
+		item:decay()
+		Game.removeItemInPosition({x = 32095, y = 32173, z = 08}, 1271)
+	elseif item:getId() == 2773 then 
+		item:transform(2772, 1)
+		item:decay()
+		doRelocate({x = 32095, y = 32173, z = 08},{x = 32095, y = 32174, z = 08})
+		Game.createItem(1271, 1, {x = 32095, y = 32173, z = 08})
+	end
+
+	return true
+end
+
+action:aid(2055)
+action:register()
