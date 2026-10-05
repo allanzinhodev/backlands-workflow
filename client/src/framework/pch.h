@@ -57,9 +57,7 @@
 #include <future>
 #include <chrono>
 #include <random>
-#ifndef ANDROID
 #include <filesystem>
-#endif
 
  // boost
 #ifdef ANDROID
