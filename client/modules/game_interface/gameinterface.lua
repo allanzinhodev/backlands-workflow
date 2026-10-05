@@ -2704,6 +2704,15 @@ function updateTopBar(side)
     gameMapPanel:addAnchor(AnchorBottom, 'bottomSplitter', AnchorTop)
   end
 
+  if g_app.isMobile() then
+    -- Mobile positions its action bar above the collapsible chat panel.
+    -- The desktop splitter reserves a large empty area on a small screen.
+    replaceAnchor(gameMapPanel, AnchorBottom, 'gameBottomActionPanel', AnchorTop)
+    replaceAnchor(gameLeftActionPanel, AnchorBottom, 'gameBottomActionPanel', AnchorTop)
+    replaceAnchor(gameRightActionPanel, AnchorBottom, 'gameBottomActionPanel', AnchorTop)
+    bottomSplitter:setVisible(false)
+  end
+
   if isClassicViewActive() and modules.game_actionbar and modules.game_actionbar.updateGameMapPanelMargin then
     modules.game_actionbar.updateGameMapPanelMargin()
   else
@@ -2789,7 +2798,9 @@ function refreshViewMode()
     gameMapPanel:addAnchor(AnchorLeft, 'gameLeftActionPanel', AnchorRight)
     gameMapPanel:addAnchor(AnchorRight, 'gameRightActionPanel', AnchorLeft)
     gameMapPanel:addAnchor(AnchorBottom, 'gameBottomActionPanel', AnchorTop)
-    gameMapPanel:addAnchor(AnchorBottom, 'gameBottomCooldownPanel', AnchorTop)
+    if not g_app.isMobile() then
+      gameMapPanel:addAnchor(AnchorBottom, 'gameBottomCooldownPanel', AnchorTop)
+    end
     local customisableTopBarEnabled = false
     if modules.game_topbar then
       if modules.game_topbar.shouldShowCustomisableBar then
