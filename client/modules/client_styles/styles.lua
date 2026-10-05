@@ -38,11 +38,6 @@ function terminate()
 end
 
 function importResources(dir, type)
-    local path = '/' .. dir .. '/'
-    if not g_resources.directoryExists(path) then
-        return
-    end
-
     local function importFrom(path)
         local files = g_resources.listDirectoryFiles(path, true)
         for _, file in pairs(files) do
@@ -54,7 +49,23 @@ function importResources(dir, type)
         end
     end
 
-    importFrom(path)
+    local layout = g_resources.getLayout()
+    if layout and layout ~= '' then
+        -- Layout folders contain overrides, rather than a complete style set.
+        local basePath = '/data/' .. dir .. '/'
+        if g_resources.directoryExists(basePath) then
+            importFrom(basePath)
+        end
+        local layoutPath = '/layouts/' .. layout .. '/' .. dir .. '/'
+        if g_resources.directoryExists(layoutPath) then
+            importFrom(layoutPath)
+        end
+    else
+        local path = '/' .. dir .. '/'
+        if g_resources.directoryExists(path) then
+            importFrom(path)
+        end
+    end
 end
 
 function reloadParticles()
